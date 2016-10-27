@@ -1,0 +1,14 @@
+img.upload{
+	display: block;
+	margin-left: auto;
+    margin-right: auto; 
+}
+
+body {
+   padding-top: 40px;
+   padding-bottom: 40px;
+}
+
+.tryheader {
+	text-align: center
+}

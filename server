@@ -1,0 +1,4 @@
+#!/bin/bash
+# launch appengine
+cd "$( dirname "${BASH_SOURCE[0]}")"
+goapp serve --admin_port=8001 --port=8081

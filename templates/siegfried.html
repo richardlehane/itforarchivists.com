@@ -1,0 +1,133 @@
+{{define "title"}}Siegfried{{end}}
+
+{{define "content"}}
+<div class="row">
+  <div class="col-md-8">
+    <div class="jumbotron">
+    <h1>Siegfried</h1>
+	<p>Siegfried is a signature-based file format identification tool.</p>
+  <p>It implements:</p>
+	<ul>
+	  <li>the National Archives UK's <a class="text-danger" href="http://www.nationalarchives.gov.uk/pronom">PRONOM</a> file format signatures</li>
+	  <li>freedesktop.org's <a class="text-danger" href="https://freedesktop.org/wiki/Software/shared-mime-info/">MIME-info</a> file format signatures</li>
+    <li>the Library of Congress's <a class="text-danger" href="http://www.digitalpreservation.gov/formats/fdd/descriptions.shtml">FDD</a> file format signatures (<strong>beta</strong>).</li>
+    </ul>
+  </div>
+<div class="page-header">
+  <h2>Install</h2>
+</div>
+<h4>Windows</h3>
+<ol>
+	<li>download latest (v. {{.Version}}) binary: (<a class="text-danger" href="{{.Win64}}">64bit</a> | <a class="text-danger" href="{{.Win32}}">32bit</a>)
+	<li>copy to a location in your <a class="text-danger" href="http://www.computerhope.com/issues/ch000549.htm">system path</a></li>
+	<li>run the `sf -update` command to download the latest signatures (got troubles? Try this <a class="text-danger" href="https://github.com/richardlehane/siegfried/wiki/Getting-started#installing-the-latest-signature-file">troubleshooting guide</a>)</li>
+</ol>
+<h4>Mac Homebrew (or <a href="http://brew.sh/linuxbrew/">Linuxbrew</a>)</h4>
+<pre>brew install mistydemeo/digipres/siegfried</pre>
+<p>Or, for the most recent updates, you can install from this fork:</p>
+<pre>brew install richardlehane/digipres/siegfried</pre>
+<h4>Ubuntu/Debian (64 bit)</h4>
+<pre>wget -qO - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -</pre>
+<pre>echo "deb http://dl.bintray.com/siegfried/debian wheezy main" | sudo tee -a /etc/apt/sources.list</pre>
+<pre>sudo apt-get update && sudo apt-get install siegfried</pre>
+<div class="page-header"><h2>Usage</h2></div>
+<h4>Identify a file</h4>
+<pre>sf file.ext</pre>
+<h4>Identify all files in a directory and its subdirectories</h4>
+<pre>sf DIR</pre>
+<h4>Identify all files in a directory but not subdirectories</h4>
+<pre>sf -nr DIR</pre>
+<h4>Use a redirect (">") to save your results</h4>
+<pre>sf file.ext or DIR > my_results.yaml</pre>
+<h4>Get identification results in CSV format (default is YAML)</h4>
+<pre>sf -csv file.ext or DIR > my_results.csv</pre>
+<h4>Get identification results in JSON format</h4>
+<pre>sf -json file.ext or DIR > my_results.json</pre>
+<h4>Scan within zip, tar, gzip, warc or arc files</h4>
+<pre>sf -z file.ext or DIR</pre>
+<h4>Calculate md5, sha1, sha256, sha512, or crc hash</h4>
+<pre>sf -hash sha1 file.ext or DIR</pre>
+<h4>Update your signature file</h4>
+<pre>sf -update</pre>
+<h4>Additional commands</h4>
+<p>For more detail on using <strong>sf</strong>, see this <a class="text-danger" href="https://github.com/richardlehane/siegfried/wiki/Identifying-file-formats">guide</a>.</p>
+<h4>Modify your signature file</h4>
+<p>The <strong>roy</strong> tool builds siegfried signature files. For help using this tool, see this <a class="text-danger" href="https://github.com/richardlehane/siegfried/wiki/Building-a-signature-file-with-ROY">guide</a>.</p>
+<div class="page-header"><h2>Examples</h2></div>
+<script type="text/javascript" src="https://asciinema.org/a/ernm49loq5ofuj48ywlvg7xq6.js" id="asciicast-ernm49loq5ofuj48ywlvg7xq6" async></script>
+<script type="text/javascript" src="https://asciinema.org/a/39270.js" id="asciicast-39270" async></script>
+   <div class="page-header">
+    <h2>User Guide</h2></div>
+<p>Detailed information about installing siegfried, identifying file formats, as well as more advanced topics, is available on <a class="text-danger" href="https://github.com/richardlehane/siegfried/wiki">the wiki</a>.</p>
+ <div class="page-header">
+<h2>Sets</h2></div>
+<p><strong><a class="text-danger" href="https://github.com/richardlehane/siegfried/wiki/Building-a-signature-file-with-ROY#format-sets-optional-step">Sets</a></strong> are a feature of the <strong>roy</strong> tool. They allow you to select groups of formats when building custom signatures. E.g. with a command like `roy build -limit @pdf`. These sets can be useful in other contexts, for example when defining a software workflow that only operates on certain types of files. You might, for example, want to isolate all the PUIDs for the formats that Apache Tika can text extract. Or the audio-visual files that Exiftool can generate metadata for. The <a class="text-danger" href="siegfried/sets">sets tool</a> allows you to do this online.</p>
+   <div class="page-header">
+    <h2>Code, License, Issues</h2></div>
+<p>To view the source code and see the license details, go to the project page on <a class="text-danger" href="https://github.com/richardlehane/siegfried">Github</a>. Please post any bugs or feature request to the <a class="text-danger" href="https://github.com/richardlehane/siegfried/issues">issues page</a>.</p>
+<div class="page-header">
+<h2>Announcements</h2></div>
+<p>Join the <a class="text-danger" href="https://groups.google.com/d/forum/sf-roy">Google Group</a> for updates, signature releases, and help.</p>
+</div>
+<div class="col-md-4">
+    <h2 class="tryheader">Try Siegfried</h2>
+    <div id="upload">
+    <p><img class="upload" src="img/siegfried.png" alt="Richard's portrait"></p>
+    <p>Drag a file on to Siegfried's anvil!</p>
+    </div>
+</div>
+</div>
+{{end}}
+
+{{define "js"}}
+<script src="js/dropzone.js"></script>
+<script>
+if (!String.prototype.startsWith) {
+  String.prototype.startsWith = function (str){
+    return this.lastIndexOf(str, 0) === 0;
+  };
+}
+</script>
+<script>
+	$("div#upload").dropzone({
+		url: "/siegfried", 
+		init: function() {
+			this.on("success", function(file, responseText) {
+      			$.each(responseText, function(index, value) {
+      				for (var key in value) {
+                if (key == "ns") {
+                  var newline = document.createElement("div");
+                  newline.appendChild(document.createTextNode("--------------------"));
+                  file.previewTemplate.appendChild(newline);
+                }
+      					var d = document.createElement("div");
+      					d.className = key;
+      					var s = document.createElement("strong");
+      					s.appendChild(document.createTextNode(key));
+      					d.appendChild(s);
+                if (key == "id") {
+                  d.appendChild(document.createTextNode(": "));
+                  if (value[key].startsWith("x-fmt") || value[key].startsWith("fmt")) {
+                    var a = document.createElement("a");
+                    a.appendChild(document.createTextNode(value[key]));
+                    a.href = "http://www.nationalarchives.gov.uk/pronom/".concat(value[key])
+                    d.appendChild(a)
+                  } else if (value[key].startsWith("fdd")) {
+                    var a = document.createElement("a");
+                    a.appendChild(document.createTextNode(value[key]));
+                    a.href = "http://www.digitalpreservation.gov/formats/fdd/".concat(value[key],".shtml")
+                    d.appendChild(a)
+                  } else {
+                    d.appendChild(document.createTextNode(value[key]));
+                  }
+                } else {
+                  d.appendChild(document.createTextNode(": " + value[key]));
+                }
+      					file.previewTemplate.appendChild(d);
+      				}	
+      			});
+   		})},
+		previewTemplate: "<div class=\"dz-preview dz-file-preview\"><div class=\"dz-details\"><div class=\"dz-filename\"><span data-dz-name></span></div><div class=\"dz-size\" data-dz-size></div></div><div class=\"dz-error-message\"><span data-dz-errormessage></span></div></div>"
+	});
+</script>
+{{end}}

@@ -1,0 +1,4 @@
+#!/bin/bash
+# launch appengine
+cd "$( dirname "${BASH_SOURCE[0]}")"
+appcfg.py update .

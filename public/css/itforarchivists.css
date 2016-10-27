@@ -1,0 +1,663 @@
+/*** uncss> filename: http://localhost:8081/css/bootstrap.min.css ***/
+
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+footer,
+section {
+  display: block;
+}
+
+a {
+  background-color: transparent;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+b,
+strong {
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+img {
+  border: 0;
+}
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+pre {
+  overflow: auto;
+}
+
+pre {
+  font-family: monospace, monospace;
+  font-size: 18px;
+}
+
+input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+li,
+ul {
+  list-style-type: square;
+}
+
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  pre {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2 {
+    page-break-after: avoid;
+  }
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+@font-face {
+  font-family: 'DOS';
+  src: url('fonts/Fixedsys500c.eot');
+  src: local('☺'), url('fonts/Fixedsys500c.woff') format('woff'), url('fonts/Fixedsys500c.ttf') format('truetype'), url('fonts/Fixedsys500c.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  -webkit-tap-highlight-color: #000000;
+}
+
+body {
+  font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 18px;
+  line-height: 19px;
+  color: #bbbbbb;
+  background-color: #000084;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #ffffff;
+  background: #000000;
+  text-decoration: none;
+}
+
+a:hover::first-letter,
+a:focus::first-letter {
+  color: #bbbbbb;
+}
+
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+img {
+  vertical-align: middle;
+}
+
+hr {
+  margin-top: 8.5px;
+  padding-top: 8.5px;
+  border: 0;
+  border-top: 2px solid #000000;
+}
+
+h1,
+h2,
+h4 {
+  font-family: inherit;
+  font-weight: normal;
+  line-height: 19px;
+  margin: 0 0 19px 0;
+  color: inherit;
+}
+
+h1,
+h2 {
+  line-height: 19px;
+}
+
+h1 {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+h4 {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+p {
+  margin: 0 0 19px;
+}
+
+.text-danger {
+  color: #ff5555;
+}
+
+a.text-danger:hover {
+  color: #ff2222;
+}
+
+.page-header {
+  padding-bottom: 8.5px;
+  margin: 38px 0 19px;
+  border-bottom: 2px solid #bbbbbb;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 9.5px;
+}
+
+ul ul {
+  margin-bottom: 0;
+}
+
+strong {
+  text-transform: uppercase;
+}
+
+pre {
+  font-family: DOS, Monaco, Menlo, Consolas, "Courier New", monospace;
+}
+
+pre {
+  display: block;
+  padding: 9px;
+  margin: 0 0 9.5px;
+  font-size: 18px;
+  line-height: 19px;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #555555;
+  background-color: #f5f5f5;
+  border: 2px solid #cccccc;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 740px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1160px;
+  }
+}
+
+.row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.col-md-4,
+.col-md-8 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media (min-width: 992px) {
+  .col-md-4,
+  .col-md-8 {
+    float: left;
+  }
+
+  .col-md-8 {
+    width: 66.66666667%;
+  }
+
+  .col-md-4 {
+    width: 33.33333333%;
+  }
+}
+
+input[type="file"] {
+  display: block;
+}
+
+input[type="file"]:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.form-control::-moz-placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #000000;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  background-image: none;
+  padding: 0 9.5px;
+  -webkit-box-shadow: 9.5px 9.5px 0 rgb(0,0,0);
+  box-shadow: 9.5px 9.5px 0 rgb(0,0,0);
+  cursor: default;
+  border: 0px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.btn::first-letter {
+  color: #aa0000;
+}
+
+.btn:focus,
+.btn:active:focus {
+  outline: 0;
+}
+
+.btn:hover,
+.btn:focus {
+  outline: 0;
+}
+
+.btn:active {
+  color: #bbbbbb !important;
+  background: #000000 !important;
+  outline: 0;
+}
+
+.btn:active::first-letter {
+  color: #bbbbbb !important;
+}
+
+.btn-primary {
+  color: #000000;
+  background-color: #00aaaa;
+  /*
+  &:hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: @background;
+        border-color: @border;
+  }
+  */
+}
+
+.btn-primary:active {
+  background-image: none;
+}
+
+.btn-lg {
+  padding: 19px 9.5px;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle:focus {
+  outline: 0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 95px;
+  padding: 8.5px 3px 8.5px 4px;
+  margin: 3px 3px 8px 4px;
+  list-style: none;
+  font-size: 18px;
+  text-align: left;
+  background-color: #bbbbbb;
+  border: 2px solid #000000;
+  -webkit-box-shadow: 0px 0px 0 4px #bbbbbb;
+  box-shadow: 0px 0px 0 4px #bbbbbb;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.dropdown-menu > li {
+  list-style-type: none;
+}
+
+.dropdown-menu > li > a {
+  display: block;
+  padding: 0 10px;
+  clear: both;
+  font-weight: normal;
+  line-height: 19px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  text-decoration: none;
+  color: #bbbbbb;
+  background-color: #000000;
+}
+
+.open > .dropdown-menu {
+  display: block;
+}
+
+.nav {
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.nav > li {
+  position: relative;
+  display: block;
+}
+
+.nav > li > a {
+  position: relative;
+  display: block;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.nav > li > a::first-letter {
+  color: #fefe54;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+  color: #000000;
+  text-decoration: none;
+  background-color: #bbbbbb;
+}
+
+.nav-tabs {
+  background: #000000;
+}
+
+.nav-tabs > li {
+  float: left;
+}
+
+.nav-tabs > li > a {
+  line-height: 19px;
+}
+
+.nav-tabs > li > a::first-letter {
+  color: #ff5555;
+}
+
+.navbar-fixed-top {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.navbar-fixed-top {
+  top: 0;
+}
+
+.jumbotron {
+  padding: 8.5px 13px 8.5px 14px 8.5px 13px 8.5px 14px;
+  margin-bottom: 8.5px 13px 8.5px 14px;
+  color: #ffffff;
+  padding: 8.5px 13px 8.5px 14px;
+  margin: 8.5px 4px 8.5px 3px;
+  background-color: transparent;
+  border: 2px solid #bbbbbb;
+}
+
+.jumbotron h1 {
+  margin: 0;
+  color: inherit;
+}
+
+.jumbotron p {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .jumbotron {
+    padding: 8.5px 13px 8.5px 14px 0;
+  }
+
+  .container .jumbotron {
+    padding-left: 8.5px 13px 8.5px 14px;
+    padding-right: 8.5px 13px 8.5px 14px;
+  }
+
+  .jumbotron h1 {
+    font-size: 18px;
+  }
+}
+
+.container:before,
+.container:after,
+.row:before,
+.row:after,
+.nav:before,
+.nav:after {
+  content: " ";
+  display: table;
+}
+
+.container:after,
+.row:after,
+.nav:after {
+  clear: both;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+#cursor386 {
+  z-index: 9999999;
+  color: #ffffff;
+  font-weight: bold;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+/*# sourceMappingURL=bootstrap.css.map */
+
+/*** uncss> filename: http://localhost:8081/css/bootstrap-theme.min.css ***/
+
+.btn:active {
+  background-image: none;
+}
+
+.btn-primary {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #00aaaa;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #00aaaa;
+  background-position: 0 -15px;
+}
+
+.btn-primary:active {
+  background-color: #00aaaa;
+  border-color: #00aaaa;
+}
+
+.btn-primary:disabled {
+  background-color: #00aaaa;
+  background-image: none;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: #000000;
+}
+
+/*# sourceMappingURL=bootstrap-theme.css.map */
+
+/*** uncss> filename: http://localhost:8081/css/siegfried.css ***/
+
+img.upload {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.tryheader {
+  text-align: center;
+}
+
