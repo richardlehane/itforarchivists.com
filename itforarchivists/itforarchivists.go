@@ -8,7 +8,13 @@ import (
 	"github.com/richardlehane/siegfried"
 )
 
+// a global sf so we only need to load the sigs once
+var sf *siegfried.Siegfried
+
 func init() {
+	// setup global sf
+	sf, _ = siegfried.Load("public/latest/pronom-tika-loc.sig")
+
 	// setup gobsize
 	f, _ := os.Open("public/latest/default.sig")
 	i, _ := f.Stat()

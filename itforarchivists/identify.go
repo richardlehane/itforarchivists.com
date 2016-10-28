@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
-
-	"github.com/richardlehane/siegfried"
 )
 
 type Identification struct {
@@ -17,14 +15,17 @@ func (i *Identification) JSON() string {
 }
 
 func identify(r *http.Request) (*Identification, error) {
-	s, err := siegfried.Load("public/latest/pronom-tika-loc.sig")
-	id := &Identification{}
+	id := &Identification{make([]string, 0, 3)}
+
+	// open the submitted file
 	f, h, err := r.FormFile("file")
 	if err != nil {
 		return nil, err
 	}
 	defer f.Close()
-	c, err := s.Identify(f, h.Filename, "")
+
+	// identify using the global sf
+	c, err := sf.Identify(f, h.Filename, "")
 	if err != nil {
 		return nil, fmt.Errorf("failed to identify %v, got: %v", h.Filename, err)
 	}
