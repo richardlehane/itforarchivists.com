@@ -7,11 +7,11 @@ import (
 )
 
 type Identification struct {
-	Puids []string
+	Ids []string
 }
 
 func (i *Identification) JSON() string {
-	return "[" + strings.Join(i.Puids, ", ") + "]"
+	return "[" + strings.Join(i.Ids, ", ") + "]"
 }
 
 func identify(r *http.Request) (*Identification, error) {
@@ -25,12 +25,12 @@ func identify(r *http.Request) (*Identification, error) {
 	defer f.Close()
 
 	// identify using the global sf
-	c, err := sf.Identify(f, h.Filename, "")
-	if err != nil {
+	ids, err := sf.Identify(f, h.Filename, "")
+	if ids == nil {
 		return nil, fmt.Errorf("failed to identify %v, got: %v", h.Filename, err)
 	}
-	for i := range c {
-		id.Puids = append(id.Puids, i.JSON())
+	for _, i := range ids {
+		id.Ids = append(id.Ids, i.JSON())
 	}
 	return id, nil
 }
