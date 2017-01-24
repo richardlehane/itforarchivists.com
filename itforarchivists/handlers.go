@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/richardlehane/pronom/sets"
+	"github.com/richardlehane/siegfried/pkg/sets"
 )
 
 func wrapError(f func(http.ResponseWriter, *http.Request) error) http.HandlerFunc {
