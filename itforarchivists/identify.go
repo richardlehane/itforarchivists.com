@@ -13,10 +13,14 @@ type Identification struct {
 func toJSON(ids [][][2]string) []string {
 	ret := make([]string, len(ids))
 	for i, id := range ids {
-		if id[0] == "namespace" {
-			id[0] = "ns"
+		idstr := make([]string, len(ids))
+		if id[0][0] == "namespace" {
+			id[0][0] = "ns"
 		}
-		ret[i] = fmt.Sprintf("{\"%s\":\"%s\"}", id[0], id[1])
+		for j, v := range id {
+			idstr[j] = fmt.Sprintf("\"%s\":\"%s\"", v[0], v[1])
+		}
+		ret[i] = "{" + strings.Join(idstr, ",") + "}"
 	}
 	return ret
 }
