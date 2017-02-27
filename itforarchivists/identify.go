@@ -13,7 +13,7 @@ type Identification struct {
 func toJSON(ids [][][2]string) []string {
 	ret := make([]string, len(ids))
 	for i, id := range ids {
-		idstr := make([]string, len(ids))
+		idstr := make([]string, len(id))
 		if id[0][0] == "namespace" {
 			id[0][0] = "ns"
 		}
