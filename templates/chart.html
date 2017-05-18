@@ -1,17 +1,14 @@
 <html>
   <head>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>    
-
-<script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-var columnTitles = ["filename","id","mime","size","modified","basis"];
-
-var dataSet = [
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    var columnTitles = ["filename","id","mime","size","modified","basis"];
+    var dataSet = [
     [ "Agency in the Archive -Post Edit - GR.pdf", "fmt/20", "text/plain", "5421", "2011/04/25", "extension match" ],
     [ "Always Becoming 2015 Visitor Claim Form.doc", "fmt/934", "text/plain", "8422", "2011/07/25", "extension match" ],
     [ "D14 23426  Digital Records Operations recruitment (BN 14-3129) - Tab A.pdf", "fmt/1", "text/plain", "1562", "2009/01/12", "extension match" ],
@@ -39,52 +36,41 @@ var dataSet = [
     [ "Thumbs.db", "fmt/40", "text/plain", "5797", "2009/10/09", "extension match" ],
     [ "WoG Initiatives.docx", "x-fmt/12", "text/plain", "8822", "2010/12/22", "extension match" ],
     [ "XML schemas.lnk", "fmt/40", "text/plain", "9239", "2010/11/14", "extension match" ]
-];
-
-var dataCount = [['fmt/40', 11],
-          ['fmt/20', 2],
-          ['x-fmt/12', 2],
-          ['fmt/1', 2],
-          ['fmt/934', 9]
-];
-
-
-      function drawChart() {
-
-var dt = google.visualization.arrayToDataTable(dataCount, true);
-
-        var options = {
-	  pieHole: 0.3,
-	  pieSliceText: 'label',
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-
-function selectHandler(e) {
-  var selection = chart.getSelection();
-var table = $('#example').DataTable();
- 
-table.search( dt.getValue(selection[0].row, 0) ).draw();
-}
-
-	google.visualization.events.addListener(chart, 'select', selectHandler);
-
-        chart.draw(dt, options);
-      }
-
- 
-$(document).ready(function() {
+    ];
+    var dataCount = [['fmt/40', 11],
+    ['fmt/20', 2],
+    ['x-fmt/12', 2],
+    ['fmt/1', 2],
+    ['fmt/934', 9]
+    ];
+    function drawChart() {
+    var dt = google.visualization.arrayToDataTable(dataCount, true);
+    var options = {
+      pieHole: 0.3,
+      pieSliceText: 'label',
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    function selectHandler(e) {
+    var selection = chart.getSelection();
+    var table = $('#example').DataTable();
+    
+    table.search( dt.getValue(selection[0].row, 0) ).draw();
+    }
+      google.visualization.events.addListener(chart, 'select', selectHandler);
+    chart.draw(dt, options);
+    }
+    
+    $(document).ready(function() {
     
     $('#example').DataTable( {
-        data: dataSet,
-        columns: columnTitles.map(function(col){return {title: col}})
-	})
-});
-</script>
+    data: dataSet,
+    columns: columnTitles.map(function(col){return {title: col}})
+      })
+    });
+    </script>
   </head>
   <body>
     <div id="piechart" style="width: 900px; height: 500px;"></div>
-<div><table id="example" class="display" width="100%"></table></div>
+    <div><table id="example" class="display" width="100%"></table></div>
   </body>
 </html>
