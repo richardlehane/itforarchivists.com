@@ -43,21 +43,24 @@
     ['fmt/1', 2],
     ['fmt/934', 9]
     ];
+    var mimeCount = [['text/plain', 30]]
+    var warnCount = 5
+    var errCount = 10
+    var unknownCount = 50
     function drawChart() {
-    var dt = google.visualization.arrayToDataTable(dataCount, true);
-    var options = {
-      pieHole: 0.3,
-      pieSliceText: 'label',
-    };
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-    function selectHandler(e) {
-    var selection = chart.getSelection();
-    var table = $('#example').DataTable();
-    
-    table.search( dt.getValue(selection[0].row, 0) ).draw();
-    }
+      var dt = google.visualization.arrayToDataTable(dataCount, true);
+      var options = {
+        pieHole: 0.3,
+        pieSliceText: 'label',
+      };
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      function selectHandler(e) {
+        var selection = chart.getSelection();
+        var table = $('#example').DataTable();
+        table.search( dt.getValue(selection[0].row, 0) ).draw();
+      }
       google.visualization.events.addListener(chart, 'select', selectHandler);
-    chart.draw(dt, options);
+      chart.draw(dt, options);
     }
     
     $(document).ready(function() {
