@@ -30,6 +30,7 @@ func init() {
 	http.HandleFunc("/siegfried", wrapError(handleSiegfried))
 	http.HandleFunc("/siegfried/update", handleUpdate)
 	http.HandleFunc("/siegfried/sets", wrapError(handleSets))
+	http.HandleFunc("/siegfried/results", wrapError(handleResults))
 
 	// LATEST SIG
 	// last modified header

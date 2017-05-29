@@ -1,12 +1,24 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css">
+    
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
+
+
     <script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+   
     var columnTitles = ["filename","id","mime","size","modified","basis"];
     var dataSet = [
     [ "Agency in the Archive -Post Edit - GR.pdf", "fmt/20", "text/plain", "5421", "2011/04/25", "extension match" ],
@@ -43,32 +55,40 @@
     ['fmt/1', 2],
     ['fmt/934', 9]
     ];
-    var mimeCount = [['text/plain', 30]]
-    var warnCount = 5
-    var errCount = 10
-    var unknownCount = 50
+
     function drawChart() {
       var dt = google.visualization.arrayToDataTable(dataCount, true);
       var options = {
-        pieHole: 0.3,
+        pieHole: 0.4,
         pieSliceText: 'label',
       };
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      var searchVal = ""
       function selectHandler(e) {
         var selection = chart.getSelection();
+        if (selection.length > 0) {
+          searchVal = dt.getValue(selection[0].row, 0);
+        }
         var table = $('#example').DataTable();
-        table.search( dt.getValue(selection[0].row, 0) ).draw();
+        table.search(searchVal).draw();
       }
       google.visualization.events.addListener(chart, 'select', selectHandler);
       chart.draw(dt, options);
     }
-    
-    $(document).ready(function() {
-    
-    $('#example').DataTable( {
-    data: dataSet,
-    columns: columnTitles.map(function(col){return {title: col}})
-      })
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(function() {
+        $(function() {
+            drawChart();
+            $('#example').DataTable( {
+                data: dataSet,
+                columns: columnTitles.map(function(col){return {title: col}}),
+                dom: 'Bfrtip',
+                buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+                ]   
+            });
+        })
     });
     </script>
   </head>

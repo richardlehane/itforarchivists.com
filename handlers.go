@@ -1,6 +1,7 @@
 package itforarchivists
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
 	"sort"
@@ -30,15 +31,27 @@ func handleUpdate(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleIdentify(w http.ResponseWriter, r *http.Request) error {
-	var id *Identification
-	var err error
-	id, err = identify(r)
+	id, err := identify(r)
 	if err != nil {
 		return err
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	io.WriteString(w, id.JSON())
 	return nil
+}
+
+func handleResults(w http.ResponseWriter, r *http.Request) error {
+	if r.Method == "POST" {
+		res, err := results(r)
+		if err != nil {
+			return err
+		}
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		enc := json.NewEncoder(w)
+		return enc.Encode(res)
+	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	return T("results").Execute(w, nil)
 }
 
 func handleSets(w http.ResponseWriter, r *http.Request) error {
