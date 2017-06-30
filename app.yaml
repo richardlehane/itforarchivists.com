@@ -5,38 +5,48 @@ handlers:
 - url: /blog/css
   static_dir: public/blog/css
   expiration: "30d"
+  secure: always
 
 - url: /blog/img
   static_dir: public/blog/img
   expiration: "30d"
+  secure: always
 
 - url: /blog/(.+)/
   static_files: public/blog/\1/index.html
   upload: public/blog/(.+)/index.html
+  secure: always
 
 - url: /blog/(.+)
   static_files: public/blog/\1/index.html
   upload: public/blog/(.+)/index.html
+  secure: always
 
 - url: /blog/
   static_files: public/blog/index.html
   upload: public/blog/index.html
+  secure: always
 
 - url: /blog
   static_files: public/blog/index.html
   upload: public/blog/index.html
+  secure: always
 
 - url: /js
   static_dir: public/js
   expiration: "30d"
+  secure: always
 
 - url: /css
   static_dir: public/css
   expiration: "30d"
+  secure: always
 
 - url: /img
   static_dir: public/img
   expiration: "30d"
+  secure: always
 
 - url: /.*
   script: _go_app
+  secure: always

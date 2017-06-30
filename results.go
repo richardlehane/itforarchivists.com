@@ -34,6 +34,8 @@ func getter(key string, fields [][]string) func(int, core.Identification) string
 
 var fileTitles = []string{"filename", "filesize", "modified", "errors"}
 
+var hiddenTitles = []string{"hasWarn", "hasMultiID"}
+
 type Results struct {
 	ResultsPath      string       `json:"resultsPath"`
 	Tool             string       `json:"tool"`
@@ -127,11 +129,12 @@ func results(r *http.Request) (*Results, error) {
 		results.Datas[i] = &Data{
 			FmtCounts:  make(Count),
 			MIMECounts: make(Count),
-			Titles:     make([]string, len(fileTitles)+len(head.Fields[0])-1),
+			Titles:     make([]string, len(fileTitles)+len(head.Fields[0])-1+len(hiddenTitles)),
 			Rows:       make([][]string, 0, 1000),
 		}
 		copy(results.Datas[i].Titles, fileTitles)
 		copy(results.Datas[i].Titles[len(fileTitles):], head.Fields[0][1:]) // skip the first (ns) field
+		copy(results.Datas[i].Titles[len(fileTitles)+len(head.Fields[0])-1:], hiddenTitles)
 	}
 	mimeGetter := getter("mime", head.Fields)
 	for err == nil {
@@ -148,19 +151,29 @@ func results(r *http.Request) (*Results, error) {
 			} else {
 				if !multiID {
 					d.Multiple++
+					last := d.Rows[len(d.Rows)-1]
+					last[len(last)-1] = "true"
 				}
 				multiID = true
 			}
 			d.FmtCounts[id.String()]++
 			d.MIMECounts[mimeGetter(idx, id)]++
 			row := make([]string, len(d.Titles))
+			if multiID {
+				row[len(row)-1] = "true"
+			} else {
+				row[len(row)-1] = "false"
+			}
 			row[0], row[1], row[2] = file.Path, strconv.FormatInt(file.Size, 10), file.Mod
 			if file.Err != nil {
 				row[3] = file.Err.Error()
 				d.Error++
 			}
 			if id.Warn() != "" {
+				row[len(row)-2] = "true"
 				d.Warn++
+			} else {
+				row[len(row)-2] = "false"
 			}
 			if !id.Known() {
 				d.Unknown++
