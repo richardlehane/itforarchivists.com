@@ -1,0 +1,73 @@
+html {
+    font-size: 16px;
+}
+.logo-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 60px;
+    vertical-align: middle;
+}
+.logo {
+    text-decoration: none;
+}
+.logo-text {
+    font-size: 2em;
+    margin: 0;
+    margin-left: 60px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+.menu {
+    padding-left: 20px;
+}
+.menu-text {
+    text-transform: lowercase;
+    font-size: 1em;
+    font-weight: 1200;
+    font-family: 'PT Sans', sans-serif;
+}
+.article-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.article-date {
+    font-size: 1em;
+    font-style: italic;
+}
+.content {
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    max-width: 1200px;
+    line-height: 1.6em;
+    font-family: 'PT Serif', serif;
+}
+.content h1 {
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+.content h2 {
+    font-family: 'PT Sans', sans-serif;
+}
+.content h3 {
+    text-transform: uppercase;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+.content h4 {
+    font-family: 'PT Sans', sans-serif;
+}
+.signature-text {
+    font-size: 1.5em;
+}
+.signature a {
+    text-decoration: none;
+}
+footer {
+    font-weight: 300;
+    color: #ccc;
+    font-size: 1em;
+    text-align: center;
+    font-family: 'PT Sans', sans-serif;
+}

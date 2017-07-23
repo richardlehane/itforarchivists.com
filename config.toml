@@ -1,0 +1,16 @@
+languageCode = "en-us"
+title = "IT for archivists"
+baseurl = "https://www.itforarchivists.com"
+canonifyURLS = true
+theme = "maia"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
+
+[params]
+scheme = "richard"
+keywords = "archivists technology"
+description = "richard's site"
+author = "Richard Lehane"
+footer = "© Richard Lehane"

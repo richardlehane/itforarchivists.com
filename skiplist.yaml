@@ -1,0 +1,11 @@
+skip_files:
+- archetypes/.*
+- content/.*
+- data/.*
+- layouts/.*
+- static/.*
+- templates/.*
+- themes/.*
+- scripts/.*
+- config.toml
+- README.md

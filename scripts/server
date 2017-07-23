@@ -1,0 +1,8 @@
+#!/bin/bash
+# launch appengine
+cd "$( dirname "${BASH_SOURCE[0]}")/.."
+# hugo -b "http://localhost:8081" -D -w // run this in another window
+#goapp serve --admin_port=8001 --port=8081
+
+# /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/dev_appserver.py --port=8081 .
+/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/platform/google_appengine/dev_appserver.py --port=8081 .

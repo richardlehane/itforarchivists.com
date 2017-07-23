@@ -1,49 +1,94 @@
 package itforarchivists
 
 import (
+	"encoding/json"
+	"errors"
+	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/richardlehane/siegfried"
+	"github.com/richardlehane/siegfried/pkg/sets"
 )
 
-// a global sf so we only need to load the sigs once
-var sf *siegfried.Siegfried
+var (
+	updateJson string
+	sf         *siegfried.Siegfried
+	badRequest = errors.New("Bad request type, expecting POST")
+)
 
 func init() {
 	// setup global sf
 	sf, _ = siegfried.Load("public/latest/pronom-tika-loc.sig")
-
-	// setup gobsize
+	// setup global updateJson
 	f, _ := os.Open("public/latest/default.sig")
 	i, _ := f.Stat()
 	current.Size = int(i.Size())
 	f.Close()
-
-	// setup created
 	s, _ := siegfried.Load("public/latest/default.sig")
 	current.Created = s.C.Format(time.RFC3339)
+	updateJson = current.Json()
 
 	// routes
-	http.HandleFunc("/", wrapError(handleMain))
-	http.HandleFunc("/siegfried", wrapError(handleSiegfried))
+	http.HandleFunc("/siegfried/identify", hdlErr(handleIdentify))
 	http.HandleFunc("/siegfried/update", handleUpdate)
-	http.HandleFunc("/siegfried/sets", wrapError(handleSets))
-	http.HandleFunc("/siegfried/results", wrapError(handleResults))
+	http.HandleFunc("/siegfried/sets", hdlErr(handleSets))
+	http.HandleFunc("/siegfried/results", hdlErr(handleResults))
+}
 
-	// LATEST SIG
-	// last modified header
-	gmt, _ := time.LoadLocation("GMT")
-	lastModified := s.C.In(gmt)
-	gobbler := func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
-		w.Header().Set("Pragma", "no-cache")
-		w.Header().Set("Expires", "0")
-		f, _ := os.Open("public/latest/default.sig")
-		// todo - get rid of lastModified, file opening etc. and replace with http.ServeFile when the AppEngine lastmodified works
-		http.ServeContent(w, r, "default.sig", lastModified, f)
-		f.Close()
+func hdlErr(f func(http.ResponseWriter, *http.Request) error) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if err := f(w, r); err != nil {
+			http.Error(w, "Server error: "+err.Error(), 500)
+		}
 	}
-	http.HandleFunc("/siegfried/latest", gobbler)
+}
+
+func handleIdentify(w http.ResponseWriter, r *http.Request) error {
+	if r.Method == "POST" {
+		id, err := identify(r)
+		if err != nil {
+			return err
+		}
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		io.WriteString(w, id.JSON())
+		return nil
+	}
+	return badRequest
+}
+
+func handleUpdate(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	io.WriteString(w, updateJson)
+}
+
+func handleSets(w http.ResponseWriter, r *http.Request) error {
+	if r.Method == "POST" {
+		if err := r.ParseForm(); err != nil {
+			return errors.New("invalid sets form")
+		}
+		vals, ok := r.Form["set"]
+		if !ok {
+			return errors.New("invalid sets form")
+		}
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		io.WriteString(w, "[\""+strings.Join(sets.Sets(vals...), "\", \"")+"\"]")
+		return nil
+	}
+	return badRequest
+}
+
+func handleResults(w http.ResponseWriter, r *http.Request) error {
+	if r.Method == "POST" {
+		res, err := results(r)
+		if err != nil {
+			return err
+		}
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		enc := json.NewEncoder(w)
+		return enc.Encode(res)
+	}
+	return badRequest
 }

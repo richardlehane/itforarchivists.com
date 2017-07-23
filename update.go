@@ -2,6 +2,8 @@ package itforarchivists
 
 import (
 	"encoding/json"
+
+	"github.com/richardlehane/siegfried/pkg/config"
 )
 
 type Update struct {
@@ -14,4 +16,9 @@ type Update struct {
 func (u Update) Json() string {
 	byt, _ := json.Marshal(u)
 	return string(byt)
+}
+
+var current = Update{
+	Version: config.Version(),
+	Path:    "http://www.itforarchivists.com/siegfried/latest",
 }

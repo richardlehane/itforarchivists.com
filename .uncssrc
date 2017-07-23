@@ -1,8 +1,0 @@
-{
-  "ignore": [
-  ".btn",
-  ".btn-primary",
-  ".btn-lg",
-  ".open > .dropdown-menu"
-  ]
-}

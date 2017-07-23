@@ -1,4 +1,4 @@
-# Set default unix line endings
 * text eol=lf
-
-# this will be overriden in the public directory
+*.sig binary
+*.jpg binary
+*.png binary
