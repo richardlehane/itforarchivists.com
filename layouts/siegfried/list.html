@@ -12,21 +12,29 @@
 </div>
 <hr>
 <h2>Chart your results</h2>
-<div id="results">
- <form>
-    <input id="addset" type="text" name="set" list="sets" placeholder="Name of this result set">
+<div id="chart">
+<form>
+    <input type="text" placeholder="Name of this result set">
     <button type="button" onclick="add()">add</button>
     <input type="submit" value="submit">
-
-  </form>
+</form>
 </div>
 <hr>
 <h2>Sets Tool</h2>
 <p><a href="https://github.com/richardlehane/siegfried/wiki/Building-a-signature-file-with-ROY#format-sets-optional-step">Format sets</a> allow you to select groups of formats when using the sf and roy tools: e.g. `roy build -limit @pdf`. They can be useful in other contexts. You might, for example, want to isolate all the formats for which <a href="https://tika.apache.org/">Apache Tika</a> can extract text. This widget allows you to generate these sets online as text or as code snippets.</p>
 <p><strong>Note:</strong> This tool uses the format sets packaged with siegfried. To improve coverage, <a href="https://github.com/richardlehane/siegfried/wiki/Cool-tasks#format-sets">contribute sets</a> to siegfried.</p>
 <p>1. Select one or more PUIDs (e.g. fmt/111) or sets (prefixed with the '@' symbol, e.g. @pdf or @83).</p>
-<form>
-  <div id="addlist">
+<!-- hidden element for cloning -->
+<div id="addlist" style="display: none">
+  <fieldset class="form-group" >
+    <input id="addset" type="text" name="set" list="sets" placeholder="Enter puid or @set">
+    <datalist id="sets">{{ range $.Site.Data.siegfried.Keys }}<option value="@{{.}}">@{{ . }}</option>{{ end }}</datalist>&nbsp;
+    <button type="button" onclick="add()">add</button>&nbsp;
+    <button type="button" onclick="del(this)">del</button>
+  </fieldset>
+  </div>
+<form id="sets-form">
+  <div>
   <fieldset class="form-group" >
     <input id="addset" type="text" name="set" list="sets" placeholder="Enter puid or @set">
     <datalist id="sets">{{ range $.Site.Data.siegfried.Keys }}<option value="@{{.}}">@{{ . }}</option>{{ end }}</datalist>&nbsp;
@@ -54,4 +62,8 @@
 </div>
 </div>
 </div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/dropzone.js"></script>
+<script src="js/sets.js"></script>
+<script src="js/siegfried.js"></script>
 {{ partial "footer" . }}

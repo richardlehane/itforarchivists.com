@@ -53,7 +53,7 @@ var pyFn = function(){
     		if (i > 0) {
     			line += ", "
     		}
-    		if (line.length > 70) {
+    		if (line.length > 40) {
     			text += line.substring(0, line.length - 1)
     			line = "\n                    "
     		}
@@ -61,13 +61,15 @@ var pyFn = function(){
 		}
 		text += line +  "]\n"
     	$( "#results" ).html(text);
-    };
-	var fn = textFn;
-    $("form").submit(function(event) {
+};
+
+var fn = textFn;
+
+$("#sets-form").submit(function(event) {
     	event.preventDefault();
     	sets = $(this).serializeArray();
     	$.ajax({
-		url: "sets", 
+		url: "siegfried/sets", 
 		method: "POST",
 		dataType: "json",
 		traditional: true,
@@ -77,27 +79,30 @@ var pyFn = function(){
     		fn();
  		}
 		});
-    });
-    function changeMode(m) {
-    	if(m.value == "text") {
-    		fn = textFn;
-    	} else if (m.value == "text-nl") {
-            fn = textnlFn; 
-        } else if (m.value == "golang") {
-    		fn = goFn;
-    	} else if (m.value == "python") {
-    		fn = pyFn;
-    	}
-    	fn();
-    };
+});
+
+function changeMode(m) {
+   	if(m.value == "text") {
+   		fn = textFn;
+   	} else if (m.value == "text-nl") {
+        fn = textnlFn; 
+    } else if (m.value == "golang") {
+  		fn = goFn;
+   	} else if (m.value == "python") {
+   		fn = pyFn;
+   	}
+   	fn();
+};
+
 function add() {
-    	$("#addlist").prepend('<div id="addlist"><fieldset class="form-group" ><input id="addset"type="text" name="set" list="sets" placeholder="Enter puid or @set"><datalist id="sets">{{range .}}<option value="@{{.}}">@{{.}}</option>{{end}}</datalist>&nbsp;<button type="button" onclick="add()">add</button>&nbsp;<button type="button" onclick="del(this)">del</button><fieldset><div>');
+    $("#addlist").filter(":last").clone().show().removeAttr( "id" ).prependTo($("#sets-form"));
 }
+
 function del(el) {
-    	$(el).parent().remove()
+    $(el).parent().remove()
 }
 
 function cp() {
-  		$("#results").select();
-		document.execCommand("copy");
+  	$("#results").select();
+	document.execCommand("copy");
 }

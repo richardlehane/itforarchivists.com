@@ -5,19 +5,7 @@ includes:
 - skiplist.yaml
 
 handlers:
-- url: /siegfried/identify
-  script: _go_app
-  secure: always
-
-- url: /siegfried/sets
-  script: _go_app
-  secure: always
-
-- url: /siegfried/update
-  script: _go_app
-  secure: always
-
-- url: /siegfried/results/.*
+- url: /siegfried/(identify|results|sets|update).*
   script: _go_app
   secure: always
 
@@ -26,26 +14,29 @@ handlers:
   upload: public/latest/default.sig
   secure: always
 
-- url: /(.*\..*)
+- url: /(.*\.(html|xml|png|jpg|gif|css|js))$
   static_files: public/\1
-  upload: public/(.*\..*)
+  upload: public/.*\.(html|xml|png|jpg|gif|css|js)$
   secure: always
 
-- url: /(.+)/
+- url: /((siegfried|posts|categories|tags).*)/$
   static_files: public/\1/index.html
-  upload: public/(.+)/index.html
+  upload: public/(siegfried|posts|categories|tags).*/index.html
   secure: always
 
-- url: /(.+)
+- url: /((siegfried|posts|categories|tags).*)
   static_files: public/\1/index.html
-  upload: public/(.+)/index.html
+  upload: public/(siegfried|posts|categories|tags).*/index.html
   secure: always
 
-- url: /
+- url: /$
   static_files: public/index.html
   upload: public/index.html
   secure: always
 
+- url: /.*
+  script: _go_app
+  secure: always
 
 
 

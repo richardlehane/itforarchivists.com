@@ -196,6 +196,7 @@ func results(r *http.Request) (*Results, error) {
 
 var templ = `
 <html>
+<head>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css">
     
@@ -210,7 +211,9 @@ var templ = `
 <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.print.min.js"></script>
-
+</head>
+<body>
 <div id="piechart" style="width: 900px; height: 500px;"></div>
 <div><table id="example" class="display" width="100%"></table></div>
+</body>
 </html>`

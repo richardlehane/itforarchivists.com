@@ -36,12 +36,15 @@ func init() {
 	http.HandleFunc("/siegfried/update", handleUpdate)
 	http.HandleFunc("/siegfried/sets", hdlErr(handleSets))
 	http.HandleFunc("/siegfried/results", hdlErr(handleResults))
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.Error(w, "Sorry, that doesn't seem to be a valid route :)", 404)
+	})
 }
 
 func hdlErr(f func(http.ResponseWriter, *http.Request) error) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if err := f(w, r); err != nil {
-			http.Error(w, "Server error: "+err.Error(), 500)
+			http.Error(w, "Sorry, something went wrong :(: "+err.Error(), 500)
 		}
 	}
 }
@@ -81,7 +84,7 @@ func handleSets(w http.ResponseWriter, r *http.Request) error {
 }
 
 func handleResults(w http.ResponseWriter, r *http.Request) error {
-	if r.Method == "POST" {
+	if r.Method == "POST" && r.URL.Path == "/results" {
 		res, err := results(r)
 		if err != nil {
 			return err

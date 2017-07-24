@@ -3,6 +3,7 @@ if (!String.prototype.startsWith) {
     return this.lastIndexOf(str, 0) === 0;
   };
 }
+
 $("div#upload").dropzone({
 		url: "/siegfried/identify", 
 		init: function() {
@@ -42,4 +43,4 @@ $("div#upload").dropzone({
       			});
    		})},
 		previewTemplate: "<div class=\"dz-preview dz-file-preview\"><div class=\"dz-details\"><div class=\"dz-filename\"><span data-dz-name></span></div><div class=\"dz-size\" data-dz-size></div></div><div class=\"dz-error-message\"><span data-dz-errormessage></span></div></div>"
-	});
+});
