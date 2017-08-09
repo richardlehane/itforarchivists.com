@@ -1,12 +1,12 @@
 package itforarchivists
 
 import (
-	"encoding/json"
 	"errors"
 	"io"
 	"net/http"
 	"os"
 	"strings"
+	"text/template"
 	"time"
 
 	"github.com/richardlehane/siegfried"
@@ -14,9 +14,12 @@ import (
 )
 
 var (
-	updateJson string
-	sf         *siegfried.Siegfried
-	badRequest = errors.New("Bad request type, expecting POST")
+	updateJson      string
+	sf              *siegfried.Siegfried
+	resultsTemplate *template.Template
+	sharedTemplate  *template.Template
+	badRequest      = errors.New("bad request")
+	thisStore       store
 )
 
 func init() {
@@ -31,11 +34,20 @@ func init() {
 	current.Created = s.C.Format(time.RFC3339)
 	updateJson = current.Json()
 
+	// templates
+	resultsTemplate = template.Must(template.New("resultsT").Parse(templ))
+	sharedTemplate = template.Must(template.Must(resultsTemplate.Clone()).Parse(shareTempl))
+
+	// store
+	thisStore = make(simpleStore)
+
 	// routes
 	http.HandleFunc("/siegfried/identify", hdlErr(handleIdentify))
 	http.HandleFunc("/siegfried/update", handleUpdate)
 	http.HandleFunc("/siegfried/sets", hdlErr(handleSets))
 	http.HandleFunc("/siegfried/results", hdlErr(handleResults))
+	http.HandleFunc("/siegfried/results/", hdlErr(handleResults))
+	http.HandleFunc("/siegfried/share", hdlErr(handleShare))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Sorry, that doesn't seem to be a valid route :)", 404)
 	})
@@ -84,14 +96,20 @@ func handleSets(w http.ResponseWriter, r *http.Request) error {
 }
 
 func handleResults(w http.ResponseWriter, r *http.Request) error {
-	if r.Method == "POST" && r.URL.Path == "/results" {
-		res, err := results(r)
-		if err != nil {
-			return err
-		}
-		w.Header().Set("Content-Type", "application/json; charset=utf-8")
-		enc := json.NewEncoder(w)
-		return enc.Encode(res)
+	if r.Method == "POST" && r.URL.Path == "/siegfried/results" {
+		return parseResults(w, r)
+	}
+	if strings.HasPrefix(r.URL.Path, "/siegfried/results/") {
+		uuid := strings.TrimPrefix(r.URL.Path, "/siegfried/results/")
+		uuid = strings.TrimSuffix(uuid, "/") // remove any trailing slash
+		return retrieveResults(w, uuid, thisStore)
+	}
+	return badRequest
+}
+
+func handleShare(w http.ResponseWriter, r *http.Request) error {
+	if r.Method == "POST" {
+		return share(w, r, thisStore)
 	}
 	return badRequest
 }

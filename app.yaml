@@ -5,7 +5,7 @@ includes:
 - skiplist.yaml
 
 handlers:
-- url: /siegfried/(identify|results|sets|update).*
+- url: /siegfried/(identify|results|sets|update|share).*
   script: _go_app
   secure: always
 

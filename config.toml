@@ -3,7 +3,7 @@ title = "IT for archivists"
 baseurl = "https://www.itforarchivists.com"
 canonifyURLS = true
 theme = "maia"
-disable404 = true
+disableKinds = ["404"]
 googleAnalytics = "UA-15845576-1"
 
 [taxonomies]

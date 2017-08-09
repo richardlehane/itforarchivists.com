@@ -16,7 +16,7 @@ It implements:
 ---
 
 ## Install
-### Windows {{% fontawesome windows %}}
+### Windows {{% fontawesome windows %}} 
 
   - download latest (v. {{% version %}}) binary: ({{% download win64 64bit %}} | {{% download win32 32bit %}})
   - copy to a location in your [system path](http://www.computerhope.com/issues/ch000549.htm)
@@ -24,66 +24,53 @@ It implements:
  
 ### Mac Homebrew (or [Linuxbrew](http://brew.sh/linuxbrew/)) {{% fontawesome apple %}}
 
-- `brew install richardlehane/digipres/siegfried` (a fork of [mistydemeo/digipres/siegfried](https://github.com/mistydemeo/homebrew-digipres))
+    brew install richardlehane/digipres/siegfried
+
+(a fork of [mistydemeo/digipres/siegfried](https://github.com/mistydemeo/homebrew-digipres))
 
 ### Ubuntu/Debian (64 bit) {{% fontawesome linux %}}
 
-- `wget -qO - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -`
-- `echo "deb http://dl.bintray.com/siegfried/debian wheezy main" | sudo tee -a /etc/apt/sources.list`
-- `sudo apt-get update && sudo apt-get install siegfried`
+	wget -qO - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
+	echo "deb http://dl.bintray.com/siegfried/debian wheezy main" | sudo tee -a /etc/apt/sources.list
+	sudo apt-get update && sudo apt-get install siegfried
 
-### FreeBSD {{% fontawesome mercury %}}
+### FreeBSD
 
-- `pkg install siegfried`
+	pkg install siegfried
 
 ### Arch Linux {{% fontawesome linux %}}
 
-- `git clone https://aur.archlinux.org/siegfried.git`
-- `cd siegfried`
-- `makepkg -si`
+	git clone https://aur.archlinux.org/siegfried.git
+	cd siegfried
+	makepkg -si
 
 ---
 
 ## Usage 
-### Identify a file
+### Identify files and directories
 
-`sf file.ext`
+	sf file.ext // Identify a file
+	sf DIR // Identify all files in a directory and its subdirectories
+	sf -nr DIR // Identify all files in a directory but not subdirectories
 
-### Identify all files in a directory and its subdirectories
+### Save output
 
-`sf DIR`
+	sf file.ext or DIR > my_results.yaml // Use a redirect (">") to save your results
+	sf -csv file.ext or DIR > my_results.csv // Get identification results in CSV format (default is YAML)
+	sf -json file.ext or DIR > my_results.json // Get identification results in JSON format
 
-Identify all files in a directory but not subdirectories
+### Additional commands
 
-`sf -nr DIR`
-
-### Use a redirect (">") to save your results
-
-`sf file.ext or DIR > my_results.yaml`
-
-### Get identification results in CSV format (default is YAML)
-
-`sf -csv file.ext or DIR > my_results.csv<`
-
-### Get identification results in JSON format
-
-`sf -json file.ext or DIR > my_results.json`
-
-### Scan within zip, tar, gzip, warc or arc files
-
-`sf -z file.ext or DIR`
-
-### Calculate md5, sha1, sha256, sha512, or crc hash
-
-`sf -hash sha1 file.ext or DIR`
+	sf -z file.ext or DIR // Scan within zip, tar, gzip, warc or arc files
+	sf -hash sha1 file.ext or DIR // Calculate md5, sha1, sha256, sha512, or crc hash
 
 ### Update your signature file
 
-`sf -update`
+	sf -update
 
-## Additional commands
+## User guide
 
-For more detail on using **sf**, see this [guide](https://github.com/richardlehane/siegfried/wiki/Identifying-file-formats).
+Detailed information about installing siegfried, identifying file formats, as well as more advanced topics, is available on [the wiki](https://github.com/richardlehane/siegfried/wiki).
 
 ## Modify your signature file
 
@@ -94,10 +81,6 @@ The **roy** tool builds siegfried signature files. For help using this tool, see
 {{% asciicast ernm49loq5ofuj48ywlvg7xq6 %}}
 
 {{% asciicast 39270 %}}
-
-## User Guide
-
-Detailed information about installing siegfried, identifying file formats, as well as more advanced topics, is available on [the wiki](https://github.com/richardlehane/siegfried/wiki).
 
 ---
 

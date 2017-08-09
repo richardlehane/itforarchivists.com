@@ -2,28 +2,28 @@ var sets;
 
 var textFn = function(){
     	if(!sets) {
-    		return
+    		return;
     	};
-    	var text = sets[0]
+    	var text = sets[0];
     	for (i = 1; i < sets.length; i++) { 
     		if (i > 0) {
-    			text += ", "
+    			text += ", ";
     		}
-    		text += sets[i]
+    		text += sets[i];
 		}
     	$( "#results" ).html(text);
 };
 
 var textnlFn = function(){
         if(!sets) {
-            return
+            return;
         };
-        var text = sets[0]
+        var text = sets[0];
         for (i = 1; i < sets.length; i++) { 
             if (i > 0) {
-                text += "\n"
+                text += "\n";
             }
-            text += sets[i]
+            text += sets[i];
         }
         $( "#results" ).html(text);
 };
@@ -32,34 +32,34 @@ var goFn = function(){
     	if(!sets) {
     		return
     	};
-    	var text = "func IsType(puid string) bool {\n    switch puid {\n    case "
+    	var text = "func IsType(puid string) bool {\n    switch puid {\n    case ";
     	for (i = 0; i < sets.length; i++) { 
     		if (i > 0) {
-    			text += ", "
+    			text += ", ";
     		}
-    		text += '"' + sets[i] + '"'
+    		text += '"' + sets[i] + '"';
 		}
-		text += ":\n        return true\n    }\n    return false\n}"
+		text += ":\n        return true\n    }\n    return false\n}";
     	$( "#results" ).html(text);
 };
 
 var pyFn = function(){
     	if(!sets) {
-    		return
+    		return;
     	};
-    	var text = "def IsType(puid):"
-    	line = "\n    return puid in ["
+    	var text = "def IsType(puid):";
+    	line = "\n    return puid in [";
     	for (i = 0; i < sets.length; i++) { 
     		if (i > 0) {
-    			line += ", "
+    			line += ", ";
     		}
     		if (line.length > 40) {
-    			text += line.substring(0, line.length - 1)
-    			line = "\n                    "
+    			text += line.substring(0, line.length - 1);
+    			line = "\n                    ";
     		}
-    		line += "'" + sets[i] + "'"
+    		line += "'" + sets[i] + "'";
 		}
-		text += line +  "]\n"
+		text += line +  "]\n";
     	$( "#results" ).html(text);
 };
 
@@ -99,7 +99,7 @@ function add() {
 }
 
 function del(el) {
-    $(el).parent().remove()
+    $(el).parent().remove();
 }
 
 function cp() {
