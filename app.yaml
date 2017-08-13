@@ -13,6 +13,13 @@ handlers:
   static_files: public/latest/default.sig
   upload: public/latest/default.sig
   secure: always
+  application_readable: true
+
+- url: /siegfried/latest/(loc|tika|freedesktop|pronom-tika-loc|deluxe)$
+  static_files: public/latest/\1.sig
+  upload: public/latest/(loc|tika|freedesktop|pronom-tika-loc|deluxe).sig$
+  secure: always
+  application_readable: true
 
 - url: /(.*\.(html|xml|png|jpg|gif|css|js))$
   static_files: public/\1
@@ -21,12 +28,12 @@ handlers:
 
 - url: /((siegfried|posts|categories|tags).*)/$
   static_files: public/\1/index.html
-  upload: public/(siegfried|posts|categories|tags).*/index.html
+  upload: public/(siegfried|posts|categories|tags).*/index.html$
   secure: always
 
 - url: /((siegfried|posts|categories|tags).*)
   static_files: public/\1/index.html
-  upload: public/(siegfried|posts|categories|tags).*/index.html
+  upload: public/(siegfried|posts|categories|tags).*/index.html$
   secure: always
 
 - url: /$

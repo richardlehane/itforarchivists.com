@@ -1,10 +1,12 @@
 package itforarchivists
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"errors"
 	"io"
+	"io/ioutil"
 	"net/http"
-	"os"
 	"strings"
 	"text/template"
 	"time"
@@ -14,36 +16,47 @@ import (
 )
 
 var (
-	updateJson      string
+	updateJson      map[string]string
 	sf              *siegfried.Siegfried
 	resultsTemplate *template.Template
 	sharedTemplate  *template.Template
 	badRequest      = errors.New("bad request")
-	thisStore       store
 )
 
 func init() {
+	updateJson = make(map[string]string)
 	// setup global sf
 	sf, _ = siegfried.Load("public/latest/pronom-tika-loc.sig")
 	// setup global updateJson
-	f, _ := os.Open("public/latest/default.sig")
-	i, _ := f.Stat()
-	current.Size = int(i.Size())
-	f.Close()
-	s, _ := siegfried.Load("public/latest/default.sig")
-	current.Created = s.C.Format(time.RFC3339)
-	updateJson = current.Json()
+	for k := range current {
+		fname := k + ".sig"
+		if fname == "pronom.sig" {
+			fname = "default.sig"
+		}
+		f, err := ioutil.ReadFile("public/latest/" + fname)
+		if err != nil {
+			panic(err)
+		}
+		current[k].Size = len(f)
+		h := sha256.New()
+		h.Write(f)
+		current[k].Hash = hex.EncodeToString(h.Sum(nil))
+		s, err := siegfried.Load("public/latest/" + fname)
+		if err != nil {
+			panic(err)
+		}
+		current[k].Created = s.C.Format(time.RFC3339)
+		updateJson[k] = current[k].Json()
+	}
 
 	// templates
 	resultsTemplate = template.Must(template.New("resultsT").Parse(templ))
 	sharedTemplate = template.Must(template.Must(resultsTemplate.Clone()).Parse(shareTempl))
 
-	// store
-	thisStore = make(simpleStore)
-
 	// routes
 	http.HandleFunc("/siegfried/identify", hdlErr(handleIdentify))
 	http.HandleFunc("/siegfried/update", handleUpdate)
+	http.HandleFunc("/siegfried/update/", handleUpdate)
 	http.HandleFunc("/siegfried/sets", hdlErr(handleSets))
 	http.HandleFunc("/siegfried/results", hdlErr(handleResults))
 	http.HandleFunc("/siegfried/results/", hdlErr(handleResults))
@@ -75,8 +88,16 @@ func handleIdentify(w http.ResponseWriter, r *http.Request) error {
 }
 
 func handleUpdate(w http.ResponseWriter, r *http.Request) {
+	var ret string
+	if strings.HasPrefix(r.URL.Path, "/siegfried/update/") {
+		sig := strings.TrimSuffix(strings.TrimPrefix(r.URL.Path, "/siegfried/update/"), "/") // remove any trailing slash
+		ret = updateJson[sig]
+	}
+	if ret == "" {
+		ret = updateJson["pronom"]
+	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	io.WriteString(w, updateJson)
+	io.WriteString(w, ret)
 }
 
 func handleSets(w http.ResponseWriter, r *http.Request) error {
@@ -100,6 +121,10 @@ func handleResults(w http.ResponseWriter, r *http.Request) error {
 		return parseResults(w, r)
 	}
 	if strings.HasPrefix(r.URL.Path, "/siegfried/results/") {
+		thisStore, err := newCloudStore(r)
+		if err != nil {
+			return err
+		}
 		uuid := strings.TrimPrefix(r.URL.Path, "/siegfried/results/")
 		uuid = strings.TrimSuffix(uuid, "/") // remove any trailing slash
 		return retrieveResults(w, uuid, thisStore)
@@ -109,6 +134,10 @@ func handleResults(w http.ResponseWriter, r *http.Request) error {
 
 func handleShare(w http.ResponseWriter, r *http.Request) error {
 	if r.Method == "POST" {
+		thisStore, err := newCloudStore(r)
+		if err != nil {
+			return err
+		}
 		return share(w, r, thisStore)
 	}
 	return badRequest

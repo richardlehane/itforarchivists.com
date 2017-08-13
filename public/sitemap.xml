@@ -3,22 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://localhost:8081/siegfried/</loc>
+    <loc>https://www.itforarchivists.com/post/reset/</loc>
+    <lastmod>2017-08-12T21:35:19+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.itforarchivists.com/siegfried/</loc>
     <lastmod>2017-07-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:8081/categories/</loc>
+    <loc>https://www.itforarchivists.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:8081/</loc>
+    <loc>https://www.itforarchivists.com/</loc>
+    <lastmod>2017-08-12T21:35:19+10:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://localhost:8081/tags/</loc>
+    <loc>https://www.itforarchivists.com/post/</loc>
+    <lastmod>2017-08-12T21:35:19+10:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.itforarchivists.com/tags/</loc>
     <priority>0</priority>
   </url>
   

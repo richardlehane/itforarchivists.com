@@ -85,8 +85,9 @@ func (cs *cloudStore) stash(uuid, name, title, desc string, res *Results) error 
 	if rc, err := obj.NewReader(cs.ctx); err != storage.ErrObjectNotExist {
 		if err == nil {
 			rc.Close()
+			err = fmt.Errorf("can't store same uuid twice: %s", uuid)
 		}
-		return fmt.Errorf("can't store same uuid twice")
+		return err
 	}
 	wc := obj.NewWriter(cs.ctx)
 	wc.ContentType = "application/json"

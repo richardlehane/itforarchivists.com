@@ -75,10 +75,10 @@ func share(w http.ResponseWriter, r *http.Request, s store) error {
 	err = dec.Decode(res)
 	f.Close()
 	if err != nil {
-		return fmt.Errorf("bad results")
+		return fmt.Errorf("bad results: %s", err.Error())
 	}
 	if !res.validate() {
-		return fmt.Errorf("bad results")
+		return fmt.Errorf("bad results: validation fail")
 	}
 	switch red {
 	case "false", "0":
