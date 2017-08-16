@@ -3,6 +3,7 @@ package itforarchivists
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
 	"errors"
 	"io"
 	"io/ioutil"
@@ -61,6 +62,7 @@ func init() {
 	http.HandleFunc("/siegfried/results", hdlErr(handleResults))
 	http.HandleFunc("/siegfried/results/", hdlErr(handleResults))
 	http.HandleFunc("/siegfried/share", hdlErr(handleShare))
+	http.HandleFunc("/siegfried/redact", hdlErr(handleRedact))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Sorry, that doesn't seem to be a valid route :)", 404)
 	})
@@ -139,6 +141,20 @@ func handleShare(w http.ResponseWriter, r *http.Request) error {
 			return err
 		}
 		return share(w, r, thisStore)
+	}
+	return badRequest
+}
+
+func handleRedact(w http.ResponseWriter, r *http.Request) error {
+	if r.Method == "POST" {
+		res, err := getResults(r)
+		if err != nil {
+			return err
+		}
+		res = redact(res)
+		w.Header().Set("Content-Type", "application/json; charset=utf-8")
+		enc := json.NewEncoder(w)
+		return enc.Encode(res)
 	}
 	return badRequest
 }

@@ -4,8 +4,15 @@ var PIES = {
     pieSliceText: 'label'
   },
   hide: "mimechart",
-  show: "fmtchart"
+  show: "fmtchart", 
+  redacted: false
 };
+
+if (!String.prototype.startsWith) {
+  String.prototype.startsWith = function (str){
+    return this.lastIndexOf(str, 0) === 0;
+  };
+}
 
 function reveal(target) {
   if (PIES.show === target) {
@@ -32,12 +39,15 @@ function chart(dv, location, searchNm) {
 }
 
 function find(val, name, subs) {
+  if (PIES.lastSearch) {
+    table.column(PIES.lastSearch+':name').search('');
+  } 
   if (val === subs) {
     val = "";
   }
   var table = $('#table').DataTable();
   table.column(name+':name').search('^' + val + '$', true, false).draw();
-  table.column(name+':name').search('');
+  PIES.lastSearch = name;
 }
 
 function datatable(typ) {
@@ -62,14 +72,30 @@ function table(cols, data) {
       data: data,
       columns: cols.map(function(col, idx){
         var hid = true;
-        if (idx === cols.length - 1) {
+        if (idx >= cols.length - 2) {
             hid = false;
         }
         return {
             title: col,
             name: col,
-            visible: hid
-        }}),
+            visible: hid,
+            render: function ( data, type, row, meta ) {
+              if (type !== 'display') {
+                return data;
+              } 
+              if (col === "id") {
+                if (data.startsWith("fmt") || data.startsWith("x-fmt")) {
+                  return '<a href="http://www.nationalarchives.gov.uk/pronom/'+data+'">' + data + '</a>';
+                }
+                if (data.startsWith("fdd")) {
+                  return '<a href="http://www.digitalpreservation.gov/formats/fdd/'+data+'">' + data + '</a>';
+                }
+              } else if (idx > 5 && data.length > 100) {
+                return '<span title="'+data+'">'+data.substr( 0, 98 )+'...</span>';
+              }
+              return data;
+          }
+      }}),
       dom: 'Bfrtip',
       buttons: [
         'copy', 'csv'
@@ -84,6 +110,7 @@ function load(num) {
   $("#warnNo span").text(RESULTS.results[num].warnings)
   $("#unkNo span").text(RESULTS.results[num].unknowns)
   $("#multiNo span").text(RESULTS.results[num].multipleIDs)
+  $("#dupesNo span").text(RESULTS.results[num].duplicates)
 
   // load charts
   $("#"+PIES.hide).show();
@@ -107,8 +134,31 @@ function initialize() {
   $("#warnNo").click(function() { find('.+', 'warning'); return false; });
   $("#unkNo").click(function() { find('UNKNOWN', 'id'); return false; });
   $("#multiNo").click(function() { find('true', 'hasMultiID'); return false; });
+  $("#dupesNo").click(function() { find('true', 'isDuplicate'); return false; });
   $("#reset").click(function() { find('.+', 'id'); return false; });
   
+  $("#redactNow").click(function() {
+        if (PIES.redacted) {
+          return false;
+        }
+        var formData = new FormData();
+        var blob = new Blob([JSON.stringify(RESULTS)], { type: "application/json"});
+        formData.append("results", blob);
+        $.ajax({
+          url: "redact", 
+          method: "POST",
+          processData: false,
+          contentType: false,
+          data: formData,
+          success: function(data, textStatus) {
+              RESULTS = data;
+              PIES.redacted = true;
+              load(0);
+          }
+        });
+        return false;
+    });  
+
   $("#share-form").submit(function(event) {
         var formData = new FormData();
         var blob = new Blob([JSON.stringify(RESULTS)], { type: "application/json"});
@@ -116,7 +166,7 @@ function initialize() {
         $.each($('#share-form').serializeArray(), function(i, field) {
           formData.append(field.name, field.value);
         });
-        if (formData.redact !== "true") {
+        if (PIES.redacted || formData.redact !== "true") {
           formData.redact = false;
         }
         event.preventDefault();

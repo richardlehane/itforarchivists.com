@@ -18,8 +18,6 @@ import (
 	"github.com/richardlehane/siegfried/pkg/reader"
 )
 
-var redactFields = []string{"filename"}
-
 const noMIME = "no MIME"
 
 func pseudo(r, t int64) uint64 {
@@ -33,6 +31,8 @@ func puuid() string {
 	p := pseudo(rand.Int63(), time.Now().UnixNano())
 	return crock32.Encode(p)
 }
+
+var redactFields = []string{"filename"}
 
 func redact(r *Results) *Results {
 	for _, d := range r.Datas {
@@ -56,6 +56,46 @@ func redact(r *Results) *Results {
 	return r
 }
 
+func appendUniq(s string, l []string) []string {
+	if l == nil {
+		return []string{s}
+	}
+	for _, v := range l {
+		if s == v {
+			return l
+		}
+	}
+	return append(l, s)
+}
+
+func markDupes(r *Results) *Results {
+	if len(r.Datas) == 0 {
+		return r
+	}
+	dupesMap := make(map[string][]string)
+	for _, row := range r.Datas[0].Rows {
+		dupesMap[row[4]] = appendUniq(row[0], dupesMap[row[4]])
+	}
+	var dupesCount int
+	for _, v := range dupesMap {
+		if len(v) > 1 {
+			dupesCount += len(v)
+		}
+	}
+	if dupesCount == 0 {
+		return r
+	}
+	for _, d := range r.Datas {
+		d.Duplicates = dupesCount
+		for _, row := range d.Rows {
+			if len(dupesMap[row[4]]) > 1 {
+				row[len(row)-1] = "true"
+			}
+		}
+	}
+	return r
+}
+
 func truncate(s string, l int) string {
 	if len(s) <= l {
 		return s
@@ -63,22 +103,30 @@ func truncate(s string, l int) string {
 	return s[:l]
 }
 
-func share(w http.ResponseWriter, r *http.Request, s store) error {
-	name, title, desc, red := r.FormValue("name"), r.FormValue("title"), r.FormValue("description"), r.FormValue("redact")
-	name, title, desc = truncate(name, 128), truncate(title, 128), truncate(desc, 256)
+func getResults(r *http.Request) (*Results, error) {
 	f, _, err := r.FormFile("results")
 	if err != nil {
-		return err
+		return nil, err
 	}
 	dec := json.NewDecoder(f)
 	res := &Results{}
 	err = dec.Decode(res)
 	f.Close()
 	if err != nil {
-		return fmt.Errorf("bad results: %s", err.Error())
+		return nil, fmt.Errorf("bad results: %s", err.Error())
 	}
 	if !res.validate() {
-		return fmt.Errorf("bad results: validation fail")
+		return nil, fmt.Errorf("bad results: validation fail")
+	}
+	return res, nil
+}
+
+func share(w http.ResponseWriter, r *http.Request, s store) error {
+	name, title, desc, red := r.FormValue("name"), r.FormValue("title"), r.FormValue("description"), r.FormValue("redact")
+	name, title, desc = truncate(name, 128), truncate(title, 128), truncate(desc, 256)
+	res, err := getResults(r)
+	if err != nil {
+		return err
 	}
 	switch red {
 	case "false", "0":
@@ -115,7 +163,7 @@ func getter(key string, fields [][]string) func(int, core.Identification) (strin
 
 var fileTitles = []string{"filename", "filesize", "modified", "errors"}
 
-var hiddenTitles = []string{"hasMultiID"}
+var hiddenTitles = []string{"hasMultiID", "isDuplicate"}
 
 func (r *Results) validate() bool {
 	if len(r.Tool) < 4 {
@@ -178,6 +226,7 @@ type Data struct {
 	Warn       int        `json:"warnings"`
 	Error      int        `json:"errors"`
 	Multiple   int        `json:"multipleIDs"`
+	Duplicates int        `json:"duplicates"`
 	FmtCounts  Count      `json:"fmtCounts"`
 	MIMECounts Count      `json:"mimeCounts"`
 	Titles     []string   `json:"titles"`
@@ -238,6 +287,8 @@ func (c *Count) UnmarshalJSON(byt []byte) error {
 }
 
 func results(r io.Reader, nm string) (*Results, error) {
+	thisFileTitles := make([]string, len(fileTitles))
+	copy(thisFileTitles, fileTitles)
 	res, err := reader.New(r, nm)
 	if err != nil {
 		return nil, err
@@ -253,7 +304,7 @@ func results(r io.Reader, nm string) (*Results, error) {
 	var hh bool
 	if len(file.Hash) > 0 {
 		hh = true
-		fileTitles = append(fileTitles, head.HashHeader)
+		thisFileTitles = append(thisFileTitles, head.HashHeader)
 	}
 	var tool string
 	switch {
@@ -281,12 +332,12 @@ func results(r io.Reader, nm string) (*Results, error) {
 		results.Datas[i] = &Data{
 			FmtCounts:  make(Count),
 			MIMECounts: make(Count),
-			Titles:     make([]string, len(fileTitles)+len(head.Fields[0])-1+len(hiddenTitles)),
+			Titles:     make([]string, len(thisFileTitles)+len(head.Fields[i])-1+len(hiddenTitles)),
 			Rows:       make([][]string, 0, 1000),
 		}
-		copy(results.Datas[i].Titles, fileTitles)
-		copy(results.Datas[i].Titles[len(fileTitles):], head.Fields[0][1:]) // skip the first (ns) field
-		copy(results.Datas[i].Titles[len(fileTitles)+len(head.Fields[0])-1:], hiddenTitles)
+		copy(results.Datas[i].Titles, thisFileTitles)
+		copy(results.Datas[i].Titles[len(thisFileTitles):], head.Fields[i][1:]) // skip the first (ns) field
+		copy(results.Datas[i].Titles[len(thisFileTitles)+len(head.Fields[i])-1:], hiddenTitles)
 	}
 	mimeGetter := getter("mime", head.Fields)
 	for err == nil {
@@ -315,11 +366,14 @@ func results(r io.Reader, nm string) (*Results, error) {
 			}
 			d.MIMECounts[mime]++
 			row := make([]string, len(d.Titles))
+			// multiID
 			if multiID {
-				row[len(row)-1] = "true"
+				row[len(row)-2] = "true"
 			} else {
-				row[len(row)-1] = "false"
+				row[len(row)-2] = "false"
 			}
+			// duplicates
+			row[len(row)-1] = "false"
 			row[0], row[1], row[2] = file.Path, strconv.FormatInt(file.Size, 10), file.Mod
 			if file.Err != nil {
 				row[3] = file.Err.Error()
@@ -340,6 +394,9 @@ func results(r io.Reader, nm string) (*Results, error) {
 			d.Rows = append(d.Rows, row)
 		}
 		file, err = res.Next()
+	}
+	if hh {
+		results = markDupes(results)
 	}
 	if err == io.EOF {
 		err = nil
@@ -467,7 +524,7 @@ ga('send', 'pageview');
 			<input id="sharetitle" type="text" name="title" maxlength="128" size="20" placeholder="Title">
 			<textarea id="sharedesc" name="description" maxlength="256" rows="3" cols="20" placeholder="Description"></textarea>
 			<label for="redact" class="pure-checkbox">
-				<input id="redact" type="checkbox" name="redact" value="true" checked> Redact filenames
+				<input id="redact" type="checkbox" name="redact" value="true" checked> Redact filenames <a href="#" id="redactNow">(redact now)</a>
 			</label>
 			<input type="submit" value="Publish" class="pure-button pure-button-primary">
 		  </fieldset>
@@ -494,7 +551,8 @@ ga('send', 'pageview');
     <a href="#" id="errNo"><span></span> errors</a><br />
 	<a href="#" id="warnNo"><span></span> warnings</a><br />
 	<a href="#" id="unkNo"><span></span> unknowns</a><br />
-	<a href="#" id="multiNo"><span></span> multiple IDs</a>
+	<a href="#" id="multiNo"><span></span> multiple IDs</a><br />
+	<a href="#" id="dupesNo"><span></span> duplicates</a>
   </p>
   <p>
     <a href="#" id="reset">Reset (show all)</a>

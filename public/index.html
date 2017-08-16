@@ -52,16 +52,82 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<a href="https://www.itforarchivists.com/" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
-<a class="logo" href="https://www.itforarchivists.com/"><p class="logo-text">IT for archivists</p></a>
-<div class="menu pure-menu pure-menu-horizontal">
-  <ul class="pure-menu-list"></ul>
+<div class="pure-g">
+  <div class="pure-u-1-2">
+    <a href="https://www.itforarchivists.com/" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
+    <a class="logo" href="https://www.itforarchivists.com/"><p class="logo-text">IT for archivists</p></a>
+  </div>
+  <div class="pure-u-1-2 nav">
+  <div class="pure-menu pure-menu-horizontal">
+    <ul class="pure-menu-list">
+      <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+      <a href="#" class="pure-menu-link">Contact</a>
+      <ul class="pure-menu-children">
+        <li class="pure-menu-item"><a href="https://twitter.com/richardlehane" class="menu-text pure-menu-link"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;twitter</a></li>
+        
+        <li class="pure-menu-item"><a href="https://github.com/richardlehane" class="menu-text pure-menu-link"><i class="fa fa-github" aria-hidden="true"></i>&nbsp;github</a></li>
+        
+        <li class="pure-menu-item"><a href="mailto:richard@itforarchivists.com" class="menu-text pure-menu-link"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;email</a></li>
+        </ul>
+      <li class="pure-menu-item"><a href="https://www.itforarchivists.com/siegfried" class="menu-text pure-menu-link"><img alt="siegfried" src="https://www.itforarchivists.com/img/sf-button.png"></a></li>
+      </li>
+    </ul>
+  </div>
+  </div>
 </div>
-<div class="content pure-g"><div id="banner" class="pure-u-1">
-  <p class="article-title">Reset</p>
+
+
+<div class="menu pure-menu pure-menu-horizontal">
+  <ul class="pure-menu-list"><li class="pure-menu-item">
+    	<a href="categories/siegfried" class="menu-text pure-menu-link">siegfried</a>
+    </li></ul>
+</div>
+<div class="content pure-g">
+    
+    	<div id="banner" class="pure-u-1">
+  <p class="article-title"><a href="https://www.itforarchivists.com/post/sf175/">siegfried 1.7.5 released</a></p>
+  <span class="article-date">Sunday, 13 August, 2017</span>
+</div>    
+<div class="pure-u-1">
+
+<p>Version 1.7.5 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
+
+<p>The headline feature of this release is new functionality for the <code>sf -update</code> command requested by <a href="https://github.com/richardlehane/siegfried/issues/103">Ross Spencer</a>. You can now use the <code>-update</code> to download or update non-<a href="https://www.nationalarchives.gov.uk/PRONOM/Default.aspx">PRONOM</a> signatures with a choice of <a href="https://www.loc.gov/preservation/digital/formats/fdd/descriptions.shtml">LOC FDD</a>, two flavours of <a href="https://freedesktop.org/wiki/Specifications/shared-mime-info-spec/">MIMEInfo</a> (<a href="https://tika.apache.org/1.5/detection.html">Apache Tika&rsquo;s MIMEInfo</a> and <a href="https://freedesktop.org/wiki/Software/shared-mime-info/">freedesktop.org</a>), and <a href="https://www.artefactual.com/services/archivematica/">archivematica</a> (latest PRONOM + archivematica extensions) signatures. There are two combo options as well: PRONOM/Tika/LOC and the Ross Spencer &ldquo;deluxe&rdquo; (PRONOM/Tika/freedesktop.org/LOC).</p>
+
+<p>PRONOM remains the default, so if you just do <code>sf -update</code> it will work as before.</p>
+
+<p>To go non-PRONOM, include one of &ldquo;loc&rdquo;, &ldquo;tika&rdquo;, &ldquo;freedesktop&rdquo;, &ldquo;pronom-tika-loc&rdquo;, &ldquo;deluxe&rdquo; or &ldquo;archivematica&rdquo; as an argument after the flags e.g. <code>sf -update freedesktop</code>. This command will overwrite &lsquo;default.sig&rsquo; (the default signature file that sf loads).</p>
+
+<p>You can preserve your default signature file by providing an alternative <code>-sig</code> target: e.g. <code>sf -sig notdefault.sig -update loc</code>. If you use one of the signature options as a filename (with or without a .sig extension), you can omit the signature argument i.e. <code>sf -update -sig loc.sig</code> is equivalent to <code>sf -sig loc.sig -update loc</code>.</p>
+
+<h2 id="other-changes">Other changes</h2>
+
+<ul>
+<li><code>sf -update</code> now does SHA-256 hash verification of updates and communication with the update server is via HTTPS</li>
+<li>update PRONOM signatures to v91</li>
+<li>fixes to config package where global variables are polluted with subsquent calls to the Add(Identifier) function</li>
+<li>fix to reader package where panic triggered by illegal slice access in some cases.</li>
+</ul>
+</div>
+<div class="pure-u-1">
+<span class="signature signature-text">Share:</span>
+<a class= "signature" href="https://twitter.com/intent/tweet?text=New&#43;post&#43;on&#43;IT&#43;for&#43;archivists%3A&#43;siegfried&#43;1.7.5&#43;released&#43;%28https%3A%2F%2Fwww.itforarchivists.com%2Fpost%2Fsf175%2F%29">
+<span class="fa-stack">
+  <i class="fa fa-circle fa-stack-2x"></i>
+  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</div>
+    
+    	<div id="banner" class="pure-u-1">
+  <p class="article-title"><a href="https://www.itforarchivists.com/post/reset/">Reset</a></p>
   <span class="article-date">Saturday, 12 August, 2017</span>
 </div>    
-<div class="pure-u-1"><p>So I&rsquo;ve updated this site&rsquo;s CSS. Apologies to those who liked the <a href="https://web.archive.org/web/20170715074712/https://www.itforarchivists.com/siegfried">old look</a>, which used the excellent <a href="https://github.com/kristopolous/BOOTSTRA.386">BOOTSTRA.386</a> theme. I liked it too. But it didn&rsquo;t have great readability and it is time for a change.</p>
+<div class="pure-u-1"><p>So I&rsquo;ve updated this site. Apologies to those who liked the <a href="https://web.archive.org/web/20170715074712/https://www.itforarchivists.com/siegfried">old look</a>, which used the retro-Windows <a href="https://github.com/kristopolous/BOOTSTRA.386">BOOTSTRA.386</a> theme. I liked it too. But it didn&rsquo;t have great readability. The new CSS is basic, but it is super lightweight and I can tinker with it. I&rsquo;m using Yahoo&rsquo;s <a href="https://purecss.io/">Pure CSS</a> framework.</p>
+
+<p>Under the hood, I&rsquo;ve simplified the site a bit too. It used to be a monolithic golang app, served on appengine, but now most of the static content is generated by <a href="http://gohugo.io/">Hugo</a>. The golang app parts now mostly just power a few small webservices (the update server, the try siegfried service, the sets tool, and the <strong>new chart tool</strong>). You can explore most of these services on the <a href="https://www.itforarchivists.com/siegfried">siegfried</a> page.</p>
+
+<p>The site&rsquo;s code is up on <a href="https://github.com/richardlehane/itforarchivists.com">github</a>.</p>
 </div>
 <div class="pure-u-1">
 <span class="signature signature-text">Share:</span>
@@ -71,7 +137,9 @@ ga('send', 'pageview');
   <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
 </span>
 </a>
-</div></div>
+</div>
+    
+</div>
 <div class="footer"><footer>© Richard Lehane</footer></div>
 </body>
 </html>

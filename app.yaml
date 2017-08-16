@@ -5,7 +5,7 @@ includes:
 - skiplist.yaml
 
 handlers:
-- url: /siegfried/(identify|results|sets|update|share).*
+- url: /siegfried/(identify|results|sets|update|share|redact).*
   script: _go_app
   secure: always
 
@@ -26,14 +26,14 @@ handlers:
   upload: public/.*\.(html|xml|png|jpg|gif|css|js)$
   secure: always
 
-- url: /((siegfried|posts|categories|tags).*)/$
+- url: /((siegfried|post|categories|tags).*)/$
   static_files: public/\1/index.html
-  upload: public/(siegfried|posts|categories|tags).*/index.html$
+  upload: public/(siegfried|post|categories|tags).*/index.html$
   secure: always
 
-- url: /((siegfried|posts|categories|tags).*)
+- url: /((siegfried|post|categories|tags).*)
   static_files: public/\1/index.html
-  upload: public/(siegfried|posts|categories|tags).*/index.html$
+  upload: public/(siegfried|post|categories|tags).*/index.html$
   secure: always
 
 - url: /$
@@ -44,10 +44,3 @@ handlers:
 - url: /.*
   script: _go_app
   secure: always
-
-
-
-
-
-
-

@@ -78,6 +78,10 @@ footer {
     padding-top: 10px;
     padding-bottom: 5px;
 }
+.nav {
+    text-align: right;
+    
+}
 .menu {
     padding-left: 20px;
 }
@@ -90,6 +94,10 @@ footer {
     font-size: 2em;
     font-weight: bold;
     margin-bottom: 15px;
+}
+.article-title > a {
+    text-decoration: none;
+    color: black;
 }
 .article-date {
     font-size: 1em;

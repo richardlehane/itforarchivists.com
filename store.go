@@ -17,6 +17,10 @@ type store interface {
 	retrieve(uuid string) (name, title, desc string, res []byte, err error)
 }
 
+func newSimpleStore(r *http.Request) (simpleStore, error) {
+	return make(simpleStore), nil
+}
+
 type simpleStore map[string]struct {
 	name  string
 	title string

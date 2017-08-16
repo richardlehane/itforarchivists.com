@@ -16,3 +16,11 @@ keywords = "archivists technology"
 description = "richard's site"
 author = "Richard Lehane"
 footer = "© Richard Lehane"
+contacts = [
+	["twitter", "https://twitter.com/richardlehane", "twitter"],
+	["github", "https://github.com/richardlehane", "github"],
+	["email", "mailto:richard@itforarchivists.com", "envelope"]
+]
+pages = [
+	["siegfried", "/siegfried", "/img/sf-button.png"]
+]
