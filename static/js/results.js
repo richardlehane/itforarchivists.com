@@ -168,6 +168,7 @@ function initialize() {
     });  
 
   $("#share-form").submit(function(event) {
+        event.preventDefault();
         $(".publish-button").toggle();
         var formData = new FormData();
         var blob = new Blob([JSON.stringify(RESULTS)], { type: "application/json"});
@@ -175,10 +176,9 @@ function initialize() {
         $.each($('#share-form').serializeArray(), function(i, field) {
           formData.append(field.name, field.value);
         });
-        if (PIES.redacted || formData.redact !== "true") {
-          formData.redact = "false";
+        if (PIES.redacted || !formData.get("redact")) {
+          formData.set("redact", "false");
         }
-        event.preventDefault();
         $.ajax({
           url: "share", 
           method: "POST",
