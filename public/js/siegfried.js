@@ -30,7 +30,7 @@ $("div#upload").dropzone({
                   } else if (value[key].startsWith("fdd")) {
                     var a = document.createElement("a");
                     a.appendChild(document.createTextNode(value[key]));
-                    a.href = "http://www.digitalpreservation.gov/formats/fdd/".concat(value[key],".shtml")
+                    a.href = "https://www.loc.gov/preservation/digital/formats/fdd/".concat(value[key],".shtml")
                     d.appendChild(a)
                   } else {
                     d.appendChild(document.createTextNode(value[key]));

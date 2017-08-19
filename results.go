@@ -128,9 +128,7 @@ func share(w http.ResponseWriter, r *http.Request, s store) error {
 	if err != nil {
 		return err
 	}
-	switch red {
-	case "false", "0":
-	default:
+	if red != "false" { // redact unless explicitly told not to
 		res = redact(res)
 	}
 	u := puuid()
@@ -414,7 +412,7 @@ func parseResults(w http.ResponseWriter, r *http.Request) error {
 	if err != nil {
 		return err
 	}
-	return writeResults(w, res, false, "", "", "")
+	return writeResults(w, res, false, "", "", "", "")
 }
 
 func retrieveResults(w http.ResponseWriter, uuid string, s store) error {
@@ -429,10 +427,10 @@ func retrieveResults(w http.ResponseWriter, uuid string, s store) error {
 	if err := json.Unmarshal(raw, res); err != nil {
 		return err
 	}
-	return writeResults(w, res, true, name, title, desc)
+	return writeResults(w, res, true, name, title, desc, uuid)
 }
 
-func writeResults(w http.ResponseWriter, res *Results, shared bool, name, title, desc string) error {
+func writeResults(w http.ResponseWriter, res *Results, shared bool, name, title, desc, uuid string) error {
 	byt, err := json.Marshal(res)
 	if err != nil {
 		return err
@@ -446,6 +444,7 @@ func writeResults(w http.ResponseWriter, res *Results, shared bool, name, title,
 			Name        string
 			Title       string
 			Desc        string
+			UUID        string
 			Metadata    [][2]string
 			Identifiers []Identifier
 			JSON        string
@@ -453,6 +452,7 @@ func writeResults(w http.ResponseWriter, res *Results, shared bool, name, title,
 			Name:  name,
 			Title: title,
 			Desc:  desc,
+			UUID:  uuid,
 			Metadata: [][2]string{
 				{"Results path", res.ResultsPath},
 				{"Tool", res.Tool},
@@ -471,19 +471,31 @@ var shareTempl = `{{ define "share" -}}
 	{{ if len .Title | lt 0 }}<h1>{{ .Title }}</h1>{{ end }}
 	{{ if len .Name | lt 0 }}<p><i>{{ .Name }}</i></p>{{ end }}
 	{{ if len .Desc | lt 0 }}<p>{{ .Desc }}</p>{{ end }}
+	<p>
+		<a class= "signature" href="https://twitter.com/intent/tweet?text=
+			{{- urlquery "I'm charting my formats! " .Title " (https://www.itforarchivists.com/siegfried/results/" .UUID ")" -}}">
+		<span class="fa-stack">
+  			<i class="fa fa-circle fa-stack-2x"></i>
+  			<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+		</span>
+		</a>
+	</p>
 	</div>
 {{- end }} `
 
 var templ = `
+<!DOCTYPE html>
 <html>
 <head>
 <title>{{ if len .Title | eq 0  }}Siegfried results chart{{ else }}{{ .Title }}{{ end }}</title>
+<link rel="icon" type="image/png" href="/img/richard.png">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.dataTables.min.css">
 
 <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
 <link rel="stylesheet" href="/css/maia.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -526,7 +538,11 @@ ga('send', 'pageview');
 			<label for="redact" class="pure-checkbox">
 				<input id="redact" type="checkbox" name="redact" value="true" checked> Redact filenames <a href="#" id="redactNow">(redact now)</a>
 			</label>
-			<input type="submit" value="Publish" class="pure-button pure-button-primary">
+			<input type="submit" value="Publish" class="publish-button pure-button pure-button-primary">
+			<button style="display: none" class="publish-button pure-button pure-button-primary pure-button-disabled">
+				<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
+				Publish
+			</button>
 		  </fieldset>
 		</form>
 	</div>

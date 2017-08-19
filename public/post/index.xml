@@ -18,7 +18,7 @@
       
       <guid>https://www.itforarchivists.com/post/sf175/</guid>
       <description>Version 1.7.5 of siegfried is now available. Get it here.
-The headline feature of this release is new functionality for the sf -update command requested by Ross Spencer. You can now use the -update to download or update non-PRONOM signatures with a choice of LOC FDD, two flavours of MIMEInfo (Apache Tika&amp;rsquo;s MIMEInfo and freedesktop.org), and archivematica (latest PRONOM + archivematica extensions) signatures. There are two combo options as well: PRONOM/Tika/LOC and the Ross Spencer &amp;ldquo;deluxe&amp;rdquo; (PRONOM/Tika/freedesktop.</description>
+The headline feature of this release is new functionality for the sf -update command requested by Ross Spencer. You can now use the -update flag to download or update non-PRONOM signatures with a choice of LOC FDD, two flavours of MIMEInfo (Apache Tika&amp;rsquo;s MIMEInfo and freedesktop.org), and archivematica (latest PRONOM + archivematica extensions) signatures. There are two combo options as well: PRONOM/Tika/LOC and the Ross Spencer &amp;ldquo;deluxe&amp;rdquo; (PRONOM/Tika/freedesktop.</description>
     </item>
     
     <item>

@@ -17,8 +17,13 @@ type store interface {
 	retrieve(uuid string) (name, title, desc string, res []byte, err error)
 }
 
+var sStore simpleStore
+
 func newSimpleStore(r *http.Request) (simpleStore, error) {
-	return make(simpleStore), nil
+	if sStore == nil {
+		sStore = make(simpleStore)
+	}
+	return sStore, nil
 }
 
 type simpleStore map[string]struct {
