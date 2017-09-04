@@ -353,7 +353,7 @@ func results(r io.Reader, nm string) (*Results, error) {
 				if !multiID {
 					d.Multiple++
 					last := d.Rows[len(d.Rows)-1]
-					last[len(last)-1] = "true"
+					last[len(last)-2] = "true"
 				}
 				multiID = true
 			}
