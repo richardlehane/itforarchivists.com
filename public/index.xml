@@ -6,10 +6,31 @@
     <description>Recent content on IT for archivists</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Aug 2017 20:12:15 +1000</lastBuildDate>
+    <lastBuildDate>Thu, 14 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://www.itforarchivists.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Charts</title>
+      <link>https://www.itforarchivists.com/post/charts/</link>
+      <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.itforarchivists.com/post/charts/</guid>
+      <description>In my recent updates to this site I&amp;rsquo;ve added a new &amp;ldquo;Chart your results&amp;rdquo; tool on the siegfried page (in the right hand panel under &amp;ldquo;Try Siegfried&amp;rdquo;). This tool produces single page reports like this: https://www.itforarchivists.com/siegfried/results/ea1zaj.
+Before covering this tool in detail let&amp;rsquo;s recap some of the existing ways you can already analyse your results.
+Other ways of charting and analysing your results Command-line charting I appreciate that not everyone is a command-line junkie, but the way I inspect results is just to use sf&amp;rsquo;s -log flag.</description>
+    </item>
+    
+    <item>
+      <title>Privacy</title>
+      <link>https://www.itforarchivists.com/about/privacy/</link>
+      <pubDate>Wed, 13 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.itforarchivists.com/about/privacy/</guid>
+      <description>The aim of this page is to describe how your private information is used by this site. If I&amp;rsquo;ve missed anything glaring, or you have any questions, or you&amp;rsquo;ve inadvertently shared information on this site that you&amp;rsquo;d like taken down, please contact me.
+General  I use Google Analytics to monitor site usage the site is completely HTTPS - thanks Let&amp;rsquo;s Encrypt! the site is hosted by Google appengine &amp;amp;, when I refer to server-side processing below, that&amp;rsquo;s what I mean the site&amp;rsquo;s code is all open and published on Github.</description>
+    </item>
     
     <item>
       <title>siegfried 1.7.5 released</title>
