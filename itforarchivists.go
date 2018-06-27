@@ -63,6 +63,9 @@ func init() {
 	http.HandleFunc("/siegfried/results/", hdlErr(handleResults))
 	http.HandleFunc("/siegfried/share", hdlErr(handleShare))
 	http.HandleFunc("/siegfried/redact", hdlErr(handleRedact))
+	http.HandleFunc("/siegfried/jobs", handleJobs)
+	http.HandleFunc("/siegfried/reports", hdlErr(handleReports))
+	http.HandleFunc("/siegfried/reports/", hdlErr(handleReports))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Sorry, that doesn't seem to be a valid route :)", 404)
 	})
@@ -157,4 +160,26 @@ func handleRedact(w http.ResponseWriter, r *http.Request) error {
 		return enc.Encode(res)
 	}
 	return badRequest
+}
+
+func handleReports(w http.ResponseWriter, r *http.Request) error {
+	if r.Method == "POST" && r.URL.Path == "/siegfried/reports" {
+		return parseReports(w, r)
+	}
+	if strings.HasPrefix(r.URL.Path, "/siegfried/reeports/") {
+		thisStore, err := newCloudStore(r)
+		if err != nil {
+			return err
+		}
+		uuid := strings.TrimPrefix(r.URL.Path, "/siegfried/reports/")
+		uuid = strings.TrimSuffix(uuid, "/") // remove any trailing slash
+		return retrieveReports(w, uuid, thisStore)
+	}
+	return badRequest
+}
+
+func handleJobs(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	byt, _ := json.MarshalIndent(Jobs, "", "  ")
+	io.WriteString(w, string(byt))
 }

@@ -6,10 +6,44 @@
     <description>Recent content in Siegfried on IT for archivists</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 02 Dec 2017 16:00:00 +1000</lastBuildDate>
     
 	<atom:link href="https://www.itforarchivists.com/categories/siegfried/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>siegfried 1.7.8 released</title>
+      <link>https://www.itforarchivists.com/post/sf178/</link>
+      <pubDate>Sat, 02 Dec 2017 16:00:00 +1000</pubDate>
+      
+      <guid>https://www.itforarchivists.com/post/sf178/</guid>
+      <description>Version 1.7.8 of siegfried is now available. Get it here.
+This minor release updates the PRONOM signatures to v93 and the LOC signatures to 2017-09-28.
+As the only changes in this release are to signature files, you can just use sf -update if you&amp;rsquo;ve installed siegfried manually. This minor release is just for the convenience of users who have installed sf with package managers (i.e. debian or homebrew).</description>
+    </item>
+    
+    <item>
+      <title>siegfried 1.7.7 released</title>
+      <link>https://www.itforarchivists.com/post/sf177/</link>
+      <pubDate>Thu, 30 Nov 2017 16:15:00 +1000</pubDate>
+      
+      <guid>https://www.itforarchivists.com/post/sf177/</guid>
+      <description>Version 1.7.7 of siegfried is now available. Happy #IDPD17!
+Get it here.
+This minor release fixes bugs in the roy inspect command and in sf&amp;rsquo;s handling of large container files.
+A new sets file is included in this release, &amp;lsquo;pronom-extensions.json&amp;rsquo;, which creates sets for all extensions defined in PRONOM. You can use these new sets when building signatures e.g. roy build -limit @.tiff or when logging formats e.g. sf -log @.</description>
+    </item>
+    
+    <item>
+      <title>siegfried 1.7.6 released</title>
+      <link>https://www.itforarchivists.com/post/sf176/</link>
+      <pubDate>Wed, 04 Oct 2017 20:12:15 +1000</pubDate>
+      
+      <guid>https://www.itforarchivists.com/post/sf176/</guid>
+      <description>Version 1.7.6 of siegfried is now available. Get it here.
+This is a minor release that incorporates the latest PRONOM update (v92), introduces a &amp;ldquo;continue on error&amp;rdquo; flag (sf -coe) to force sf to keep going when it hits fatal file errors in directory walks, and restricts file scanning to regular files (in previous versions symlinks, devices, sockets etc. were scanned which caused fatal errors for some users).
+Thanks to Henk Vanstappen for the bug report that prompted this release.</description>
+    </item>
     
     <item>
       <title>Charts</title>

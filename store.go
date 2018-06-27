@@ -13,8 +13,8 @@ import (
 )
 
 type store interface {
-	stash(uuid, name, title, desc string, res *Results) error
-	retrieve(uuid string) (name, title, desc string, res []byte, err error)
+	stash(uuid, name, title, desc string, body interface{}) error
+	retrieve(uuid string) (name, title, desc string, body []byte, err error)
 }
 
 var sStore simpleStore
@@ -30,11 +30,11 @@ type simpleStore map[string]struct {
 	name  string
 	title string
 	desc  string
-	res   []byte
+	body  []byte
 }
 
-func (ss simpleStore) stash(uuid, name, title, desc string, res *Results) error {
-	byt, err := json.Marshal(res)
+func (ss simpleStore) stash(uuid, name, title, desc string, body interface{}) error {
+	byt, err := json.Marshal(body)
 	if err != nil {
 		return err
 	}
@@ -45,12 +45,12 @@ func (ss simpleStore) stash(uuid, name, title, desc string, res *Results) error 
 		name  string
 		title string
 		desc  string
-		res   []byte
+		body  []byte
 	}{
 		name:  name,
 		title: title,
 		desc:  desc,
-		res:   byt,
+		body:  byt,
 	}
 	return nil
 }
@@ -58,9 +58,9 @@ func (ss simpleStore) stash(uuid, name, title, desc string, res *Results) error 
 func (ss simpleStore) retrieve(uuid string) (string, string, string, []byte, error) {
 	v, ok := ss[uuid]
 	if !ok {
-		return "", "", "", nil, fmt.Errorf("can't find results: %s", uuid)
+		return "", "", "", nil, fmt.Errorf("can't find uuid: %s", uuid)
 	}
-	return v.name, v.title, v.desc, v.res, nil
+	return v.name, v.title, v.desc, v.body, nil
 }
 
 type cloudStore struct {
@@ -80,8 +80,8 @@ func newCloudStore(r *http.Request) (*cloudStore, error) {
 	}, nil
 }
 
-func (cs *cloudStore) stash(uuid, name, title, desc string, res *Results) error {
-	byt, err := json.Marshal(res)
+func (cs *cloudStore) stash(uuid, name, title, desc string, body interface{}) error {
+	byt, err := json.Marshal(body)
 	if err != nil {
 		return err
 	}
@@ -124,7 +124,7 @@ func (cs *cloudStore) retrieve(uuid string) (string, string, string, []byte, err
 		return "", "", "", nil, err
 	}
 	defer rc.Close()
-	res, err := ioutil.ReadAll(rc)
+	body, err := ioutil.ReadAll(rc)
 	if err != nil {
 		return "", "", "", nil, err
 	}
@@ -133,5 +133,5 @@ func (cs *cloudStore) retrieve(uuid string) (string, string, string, []byte, err
 	if err == nil && attrs.Metadata != nil {
 		name, title, desc = attrs.Metadata["x-goog-meta-name"], attrs.Metadata["x-goog-meta-title"], attrs.Metadata["x-goog-meta-description"]
 	}
-	return name, title, desc, res, nil
+	return name, title, desc, body, nil
 }

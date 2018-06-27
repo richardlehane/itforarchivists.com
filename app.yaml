@@ -2,10 +2,11 @@ runtime: go
 api_version: go1
 
 includes: 
+- env.yaml
 - skiplist.yaml
 
 handlers:
-- url: /siegfried/(identify|results|sets|update|share|redact).*
+- url: /siegfried/(identify|results|sets|update|share|redact|jobs|reports).*
   script: _go_app
   secure: always
 

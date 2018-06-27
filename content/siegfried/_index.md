@@ -22,7 +22,7 @@ It implements:
   - copy to a location in your [system path](http://www.computerhope.com/issues/ch000549.htm)
   - run the `sf -update` command to download the latest signatures (got troubles? Try this [troubleshooting guide](https://github.com/richardlehane/siegfried/wiki/Getting-started#installing-the-latest-signature-file))
  
-### Mac Homebrew (or [Linuxbrew](http://brew.sh/linuxbrew/)) {{% fontawesome apple %}}
+### Mac [Homebrew](http://brew.sh) (or [Linuxbrew](http://brew.sh/linuxbrew/)) {{% fontawesome apple %}}
 
     brew install richardlehane/digipres/siegfried
 

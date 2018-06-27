@@ -27,7 +27,7 @@ func keys() []string {
 	k := sets.Keys()
 	keys := make([]string, 0, len(k))
 	for _, v := range k {
-		if v[0] > 57 || v[0] < 48 {
+		if v[0] > 57 || v[0] < 46 {
 			keys = append(keys, v)
 		}
 	}

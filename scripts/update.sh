@@ -1,7 +1,12 @@
 #!/bin/bash
-LOCAL=~/siegfried/
-TARGET=~/Dropbox/programming/sites/itforarchivists.com/static/
-ROY=~/Dropbox/programming/go/src/github.com/richardlehane/siegfried/cmd/roy/data
+if [[ -z "${WIN_HOME}" ]]; then
+  MY_HOME=$HOME
+else
+  MY_HOME=$WIN_HOME
+fi
+LOCAL=$MY_HOME/siegfried/
+TARGET=$MY_HOME/Dropbox/programming/sites/itforarchivists.com/static/
+ROY=$MY_HOME/Dropbox/programming/go/src/github.com/richardlehane/siegfried/cmd/roy/data
 cd "$( dirname "${BASH_SOURCE[0]}")"
 # Refresh sets dir for local and static
 rm -rf $LOCAL/sets
