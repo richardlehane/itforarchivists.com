@@ -132,7 +132,7 @@ func share(w http.ResponseWriter, r *http.Request, s store) error {
 		res = redact(res)
 	}
 	u := puuid()
-	if err := s.stash(u, name, title, desc, res); err != nil {
+	if err := s.stash("results-"+u, name, title, desc, res); err != nil {
 		return err
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
@@ -415,11 +415,25 @@ func parseResults(w http.ResponseWriter, r *http.Request) error {
 	return writeResults(w, res, false, "", "", "", "")
 }
 
+// grandfather old results
+var oldResults = map[string]bool{
+	"13pqzaj": true,
+	"396g5jf": true,
+	"3hk6wgx": true,
+	"959zaj":  true,
+	"ea1zaj":  true,
+	"wtxzaj":  true,
+}
+
 func retrieveResults(w http.ResponseWriter, uuid string, s store) error {
 	if _, err := crock32.Decode(uuid); err != nil {
 		return badRequest
 	}
-	name, title, desc, raw, err := s.retrieve(uuid)
+	key := uuid
+	if !oldResults[key] {
+		key = "results-" + key
+	}
+	name, title, desc, raw, err := s.retrieve(key)
 	if err != nil {
 		return err
 	}

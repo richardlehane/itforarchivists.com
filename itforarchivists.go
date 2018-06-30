@@ -12,6 +12,7 @@ import (
 	"text/template"
 	"time"
 
+	"github.com/richardlehane/runner"
 	"github.com/richardlehane/siegfried"
 	"github.com/richardlehane/siegfried/pkg/sets"
 )
@@ -63,9 +64,8 @@ func init() {
 	http.HandleFunc("/siegfried/results/", hdlErr(handleResults))
 	http.HandleFunc("/siegfried/share", hdlErr(handleShare))
 	http.HandleFunc("/siegfried/redact", hdlErr(handleRedact))
-	http.HandleFunc("/siegfried/jobs", handleJobs)
-	http.HandleFunc("/siegfried/reports", hdlErr(handleReports))
-	http.HandleFunc("/siegfried/reports/", hdlErr(handleReports))
+	http.HandleFunc("/siegfried/jobs/", hdlErr(handleJobs))
+	http.HandleFunc("/siegfried/logs/", hdlErr(handleLogs))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Sorry, that doesn't seem to be a valid route :)", 404)
 	})
@@ -162,24 +162,46 @@ func handleRedact(w http.ResponseWriter, r *http.Request) error {
 	return badRequest
 }
 
-func handleReports(w http.ResponseWriter, r *http.Request) error {
-	if r.Method == "POST" && r.URL.Path == "/siegfried/reports" {
-		return parseReports(w, r)
+func handleLogs(w http.ResponseWriter, r *http.Request) error {
+	var tag, uuid string
+	switch {
+	case strings.HasPrefix(r.URL.Path, "/siegfried/logs/bench"):
+		tag = "bench"
+		uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/logs/bench")
+	case strings.HasPrefix(r.URL.Path, "/siegfried/logs/develop"):
+		tag = "develop"
+		uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/logs/develop")
+	default:
+		return badRequest
 	}
-	if strings.HasPrefix(r.URL.Path, "/siegfried/reeports/") {
-		thisStore, err := newCloudStore(r)
-		if err != nil {
-			return err
-		}
-		uuid := strings.TrimPrefix(r.URL.Path, "/siegfried/reports/")
-		uuid = strings.TrimSuffix(uuid, "/") // remove any trailing slash
-		return retrieveReports(w, uuid, thisStore)
+	thisStore, err := newCloudStore(r)
+	if err != nil {
+		return err
 	}
-	return badRequest
+	if r.Method == "POST" {
+		return parseLogs(w, r, tag, thisStore)
+	}
+	uuid = strings.Trim(uuid, "/")
+	return retrieveLogs(w, tag, uuid, thisStore)
 }
 
-func handleJobs(w http.ResponseWriter, r *http.Request) {
+func handleJobs(w http.ResponseWriter, r *http.Request) error {
+	kind := strings.TrimPrefix(r.URL.Path, "/siegfried/jobs/")
+	kind = strings.TrimSuffix(kind, "/") // remove any trailing slash
+	var jobs runner.Jobs
+	switch kind {
+	case "develop":
+		jobs = developJobs
+	case "bench":
+		jobs = benchJobs
+	default:
+		return badRequest
+	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	byt, _ := json.MarshalIndent(Jobs, "", "  ")
-	io.WriteString(w, string(byt))
+	byt, err := json.MarshalIndent(jobs, "", "  ")
+	if err != nil {
+		return err
+	}
+	_, err = io.WriteString(w, string(byt))
+	return err
 }
