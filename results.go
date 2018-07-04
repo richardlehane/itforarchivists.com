@@ -132,7 +132,7 @@ func share(w http.ResponseWriter, r *http.Request, s store) error {
 		res = redact(res)
 	}
 	u := puuid()
-	if err := s.stash("results-"+u, name, title, desc, res); err != nil {
+	if err := s.stash("results/"+u, name, title, desc, res); err != nil {
 		return err
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
@@ -431,7 +431,7 @@ func retrieveResults(w http.ResponseWriter, uuid string, s store) error {
 	}
 	key := uuid
 	if !oldResults[key] {
-		key = "results-" + key
+		key = "results/" + key
 	}
 	name, title, desc, raw, err := s.retrieve(key)
 	if err != nil {
