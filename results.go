@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"math/rand"
 	"net/http"
 	"path/filepath"
 	"strconv"
@@ -19,18 +18,6 @@ import (
 )
 
 const noMIME = "no MIME"
-
-func pseudo(r, t int64) uint64 {
-	r = r & 0xFFFF
-	t = t << 16 & 0xFFFF0000
-	return uint64(t | r)
-}
-
-// psuedo uuid
-func puuid() string {
-	p := pseudo(rand.Int63(), time.Now().UnixNano())
-	return crock32.Encode(p)
-}
 
 var redactFields = []string{"filename"}
 
@@ -131,7 +118,7 @@ func share(w http.ResponseWriter, r *http.Request, s store) error {
 	if red != "false" { // redact unless explicitly told not to
 		res = redact(res)
 	}
-	u := puuid()
+	u := crock32.PUID()
 	if err := s.stash("results/"+u, name, title, desc, res); err != nil {
 		return err
 	}

@@ -15,6 +15,7 @@ import (
 type store interface {
 	stash(uuid, name, title, desc string, body interface{}) error
 	retrieve(uuid string) (name, title, desc string, body []byte, err error)
+	//list(prefix string) []string
 }
 
 var sStore simpleStore

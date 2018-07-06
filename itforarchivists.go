@@ -66,6 +66,10 @@ func init() {
 	http.HandleFunc("/siegfried/redact", hdlErr(handleRedact))
 	http.HandleFunc("/siegfried/jobs/", hdlErr(handleJobs))
 	http.HandleFunc("/siegfried/logs/", hdlErr(handleLogs))
+	http.HandleFunc("/siegfried/benchmarks", handleBench)
+	http.HandleFunc("/siegfried/benchmarks/", handleBench)
+	http.HandleFunc("/siegfried/develop", handleDevelop)
+	http.HandleFunc("/siegfried/develop/", handleDevelop)
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Sorry, that doesn't seem to be a valid route :)", 404)
 	})
@@ -205,3 +209,7 @@ func handleJobs(w http.ResponseWriter, r *http.Request) error {
 	_, err = io.WriteString(w, string(byt))
 	return err
 }
+
+func handleBench(w http.ResponseWriter, r *http.Request) {}
+
+func handleDevelop(w http.ResponseWriter, r *http.Request) {}

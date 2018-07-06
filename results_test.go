@@ -6,14 +6,6 @@ import (
 	"testing"
 )
 
-func TestPUUID(t *testing.T) {
-	u1 := puuid()
-	u2 := puuid()
-	if u1 == u2 {
-		t.Fatalf("matching puuids: %s and %s", u1, u2)
-	}
-}
-
 func TestResults(t *testing.T) {
 	res, err := results(strings.NewReader(testRes), "testdata")
 	if err != nil {
