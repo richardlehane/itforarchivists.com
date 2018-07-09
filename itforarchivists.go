@@ -167,14 +167,14 @@ func handleRedact(w http.ResponseWriter, r *http.Request) error {
 }
 
 func handleLogs(w http.ResponseWriter, r *http.Request) error {
-	var tag, uuid string
+	var tag string
 	switch {
 	case strings.HasPrefix(r.URL.Path, "/siegfried/logs/bench"):
 		tag = "bench"
-		uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/logs/bench")
+		//uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/logs/bench")
 	case strings.HasPrefix(r.URL.Path, "/siegfried/logs/develop"):
 		tag = "develop"
-		uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/logs/develop")
+		//uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/logs/develop")
 	default:
 		return badRequest
 	}
@@ -185,8 +185,7 @@ func handleLogs(w http.ResponseWriter, r *http.Request) error {
 	if r.Method == "POST" {
 		return parseLogs(w, r, tag, thisStore)
 	}
-	uuid = strings.Trim(uuid, "/")
-	return retrieveLogs(w, tag, uuid, thisStore)
+	return badRequest
 }
 
 func handleJobs(w http.ResponseWriter, r *http.Request) error {
