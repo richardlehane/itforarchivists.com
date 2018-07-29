@@ -1,0 +1,1 @@
+{"label":"setup","batch":"2018-07-09T11:56:46.106744024Z","reports":[{"detail":"corpora dir","start":"2018-07-09T11:56:46.106770254Z","duration":2940195},{"detail":"output dir","start":"2018-07-09T11:56:46.109748349Z","duration":2972126},{"detail":"rclone corpora","start":"2018-07-09T11:56:46.112792445Z","duration":650870660472}]}

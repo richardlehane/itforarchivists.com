@@ -8,10 +8,12 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"sort"
 	"strings"
 	"text/template"
 	"time"
 
+	"github.com/richardlehane/crock32"
 	"github.com/richardlehane/runner"
 	"github.com/richardlehane/siegfried"
 	"github.com/richardlehane/siegfried/pkg/sets"
@@ -22,6 +24,8 @@ var (
 	sf              *siegfried.Siegfried
 	resultsTemplate *template.Template
 	sharedTemplate  *template.Template
+	logsTemplate    *template.Template
+	globalCache     *cache
 	badRequest      = errors.New("bad request")
 )
 
@@ -52,8 +56,12 @@ func init() {
 	}
 
 	// templates
-	resultsTemplate = template.Must(template.New("resultsT").Parse(templ))
-	sharedTemplate = template.Must(template.Must(resultsTemplate.Clone()).Parse(shareTempl))
+	resultsTemplate = parseStrings("resultsT", nil, templ, rTitleTempl, rChartCSSTempl, rChartJSTempl, rContent)
+	sharedTemplate = parseStrings("", resultsTemplate, rShareTempl)
+	logsTemplate = parseStrings("logsT", nil, templ, lTitleTempl, lCSSTempl, lJSTempl, lContent)
+
+	// cache
+	globalCache = newCache(time.Hour * 6)
 
 	// routes
 	http.HandleFunc("/siegfried/identify", hdlErr(handleIdentify))
@@ -66,10 +74,10 @@ func init() {
 	http.HandleFunc("/siegfried/redact", hdlErr(handleRedact))
 	http.HandleFunc("/siegfried/jobs/", hdlErr(handleJobs))
 	http.HandleFunc("/siegfried/logs/", hdlErr(handleLogs))
-	http.HandleFunc("/siegfried/benchmarks", handleBench)
-	http.HandleFunc("/siegfried/benchmarks/", handleBench)
-	http.HandleFunc("/siegfried/develop", handleDevelop)
-	http.HandleFunc("/siegfried/develop/", handleDevelop)
+	http.HandleFunc("/siegfried/benchmarks", hdlCache(hdlErr(handleLogView), globalCache))
+	http.HandleFunc("/siegfried/benchmarks/", hdlCache(hdlErr(handleLogView), globalCache))
+	http.HandleFunc("/siegfried/develop", hdlCache(hdlErr(handleLogView), globalCache))
+	http.HandleFunc("/siegfried/develop/", hdlCache(hdlErr(handleLogView), globalCache))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Sorry, that doesn't seem to be a valid route :)", 404)
 	})
@@ -130,7 +138,7 @@ func handleResults(w http.ResponseWriter, r *http.Request) error {
 		return parseResults(w, r)
 	}
 	if strings.HasPrefix(r.URL.Path, "/siegfried/results/") {
-		thisStore, err := newCloudStore(r)
+		thisStore, err := newStore(r)
 		if err != nil {
 			return err
 		}
@@ -143,7 +151,7 @@ func handleResults(w http.ResponseWriter, r *http.Request) error {
 
 func handleShare(w http.ResponseWriter, r *http.Request) error {
 	if r.Method == "POST" {
-		thisStore, err := newCloudStore(r)
+		thisStore, err := newStore(r)
 		if err != nil {
 			return err
 		}
@@ -171,21 +179,20 @@ func handleLogs(w http.ResponseWriter, r *http.Request) error {
 	switch {
 	case strings.HasPrefix(r.URL.Path, "/siegfried/logs/bench"):
 		tag = "bench"
-		//uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/logs/bench")
 	case strings.HasPrefix(r.URL.Path, "/siegfried/logs/develop"):
 		tag = "develop"
-		//uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/logs/develop")
 	default:
 		return badRequest
 	}
-	thisStore, err := newCloudStore(r)
+	thisStore, err := newStore(r)
 	if err != nil {
 		return err
 	}
 	if r.Method == "POST" {
 		return parseLogs(w, r, tag, thisStore)
 	}
-	return badRequest
+	path := strings.TrimPrefix(r.URL.Path, "/siegfried/logs/")
+	return retrieveLog(w, path, thisStore)
 }
 
 func handleJobs(w http.ResponseWriter, r *http.Request) error {
@@ -209,6 +216,30 @@ func handleJobs(w http.ResponseWriter, r *http.Request) error {
 	return err
 }
 
-func handleBench(w http.ResponseWriter, r *http.Request) {}
-
-func handleDevelop(w http.ResponseWriter, r *http.Request) {}
+func handleLogView(w http.ResponseWriter, r *http.Request) error {
+	var tag, uuid string
+	switch {
+	case strings.HasPrefix(r.URL.Path, "/siegfried/benchmarks"):
+		tag = "bench"
+		uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/benchmarks")
+	case strings.HasPrefix(r.URL.Path, "/siegfried/develop"):
+		tag = "develop"
+		uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/develop")
+	default:
+		return badRequest
+	}
+	uuid = strings.TrimPrefix(uuid, "/")
+	thisStore, err := newStore(r)
+	if err != nil {
+		return err
+	}
+	dirs := thisStore.dirs(tag)
+	if len(dirs) == 0 {
+		return badRequest
+	}
+	sort.Sort(sort.Reverse(crock32.Sortable(dirs)))
+	if uuid == "" {
+		uuid = dirs[0]
+	}
+	return retrieveLogs(w, tag, uuid, dirs, thisStore)
+}

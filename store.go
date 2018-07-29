@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	"cloud.google.com/go/storage"
 	"golang.org/x/net/context"
@@ -12,10 +13,20 @@ import (
 	"google.golang.org/appengine/file"
 )
 
+const delimiter = "/"
+
 type store interface {
 	stash(uuid, name, title, desc string, body interface{}) error
 	retrieve(uuid string) (name, title, desc string, body []byte, err error)
-	//list(prefix string) []string
+	list(prefix, dir string) []string
+	dirs(prefix string) []string
+}
+
+func newStore(r *http.Request) (store, error) {
+	if appengine.IsDevAppServer() {
+		return newSimpleStore(r)
+	}
+	return newCloudStore(r)
 }
 
 var sStore simpleStore
@@ -34,15 +45,15 @@ type simpleStore map[string]struct {
 	body  []byte
 }
 
-func (ss simpleStore) stash(uuid, name, title, desc string, body interface{}) error {
+func (ss simpleStore) stash(key, name, title, desc string, body interface{}) error {
 	byt, err := json.Marshal(body)
 	if err != nil {
 		return err
 	}
-	if _, ok := ss[uuid]; ok {
-		return fmt.Errorf("attempted to store same uuid twice: %s", uuid)
+	if _, ok := ss[key]; ok {
+		return fmt.Errorf("attempted to store same key twice: %s", key)
 	}
-	ss[uuid] = struct {
+	ss[key] = struct {
 		name  string
 		title string
 		desc  string
@@ -56,12 +67,37 @@ func (ss simpleStore) stash(uuid, name, title, desc string, body interface{}) er
 	return nil
 }
 
-func (ss simpleStore) retrieve(uuid string) (string, string, string, []byte, error) {
-	v, ok := ss[uuid]
+func (ss simpleStore) retrieve(key string) (string, string, string, []byte, error) {
+	v, ok := ss[key]
 	if !ok {
-		return "", "", "", nil, fmt.Errorf("can't find uuid: %s", uuid)
+		return "", "", "", nil, fmt.Errorf("can't find key: %s", key)
 	}
 	return v.name, v.title, v.desc, v.body, nil
+}
+
+func (ss simpleStore) list(prefix, dir string) []string {
+	path := prefix + delimiter + dir + delimiter
+	ret := make([]string, 0, 100)
+	for k := range ss {
+		if strings.HasPrefix(k, path) {
+			ret = append(ret, k)
+		}
+	}
+	return ret
+}
+
+func (ss simpleStore) dirs(prefix string) []string {
+	uniques := make(map[string]struct{})
+	for k := range ss {
+		if strings.HasPrefix(k, prefix+delimiter) && strings.Count(k, delimiter) >= 2 {
+			uniques[k[len(prefix+delimiter):strings.Index(k[len(prefix+delimiter):], delimiter)+len(prefix+delimiter)]] = struct{}{}
+		}
+	}
+	ret := make([]string, 0, len(uniques))
+	for k := range uniques {
+		ret = append(ret, k)
+	}
+	return ret
 }
 
 type cloudStore struct {
@@ -81,7 +117,7 @@ func newCloudStore(r *http.Request) (*cloudStore, error) {
 	}, nil
 }
 
-func (cs *cloudStore) stash(uuid, name, title, desc string, body interface{}) error {
+func (cs *cloudStore) stash(key, name, title, desc string, body interface{}) error {
 	byt, err := json.Marshal(body)
 	if err != nil {
 		return err
@@ -91,11 +127,11 @@ func (cs *cloudStore) stash(uuid, name, title, desc string, body interface{}) er
 		return err
 	}
 	defer client.Close()
-	obj := client.Bucket(cs.bucket).Object(uuid)
+	obj := client.Bucket(cs.bucket).Object(key)
 	if rc, err := obj.NewReader(cs.ctx); err != storage.ErrObjectNotExist {
 		if err == nil {
 			rc.Close()
-			err = fmt.Errorf("can't store same uuid twice: %s", uuid)
+			err = fmt.Errorf("can't store same key twice: %s", key)
 		}
 		return err
 	}
@@ -113,13 +149,13 @@ func (cs *cloudStore) stash(uuid, name, title, desc string, body interface{}) er
 	return wc.Close()
 }
 
-func (cs *cloudStore) retrieve(uuid string) (string, string, string, []byte, error) {
+func (cs *cloudStore) retrieve(key string) (string, string, string, []byte, error) {
 	client, err := storage.NewClient(cs.ctx)
 	if err != nil {
 		return "", "", "", nil, err
 	}
 	defer client.Close()
-	obj := client.Bucket(cs.bucket).Object(uuid)
+	obj := client.Bucket(cs.bucket).Object(key)
 	rc, err := obj.NewReader(cs.ctx)
 	if err != nil {
 		return "", "", "", nil, err
@@ -135,4 +171,44 @@ func (cs *cloudStore) retrieve(uuid string) (string, string, string, []byte, err
 		name, title, desc = attrs.Metadata["x-goog-meta-name"], attrs.Metadata["x-goog-meta-title"], attrs.Metadata["x-goog-meta-description"]
 	}
 	return name, title, desc, body, nil
+}
+
+func (cs *cloudStore) list(prefix, dir string) []string {
+	client, err := storage.NewClient(cs.ctx)
+	if err != nil {
+		return nil
+	}
+	defer client.Close()
+	path := prefix + delimiter + dir + delimiter
+	query := &storage.Query{Prefix: path}
+	ret := make([]string, 0, 20)
+	it := client.Bucket(cs.bucket).Objects(cs.ctx, query)
+	for obj, err := it.Next(); err == nil; obj, err = it.Next() {
+		ret = append(ret, obj.Name)
+	}
+	return ret
+}
+
+func (cs *cloudStore) dirs(prefix string) []string {
+	client, err := storage.NewClient(cs.ctx)
+	if err != nil {
+		return nil
+	}
+	defer client.Close()
+	query := &storage.Query{
+		Prefix: prefix + delimiter,
+	}
+	uniques := make(map[string]struct{})
+	it := client.Bucket(cs.bucket).Objects(cs.ctx, query)
+	for obj, err := it.Next(); err == nil; obj, err = it.Next() {
+		k := obj.Name
+		if strings.HasPrefix(k, prefix+delimiter) && strings.Count(k, delimiter) >= 2 {
+			uniques[k[len(prefix+delimiter):strings.Index(k[len(prefix+delimiter):], delimiter)+len(prefix+delimiter)]] = struct{}{}
+		}
+	}
+	ret := make([]string, 0, len(uniques))
+	for k := range uniques {
+		ret = append(ret, k)
+	}
+	return ret
 }

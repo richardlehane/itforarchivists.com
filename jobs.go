@@ -1,16 +1,31 @@
 package itforarchivists
 
 import (
+	"bytes"
+	"encoding/csv"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 	"os"
+	"sort"
+	"strings"
 	"time"
 
 	"github.com/richardlehane/crock32"
 	"github.com/richardlehane/runner"
 )
+
+func retrieveLog(w http.ResponseWriter, path string, s store) error {
+	_, _, _, raw, err := s.retrieve(path)
+	if err != nil {
+		return badRequest
+	}
+	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	buf := bytes.NewBuffer(raw)
+	_, err = io.Copy(w, buf)
+	return err
+}
 
 func parseLogs(w http.ResponseWriter, r *http.Request, tag string, s store) error {
 	_, auth, ok := r.BasicAuth()
@@ -45,4 +60,249 @@ func getLog(rdr io.Reader) (string, string, *runner.Log, error) {
 		desc = lg.Batch.Format(time.RFC3339)
 	}
 	return title, desc, lg, nil
+}
+
+func retrieveLogs(w http.ResponseWriter, prefix, dir string, dirs []string, s store) error {
+	if _, err := crock32.Decode(dir); err != nil {
+		return badRequest
+	}
+	keys := s.list(prefix, dir)
+	if len(keys) == 0 {
+		return badRequest
+	}
+	logs := make([]*runner.Log, len(keys))
+	for i, key := range keys {
+		_, _, _, raw, err := s.retrieve(key)
+		if err != nil {
+			return err
+		}
+		log := &runner.Log{}
+		if err := json.Unmarshal(raw, log); err != nil {
+			return err
+		}
+		log.Path = key
+		logs[i] = log
+	}
+	return writeLogs(w, prefix, dir, dirs, logs...)
+}
+
+var benchDetails = map[string]struct {
+	Title       string
+	Description string
+}{
+	"govdocs": {
+		"Govdocs (Selected)",
+		`A selection from the Govdocs1 corpus comprising 26,124 files (31.4GB). Represents typical office formats. Originally sourced from <a href="http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/">http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/</a>`,
+	},
+	"ipres": {
+		"iPRES Systems Showcase",
+		`A corpus created for the 2014 iPRES conference comprising 2,206 files (5GB). Represents a range of formats, including AV and some uncommon types. Sourced from <a href="http://www.webarchive.org.uk/datasets/ipres.ds.1/">http://www.webarchive.org.uk/datasets/ipres.ds.1/</a>`,
+	},
+	"pronom": {
+		"PRONOM files",
+		"A corpus created by Greg Lepore and comprising 1,205 files (2.1GB). Includes a single sample of as many of the PRONOM IDs (PUIDs) that Greg could find.",
+	},
+}
+
+var toolDetails = map[string]string{
+	"master":  "latest production release",
+	"develop": "tip of the <a href='https://github.com/richardlehane/siegfried/tree/develop'>develop branch</a>",
+}
+
+var machineDetails = map[string]struct {
+	Link        string
+	Description string
+}{
+	"c2.medium.x86": {
+		Link:        "https://www.packet.net/bare-metal/servers/c2-medium-epyc/",
+		Description: "24 Physical Cores @ 2.2 GHz; 64 GB ECC RAM; 960 GB SSD",
+	},
+	"m2.xlarge.x86": {
+		Link:        "https://www.packet.net/bare-metal/servers/m2-xlarge/",
+		Description: "28 Physical Cores @ 2.2 GHz; 384 GB DDR4 ECC RAM; 3.8 TB NVMe Flash",
+	},
+	"Standard": {
+		Link:        "https://www.packet.net/bare-metal/services/storage/",
+		Description: "Elastic block storage",
+	},
+	"Performance": {
+		Link:        "https://www.packet.net/bare-metal/services/storage/",
+		Description: "Elastic block storage",
+	},
+	"c1.large.arm": {
+		Link:        "https://www.packet.net/bare-metal/servers/c1-large-arm/",
+		Description: "96 Physical Cores @ 2.0 GHz; 128 GB DDR4 ECC RAM; 250 GB SSD",
+	},
+	"c1.small.x86": {
+		Link:        "https://www.packet.net/bare-metal/servers/c1-small/",
+		Description: "4 Physical Cores @ 3.5 GHz; 32 GB DDR3 ECC RAM; 120 GB SSD",
+	},
+	"c1.xlarge.x86": {
+		Link:        "https://www.packet.net/bare-metal/servers/m2-xlarge/",
+		Description: "16 Physical Cores @ 2.6 GHz; 128 GB DDR4 ECC RAM; 1.6 TB NVMe Flash",
+	},
+	"m1.xlarge.x86": {
+		Link:        "https://www.packet.net/bare-metal/servers/m1-xlarge/",
+		Description: "24 Physical Cores @ 2.2 GHz; 256 GB DDR4 ECC RAM; 2.8 TB SSD",
+	},
+	"s1.large.x86": {
+		Link:        "https://www.packet.net/bare-metal/servers/s1-large/",
+		Description: "16 Physical Cores @ 2.1 GHz; 128 GB DDR4 ECC RAM; 960 GB SSD; 24 TB HDD",
+	},
+	"t1.small.x86": {
+		Link:        "https://www.packet.net/bare-metal/servers/t1-small/",
+		Description: "4 Physical Cores @ 2.4 GHz; 8 GB DDR3 RAM; 80 GB SSD",
+	},
+	"x1.small.x86": {
+		Link:        "https://www.packet.net/bare-metal/servers/x1-small/",
+		Description: "4 Physical Cores @ 2.0 GHz; 32 GB DDR4-2400 ECC RAM; 240 GB SSD",
+	},
+}
+
+type Benchmark struct {
+	Title       string
+	Description string
+	Src         string
+	Tools       []Tool
+	CompareHdrs []string
+	Compare     [][]string
+}
+
+type Machine struct {
+	Label       string
+	Link        string
+	Description string
+}
+
+type Tool struct {
+	Label       string
+	Description string
+	Duration    string
+}
+
+func benchDetail(detail string) (bool, []string) {
+	if strings.HasPrefix(detail, "compare") {
+		bits := strings.SplitN(detail, " - ", 2)
+		if len(bits) < 2 {
+			return true, nil
+		}
+		return true, strings.Split(bits[1], ", ")
+	}
+	return false, nil
+}
+
+func toBench(l *runner.Log, tools []Tool) *Benchmark {
+	b := &Benchmark{
+		Title:       benchDetails[l.Label].Title,
+		Description: benchDetails[l.Label].Description,
+		Src:         l.Path,
+	}
+	for _, rep := range l.Reports {
+		cmp, hdrs := benchDetail(rep.Detail)
+		if cmp {
+			if strings.Contains(rep.Output, ",") {
+				recs, _ := csv.NewReader(strings.NewReader(rep.Output)).ReadAll()
+				b.Compare = recs
+				b.CompareHdrs = hdrs
+			}
+		} else {
+			for _, tool := range tools {
+				if tool.Label == rep.Detail {
+					tool.Duration = rep.Duration.String()
+					b.Tools = append(b.Tools, tool)
+				}
+			}
+		}
+	}
+	return b
+}
+
+func toInfo(l *runner.Log) (Machine, []Tool) {
+	machine := Machine{
+		Label: l.Machine,
+	}
+	if det, ok := machineDetails[l.Machine]; ok {
+		machine.Link = det.Link
+		machine.Description = det.Description
+	}
+	var tools []Tool
+	for _, rep := range l.Reports {
+		if strings.HasPrefix(rep.Detail, "info") {
+			bits := strings.SplitN(rep.Detail, " - ", 3)
+			if len(bits) == 3 {
+				tools = append(tools, Tool{
+					Label:       bits[1],
+					Description: bits[2],
+				})
+			}
+		}
+	}
+	return machine, tools
+}
+
+func writeLogs(w http.ResponseWriter, prefix, dir string, dirs []string, logs ...*runner.Log) error {
+	var title string
+	switch prefix {
+	case "bench":
+		title = "Siegfried benchmarks"
+	case "develop":
+		title = "Siegfried development benchmarks"
+	}
+	var profile string
+	var machine Machine
+	var tools []Tool
+	sort.Slice(logs, func(i, j int) bool {
+		if len(logs[i].Reports) == 0 {
+			return true
+		}
+		if len(logs[j].Reports) == 0 {
+			return false
+		}
+		return logs[i].Reports[0].Start.Before(logs[j].Reports[0].Start)
+	})
+	var benchmarks []*Benchmark
+	for _, l := range logs {
+		switch l.Label {
+		default:
+			benchmarks = append(benchmarks, toBench(l, tools))
+		case "setup":
+			machine, tools = toInfo(l)
+		case "profile":
+			if len(l.Reports) > 1 {
+				profile = l.Reports[1].Output
+			}
+		}
+	}
+	c, err := crock32.Decode(dir)
+	if err != nil {
+		return err
+	}
+	t := time.Unix(int64(c), 0)
+	ts := make([][2]string, len(dirs))
+	for i, v := range dirs {
+		c, err := crock32.Decode(v)
+		if err != nil {
+			return err
+		}
+		ts[i][0] = v
+		ts[i][1] = time.Unix(int64(c), 0).String()
+	}
+	payload := struct {
+		Prefix     string
+		Title      string
+		Time       string
+		Machine    Machine
+		Profile    string
+		Benchmarks []*Benchmark
+		History    [][2]string
+	}{
+		Prefix:     prefix,
+		Title:      title,
+		Time:       t.Format(time.RFC1123),
+		Machine:    machine,
+		Profile:    profile,
+		Benchmarks: benchmarks,
+		History:    ts,
+	}
+	return logsTemplate.Execute(w, payload)
 }
