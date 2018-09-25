@@ -1,5 +1,5 @@
 {
-  "Version": "1.7.8",
+  "Version": "1.7.10",
   "Keys": [
     "aggregate",
     "all",
@@ -18,6 +18,7 @@
     "ebml",
     "email",
     "exif",
+    "font",
     "gis",
     "imageRaster",
     "imageVector",

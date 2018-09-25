@@ -92,7 +92,7 @@ var benchDetails = map[string]struct {
 }{
 	"govdocs": {
 		"Govdocs (Selected)",
-		`A selection from the Govdocs1 corpus comprising 26,124 files (31.4GB). Represents typical office formats. Originally sourced from <a href="http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/">http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/</a>`,
+		`A selection from the Govdocs1 corpus comprising 26,124 files (31.4GB). Represents typical office formats, including approx. 15,000 PDFs. Originally sourced from <a href="http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/">http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/</a>`,
 	},
 	"ipres": {
 		"iPRES Systems Showcase",
@@ -101,6 +101,10 @@ var benchDetails = map[string]struct {
 	"pronom": {
 		"PRONOM files",
 		"A corpus created by Greg Lepore and comprising 1,205 files (2.1GB). Includes a single sample of as many of the PRONOM IDs (PUIDs) that Greg could find.",
+	},
+	"deluxe": {
+		"The Deluxe",
+		"This benchmark checks multi-ID identification using the deluxe.sig signature file which contains four identifiers: PRONOM, LOC FDDs, freedesktop.org and tika-mimetypes. This benchmark is run against the PRONOM files corpus.",
 	},
 }
 
@@ -176,6 +180,7 @@ type Machine struct {
 
 type Tool struct {
 	Label       string
+	Version     string
 	Description string
 	Duration    string
 }
@@ -217,7 +222,7 @@ func toBench(l *runner.Log, tools []Tool) *Benchmark {
 	return b
 }
 
-func toInfo(l *runner.Log) (Machine, []Tool) {
+func toInfo(l *runner.Log) (Machine, []Tool, []Tool) {
 	machine := Machine{
 		Label: l.Machine,
 	}
@@ -226,6 +231,7 @@ func toInfo(l *runner.Log) (Machine, []Tool) {
 		machine.Description = det.Description
 	}
 	var tools []Tool
+	var versions []Tool
 	for _, rep := range l.Reports {
 		if strings.HasPrefix(rep.Detail, "info") {
 			bits := strings.SplitN(rep.Detail, " - ", 3)
@@ -235,9 +241,31 @@ func toInfo(l *runner.Log) (Machine, []Tool) {
 					Description: bits[2],
 				})
 			}
+			continue
+		}
+		if strings.HasPrefix(rep.Detail, "version") {
+			bits := strings.SplitN(rep.Detail, " - ", 2)
+			if len(bits) == 2 {
+				var present bool
+				vsn := strings.TrimSpace(rep.Output)
+				for i, v := range versions {
+					if v.Label == bits[1] {
+						versions[i].Version = v.Version + " " + vsn
+						present = true
+						break
+					}
+				}
+				if !present {
+					versions = append(versions, Tool{
+						Label:   bits[1],
+						Version: vsn,
+					})
+				}
+			}
+			continue
 		}
 	}
-	return machine, tools
+	return machine, tools, versions
 }
 
 func writeLogs(w http.ResponseWriter, prefix, dir string, dirs []string, logs ...*runner.Log) error {
@@ -251,6 +279,7 @@ func writeLogs(w http.ResponseWriter, prefix, dir string, dirs []string, logs ..
 	var profile string
 	var machine Machine
 	var tools []Tool
+	var versions []Tool
 	sort.Slice(logs, func(i, j int) bool {
 		if len(logs[i].Reports) == 0 {
 			return true
@@ -266,7 +295,7 @@ func writeLogs(w http.ResponseWriter, prefix, dir string, dirs []string, logs ..
 		default:
 			benchmarks = append(benchmarks, toBench(l, tools))
 		case "setup":
-			machine, tools = toInfo(l)
+			machine, tools, versions = toInfo(l)
 		case "profile":
 			if len(l.Reports) > 1 {
 				profile = l.Reports[1].Output
@@ -293,6 +322,7 @@ func writeLogs(w http.ResponseWriter, prefix, dir string, dirs []string, logs ..
 		Time       string
 		Machine    Machine
 		Profile    string
+		Versions   []Tool
 		Benchmarks []*Benchmark
 		History    [][2]string
 	}{
@@ -301,6 +331,7 @@ func writeLogs(w http.ResponseWriter, prefix, dir string, dirs []string, logs ..
 		Time:       t.Format(time.RFC1123),
 		Machine:    machine,
 		Profile:    profile,
+		Versions:   versions,
 		Benchmarks: benchmarks,
 		History:    ts,
 	}

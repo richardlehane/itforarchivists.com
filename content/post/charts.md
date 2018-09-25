@@ -4,7 +4,7 @@ date: 2017-09-14
 categories: ["siegfried"]
 ---
 
-In my recent updates to this site I've added a new "Chart your results" tool on the [siegfried](/siegfried) page (in the right hand panel under "Try Siegfried"). This tool produces single page reports like this: [https://www.itforarchivists.com/siegfried/results/ea1zaj](https://www.itforarchivists.com/siegfried/results/ea1zaj).
+In my recent updates to this site I've added a new "Chart your results" tool on the [siegfried](/siegfried) page (in the right hand panel under "Try Siegfried"). This tool produces single page reports like this: [/siegfried/results/ea1zaj](https://www.itforarchivists.com/siegfried/results/ea1zaj).
 
 Before covering this tool in detail let's recap some of the existing ways you can already analyse your results.
 

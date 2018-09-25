@@ -25,7 +25,7 @@
 <meta name="twitter:creator" content="Richard Lehane">
 <meta name="twitter:description" content="">
 <meta name="twitter:image:src" content="">
-<meta name="twitter:domain" content="https://www.itforarchivists.com"><link rel="canonical" href="https://www.itforarchivists.com/post/charts/"><link rel="icon" type="image/png" href="https://www.itforarchivists.com/img/richard.png">
+<meta name="twitter:domain" content="https://www.itforarchivists.com"><link rel="canonical" href="https://www.itforarchivists.com/post/sf1710/"><link rel="icon" type="image/png" href="https://www.itforarchivists.com/img/richard.png">
 
 <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
@@ -85,63 +85,40 @@ ga('send', 'pageview');
 </div>
 <div class="content pure-g">
     <div id="banner" class="pure-u-1">
-  <p class="article-title"><a href="https://www.itforarchivists.com/post/charts/">Charts</a></p>
-  <span class="article-date">Thursday, 14 September, 2017</span>
+  <p class="article-title"><a href="https://www.itforarchivists.com/post/sf1710/">siegfried 1.7.10 released</a></p>
+  <span class="article-date">Wednesday, 19 September, 2018</span>
 </div>    
 <div class="pure-u-1">
 
-<p>In my recent updates to this site I&rsquo;ve added a new &ldquo;Chart your results&rdquo; tool on the <a href="https://www.itforarchivists.com/siegfried">siegfried</a> page (in the right hand panel under &ldquo;Try Siegfried&rdquo;). This tool produces single page reports like this: <a href="https://www.itforarchivists.com/siegfried/results/ea1zaj">/siegfried/results/ea1zaj</a>.</p>
+<p>Version 1.7.10 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 
-<p>Before covering this tool in detail let&rsquo;s recap some of the existing ways you can already analyse your results.</p>
+<p>This minor release fixes a regression in the LOC identifier introduced in 1.7.9 and updates to PRONOM v94.</p>
 
-<h2 id="other-ways-of-charting-and-analysing-your-results">Other ways of charting and analysing your results</h2>
+<h3 id="changelog-v1-7-10-2018-09-19">Changelog v1.7.10 (2018-09-19)</h3>
 
-<h3 id="command-line-charting">Command-line charting</h3>
-
-<p>I appreciate that not everyone is a command-line junkie, but the way I inspect results is just to use sf&rsquo;s -log flag. If you do <code>sf -log chart</code> (or <code>-log c</code>) you can make simple format charts:</p>
-
-<p><img src="https://www.itforarchivists.com/img/sf-chart.png" alt="sf chart" /></p>
-
-<p><em>(In these examples I add &ldquo;o&rdquo; to my log options to direct logging output to STDOUT&hellip; otherwise you&rsquo;ll see it in STDERR).</em></p>
-
-<p>A chart can be a starting point for deeper analysis e.g. inspecting lists of files of a particular format:</p>
-
-<p><img src="https://www.itforarchivists.com/img/sf-fmt61.png" alt="sf log fmt/61" /></p>
-
-<p>You can also inspect lists of unknowns with <code>-log u</code> and warnings with <code>-log w</code>.</p>
-
-<p>Rather than re-run the format identification job with every step, you can pair these commands with the <code>-replay</code> flag to run them against a pre-generated results file instead. I cover this workflow in detail in the <a href="https://github.com/richardlehane/siegfried/wiki/Identifying-file-formats#replaying-a-scan-from-results-files">siegfried wiki</a>.</p>
-
-<h3 id="standalone-tools">Standalone tools</h3>
-
-<p>It would be remiss of me not to mention the two great standalone tools that Ross Spencer and Tim Walsh have written for analysing your results: <a href="https://github.com/exponential-decay/droid-siegfried-sqlite-analysis-engine">DROID-SF sqlite analysis</a> and <a href="https://github.com/timothyryanwalsh/brunnhilde">Brunnhilde</a>.</p>
-
-<p>These tools both do a lot more than simple chart generation. E.g. DROID-SF can create a &ldquo;Rogues Gallery&rdquo; of all your problematic files. Brunnhilde has a GUI, does virus scanning, and can also run bulk_extractor against your files. I&rsquo;d definitely encourage you to check both of these tools out!</p>
-
-<h2 id="chart-your-results">Chart your results</h2>
-
-<p>If your needs are a little bit simpler, and you just want a chart, then my new &ldquo;Chart your results&rdquo; tool might be a good fit.</p>
-
-<p>To try this tool, go to the <a href="https://www.itforarchivists.com/siegfried">siegfried</a> page and upload a results file in the &ldquo;Chart my results&rdquo; form in the right-hand panel.</p>
-
-<p>Let&rsquo;s run through some of its features:</p>
+<p>Added:</p>
 
 <ul>
-<li>it can handle siegfried, DROID and fido results files</li>
-<li>it gives you a single page, interactive report</li>
-<li>pie charts for format IDs and MIME-types</li>
-<li>highlights unknowns, errors, warnings, multiple IDs and duplicates (if you have checksums)</li>
-<li>you can drill-down on all of those features and formats to generate lists that you can export as CSV or to your clipboard</li>
-<li>supports multiple identifiers (a siegfried feature): each identifier is a separate single page report.</li>
+<li>print configuration defaults with <code>sf -version</code></li>
 </ul>
 
-<p>Probably the distinguishing feature of this tool is that you can easily share your analysis with colleagues, or with the digital preservation community broadly, by &ldquo;publishing&rdquo; your results. This gives you a permanent URL (like <a href="https://www.itforarchivists.com/siegfried/results/ea1zaj">https://www.itforarchivists.com/siegfried/results/ea1zaj</a>) and stores your results on the site. Prior to publication you can opt to &ldquo;redact&rdquo; your filenames if they contain sensitive information. I&rsquo;ve added a <a href="https://www.itforarchivists.com/about/privacy">privacy</a> section to this site to address some of the privacy questions raised by this feature in a little more detail.</p>
+<p>Changed:</p>
 
-<p>That&rsquo;s it, please use it, and if you like it tweet your results!</p>
+<ul>
+<li>update PRONOM to v94</li>
+</ul>
+
+<p>Fixed:</p>
+
+<ul>
+<li>LOC identifier fixed after regression in v1.7.9</li>
+<li>remove skeleton-suite files triggering malware warnings by adding to .gitignore; reported by <a href="https://github.com/richardlehane/siegfried/issues/118">Dave Rice</a></li>
+<li>release built with Go version 11, which includes a fix for a CIFS error that caused files to be skipped during file walk; reported by <a href="https://github.com/richardlehane/siegfried/issues/115">Maarten Savels</a></li>
+</ul>
 </div>
 <div class="pure-u-1">
 <span class="signature signature-text">Share:</span>
-<a class= "signature" href="https://twitter.com/intent/tweet?text=I&#43;enjoyed&#43;this&#43;post&#43;on&#43;IT&#43;for&#43;archivists%3A&#43;Charts&#43;%28https%3A%2F%2Fwww.itforarchivists.com%2Fpost%2Fcharts%2F%29">
+<a class= "signature" href="https://twitter.com/intent/tweet?text=I&#43;enjoyed&#43;this&#43;post&#43;on&#43;IT&#43;for&#43;archivists%3A&#43;siegfried&#43;1.7.10&#43;released&#43;%28https%3A%2F%2Fwww.itforarchivists.com%2Fpost%2Fsf1710%2F%29">
 <span class="fa-stack">
   <i class="fa fa-circle fa-stack-2x"></i>
   <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>

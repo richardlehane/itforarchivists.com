@@ -163,6 +163,25 @@ var lContent = `{{ define "content" -}}
 <p>These benchmarks were automatically <a href="https://github.com/richardlehane/runner">run</a> on a <a href="{{.Machine.Link}}">{{ .Machine.Label}}</a> machine <a href="https://github.com/richardlehane/provisioner">provisioned</a> from <a href="https://www.packet.net/">https://www.packet.net/</a>.</p>
 <p>Specs for the <a href="{{.Machine.Link}}">{{ .Machine.Label}}</a>: {{.Machine.Description}}.</p>
 <p>You can inspect the commands that were run to generate these benchmarks <a href="/siegfried/jobs/{{ .Prefix }}">here</a>.</p>
+{{ if len .Versions | lt 0 -}}
+<h3>Tools</h3>
+<table class="pure-table">
+	<thead>
+		<tr>
+			<th>Tool</th>
+			<th>Version</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{- range .Versions -}}
+		<tr>
+			<td>{{ .Label }}</td>
+			<td>{{ .Version }}</td>
+		</tr>
+		{{- end -}}
+	</tbody>
+</table>
+{{- end -}}
 {{- range $idx, $el := .Benchmarks -}}
 <div>
 <h2>{{ .Title }}</h2>
@@ -187,7 +206,7 @@ var lContent = `{{ define "content" -}}
 	</tbody>
 </table>
 <p>The tools differed in output for {{ len .Compare }} files in the corpus.</p>
-{{ if len .Compare | lt 0 }}
+{{ if len .Compare | lt 0 -}}
 <table id="cmp{{ $idx }}" class="pure-table pure-table-striped" style="width:100%">
 	<thead>
 		<tr>

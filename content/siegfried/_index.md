@@ -21,6 +21,7 @@ It implements:
   - download latest (v. {{% version %}}) binary: ({{% download win64 64bit %}} | {{% download win32 32bit %}})
   - copy to a location in your [system path](http://www.computerhope.com/issues/ch000549.htm)
   - run the `sf -update` command to download the latest signatures (got troubles? Try this [troubleshooting guide](https://github.com/richardlehane/siegfried/wiki/Getting-started#installing-the-latest-signature-file))
+  - if you want to build your own signatures with `roy`, copy the latest signature data into a "siegfried" directory within your user home directory (e.g. c:\users\richardl\siegfried): {{% datadownload %}}
  
 ### Mac [Homebrew](http://brew.sh) (or [Linuxbrew](http://brew.sh/linuxbrew/)) {{% fontawesome apple %}}
 
@@ -63,6 +64,9 @@ It implements:
 
 	sf -z file.ext or DIR // Scan within zip, tar, gzip, warc or arc files
 	sf -hash sha1 file.ext or DIR // Calculate md5, sha1, sha256, sha512, or crc hash
+	sf -multi 32 file.ext // Scan many files at once
+	sf -setconf -multi 32 -hash md5 -csv // Save your preferred configuration
+	sf -setconf -csv -conf csv.conf // Save (or load) named configurations with -conf
 
 ### Update your signature file
 
