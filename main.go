@@ -1,4 +1,4 @@
-package itforarchivists
+package main
 
 import (
 	"crypto/sha256"
@@ -12,6 +12,8 @@ import (
 	"strings"
 	"text/template"
 	"time"
+
+	"google.golang.org/appengine"
 
 	"github.com/richardlehane/crock32"
 	"github.com/richardlehane/runner"
@@ -81,6 +83,10 @@ func init() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Sorry, that doesn't seem to be a valid route :)", 404)
 	})
+}
+
+func main() {
+	appengine.Main()
 }
 
 func hdlErr(f func(http.ResponseWriter, *http.Request) error) func(http.ResponseWriter, *http.Request) {

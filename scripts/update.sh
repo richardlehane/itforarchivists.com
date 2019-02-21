@@ -4,16 +4,13 @@ if [[ -z "${WIN_HOME}" ]]; then
 else
   MY_HOME=$WIN_HOME
 fi
-LOCAL=$MY_HOME/siegfried/
 TARGET=$MY_HOME/Dropbox/programming/sites/itforarchivists.com/static/
 ROY=$MY_HOME/Dropbox/programming/go/src/github.com/richardlehane/siegfried/cmd/roy/data
 cd "$( dirname "${BASH_SOURCE[0]}")"
-# Refresh sets dir for local and static
-rm -rf $LOCAL/sets
+# Refresh sets dir 
 rm -rf $TARGET/sets
-cp -rf $ROY/sets $LOCAL
 cp -rf $ROY/sets $TARGET
-# Refresh latest sigs in static
+# Refresh latest sigs
 rm -rf $TARGET/latest
 mkdir -p $TARGET/latest
 cp $ROY/*.sig $TARGET/latest

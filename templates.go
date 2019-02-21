@@ -1,4 +1,4 @@
-package itforarchivists
+package main
 
 import "text/template"
 
@@ -205,7 +205,7 @@ var lContent = `{{ define "content" -}}
 		{{- end -}}
 	</tbody>
 </table>
-<p>The tools differed in output for {{ len .Compare }} files in the corpus.</p>
+<p>{{ .CompareDesc }}</p>
 {{ if len .Compare | lt 0 -}}
 <table id="cmp{{ $idx }}" class="pure-table pure-table-striped" style="width:100%">
 	<thead>

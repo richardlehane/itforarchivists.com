@@ -1,4 +1,4 @@
-package itforarchivists
+package main
 
 import (
 	"encoding/json"

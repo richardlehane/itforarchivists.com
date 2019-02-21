@@ -1,4 +1,4 @@
-package itforarchivists
+package main
 
 import (
 	"time"
@@ -24,7 +24,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -34,7 +34,7 @@ var developJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -44,7 +44,7 @@ var developJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -54,7 +54,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -64,7 +64,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -74,7 +74,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -84,7 +84,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -94,17 +94,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
-		Save:     "",
-	},
-	{
-		Detail:   "build dev signature",
-		Cmd:      []string{"roydev", "build", "dev.sig"},
-		RunTwice: false,
-		SendOut:  false,
-		Base64:   false,
-		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -114,7 +104,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -124,7 +114,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -134,7 +124,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -148,7 +138,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "profile",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -158,7 +148,7 @@ var developJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   true,
 		LogKey:   "profile",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -168,7 +158,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "/root/out/sf_ipres.yaml",
 	},
 	{
@@ -178,7 +168,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "/root/out/sfdev_ipres.yaml",
 	},
 	{
@@ -188,7 +178,7 @@ var developJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -198,7 +188,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "/root/out/sf_pronom.yaml",
 	},
 	{
@@ -208,7 +198,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "/root/out/sfdev_pronom.yaml",
 	},
 	{
@@ -218,7 +208,7 @@ var developJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -228,7 +218,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "/root/out/sf_govdocs.yaml",
 	},
 	{
@@ -238,7 +228,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "/root/out/sfdev_govdocs.yaml",
 	},
 	{
@@ -248,7 +238,7 @@ var developJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -258,7 +248,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "deluxe",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "/root/out/sf_deluxe.yaml",
 	},
 	{
@@ -268,7 +258,7 @@ var developJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "deluxe",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "/root/out/sfdev_deluxe.yaml",
 	},
 	{
@@ -278,7 +268,7 @@ var developJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "deluxe",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/develop",
+		URL:      "",
 		Save:     "",
 	},
 }
@@ -301,7 +291,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -311,7 +301,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -321,7 +311,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -331,7 +321,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -341,7 +331,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -351,7 +341,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -361,7 +351,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -371,7 +361,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -381,7 +371,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -391,7 +381,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -401,7 +391,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -411,7 +401,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -421,7 +411,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -431,7 +421,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -441,7 +431,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -451,7 +441,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -461,7 +451,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -471,7 +461,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -481,7 +471,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "setup",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -491,7 +481,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sf_ipres.yaml",
 	},
 	{
@@ -501,7 +491,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sfmulti32_ipres.yaml",
 	},
 	{
@@ -511,7 +501,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sf64_ipres.yaml",
 	},
 	{
@@ -521,7 +511,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sf128_ipres.yaml",
 	},
 	{
@@ -531,7 +521,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -541,7 +531,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -551,7 +541,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -561,7 +551,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -571,7 +561,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -581,7 +571,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -591,7 +581,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -601,7 +591,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -611,7 +601,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -621,7 +611,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/fido64_ipres.csv",
 	},
 	{
@@ -631,7 +621,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/fido128_ipres.csv",
 	},
 	{
@@ -641,7 +631,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/fido1_ipres.csv",
 	},
 	{
@@ -663,7 +653,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "ipres",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -673,7 +663,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sf_pronom.yaml",
 	},
 	{
@@ -683,7 +673,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sfmulti32_pronom.yaml",
 	},
 	{
@@ -693,7 +683,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sf64_pronom.yaml",
 	},
 	{
@@ -703,7 +693,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sf128_pronom.yaml",
 	},
 	{
@@ -713,7 +703,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -723,7 +713,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -733,7 +723,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -743,7 +733,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -753,7 +743,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -763,7 +753,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -773,7 +763,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -783,7 +773,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -793,7 +783,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -803,7 +793,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/fido64_pronom.csv",
 	},
 	{
@@ -813,7 +803,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/fido128_pronom.csv",
 	},
 	{
@@ -823,7 +813,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/fido1_pronom.csv",
 	},
 	{
@@ -845,7 +835,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "pronom",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -855,7 +845,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sf_govdocs.yaml",
 	},
 	{
@@ -865,7 +855,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sfmulti32_govdocs.yaml",
 	},
 	{
@@ -875,7 +865,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sf64_govdocs.yaml",
 	},
 	{
@@ -885,7 +875,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/sf128_govdocs.yaml",
 	},
 	{
@@ -895,7 +885,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -905,7 +895,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -915,7 +905,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -925,7 +915,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -935,7 +925,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -945,7 +935,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -955,7 +945,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -965,7 +955,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -975,7 +965,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 	{
@@ -985,7 +975,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/fido64_govdocs.csv",
 	},
 	{
@@ -995,7 +985,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/fido128_govdocs.csv",
 	},
 	{
@@ -1005,11 +995,11 @@ var benchJobs = runner.Jobs{
 		SendOut:  false,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "/root/out/fido1_govdocs.csv",
 	},
 	{
-		Detail: "compare - sf, sf 64k, sf 128k, droid 64k, droid 128k, droid nolimit",
+		Detail: "compare - sf, sf 64k, sf 128k, droid 64k, droid 128k, droid nolimit, fido 64k, fido 128k, fido 1mb",
 		Cmd: []string{
 			"roy",
 			"compare",
@@ -1027,7 +1017,7 @@ var benchJobs = runner.Jobs{
 		SendOut:  true,
 		Base64:   false,
 		LogKey:   "govdocs",
-		URL:      "https://www.itforarchivists.com/siegfried/logs/bench",
+		URL:      "",
 		Save:     "",
 	},
 }

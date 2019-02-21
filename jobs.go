@@ -1,4 +1,4 @@
-package itforarchivists
+package main
 
 import (
 	"bytes"
@@ -168,6 +168,7 @@ type Benchmark struct {
 	Description string
 	Src         string
 	Tools       []Tool
+	CompareDesc string
 	CompareHdrs []string
 	Compare     [][]string
 }
@@ -196,6 +197,31 @@ func benchDetail(detail string) (bool, []string) {
 	return false, nil
 }
 
+func compressCompare(recs [][]string) [][]string {
+	crpl := strings.NewReplacer(";", "; ")
+	ret := make([][]string, 0, len(recs))
+	for _, rec := range recs {
+		var omit bool
+		if len(rec) > 3 {
+			xfmt111 := true
+			omit = true
+			for idx, val := range rec[1:] {
+				if val == "x-fmt/111" && xfmt111 {
+				} else if val == "UNKNOWN" {
+					xfmt111 = false
+				} else {
+					omit = false
+				}
+				rec[idx+1] = crpl.Replace(val)
+			}
+		}
+		if !omit {
+			ret = append(ret, rec)
+		}
+	}
+	return ret
+}
+
 func toBench(l *runner.Log, tools []Tool) *Benchmark {
 	b := &Benchmark{
 		Title:       benchDetails[l.Label].Title,
@@ -205,7 +231,9 @@ func toBench(l *runner.Log, tools []Tool) *Benchmark {
 	for _, rep := range l.Reports {
 		cmp, hdrs := benchDetail(rep.Detail)
 		if cmp {
-			if strings.Contains(rep.Output, ",") {
+			if strings.HasPrefix(rep.Output, "COMPLETE MATCH") {
+				b.Compare = [][]string{}
+			} else if strings.Contains(rep.Output, ",") {
 				recs, _ := csv.NewReader(strings.NewReader(rep.Output)).ReadAll()
 				b.Compare = recs
 				b.CompareHdrs = hdrs
@@ -219,6 +247,17 @@ func toBench(l *runner.Log, tools []Tool) *Benchmark {
 			}
 		}
 	}
+	if b.Compare == nil {
+		b.CompareDesc = "One or more of the tools failed, so a comparison is not possible."
+		return b
+	}
+	b.CompareDesc = fmt.Sprintf("The tools differed in output for %d files in the corpus.", len(b.Compare))
+	red := compressCompare(b.Compare)
+	dif := len(b.Compare) - len(red)
+	if dif > 0 {
+		b.CompareDesc += fmt.Sprintf(" %d of those differences are because of siegfried's use of a text identification algorithm and the following chart excludes those files.", dif)
+	}
+	b.Compare = red
 	return b
 }
 

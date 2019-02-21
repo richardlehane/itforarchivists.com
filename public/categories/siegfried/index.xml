@@ -6,10 +6,23 @@
     <description>Recent content in Siegfried on IT for archivists</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Sep 2018 10:00:00 +1000</lastBuildDate>
+    <lastBuildDate>Sat, 16 Feb 2019 12:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://www.itforarchivists.com/categories/siegfried/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>siegfried 1.7.11 released</title>
+      <link>https://www.itforarchivists.com/post/sf1711/</link>
+      <pubDate>Sat, 16 Feb 2019 12:00:00 +0100</pubDate>
+      
+      <guid>https://www.itforarchivists.com/post/sf1711/</guid>
+      <description>Version 1.7.11 of siegfried is now available. Get it here.
+This minor release fixes the debian package and allows the container matcher to identify directory names (for SIARD matching). Updates to the LOC FDD and tika-mimetypes signature files.
+Change Log v1.7.11 (2019-02-16) Changed:
+ update LOC signatures to 2019-01-06 update tika-mimetypes signatures to v1.20  Fixed:
+ container matching can now match against directory names. Thanks Ross Spencer for reporting and for the sample SIARD signature file.</description>
+    </item>
     
     <item>
       <title>siegfried 1.7.10 released</title>
