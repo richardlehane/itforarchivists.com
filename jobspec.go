@@ -271,6 +271,36 @@ var developJobs = runner.Jobs{
 		URL:      "",
 		Save:     "",
 	},
+	{
+		Detail:   "master",
+		Cmd:      []string{"sf", "-log", "", "-z", "/root/corpora/ipres-systems-showcase-files"},
+		RunTwice: true,
+		SendOut:  false,
+		Base64:   false,
+		LogKey:   "zip",
+		URL:      "",
+		Save:     "/root/out/sf_ipres_z.yaml",
+	},
+	{
+		Detail:   "develop",
+		Cmd:      []string{"sfdev", "-sig", "dev.sig", "-log", "", "-z", "/root/corpora/ipres-systems-showcase-files"},
+		RunTwice: true,
+		SendOut:  false,
+		Base64:   false,
+		LogKey:   "zip",
+		URL:      "",
+		Save:     "/root/out/sfdev_ipres_z.yaml",
+	},
+	{
+		Detail:   "compare - master, develop",
+		Cmd:      []string{"roy", "compare", "/root/out/sf_ipres_z.yaml", "/root/out/sfdev_ipres_z.yaml"},
+		RunTwice: false,
+		SendOut:  true,
+		Base64:   false,
+		LogKey:   "zip",
+		URL:      "",
+		Save:     "",
+	},
 }
 
 var benchJobs = runner.Jobs{
