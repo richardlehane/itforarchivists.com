@@ -106,6 +106,10 @@ var benchDetails = map[string]struct {
 		"The Deluxe",
 		"This benchmark checks multi-ID identification using the deluxe.sig signature file which contains four identifiers: PRONOM, LOC FDDs, freedesktop.org and tika-mimetypes. This benchmark is run against the PRONOM files corpus.",
 	},
+	"zip": {
+		"Unzipping",
+		"This benchmark checks the `sf -z` command (scans within zip files and other container formats) when run against the iPres corpus.",
+	},
 }
 
 var toolDetails = map[string]string{
