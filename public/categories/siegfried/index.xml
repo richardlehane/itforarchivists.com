@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Siegfried on IT for archivists</title>
+    <title>siegfried on IT for archivists</title>
     <link>https://www.itforarchivists.com/categories/siegfried/</link>
-    <description>Recent content in Siegfried on IT for archivists</description>
+    <description>Recent content in siegfried on IT for archivists</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 16 Feb 2019 12:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jun 2019 12:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://www.itforarchivists.com/categories/siegfried/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>siegfried 1.7.12 released</title>
+      <link>https://www.itforarchivists.com/post/sf1712/</link>
+      <pubDate>Sat, 15 Jun 2019 12:00:00 +0100</pubDate>
+      
+      <guid>https://www.itforarchivists.com/post/sf1712/</guid>
+      <description>Version 1.7.12 of siegfried is now available. Get it here.
+This minor release fixes a bug that caused .docx files with .doc extensions to panic and a bug with mime-info signatures.
+Updates to the PRONOM (v95), LOC FDD and tika-mimetypes signature files.
+Change Log v1.7.12 (2019-06-15) Changed:
+ update PRONOM to v95 update LOC signatures to 2019-05-20 update tika-mimetypes signatures to v1.21  Fixed:
+ .docx files with .doc extensions panic due to bug in division of hints in container matcher.</description>
+    </item>
     
     <item>
       <title>siegfried 1.7.11 released</title>

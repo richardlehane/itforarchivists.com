@@ -11,16 +11,5 @@
 	<atom:link href="https://www.itforarchivists.com/siegfried/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title>siegfried</title>
-      <link>https://www.itforarchivists.com/siegfried/_index-richards-conflicted-copy-2018-10-06/</link>
-      <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.itforarchivists.com/siegfried/_index-richards-conflicted-copy-2018-10-06/</guid>
-      <description>Siegfried Siegfried is a signature-based file format identification tool.
-It implements:
- the National Archives UK&amp;rsquo;s PRONOM file format signatures freedesktop.org&amp;rsquo;s MIME-info file format signatures the Library of Congress&amp;rsquo;s FDD file format signatures (beta).  Install Windows   download latest (v. 1.7.11) binary: (64bit  | 32bit ) copy to a location in your system path run the sf -update command to download the latest signatures (got troubles? Try this troubleshooting guide)  Mac Homebrew (or Linuxbrew)  brew install richardlehane/digipres/siegfried  (a fork of mistydemeo/digipres/siegfried)</description>
-    </item>
-    
   </channel>
 </rss>

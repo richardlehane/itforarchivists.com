@@ -3,6 +3,35 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.itforarchivists.com/categories/</loc>
+    <lastmod>2019-06-15T12:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.itforarchivists.com/</loc>
+    <lastmod>2019-06-15T12:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.itforarchivists.com/post/</loc>
+    <lastmod>2019-06-15T12:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.itforarchivists.com/categories/siegfried/</loc>
+    <lastmod>2019-06-15T12:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.itforarchivists.com/post/sf1712/</loc>
+    <lastmod>2019-06-15T12:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://www.itforarchivists.com/post/sf1711/</loc>
     <lastmod>2019-02-16T12:00:00+01:00</lastmod>
   </url>
@@ -63,36 +92,8 @@
   </url>
   
   <url>
-    <loc>https://www.itforarchivists.com/siegfried/_index-richards-conflicted-copy-2018-10-06/</loc>
-    <lastmod>2017-07-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.itforarchivists.com/siegfried/</loc>
     <lastmod>2017-07-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.itforarchivists.com/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.itforarchivists.com/</loc>
-    <lastmod>2019-02-16T12:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.itforarchivists.com/post/</loc>
-    <lastmod>2019-02-16T12:00:00+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.itforarchivists.com/categories/siegfried/</loc>
-    <lastmod>2019-02-16T12:00:00+01:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

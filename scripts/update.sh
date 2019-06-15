@@ -5,7 +5,7 @@ else
   MY_HOME=$WIN_HOME
 fi
 TARGET=$MY_HOME/Dropbox/programming/sites/itforarchivists.com/static/
-ROY=$MY_HOME/Dropbox/programming/go/src/github.com/richardlehane/siegfried/cmd/roy/data
+ROY=$MY_HOME/Dropbox/programming/go/github.com/richardlehane/siegfried/cmd/roy/data
 cd "$( dirname "${BASH_SOURCE[0]}")"
 # Refresh sets dir 
 rm -rf $TARGET/sets
