@@ -23,7 +23,7 @@ It implements:
   - run the `sf -update` command to download the latest signatures (got troubles? Try this [troubleshooting guide](https://github.com/richardlehane/siegfried/wiki/Getting-started#installing-the-latest-signature-file))
   - if you want to build your own signatures with `roy`, copy the latest signature data into a "siegfried" directory within your user home directory (e.g. c:\users\richardl\siegfried): {{% datadownload %}}
  
-### Mac [Homebrew](http://brew.sh) (or [Linuxbrew](http://brew.sh/linuxbrew/)) {{% fontawesome apple %}}
+### Mac [Homebrew](http://brew.sh) (or [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux)) {{% fontawesome apple %}}
 
     brew install richardlehane/digipres/siegfried
 
