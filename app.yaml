@@ -1,9 +1,14 @@
-runtime: go111
+runtime: go112
 
 includes: 
 - env.yaml
 
 handlers:
+- url: /siegfried/sets/(.*\.json)$
+  static_files: public/sets/\1
+  upload: public/sets/(.*\.json)$
+  secure: always
+
 - url: /siegfried/(identify|results|sets|update|share|redact|jobs|logs|benchmarks|develop).*
   script: auto
   secure: always

@@ -7,17 +7,18 @@ import (
 	"errors"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
+	"os"
 	"sort"
 	"strings"
 	"text/template"
 	"time"
 
-	"google.golang.org/appengine"
-
 	"github.com/richardlehane/crock32"
 	"github.com/richardlehane/runner"
 	"github.com/richardlehane/siegfried"
+	"github.com/richardlehane/siegfried/pkg/config"
 	"github.com/richardlehane/siegfried/pkg/sets"
 )
 
@@ -31,8 +32,10 @@ var (
 	badRequest      = errors.New("bad request")
 )
 
-func init() {
+func main() {
+	// setup
 	updateJson = make(map[string]string)
+	config.SetHome("public") // necessary to find sets directory
 	// setup global sf
 	sf, _ = siegfried.Load("public/latest/pronom-tika-loc.sig")
 	// setup global updateJson
@@ -83,10 +86,13 @@ func init() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Sorry, that doesn't seem to be a valid route :)", 404)
 	})
-}
-
-func main() {
-	appengine.Main()
+	// Let's listen
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+		log.Printf("Defaulting to port %s", port)
+	}
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
 func hdlErr(f func(http.ResponseWriter, *http.Request) error) func(http.ResponseWriter, *http.Request) {

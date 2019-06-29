@@ -1,16 +1,15 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strings"
 
 	"cloud.google.com/go/storage"
-	"golang.org/x/net/context"
-	"google.golang.org/appengine"
-	"google.golang.org/appengine/file"
 )
 
 const delimiter = "/"
@@ -23,7 +22,7 @@ type store interface {
 }
 
 func newStore(r *http.Request) (store, error) {
-	if appengine.IsDevAppServer() {
+	if os.Getenv("USER") == "richard" { // detect if running locally
 		return newSimpleStore(r)
 	}
 	return newCloudStore(r)
@@ -106,14 +105,9 @@ type cloudStore struct {
 }
 
 func newCloudStore(r *http.Request) (*cloudStore, error) {
-	ctx := appengine.NewContext(r)
-	bucket, err := file.DefaultBucketName(ctx)
-	if err != nil {
-		return nil, err
-	}
 	return &cloudStore{
-		bucket: bucket,
-		ctx:    ctx,
+		bucket: "itforarchivists.appspot.com", // hardcode this in as can't get the default anymore without appengine pkg
+		ctx:    r.Context(),
 	}, nil
 }
 
