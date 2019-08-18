@@ -6,10 +6,23 @@
     <description>Recent content in siegfried on IT for archivists</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Jun 2019 12:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 18 Aug 2019 12:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://www.itforarchivists.com/categories/siegfried/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>siegfried 1.7.13 released</title>
+      <link>https://www.itforarchivists.com/post/sf1713/</link>
+      <pubDate>Sun, 18 Aug 2019 12:00:00 +0100</pubDate>
+      
+      <guid>https://www.itforarchivists.com/post/sf1713/</guid>
+      <description>Version 1.7.13 of siegfried is now available. Get it here.
+This minor release fixes a in the namematcher that caused filenames containing &amp;ldquo;?&amp;rdquo; to be treated as URLs. It also adds the ability to scan directories using the sf -f command.
+Updates to the LOC FDD and tika-mimetypes signature files.
+Change Log v1.7.13 (2019-08-18) Added:
+ the -f flag now scans directories, as well as files. Requested by Harry Moss  Changed:</description>
+    </item>
     
     <item>
       <title>siegfried 1.7.12 released</title>

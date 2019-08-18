@@ -4,26 +4,27 @@
   
   <url>
     <loc>https://www.itforarchivists.com/categories/</loc>
-    <lastmod>2019-06-15T12:00:00+01:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-08-18T12:00:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.itforarchivists.com/</loc>
-    <lastmod>2019-06-15T12:00:00+01:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-08-18T12:00:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.itforarchivists.com/post/</loc>
-    <lastmod>2019-06-15T12:00:00+01:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-08-18T12:00:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://www.itforarchivists.com/categories/siegfried/</loc>
-    <lastmod>2019-06-15T12:00:00+01:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2019-08-18T12:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.itforarchivists.com/post/sf1713/</loc>
+    <lastmod>2019-08-18T12:00:00+01:00</lastmod>
   </url>
   
   <url>
@@ -98,7 +99,6 @@
   
   <url>
     <loc>https://www.itforarchivists.com/tags/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>
