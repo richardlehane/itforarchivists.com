@@ -47,7 +47,7 @@
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-15845576-1', 'auto');
+ga('create', '', 'auto');
 ga('send', 'pageview');
 </script>
 </head>
@@ -89,31 +89,20 @@ ga('send', 'pageview');
   <p class="article-title"><a href="https://www.itforarchivists.com/post/sf1713/">siegfried 1.7.13 released</a></p>
   <span class="article-date">Sunday, 18 August, 2019</span>
 </div>    
-<div class="pure-u-1">
-
-<p>Version 1.7.13 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
-
+<div class="pure-u-1"><p>Version 1.7.13 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>This minor release fixes a in the namematcher that caused filenames containing &ldquo;?&rdquo; to be treated as URLs. It also adds the ability to scan directories using the <code>sf -f</code> command.</p>
-
 <p>Updates to the LOC FDD and tika-mimetypes signature files.</p>
-
-<h3 id="change-log-v1-7-13-2019-08-18">Change Log v1.7.13 (2019-08-18)</h3>
-
+<h3 id="change-log-v1713-2019-08-18">Change Log v1.7.13 (2019-08-18)</h3>
 <p>Added:</p>
-
 <ul>
 <li>the <code>-f</code> flag now scans directories, as well as files. Requested by <a href="https://github.com/richardlehane/siegfried/issues/130">Harry Moss</a></li>
 </ul>
-
 <p>Changed:</p>
-
 <ul>
 <li>update LOC signatures to 2019-06-16</li>
 <li>update tika-mimetypes signatures to v1.22</li>
 </ul>
-
 <p>Fixed:</p>
-
 <ul>
 <li>filenames with &ldquo;?&rdquo; were parsed as URLs; reported by <a href="https://github.com/richardlehane/siegfried/issues/129">workflowsguy</a></li>
 </ul>

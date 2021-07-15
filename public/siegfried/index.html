@@ -48,7 +48,7 @@
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-15845576-1', 'auto');
+ga('create', '', 'auto');
 ga('send', 'pageview');
 </script>
 </head>
@@ -85,120 +85,80 @@ ga('send', 'pageview');
 </div>
 <div class="content pure-g">
 <div class="pure-u-1 pure-u-md-2-3 pure u-lg-2-3 l-box">
-
-
 <h1 id="siegfried">Siegfried</h1>
-
 <p>Siegfried is a signature-based file format identification tool.</p>
-
 <p>It implements:</p>
-
 <ul>
 <li>the National Archives UK&rsquo;s <a href="http://www.nationalarchives.gov.uk/pronom">PRONOM</a> file format signatures</li>
 <li>freedesktop.org&rsquo;s <a href="https://freedesktop.org/wiki/Software/shared-mime-info">MIME-info</a> file format signatures</li>
 <li>the Library of Congress&rsquo;s <a href="http://www.digitalpreservation.gov/formats/fdd/descriptions.shtml">FDD</a> file format signatures (<strong>beta</strong>).</li>
 </ul>
-
-<hr />
-
+<hr>
 <h2 id="install">Install</h2>
-
-<h3 id="windows-i-class-fa-fa-windows-aria-hidden-true-i">Windows <i class="fa fa-windows" aria-hidden="true"></i></h3>
-
+<h3 id="windows-i-classfa-fa-windows-aria-hiddentruei">Windows <i class="fa fa-windows" aria-hidden="true"></i></h3>
 <ul>
-<li>download latest (v. 1.7.13) binary: (<a href="https://github.com/richardlehane/siegfried/releases/download/v1.7.13/siegfried_1-7-13_win64.zip">
+<li>download latest (v. 1.9.1) binary: (<a href="https://github.com/richardlehane/siegfried/releases/download/v1.9.1/siegfried_1-9-1_win64.zip">
 64bit
-</a> | <a href="https://github.com/richardlehane/siegfried/releases/download/v1.7.13/siegfried_1-7-13_win32.zip">
+</a> | <a href="https://github.com/richardlehane/siegfried/releases/download/v1.9.1/siegfried_1-9-1_win32.zip">
 32bit
 </a>)</li>
 <li>copy to a location in your <a href="http://www.computerhope.com/issues/ch000549.htm">system path</a></li>
 <li>run the <code>sf -update</code> command to download the latest signatures (got troubles? Try this <a href="https://github.com/richardlehane/siegfried/wiki/Getting-started#installing-the-latest-signature-file">troubleshooting guide</a>)</li>
-<li>if you want to build your own signatures with <code>roy</code>, copy the latest signature data into a &ldquo;siegfried&rdquo; directory within your user home directory (e.g. c:\users\richardl\siegfried): <a href="https://github.com/richardlehane/siegfried/releases/download/v1.7.13/data_1-7-13.zip">
+<li>if you want to build your own signatures with <code>roy</code>, copy the latest signature data into a &ldquo;siegfried&rdquo; directory within your user home directory (e.g. c:\users\richardl\siegfried): <a href="https://github.com/richardlehane/siegfried/releases/download/v1.9.1/data_1-9-1.zip">
 data.zip
 </a></li>
 </ul>
-
-<h3 id="mac-homebrew-http-brew-sh-or-homebrew-on-linux-https-docs-brew-sh-homebrew-on-linux-i-class-fa-fa-apple-aria-hidden-true-i">Mac <a href="http://brew.sh">Homebrew</a> (or <a href="https://docs.brew.sh/Homebrew-on-Linux">Homebrew on Linux</a>) <i class="fa fa-apple" aria-hidden="true"></i></h3>
-
+<h3 id="mac-homebrewhttpbrewsh-or-homebrew-on-linuxhttpsdocsbrewshhomebrew-on-linux-i-classfa-fa-apple-aria-hiddentruei">Mac <a href="http://brew.sh">Homebrew</a> (or <a href="https://docs.brew.sh/Homebrew-on-Linux">Homebrew on Linux</a>) <i class="fa fa-apple" aria-hidden="true"></i></h3>
 <pre><code>brew install richardlehane/digipres/siegfried
 </code></pre>
-
 <p>(a fork of <a href="https://github.com/mistydemeo/homebrew-digipres">mistydemeo/digipres/siegfried</a>)</p>
-
-<h3 id="ubuntu-debian-64-bit-i-class-fa-fa-linux-aria-hidden-true-i">Ubuntu/Debian (64 bit) <i class="fa fa-linux" aria-hidden="true"></i></h3>
-
-<pre><code>wget -qO - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
-echo &quot;deb http://dl.bintray.com/siegfried/debian wheezy main&quot; | sudo tee -a /etc/apt/sources.list
+<h3 id="ubuntudebian-64-bit-i-classfa-fa-linux-aria-hiddentruei">Ubuntu/Debian (64 bit) <i class="fa fa-linux" aria-hidden="true"></i></h3>
+<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 20F802FE798E6857
+sudo add-apt-repository "deb https://www.itforarchivists.com/ buster main"
 sudo apt-get update &amp;&amp; sudo apt-get install siegfried
 </code></pre>
-
 <h3 id="freebsd">FreeBSD</h3>
-
 <pre><code>pkg install siegfried
 </code></pre>
-
-<h3 id="arch-linux-i-class-fa-fa-linux-aria-hidden-true-i">Arch Linux <i class="fa fa-linux" aria-hidden="true"></i></h3>
-
+<h3 id="arch-linux-i-classfa-fa-linux-aria-hiddentruei">Arch Linux <i class="fa fa-linux" aria-hidden="true"></i></h3>
 <pre><code>git clone https://aur.archlinux.org/siegfried.git
 cd siegfried
 makepkg -si
 </code></pre>
-
-<hr />
-
+<hr>
 <h2 id="usage">Usage</h2>
-
 <h3 id="identify-files-and-directories">Identify files and directories</h3>
-
 <pre><code>sf file.ext // Identify a file
 sf DIR // Identify all files in a directory and its subdirectories
 sf -nr DIR // Identify all files in a directory but not subdirectories
 </code></pre>
-
 <h3 id="save-output">Save output</h3>
-
 <pre><code>sf file.ext or DIR &gt; my_results.yaml // Use a redirect (&quot;&gt;&quot;) to save your results
 sf -csv file.ext or DIR &gt; my_results.csv // Get identification results in CSV format (default is YAML)
 sf -json file.ext or DIR &gt; my_results.json // Get identification results in JSON format
 </code></pre>
-
 <h3 id="additional-commands">Additional commands</h3>
-
 <pre><code>sf -z file.ext or DIR // Scan within zip, tar, gzip, warc or arc files
 sf -hash sha1 file.ext or DIR // Calculate md5, sha1, sha256, sha512, or crc hash
 sf -multi 32 file.ext // Scan many files at once
 sf -setconf -multi 32 -hash md5 -csv // Save your preferred configuration
 sf -setconf -csv -conf csv.conf // Save (or load) named configurations with -conf
 </code></pre>
-
 <h3 id="update-your-signature-file">Update your signature file</h3>
-
 <pre><code>sf -update
 </code></pre>
-
 <h2 id="user-guide">User guide</h2>
-
 <p>Detailed information about installing siegfried, identifying file formats, as well as more advanced topics, is available on <a href="https://github.com/richardlehane/siegfried/wiki">the wiki</a>.</p>
-
 <h2 id="modify-your-signature-file">Modify your signature file</h2>
-
 <p>The <strong>roy</strong> tool builds siegfried signature files. For help using this tool, see this <a href="https://github.com/richardlehane/siegfried/wiki/Building-a-signature-file-with-ROY">guide</a>.</p>
-
 <h2 id="examples">Examples</h2>
-
 <script type="text/javascript" src="https://asciinema.org/a/ernm49loq5ofuj48ywlvg7xq6.js" id="asciicast-ernm49loq5ofuj48ywlvg7xq6" async></script>
-
 <script type="text/javascript" src="https://asciinema.org/a/39270.js" id="asciicast-39270" async></script>
-
-<hr />
-
+<hr>
 <h2 id="code-license-issues">Code, License, Issues</h2>
-
 <p>To view the source code and see the license details, go to the project page on <a href="https://github.com/richardlehane/siegfried">Github</a>. Please post any bugs or feature request to the <a href="https://github.com/richardlehane/siegfried/issues">issues page</a>.</p>
-
 <h2 id="announcements">Announcements</h2>
-
-<p>Join the <a href="href=" title="https://groups.google.com/d/forum/sf-roy">Google Group</a> for updates, signature releases, and help.</p>
+<p>Join the <a href="href=%22https://groups.google.com/d/forum/sf-roy%22">Google Group</a> for updates, signature releases, and help.</p>
 
 </div>
 <div class="pure-u-1 pure-u-md-1-3 pure-u-lg-1-3 r-box">

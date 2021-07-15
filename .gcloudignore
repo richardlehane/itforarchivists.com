@@ -8,3 +8,5 @@ themes/.*
 scripts/.*
 config.toml
 README.md
+.git
+.gitignore

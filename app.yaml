@@ -1,9 +1,15 @@
-runtime: go112
+runtime: go114
 
 includes: 
 - env.yaml
 
 handlers:
+- url: /dists
+  static_dir: public/repositories/dists
+
+- url: /pool
+  static_dir: public/repositories/pool
+
 - url: /siegfried/sets/(.*\.json)$
   static_files: public/sets/\1
   upload: public/sets/(.*\.json)$

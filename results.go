@@ -359,7 +359,7 @@ func results(r io.Reader, nm string) (*Results, error) {
 			}
 			// duplicates
 			row[len(row)-1] = "false"
-			row[0], row[1], row[2] = file.Path, strconv.FormatInt(file.Size, 10), file.Mod
+			row[0], row[1], row[2] = file.Path, strconv.FormatInt(file.Size, 10), file.Mod.Format(time.RFC3339)
 			if file.Err != nil {
 				row[3] = file.Err.Error()
 				d.Error++

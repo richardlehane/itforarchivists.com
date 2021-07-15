@@ -4,7 +4,6 @@ baseurl = "https://www.itforarchivists.com"
 canonifyURLS = true
 theme = "maia"
 disableKinds = ["404"]
-googleAnalytics = "UA-15845576-1"
 
 [taxonomies]
 tag = "tags"
@@ -24,3 +23,8 @@ contacts = [
 pages = [
 	["siegfried", "/siegfried", "/img/sf-button.png"]
 ]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

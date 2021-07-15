@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on IT for archivists</title>
@@ -6,10 +6,28 @@
     <description>Recent content in Posts on IT for archivists</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Aug 2019 12:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2020 12:00:00 +0100</lastBuildDate><atom:link href="https://www.itforarchivists.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>siegfried 1.9.0 released</title>
+      <link>https://www.itforarchivists.com/post/sf190/</link>
+      <pubDate>Tue, 22 Sep 2020 12:00:00 +0100</pubDate>
+      
+      <guid>https://www.itforarchivists.com/post/sf190/</guid>
+      <description>Version 1.9.0 of siegfried is now available. Get it here.
+This release includes a new Wikidata identifier, implemented by Ross Spencer.
+CHANGELOG v1.9.0 (2020-09-22)  a new Wikidata identifier, harvesting information from the Wikidata Query Service. Implemented by Ross Spencer. select which archive types (zip, tar, gzip, warc, or arc) are unpacked using the -zs flag (sf -zs tar,zip). Implemented by Ross Spencer. update LOC signatures to 2020-09-21 update tika-mimetypes signatures to v1.</description>
+    </item>
     
-	<atom:link href="https://www.itforarchivists.com/post/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>siegfried 1.8.0 released</title>
+      <link>https://www.itforarchivists.com/post/sf180/</link>
+      <pubDate>Wed, 22 Jan 2020 12:00:00 +0100</pubDate>
+      
+      <guid>https://www.itforarchivists.com/post/sf180/</guid>
+      <description>Version 1.8.0 of siegfried is now available. Get it here.
+This release includes changes in the byte matcher to improve performance, especially when scanning MP3s (fmt/134).
+CHANGELOG v1.8.0 (2020-01-22)  utc flag returns file modified dates in UTC e.g. sf -utc FILE | DIR. Requested by Dragan Espenschied new cost and repetition flags to control segmentation when building signatures update PRONOM to v96 update LOC signatures to 2019-12-18 update tika-mimetypes signatures to v1.</description>
+    </item>
     
     <item>
       <title>siegfried 1.7.13 released</title>
@@ -57,7 +75,7 @@ Change Log v1.7.11 (2019-02-16) Changed:
       <pubDate>Wed, 19 Sep 2018 10:00:00 +1000</pubDate>
       
       <guid>https://www.itforarchivists.com/post/sf1710/</guid>
-      <description> Version 1.7.10 of siegfried is now available. Get it here.
+      <description>Version 1.7.10 of siegfried is now available. Get it here.
 This minor release fixes a regression in the LOC identifier introduced in 1.7.9 and updates to PRONOM v94.
 Changelog v1.7.10 (2018-09-19) Added:
  print configuration defaults with sf -version  Changed:

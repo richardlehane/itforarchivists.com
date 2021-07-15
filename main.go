@@ -1,3 +1,4 @@
+//go:generate go run run.go
 package main
 
 import (

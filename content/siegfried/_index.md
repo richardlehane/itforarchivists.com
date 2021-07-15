@@ -31,9 +31,9 @@ It implements:
 
 ### Ubuntu/Debian (64 bit) {{% fontawesome linux %}}
 
-	wget -qO - https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
-	echo "deb http://dl.bintray.com/siegfried/debian wheezy main" | sudo tee -a /etc/apt/sources.list
-	sudo apt-get update && sudo apt-get install siegfried
+	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 20F802FE798E6857
+    sudo add-apt-repository "deb https://www.itforarchivists.com/ buster main"
+    sudo apt-get update &amp;&amp; sudo apt-get install siegfried
 
 ### FreeBSD
 
