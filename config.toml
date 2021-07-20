@@ -4,6 +4,7 @@ baseurl = "https://www.itforarchivists.com"
 canonifyURLS = true
 theme = "maia"
 disableKinds = ["404"]
+enableRobotsTXT = true
 
 [taxonomies]
 tag = "tags"
@@ -16,9 +17,9 @@ description = "richard's site"
 author = "Richard Lehane"
 footer = "© Richard Lehane"
 contacts = [
-	["twitter", "https://twitter.com/richardlehane", "twitter"],
-	["github", "https://github.com/richardlehane", "github"],
-	["email", "mailto:richard@itforarchivists.com", "envelope"]
+	["twitter", "https://twitter.com/richardlehane"],
+	["github", "https://github.com/richardlehane"],
+	["email", "mailto:richard@itforarchivists.com"]
 ]
 pages = [
 	["siegfried", "/siegfried", "/img/sf-button.png"]

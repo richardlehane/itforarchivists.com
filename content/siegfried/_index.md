@@ -16,20 +16,20 @@ It implements:
 ---
 
 ## Install
-### Windows {{% fontawesome windows %}} 
+### Windows 
 
   - download latest (v. {{% version %}}) binary: ({{% download win64 64bit %}} | {{% download win32 32bit %}})
   - copy to a location in your [system path](http://www.computerhope.com/issues/ch000549.htm)
   - run the `sf -update` command to download the latest signatures (got troubles? Try this [troubleshooting guide](https://github.com/richardlehane/siegfried/wiki/Getting-started#installing-the-latest-signature-file))
   - if you want to build your own signatures with `roy`, copy the latest signature data into a "siegfried" directory within your user home directory (e.g. c:\users\richardl\siegfried): {{% datadownload %}}
  
-### Mac [Homebrew](http://brew.sh) (or [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux)) {{% fontawesome apple %}}
+### Mac [Homebrew](http://brew.sh) (or [Homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux))
 
     brew install richardlehane/digipres/siegfried
 
 (a fork of [mistydemeo/digipres/siegfried](https://github.com/mistydemeo/homebrew-digipres))
 
-### Ubuntu/Debian (64 bit) {{% fontawesome linux %}}
+### Ubuntu/Debian (64 bit)
 
 	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 20F802FE798E6857
     sudo add-apt-repository "deb https://www.itforarchivists.com/ buster main"
@@ -39,7 +39,7 @@ It implements:
 
 	pkg install siegfried
 
-### Arch Linux {{% fontawesome linux %}}
+### Arch Linux
 
 	git clone https://aur.archlinux.org/siegfried.git
 	cd siegfried
