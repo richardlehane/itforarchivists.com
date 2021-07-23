@@ -1,0 +1,225 @@
+/* reset */
+
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+header {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.nav-l {
+  grid-column: span 6;
+}
+
+.nav-r {
+  grid-column: span 6;
+  text-align: right;
+}
+
+div.nav-r>ul {
+  float: right;
+  margin-right: 10px;
+}
+
+.nav-r li {
+  float: left;
+  list-style-type: none;
+  position: relative;
+  background-color: white;
+}
+
+.nav-r li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 45px;
+  text-decoration: none;
+}
+
+.nav-r li a:link, a:visited {
+ color: #777;
+}
+
+.nav-r li a:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+.nav-r li ul {
+  display: none;
+  position: absolute;
+}
+
+.nav-r li:hover ul {
+  display: block;
+}
+
+.menu {
+  grid-column: span 12;
+  background-color: #CFD8DC;
+  display:block;
+  height: 30px;
+}
+
+.menu li {
+  float: left;
+  list-style-type: none;
+}
+
+.menu a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: lowercase;
+  font-weight: 1200;
+  width: 90px;
+  height: 30px;
+  text-decoration: none;
+}
+
+.menu a:link, a:visited {
+ color: #777;
+}
+
+.menu-text {
+	color: #607D8B;
+}
+.logo-text {
+	color: #263238;
+	font-family: 'Roboto Slab', serif;
+}
+.signature {
+	color: #607D8B;
+	font-family: 'Gochi Hand', serif;
+}
+
+@media screen and (max-width: 575px) {
+  .nav-l {
+    grid-column: span 12;
+  }
+  .nav-r {
+    grid-column: span 12;
+  }
+}
+
+html {
+    font-size: 16px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    background-color: white;
+}
+
+h3 {
+    text-transform: uppercase;
+}
+
+code {
+    background: #EEE;
+    font-family: Courier, monospace;
+    line-height: 1.4em;
+}
+
+pre {
+    background: #EEE;
+    font-family: Courier, monospace;
+    line-height: 1.2em;
+    overflow-x: scroll;
+    padding: 1.2em;
+    max-width: 100%;
+}
+
+footer {
+    font-weight: 300;
+    color: #ccc;
+    text-align: center;
+}
+
+.l-box {
+    padding: 0 1em 0 0;
+}
+
+.r-box {
+    padding: 0 0 0 1em;
+}
+
+.box {
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 20px;
+    background-color: #6BD5F1;
+    border: 1px solid #AFCDE3;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.topcorner {
+    position: absolute;
+    top: 2;
+    left: 2;
+    font-size: 0.75em;
+}
+
+.centre {
+    text-align: center;
+}
+
+.logo-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 60px;
+    vertical-align: middle;
+}
+
+.logo {
+    text-decoration: none;
+}
+
+.logo-text {
+    font-size: 2em;
+    margin: 0;
+    margin-left: 60px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+.nav {
+    text-align: right;
+}
+
+.article-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.article-title>a {
+    text-decoration: none;
+    color: black;
+}
+
+.article-date {
+    font-size: 1em;
+    font-style: italic;
+}
+
+.content {
+    margin: 0 auto;
+    padding: 0 1em;
+    border: 0;
+    max-width: 1200px;
+    line-height: 1.6em;
+}
+
+.signature-text {
+    font-size: 1.5em;
+}
+
+.signature a {
+    text-decoration: none;
+}

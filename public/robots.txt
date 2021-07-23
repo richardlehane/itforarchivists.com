@@ -1,0 +1,45 @@
+User-agent: *
+
+Disallow: /categories/
+
+Disallow: /
+
+Disallow: /post/
+
+Disallow: /categories/siegfried/
+
+Disallow: /post/sf190/
+
+Disallow: /post/sf180/
+
+Disallow: /post/sf1713/
+
+Disallow: /post/sf1712/
+
+Disallow: /post/sf1711/
+
+Disallow: /post/sf1710/
+
+Disallow: /post/sf179/
+
+Disallow: /post/benchmarks/
+
+Disallow: /post/sf178/
+
+Disallow: /post/sf177/
+
+Disallow: /post/sf176/
+
+Disallow: /about/
+
+Disallow: /post/charts/
+
+Disallow: /about/privacy/
+
+Disallow: /post/sf175/
+
+Disallow: /post/reset/
+
+Disallow: /siegfried/
+
+Disallow: /tags/

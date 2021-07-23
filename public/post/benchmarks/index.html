@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+<base href="http://localhost:8080">
+<title>IT for archivists</title>
+<meta charset="utf-8">
+<meta name="description" content="richard&#39;s site">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+<meta name="keywords" content="archivists technology">
+<meta property="og:type" content="article"/>
+<meta property="og:description" content=""/>
+<meta property="og:title" content=""/>
+<meta property="og:site_name" content="IT for archivists"/>
+<meta property="og:image" content=""/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:width" content=""/>
+<meta property="og:image:height" content=""/>
+<meta property="og:url" content="http://localhost:8080">
+<meta property="og:locale" content="en_AU">
+<meta property="article:published_time" content="0001-01-01"/>
+<meta property="article:modified_time" content="0001-01-01"/>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="IT for archivists">
+<meta name="twitter:title" content="">
+<meta name="twitter:creator" content="Richard Lehane">
+<meta name="twitter:description" content="">
+<meta name="twitter:image:src" content="">
+<meta name="twitter:domain" content="http://localhost:8080"><link rel="canonical" href="http://localhost:8080/post/benchmarks/">
+<link rel="icon" type="image/png" href="../../img/richard.png">
+<link rel="stylesheet" href="../../css/maia.css">
+</head>
+<body>
+<header>
+  <div class="nav-l">
+    <a href="../../" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
+    <a class="logo" href="../../"><p class="logo-text">IT for archivists</p></a>
+  </div>
+  <div class="nav-r">
+    <ul><li>
+      <a href="../../about">About</a>
+      <ul><li><a href="http://localhost:8080/about/privacy/">Privacy</a></li></ul>
+      </li><li>
+      <a href="#">Contact</a>
+      <ul><li><a href="https://twitter.com/richardlehane">twitter</a></li><li><a href="https://github.com/richardlehane">github</a></li><li><a href="mailto:richard@itforarchivists.com">email</a></li></ul>
+      </li>
+      <li><a href="../../siegfried"><img alt="siegfried" src="../../img/sf-button.png"></a></li>
+      </ul>
+  </div>
+  <div class="menu">
+    
+    <ul><li>
+        <a href="categories/siegfried">siegfried</a>
+      </li></ul></div>
+</header>
+
+
+<main>
+<article>
+  <h1><a href="http://localhost:8080/post/benchmarks/">Continuous benchmarking</a></h1>
+  <p class="article-date">Monday, 30 July, 2018</p>
+<p>The next siegfried release will be out shortly. I have been busy making changes to address two thorny issues: <a href="https://github.com/richardlehane/siegfried/issues/111">verbose basis</a> and <a href="https://github.com/richardlehane/siegfried/issues/112">missing results</a>. I have some fixes in place but, when doing large scale testing against big sets of files, I noticed some performance and quality regressions. You can see these regressions on the new <a href="../../siegfried/develop">develop benchmarks page</a>. There&rsquo;s also a new <a href="../../siegfried/benchmarks">benchmarks page</a> to measure siegfried against comparable file format identification tools (at this stage just <a href="http://www.nationalarchives.gov.uk/information-management/manage-information/policy-process/digital-continuity/file-profiling-tool-droid/">DROID</a>). This post is the story of how these two pages came into being.</p>
+<h2 id="benchmarking-pain">Benchmarking pain</h2>
+<p>Up until this point I had always done large scale testing manually and it was a fiddly and annoying process: I would have to locate test corpora on whichever machine I&rsquo;d last run a benchmark on and and copy to my current laptop; run the tests; do the comparison; interpret the results; look up how to do golang profiling again because I had forgot; run the profiler and check those results; etc. After going through all these steps, if I made changes to address issues, I&rsquo;d have to repeat it all again in order to verify I&rsquo;d fixed the issues. Obviously none of these results had much shelf life, as they depended on the vagaries of the machine I was running them on, how I had configured everything, and would be invalidated each time there was a new software or PRONOM release. I was also left with the uneasy feeling that I should be doing this kind of large scale testing much more regularly. Wouldn&rsquo;t it be nice to have some kind of continuous benchmarking process, just like the other automated tests and deployment workflows I run using <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">appveyor</a>? And down that rabbit hole I went for the last few months&hellip;</p>
+<h2 id="the-solution">The solution</h2>
+<p>Today, whenever I push code changes to siegfried&rsquo;s <a href="https://github.com/richardlehane/siegfried/tree/develop">develop branch</a>, or tag a new release on the master branch, the following happens:</p>
+<ul>
+<li>siegfried&rsquo;s <a href="https://github.com/richardlehane/siegfried/blob/develop/.travis.yml">Travis CI script</a> runs a little program called <a href="https://github.com/richardlehane/provisioner">provisioner</a></li>
+<li>provisioner buys a machine for an hour or two from <a href="https://packet.net">packet.net</a>, feeding the new machine a <a href="https://cloud-init.io/">cloud init</a> script that runs a series of install tasks (like downloading and installing siegfried)</li>
+<li>the cloud init script concludes by starting another small program, <a href="https://github.com/richardlehane/runner">runner</a>, as a systemd service</li>
+<li>runner downloads a list of jobs from the itforarchivists.com website (either the <a href="../../siegfried/jobs/develop">develop jobs</a> or the <a href="../../siegfried/jobs/bench">benchmark jobs</a>) and executes them</li>
+<li>one of the early jobs is to use <a href="https://rclone.org">rclone</a> to copy the test corpora over to the test machine from <a href="https://backblaze.com">backblaze.com</a></li>
+<li>after running the jobs (and timing their duration), runner posts results back to the itforachivists.com website where they are stored and displayed on the <a href="../../siegfried/develop">develop</a> and <a href="../../siegfried/benchmarks">benchmarks</a> pages.</li>
+</ul>
+<p>Benefits of this approach are:</p>
+<ul>
+<li>it is completely transparent. Obviously as one of the tool makers there is potential for me to show some bias. But you can see exactly what machine has run the benchmark (<a href="https://packet.net">packet.net</a> sells &ldquo;baremetal&rdquo; servers so you get a clear picture of the hardware used), what software has been installed and how it has been configured, and exactly what tasks have been run.</li>
+<li>it is cheap to run: Travis CI is free for open source projects, backblaze is super cheap, backblaze has partnered with packet.net for free data transport between their data centres, and the packet.net servers are competitively priced (particularly when you buy from the spot market)</li>
+<li>it is routine. For me, this is the most important thing. I no longer have to go through benchmark pain and I can view the real world impacts of any changes I make to siegfried&rsquo;s code immediately after committing changes to github.</li>
+</ul>
+<h2 id="some-reflections-on-the-results">Some reflections on the results</h2>
+<p><a href="http://www.nationalarchives.gov.uk/information-management/manage-information/policy-process/digital-continuity/file-profiling-tool-droid/">DROID</a> has got really fast recently! Kudos to the team at the National Archives for continuing to invest in the Aston Martin of format identification tools :). I&rsquo;m particularly impressed by the DROID &ldquo;no limit&rdquo; (a -1 max bytes to scan setting in your DROID properties) results and wonder if it might make sense for future DROID releases to make that the default setting.</p>
+<p>In order to make the most of SSD disks, you really need to use a <code>-multi</code> setting with sf to obtain good speeds. I&rsquo;m making this easier in the next release of siegfried by introducting a config file where you can store your preferred settings (and not type them in each time you invoke the tool).</p>
+<p>If you really care about speed, you can use <code>roy</code> to build signature files with built in &ldquo;max bytes&rdquo; limits. These test runs came out fastest in all categories. But this will impact the quality of your results.</p>
+<p>Siegfried is a sprinter and wins on small corpora. DROID runs marathons and wins (in the no limit category) for the biggest corpus. This is possibly because of JVM start-up costs?</p>
+<p>Speed isn&rsquo;t the only thing that matters. You also need to assess the quality of results and choose a tool that has the right affordances (e.g. do your staff prefer a GUI? What kind of reporting will you need? etc.). But speed is important, particularly for non-ingest workflows (e.g. consider re-scanning your repository each time there is a PRONOM update).</p>
+<p>The tools differ in their outputs. This is because of differences in their matching engines (e.g. siegfried includes a text identifier), differences in their default settings (particularly that max byte setting), and differences in the way they choose to report results (e.g. if more than one result is returned just based on extension matches, then siegfried will return UNKNOWN with a descriptive warning indicating those possibilies; DROID and fido, on the other hand, will report multiple results).</p>
+<p>Where&rsquo;s <a href="https://github.com/openpreserve/fido">fido</a>? I had fido in early benchmarks but removed it because the files within the test corpora I&rsquo;ve used cause fido to come to a grinding halt for some reason. I need to inspect the error messages and follow up. I hope to get fido back onto the scoreboard shortly!</p>
+<p>I need more corpora. The corpora I&rsquo;ve used reflect some use cases (e.g. scanning typical office type documents) but don&rsquo;t represent others (e.g. scanning large AV collections). Big audio and video files have caused problems for siegfried in the past and it would be great to include them in regular testing.</p>
+
+</article>
+</main>
+<footer>© Richard Lehane</footer>
+</body>
+</html>

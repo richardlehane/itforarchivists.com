@@ -11,6 +11,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"sort"
 	"strings"
 	"text/template"
@@ -69,7 +70,24 @@ func main() {
 	// cache
 	globalCache = newCache(time.Hour * 6)
 
-	// routes
+	// Set port and, if running locally, load static routes (defined in app.yml)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+		log.Printf("Defaulting to port %s", port)
+		if os.Getenv("GAE_APPLICATION") == "" {
+			cmd := exec.Command("hugo", "-b", "http://localhost:"+port, "-D")
+			log.Println("Re-building static content")
+			err := cmd.Run()
+			if err != nil {
+				log.Printf("Hugo reported an error: %v", err)
+			}
+			log.Println("Loading static routes")
+			http.Handle("/", http.FileServer(http.Dir("public")))
+		}
+	}
+
+	// handle application routes
 	http.HandleFunc("/siegfried/identify", hdlErr(handleIdentify))
 	http.HandleFunc("/siegfried/update", handleUpdate)
 	http.HandleFunc("/siegfried/update/", handleUpdate)
@@ -84,15 +102,7 @@ func main() {
 	http.HandleFunc("/siegfried/benchmarks/", hdlCache(hdlErr(handleLogView), globalCache))
 	http.HandleFunc("/siegfried/develop", hdlCache(hdlErr(handleLogView), globalCache))
 	http.HandleFunc("/siegfried/develop/", hdlCache(hdlErr(handleLogView), globalCache))
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		http.Error(w, "Sorry, that doesn't seem to be a valid route :)", 404)
-	})
-	// Let's listen
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-		log.Printf("Defaulting to port %s", port)
-	}
+
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
 
