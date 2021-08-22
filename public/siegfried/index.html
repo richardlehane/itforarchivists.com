@@ -27,24 +27,24 @@
 <meta name="twitter:image:src" content="">
 <meta name="twitter:domain" content="http://localhost:8080"><link rel="canonical" href="http://localhost:8080/siegfried/">
 <link rel="alternate" type="application/rss&#43;xml" href="http://localhost:8080/siegfried/index.xml">
-<link rel="icon" type="image/png" href="../img/richard.png">
-<link rel="stylesheet" href="../css/maia.css">
+<link rel="icon" type="image/png" href="http://localhost:8080/img/richard.png">
+<link rel="stylesheet" href="http://localhost:8080/css/maia.css">
 </head>
 <body>
 <header>
   <div class="nav-l">
-    <a href="../" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
-    <a class="logo" href="../"><p class="logo-text">IT for archivists</p></a>
+    <a href="http://localhost:8080/" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
+    <a class="logo" href="http://localhost:8080/"><p class="logo-text">IT for archivists</p></a>
   </div>
   <div class="nav-r">
     <ul><li>
-      <a href="../about">About</a>
+      <a href="http://localhost:8080/about">About</a>
       <ul><li><a href="http://localhost:8080/about/privacy/">Privacy</a></li></ul>
       </li><li>
       <a href="#">Contact</a>
       <ul><li><a href="https://twitter.com/richardlehane">twitter</a></li><li><a href="https://github.com/richardlehane">github</a></li><li><a href="mailto:richard@itforarchivists.com">email</a></li></ul>
       </li>
-      <li><a href="../siegfried"><img alt="siegfried" src="../img/sf-button.png"></a></li>
+      <li><a href="http://localhost:8080/siegfried"><img alt="siegfried" src="http://localhost:8080/img/sf-button.png"></a></li>
       </ul>
   </div>
   <div class="menu">
@@ -139,17 +139,17 @@ sf -setconf -csv -conf csv.conf // Save (or load) named configurations with -con
 <hr>
 <h2>Chart your results</h2>
 <p>Upload a siegfried, droid or fido results file for analysis and sharing.</p>
-<p>You'll get a page like this: <a href="../siegfried/results/ea1zaj">https://www.itforarchivists.com/siegfried/results/ea1zaj</a></p>
+<p>You'll get a page like this: <a href="http://localhost:8080/siegfried/results/ea1zaj">https://www.itforarchivists.com/siegfried/results/ea1zaj</a></p>
 <div id="chart">
- <form action="../siegfried/results" method="post" enctype="multipart/form-data" class="pure-form">
+ <form action="http://localhost:8080/siegfried/results" method="post" enctype="multipart/form-data" class="pure-form">
   <input type="file" name="file">
   <input type="submit" value="submit" class="pure-button pure-button-primary">
 </form> 
 </div>
 <hr>
 <h2>Benchmarks</h2>
-<p>See how siegfried compares with other format identification tools by viewing these <a href="../siegfried/benchmarks">automated benchmarks</a>.</p>
-<p>Benchmarks are run each time new code is committed to siegfried's <a href="https://github.com/richardlehane/siegfried/tree/develop">develop branch</a>. To see how the next release is progressing, check out the <a href="../siegfried/develop">develop benchmarks</a>.</p>
+<p>See how siegfried compares with other format identification tools by viewing these <a href="http://localhost:8080/siegfried/benchmarks">automated benchmarks</a>.</p>
+<p>Benchmarks are run each time new code is committed to siegfried's <a href="https://github.com/richardlehane/siegfried/tree/develop">develop branch</a>. To see how the next release is progressing, check out the <a href="http://localhost:8080/siegfried/develop">develop benchmarks</a>.</p>
 <hr>
 <h2>Sets tool</h2>
 <p><a href="https://github.com/richardlehane/siegfried/wiki/Building-a-signature-file-with-ROY#format-sets-optional-step">Format sets</a> enable grouping of formats by the sf and roy tools: e.g. <code>roy build -limit @pdf</code>. They can be useful elswhere, e.g. to isolate the formats <a href="https://tika.apache.org/">Apache Tika</a> can extract text from. This widget converts format sets to plain text or code snippets.</p>
