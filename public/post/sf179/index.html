@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<html lang="en-US" prefix="og:http://ogp.me/ns#">
 <head>
-<base href="http://localhost:8080">
+<base href="https://www.itforarchivists.com">
 <title>IT for archivists</title>
 <meta charset="utf-8">
 <meta name="description" content="richard&#39;s site">
@@ -15,7 +15,7 @@
 <meta property="og:image:type" content="image/jpeg"/>
 <meta property="og:image:width" content=""/>
 <meta property="og:image:height" content=""/>
-<meta property="og:url" content="http://localhost:8080">
+<meta property="og:url" content="https://www.itforarchivists.com">
 <meta property="og:locale" content="en_AU">
 <meta property="article:published_time" content="0001-01-01"/>
 <meta property="article:modified_time" content="0001-01-01"/>
@@ -25,25 +25,25 @@
 <meta name="twitter:creator" content="Richard Lehane">
 <meta name="twitter:description" content="">
 <meta name="twitter:image:src" content="">
-<meta name="twitter:domain" content="http://localhost:8080"><link rel="canonical" href="http://localhost:8080/post/sf179/">
-<link rel="icon" type="image/png" href="http://localhost:8080/img/richard.png">
-<link rel="stylesheet" href="http://localhost:8080/css/maia.css">
+<meta name="twitter:domain" content="https://www.itforarchivists.com"><link rel="canonical" href="https://www.itforarchivists.com/post/sf179/">
+<link rel="icon" type="image/png" href="https://www.itforarchivists.com/img/richard.png">
+<link rel="stylesheet" href="https://www.itforarchivists.com/css/maia.css">
 </head>
 <body>
 <header>
   <div class="nav-l">
-    <a href="http://localhost:8080/" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
-    <a class="logo" href="http://localhost:8080/"><p class="logo-text">IT for archivists</p></a>
+    <a href="https://www.itforarchivists.com/" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
+    <a class="logo" href="https://www.itforarchivists.com/"><p class="logo-text">IT for archivists</p></a>
   </div>
   <div class="nav-r">
     <ul><li>
-      <a href="http://localhost:8080/about">About</a>
-      <ul><li><a href="http://localhost:8080/about/privacy/">Privacy</a></li></ul>
+      <a href="https://www.itforarchivists.com/about">About</a>
+      <ul><li><a href="https://www.itforarchivists.com/about/privacy/">Privacy</a></li></ul>
       </li><li>
       <a href="#">Contact</a>
       <ul><li><a href="https://twitter.com/richardlehane">twitter</a></li><li><a href="https://github.com/richardlehane">github</a></li><li><a href="mailto:richard@itforarchivists.com">email</a></li></ul>
       </li>
-      <li><a href="http://localhost:8080/siegfried"><img alt="siegfried" src="http://localhost:8080/img/sf-button.png"></a></li>
+      <li><a href="https://www.itforarchivists.com/siegfried"><img alt="siegfried" src="https://www.itforarchivists.com/img/sf-button.png"></a></li>
       </ul>
   </div>
   <div class="menu">
@@ -56,10 +56,10 @@
 
 <main>
 <article>
-  <h1><a href="http://localhost:8080/post/sf179/">siegfried 1.7.9 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf179/">siegfried 1.7.9 released</a></h1>
   <p class="article-date">Thursday, 30 August, 2018</p>
-<p>Version 1.7.9 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.
-According to the <a href="http://localhost:8080/siegfried/develop/1dreh09">develop benchmarks</a>, this release is slightly more accurate than v1.7.8, with only a marginal impact on performance.</p>
+<p>Version 1.7.9 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.
+According to the <a href="https://www.itforarchivists.com/siegfried/develop/1dreh09">develop benchmarks</a>, this release is slightly more accurate than v1.7.8, with only a marginal impact on performance.</p>
 <p>The highlights of this release are a new system for saving configurations for the <code>sf</code> tool, changes to the matching algorithm to improve accuracy, and simplifications to the basis field.</p>
 <h2 id="save-and-load-frequently-used-configurations">Save and load frequently used configurations</h2>
 <p>The new <code>-setconf</code> flag allows you to save frequently used configurations for the <code>sf</code> tool. I implemented this to make it possible to set a default <code>-multi</code> value (and not require users to type e.g. <code>sf -multi 32</code> every time they run siegfried), but you can use <code>-setconf</code> to save any frequently used flags. To save your preferred flags as defaults just type your preferred siegfried command, ommitting the file/directory argument and including <code>-setconf</code>.</p>
@@ -72,7 +72,7 @@ According to the <a href="http://localhost:8080/siegfried/develop/1dreh09">devel
 </code></pre>
 <p>You can then load that configuration by just typing <code>sf -conf server.conf</code>.</p>
 <h2 id="changes-to-the-matching-algorithm">Changes to the matching algorithm</h2>
-<p>If you review the <a href="http://localhost:8080/siegfried/develop/1dreh09">develop benchmarks</a>, you&rsquo;ll see that there are some small differences in the results returned for v1.7.9 as compared with v1.7.8. For example, in the Govdocs corpus, a number of PDF files had been identified as fmt/134 (MPEG) previously, but are now correctly identified as various forms of PDF. This improvement in accuracy follows some changes I&rsquo;ve implemented to resolve <a href="https://github.com/richardlehane/siegfried/issues/112">this issue</a>.</p>
+<p>If you review the <a href="https://www.itforarchivists.com/siegfried/develop/1dreh09">develop benchmarks</a>, you&rsquo;ll see that there are some small differences in the results returned for v1.7.9 as compared with v1.7.8. For example, in the Govdocs corpus, a number of PDF files had been identified as fmt/134 (MPEG) previously, but are now correctly identified as various forms of PDF. This improvement in accuracy follows some changes I&rsquo;ve implemented to resolve <a href="https://github.com/richardlehane/siegfried/issues/112">this issue</a>.</p>
 <p>The problem boiled down to how siegfried uses PRONOM&rsquo;s file format priority information. One of siegfried&rsquo;s optimisations (and a reason it gives fairly good performance without requiring users to set limits on bytes scanned) is that it applies format priorities in real-time. For example, if, during scanning, a match comes in for PDF then siegfried will keep scanning to see if the file is a PDF/A (or other more specific type of PDF) but it won&rsquo;t wait to see if the file is an MPEG or anything else unrelated to that initial match. Think of all the formats as a big tree: once siegfried starts climbing in a particular direction, it will only find results higher up that branch. But what if that initial match is misleading? Like those Govdocs PDFs where a noisy MPEG signature matched first?</p>
 <p>The changes I&rsquo;ve made to the matching algorithm for v1.7.9 retain siegfried&rsquo;s real-time application of format priorities but with a tweak that allows siegfried to &ldquo;jump&rdquo; between branches in that format tree. The way this works is that, when each of the matchers runs (matchers are different stages in the scanning engine - i.e. the file name matcher, container matcher, byte matcher, text matcher etc.), &ldquo;hints&rdquo; are supplied based on information gleaned from previous matchers. These &ldquo;hints&rdquo; are then weighed alongside format priorities when siegfried decides what to do with format hits. For example, in the case of the Govdocs PDFs, the byte matcher receives a hint from the file name matcher that the file might be in the PDF family (because of the .pdf extension) and that hint causes the matcher to keep an open mind to the possibility that the file might well be a PDF even after that positive MPEG match has been found.</p>
 <p>There is a small cost in speed for this change to the matching algorithm (because there is now this new factor that will cause siegfried to delay in returning a positive match early) but my benchmarks show that the slowdown is only very modest.</p>

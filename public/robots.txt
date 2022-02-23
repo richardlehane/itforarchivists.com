@@ -8,6 +8,8 @@ Disallow: /post/
 
 Disallow: /categories/siegfried/
 
+Disallow: /post/sf192/
+
 Disallow: /post/sf190/
 
 Disallow: /post/sf180/

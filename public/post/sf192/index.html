@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og:http://ogp.me/ns#">
+<head>
+<base href="https://www.itforarchivists.com">
+<title>IT for archivists</title>
+<meta charset="utf-8">
+<meta name="description" content="richard&#39;s site">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+<meta name="keywords" content="archivists technology">
+<meta property="og:type" content="article"/>
+<meta property="og:description" content=""/>
+<meta property="og:title" content=""/>
+<meta property="og:site_name" content="IT for archivists"/>
+<meta property="og:image" content=""/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:width" content=""/>
+<meta property="og:image:height" content=""/>
+<meta property="og:url" content="https://www.itforarchivists.com">
+<meta property="og:locale" content="en_AU">
+<meta property="article:published_time" content="0001-01-01"/>
+<meta property="article:modified_time" content="0001-01-01"/>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="IT for archivists">
+<meta name="twitter:title" content="">
+<meta name="twitter:creator" content="Richard Lehane">
+<meta name="twitter:description" content="">
+<meta name="twitter:image:src" content="">
+<meta name="twitter:domain" content="https://www.itforarchivists.com"><link rel="canonical" href="https://www.itforarchivists.com/post/sf192/">
+<link rel="icon" type="image/png" href="https://www.itforarchivists.com/img/richard.png">
+<link rel="stylesheet" href="https://www.itforarchivists.com/css/maia.css">
+</head>
+<body>
+<header>
+  <div class="nav-l">
+    <a href="https://www.itforarchivists.com/" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
+    <a class="logo" href="https://www.itforarchivists.com/"><p class="logo-text">IT for archivists</p></a>
+  </div>
+  <div class="nav-r">
+    <ul><li>
+      <a href="https://www.itforarchivists.com/about">About</a>
+      <ul><li><a href="https://www.itforarchivists.com/about/privacy/">Privacy</a></li></ul>
+      </li><li>
+      <a href="#">Contact</a>
+      <ul><li><a href="https://twitter.com/richardlehane">twitter</a></li><li><a href="https://github.com/richardlehane">github</a></li><li><a href="mailto:richard@itforarchivists.com">email</a></li></ul>
+      </li>
+      <li><a href="https://www.itforarchivists.com/siegfried"><img alt="siegfried" src="https://www.itforarchivists.com/img/sf-button.png"></a></li>
+      </ul>
+  </div>
+  <div class="menu">
+    
+    <ul><li>
+        <a href="categories/siegfried">siegfried</a>
+      </li></ul></div>
+</header>
+
+
+<main>
+<article>
+  <h1><a href="https://www.itforarchivists.com/post/sf192/">siegfried 1.9.2 released</a></h1>
+  <p class="article-date">Monday, 7 February, 2022</p>
+<p>Version 1.9.0 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
+<h3 id="changelog-v192-2022-02-07">CHANGELOG v1.9.2 (2022-02-07)</h3>
+<ul>
+<li>Wikidata definition file specification has been updated and now includes endpoint (users will need to harvest Wikidata again)</li>
+<li>Custom Wikibase endpoint can now be specified for harvesting when paired with a custom SPARQL query and property mappings</li>
+<li>Wikidata identifier includes permalinks in results</li>
+<li>Wikidata revision history visible using <code>roy inspect</code></li>
+<li>roy inspect returns format ID with name</li>
+<li>update PRONOM to v100</li>
+<li>update LOC signatures to 2022-02-01</li>
+<li>update tika-mimetypes signatures to v2.1</li>
+<li>update freedesktop.org signatures to v2.2.1</li>
+<li>parse issues for container files where zero indexing used for Position. Spotted by <a href="https://github.com/richardlehane/siegfried/issues/175">Ross Spencer</a></li>
+<li>sf -droid output can&rsquo;t be read by sf (e.g. for comparing results). Reported by <a href="https://github.com/richardlehane/siegfried/issues/174">ostnatalie</a></li>
+<li>panic when running in server mode due to race condition. Reported by <a href="https://github.com/richardlehane/siegfried/issues/172">Miguel Guimarães</a></li>
+<li>panic when reading malformed MSCFB files. Reported by <a href="https://github.com/richardlehane/siegfried/issues/171">Greg Lepore</a></li>
+<li>unescaped control characters in JSON output. Reported by <a href="https://github.com/richardlehane/siegfried/issues/165">Sebastian Lange</a></li>
+<li>zip file names with null terminated strings prevent ID of Serif formats. Reported by <a href="https://github.com/richardlehane/siegfried/issues/150">Tyler Thorsted</a></li>
+</ul>
+
+</article>
+</main>
+<footer>© Richard Lehane</footer>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<div class="pure-u-1">
+<span class="signature signature-text">Share:</span>
+<a class= "signature" href="https://twitter.com/intent/tweet?
+	{{- (querify "text" (print "I enjoyed this post on " .Site.Title ": " .Title " (" .Permalink ")")) | safeURL }}">
+<span class="fa-stack">
+  <i class="fa fa-circle fa-stack-2x"></i>
+  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</div>

@@ -1,0 +1,12 @@
+name = "Maia"
+license = "MIT"
+licenselink = "https://github.com/richardlehane/maia/blob/master/LICENSE.md"
+description = "News journal style blog. For http://www.thingsmygrandfathertoldme.com"
+homepage = "https://github.com/richardlehane/maia/"
+tags = ["blog", "news"]
+features = ["blog"]
+min_version = 0.14
+
+[author]
+  name = "Richard Lehane"
+  homepage = "https://github.com/richardlehane"

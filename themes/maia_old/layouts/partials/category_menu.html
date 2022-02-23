@@ -1,0 +1,9 @@
+<div class="menu pure-menu pure-menu-horizontal">
+  <ul class="pure-menu-list">
+  {{- range $name, $taxonomy := .Site.Taxonomies.categories -}}
+    <li class="pure-menu-item">
+    	<a href="categories/{{ $name | urlize }}" class="menu-text pure-menu-link">{{ $name }}</a>
+    </li>
+	{{- end -}}
+  </ul>
+</div>

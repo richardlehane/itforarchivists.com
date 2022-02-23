@@ -18,7 +18,7 @@ It implements:
 ## Install
 ### Windows 
 
-  - download latest (v. {{% version %}}) binary: ({{% download win64 64bit %}} | {{% download win32 32bit %}})
+  - download latest (v. {{% version %}}) binary: ({{% download win64 64bit %}})
   - copy to a location in your [system path](http://www.computerhope.com/issues/ch000549.htm)
   - run the `sf -update` command to download the latest signatures (got troubles? Try this [troubleshooting guide](https://github.com/richardlehane/siegfried/wiki/Getting-started#installing-the-latest-signature-file))
   - if you want to build your own signatures with `roy`, copy the latest signature data into a "siegfried" directory within your user home directory (e.g. c:\users\richardl\siegfried): {{% datadownload %}}

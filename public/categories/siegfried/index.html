@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<html lang="en-US" prefix="og:http://ogp.me/ns#">
 <head>
-<base href="http://localhost:8080">
+<base href="https://www.itforarchivists.com">
 <title>IT for archivists</title>
 <meta charset="utf-8">
 <meta name="description" content="richard&#39;s site">
@@ -15,7 +15,7 @@
 <meta property="og:image:type" content="image/jpeg"/>
 <meta property="og:image:width" content=""/>
 <meta property="og:image:height" content=""/>
-<meta property="og:url" content="http://localhost:8080">
+<meta property="og:url" content="https://www.itforarchivists.com">
 <meta property="og:locale" content="en_AU">
 <meta property="article:published_time" content="0001-01-01"/>
 <meta property="article:modified_time" content="0001-01-01"/>
@@ -25,26 +25,26 @@
 <meta name="twitter:creator" content="Richard Lehane">
 <meta name="twitter:description" content="">
 <meta name="twitter:image:src" content="">
-<meta name="twitter:domain" content="http://localhost:8080"><link rel="canonical" href="http://localhost:8080/categories/siegfried/">
-<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:8080/categories/siegfried/index.xml">
-<link rel="icon" type="image/png" href="http://localhost:8080/img/richard.png">
-<link rel="stylesheet" href="http://localhost:8080/css/maia.css">
+<meta name="twitter:domain" content="https://www.itforarchivists.com"><link rel="canonical" href="https://www.itforarchivists.com/categories/siegfried/">
+<link rel="alternate" type="application/rss&#43;xml" href="https://www.itforarchivists.com/categories/siegfried/index.xml">
+<link rel="icon" type="image/png" href="https://www.itforarchivists.com/img/richard.png">
+<link rel="stylesheet" href="https://www.itforarchivists.com/css/maia.css">
 </head>
 <body>
 <header>
   <div class="nav-l">
-    <a href="http://localhost:8080/" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
-    <a class="logo" href="http://localhost:8080/"><p class="logo-text">IT for archivists</p></a>
+    <a href="https://www.itforarchivists.com/" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
+    <a class="logo" href="https://www.itforarchivists.com/"><p class="logo-text">IT for archivists</p></a>
   </div>
   <div class="nav-r">
     <ul><li>
-      <a href="http://localhost:8080/about">About</a>
-      <ul><li><a href="http://localhost:8080/about/privacy/">Privacy</a></li></ul>
+      <a href="https://www.itforarchivists.com/about">About</a>
+      <ul><li><a href="https://www.itforarchivists.com/about/privacy/">Privacy</a></li></ul>
       </li><li>
       <a href="#">Contact</a>
       <ul><li><a href="https://twitter.com/richardlehane">twitter</a></li><li><a href="https://github.com/richardlehane">github</a></li><li><a href="mailto:richard@itforarchivists.com">email</a></li></ul>
       </li>
-      <li><a href="http://localhost:8080/siegfried"><img alt="siegfried" src="http://localhost:8080/img/sf-button.png"></a></li>
+      <li><a href="https://www.itforarchivists.com/siegfried"><img alt="siegfried" src="https://www.itforarchivists.com/img/sf-button.png"></a></li>
       </ul>
   </div>
   <div class="menu">
@@ -60,9 +60,34 @@
     
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf190/">siegfried 1.9.0 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf192/">siegfried 1.9.2 released</a></h1>
+  <p class="article-date">Monday, 7 February, 2022</p>
+<p>Version 1.9.0 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
+<h3 id="changelog-v192-2022-02-07">CHANGELOG v1.9.2 (2022-02-07)</h3>
+<ul>
+<li>Wikidata definition file specification has been updated and now includes endpoint (users will need to harvest Wikidata again)</li>
+<li>Custom Wikibase endpoint can now be specified for harvesting when paired with a custom SPARQL query and property mappings</li>
+<li>Wikidata identifier includes permalinks in results</li>
+<li>Wikidata revision history visible using <code>roy inspect</code></li>
+<li>roy inspect returns format ID with name</li>
+<li>update PRONOM to v100</li>
+<li>update LOC signatures to 2022-02-01</li>
+<li>update tika-mimetypes signatures to v2.1</li>
+<li>update freedesktop.org signatures to v2.2.1</li>
+<li>parse issues for container files where zero indexing used for Position. Spotted by <a href="https://github.com/richardlehane/siegfried/issues/175">Ross Spencer</a></li>
+<li>sf -droid output can&rsquo;t be read by sf (e.g. for comparing results). Reported by <a href="https://github.com/richardlehane/siegfried/issues/174">ostnatalie</a></li>
+<li>panic when running in server mode due to race condition. Reported by <a href="https://github.com/richardlehane/siegfried/issues/172">Miguel Guimarães</a></li>
+<li>panic when reading malformed MSCFB files. Reported by <a href="https://github.com/richardlehane/siegfried/issues/171">Greg Lepore</a></li>
+<li>unescaped control characters in JSON output. Reported by <a href="https://github.com/richardlehane/siegfried/issues/165">Sebastian Lange</a></li>
+<li>zip file names with null terminated strings prevent ID of Serif formats. Reported by <a href="https://github.com/richardlehane/siegfried/issues/150">Tyler Thorsted</a></li>
+</ul>
+
+</article>
+      
+    	  <article>
+  <h1><a href="https://www.itforarchivists.com/post/sf190/">siegfried 1.9.0 released</a></h1>
   <p class="article-date">Tuesday, 22 September, 2020</p>
-<p>Version 1.9.0 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.</p>
+<p>Version 1.9.0 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>This release includes a new Wikidata identifier, implemented by Ross Spencer.</p>
 <h3 id="changelog-v190-2020-09-22">CHANGELOG v1.9.0 (2020-09-22)</h3>
 <ul>
@@ -77,9 +102,9 @@
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf180/">siegfried 1.8.0 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf180/">siegfried 1.8.0 released</a></h1>
   <p class="article-date">Wednesday, 22 January, 2020</p>
-<p>Version 1.8.0 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.</p>
+<p>Version 1.8.0 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>This release includes changes in the byte matcher to improve performance, especially when scanning MP3s (fmt/134).</p>
 <h3 id="changelog-v180-2020-01-22">CHANGELOG v1.8.0 (2020-01-22)</h3>
 <ul>
@@ -97,9 +122,9 @@
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf1713/">siegfried 1.7.13 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf1713/">siegfried 1.7.13 released</a></h1>
   <p class="article-date">Sunday, 18 August, 2019</p>
-<p>Version 1.7.13 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.</p>
+<p>Version 1.7.13 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>This minor release fixes a in the namematcher that caused filenames containing &ldquo;?&rdquo; to be treated as URLs. It also adds the ability to scan directories using the <code>sf -f</code> command.</p>
 <p>Updates to the LOC FDD and tika-mimetypes signature files.</p>
 <h3 id="change-log-v1713-2019-08-18">Change Log v1.7.13 (2019-08-18)</h3>
@@ -120,9 +145,9 @@
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf1712/">siegfried 1.7.12 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf1712/">siegfried 1.7.12 released</a></h1>
   <p class="article-date">Saturday, 15 June, 2019</p>
-<p>Version 1.7.12 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.</p>
+<p>Version 1.7.12 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>This minor release fixes a bug that caused .docx files with .doc extensions to panic and a bug with mime-info signatures.</p>
 <p>Updates to the PRONOM (v95), LOC FDD and tika-mimetypes signature files.</p>
 <h3 id="change-log-v1712-2019-06-15">Change Log v1.7.12 (2019-06-15)</h3>
@@ -141,9 +166,9 @@
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf1711/">siegfried 1.7.11 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf1711/">siegfried 1.7.11 released</a></h1>
   <p class="article-date">Saturday, 16 February, 2019</p>
-<p>Version 1.7.11 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.</p>
+<p>Version 1.7.11 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>This minor release fixes the debian package and allows the container matcher to identify directory names (for SIARD matching). Updates to the LOC FDD and tika-mimetypes signature files.</p>
 <h3 id="change-log-v1711-2019-02-16">Change Log v1.7.11 (2019-02-16)</h3>
 <p>Changed:</p>
@@ -160,9 +185,9 @@
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf1710/">siegfried 1.7.10 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf1710/">siegfried 1.7.10 released</a></h1>
   <p class="article-date">Wednesday, 19 September, 2018</p>
-<p>Version 1.7.10 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.</p>
+<p>Version 1.7.10 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>This minor release fixes a regression in the LOC identifier introduced in 1.7.9 and updates to PRONOM v94.</p>
 <h3 id="changelog-v1710-2018-09-19">Changelog v1.7.10 (2018-09-19)</h3>
 <p>Added:</p>
@@ -183,10 +208,10 @@
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf179/">siegfried 1.7.9 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf179/">siegfried 1.7.9 released</a></h1>
   <p class="article-date">Thursday, 30 August, 2018</p>
-<p>Version 1.7.9 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.
-According to the <a href="http://localhost:8080/siegfried/develop/1dreh09">develop benchmarks</a>, this release is slightly more accurate than v1.7.8, with only a marginal impact on performance.</p>
+<p>Version 1.7.9 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.
+According to the <a href="https://www.itforarchivists.com/siegfried/develop/1dreh09">develop benchmarks</a>, this release is slightly more accurate than v1.7.8, with only a marginal impact on performance.</p>
 <p>The highlights of this release are a new system for saving configurations for the <code>sf</code> tool, changes to the matching algorithm to improve accuracy, and simplifications to the basis field.</p>
 <h2 id="save-and-load-frequently-used-configurations">Save and load frequently used configurations</h2>
 <p>The new <code>-setconf</code> flag allows you to save frequently used configurations for the <code>sf</code> tool. I implemented this to make it possible to set a default <code>-multi</code> value (and not require users to type e.g. <code>sf -multi 32</code> every time they run siegfried), but you can use <code>-setconf</code> to save any frequently used flags. To save your preferred flags as defaults just type your preferred siegfried command, ommitting the file/directory argument and including <code>-setconf</code>.</p>
@@ -199,7 +224,7 @@ According to the <a href="http://localhost:8080/siegfried/develop/1dreh09">devel
 </code></pre>
 <p>You can then load that configuration by just typing <code>sf -conf server.conf</code>.</p>
 <h2 id="changes-to-the-matching-algorithm">Changes to the matching algorithm</h2>
-<p>If you review the <a href="http://localhost:8080/siegfried/develop/1dreh09">develop benchmarks</a>, you&rsquo;ll see that there are some small differences in the results returned for v1.7.9 as compared with v1.7.8. For example, in the Govdocs corpus, a number of PDF files had been identified as fmt/134 (MPEG) previously, but are now correctly identified as various forms of PDF. This improvement in accuracy follows some changes I&rsquo;ve implemented to resolve <a href="https://github.com/richardlehane/siegfried/issues/112">this issue</a>.</p>
+<p>If you review the <a href="https://www.itforarchivists.com/siegfried/develop/1dreh09">develop benchmarks</a>, you&rsquo;ll see that there are some small differences in the results returned for v1.7.9 as compared with v1.7.8. For example, in the Govdocs corpus, a number of PDF files had been identified as fmt/134 (MPEG) previously, but are now correctly identified as various forms of PDF. This improvement in accuracy follows some changes I&rsquo;ve implemented to resolve <a href="https://github.com/richardlehane/siegfried/issues/112">this issue</a>.</p>
 <p>The problem boiled down to how siegfried uses PRONOM&rsquo;s file format priority information. One of siegfried&rsquo;s optimisations (and a reason it gives fairly good performance without requiring users to set limits on bytes scanned) is that it applies format priorities in real-time. For example, if, during scanning, a match comes in for PDF then siegfried will keep scanning to see if the file is a PDF/A (or other more specific type of PDF) but it won&rsquo;t wait to see if the file is an MPEG or anything else unrelated to that initial match. Think of all the formats as a big tree: once siegfried starts climbing in a particular direction, it will only find results higher up that branch. But what if that initial match is misleading? Like those Govdocs PDFs where a noisy MPEG signature matched first?</p>
 <p>The changes I&rsquo;ve made to the matching algorithm for v1.7.9 retain siegfried&rsquo;s real-time application of format priorities but with a tweak that allows siegfried to &ldquo;jump&rdquo; between branches in that format tree. The way this works is that, when each of the matchers runs (matchers are different stages in the scanning engine - i.e. the file name matcher, container matcher, byte matcher, text matcher etc.), &ldquo;hints&rdquo; are supplied based on information gleaned from previous matchers. These &ldquo;hints&rdquo; are then weighed alongside format priorities when siegfried decides what to do with format hits. For example, in the case of the Govdocs PDFs, the byte matcher receives a hint from the file name matcher that the file might be in the PDF family (because of the .pdf extension) and that hint causes the matcher to keep an open mind to the possibility that the file might well be a PDF even after that positive MPEG match has been found.</p>
 <p>There is a small cost in speed for this change to the matching algorithm (because there is now this new factor that will cause siegfried to delay in returning a positive match early) but my benchmarks show that the slowdown is only very modest.</p>
@@ -237,9 +262,9 @@ According to the <a href="http://localhost:8080/siegfried/develop/1dreh09">devel
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/benchmarks/">Continuous benchmarking</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/benchmarks/">Continuous benchmarking</a></h1>
   <p class="article-date">Monday, 30 July, 2018</p>
-<p>The next siegfried release will be out shortly. I have been busy making changes to address two thorny issues: <a href="https://github.com/richardlehane/siegfried/issues/111">verbose basis</a> and <a href="https://github.com/richardlehane/siegfried/issues/112">missing results</a>. I have some fixes in place but, when doing large scale testing against big sets of files, I noticed some performance and quality regressions. You can see these regressions on the new <a href="http://localhost:8080/siegfried/develop">develop benchmarks page</a>. There&rsquo;s also a new <a href="http://localhost:8080/siegfried/benchmarks">benchmarks page</a> to measure siegfried against comparable file format identification tools (at this stage just <a href="http://www.nationalarchives.gov.uk/information-management/manage-information/policy-process/digital-continuity/file-profiling-tool-droid/">DROID</a>). This post is the story of how these two pages came into being.</p>
+<p>The next siegfried release will be out shortly. I have been busy making changes to address two thorny issues: <a href="https://github.com/richardlehane/siegfried/issues/111">verbose basis</a> and <a href="https://github.com/richardlehane/siegfried/issues/112">missing results</a>. I have some fixes in place but, when doing large scale testing against big sets of files, I noticed some performance and quality regressions. You can see these regressions on the new <a href="https://www.itforarchivists.com/siegfried/develop">develop benchmarks page</a>. There&rsquo;s also a new <a href="https://www.itforarchivists.com/siegfried/benchmarks">benchmarks page</a> to measure siegfried against comparable file format identification tools (at this stage just <a href="http://www.nationalarchives.gov.uk/information-management/manage-information/policy-process/digital-continuity/file-profiling-tool-droid/">DROID</a>). This post is the story of how these two pages came into being.</p>
 <h2 id="benchmarking-pain">Benchmarking pain</h2>
 <p>Up until this point I had always done large scale testing manually and it was a fiddly and annoying process: I would have to locate test corpora on whichever machine I&rsquo;d last run a benchmark on and and copy to my current laptop; run the tests; do the comparison; interpret the results; look up how to do golang profiling again because I had forgot; run the profiler and check those results; etc. After going through all these steps, if I made changes to address issues, I&rsquo;d have to repeat it all again in order to verify I&rsquo;d fixed the issues. Obviously none of these results had much shelf life, as they depended on the vagaries of the machine I was running them on, how I had configured everything, and would be invalidated each time there was a new software or PRONOM release. I was also left with the uneasy feeling that I should be doing this kind of large scale testing much more regularly. Wouldn&rsquo;t it be nice to have some kind of continuous benchmarking process, just like the other automated tests and deployment workflows I run using <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">appveyor</a>? And down that rabbit hole I went for the last few months&hellip;</p>
 <h2 id="the-solution">The solution</h2>
@@ -248,9 +273,9 @@ According to the <a href="http://localhost:8080/siegfried/develop/1dreh09">devel
 <li>siegfried&rsquo;s <a href="https://github.com/richardlehane/siegfried/blob/develop/.travis.yml">Travis CI script</a> runs a little program called <a href="https://github.com/richardlehane/provisioner">provisioner</a></li>
 <li>provisioner buys a machine for an hour or two from <a href="https://packet.net">packet.net</a>, feeding the new machine a <a href="https://cloud-init.io/">cloud init</a> script that runs a series of install tasks (like downloading and installing siegfried)</li>
 <li>the cloud init script concludes by starting another small program, <a href="https://github.com/richardlehane/runner">runner</a>, as a systemd service</li>
-<li>runner downloads a list of jobs from the itforarchivists.com website (either the <a href="http://localhost:8080/siegfried/jobs/develop">develop jobs</a> or the <a href="http://localhost:8080/siegfried/jobs/bench">benchmark jobs</a>) and executes them</li>
+<li>runner downloads a list of jobs from the itforarchivists.com website (either the <a href="https://www.itforarchivists.com/siegfried/jobs/develop">develop jobs</a> or the <a href="https://www.itforarchivists.com/siegfried/jobs/bench">benchmark jobs</a>) and executes them</li>
 <li>one of the early jobs is to use <a href="https://rclone.org">rclone</a> to copy the test corpora over to the test machine from <a href="https://backblaze.com">backblaze.com</a></li>
-<li>after running the jobs (and timing their duration), runner posts results back to the itforachivists.com website where they are stored and displayed on the <a href="http://localhost:8080/siegfried/develop">develop</a> and <a href="http://localhost:8080/siegfried/benchmarks">benchmarks</a> pages.</li>
+<li>after running the jobs (and timing their duration), runner posts results back to the itforachivists.com website where they are stored and displayed on the <a href="https://www.itforarchivists.com/siegfried/develop">develop</a> and <a href="https://www.itforarchivists.com/siegfried/benchmarks">benchmarks</a> pages.</li>
 </ul>
 <p>Benefits of this approach are:</p>
 <ul>
@@ -271,19 +296,19 @@ According to the <a href="http://localhost:8080/siegfried/develop/1dreh09">devel
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf178/">siegfried 1.7.8 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf178/">siegfried 1.7.8 released</a></h1>
   <p class="article-date">Saturday, 2 December, 2017</p>
-<p>Version 1.7.8 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.</p>
+<p>Version 1.7.8 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>This minor release updates the PRONOM signatures to v93 and the LOC signatures to 2017-09-28.</p>
 <p>As the only changes in this release are to signature files, you can just use <code>sf -update</code> if you&rsquo;ve installed siegfried manually. This minor release is just for the convenience of users who have installed sf with package managers (i.e. debian or homebrew).</p>
 
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf177/">siegfried 1.7.7 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf177/">siegfried 1.7.7 released</a></h1>
   <p class="article-date">Thursday, 30 November, 2017</p>
 <p>Version 1.7.7 of siegfried is now available. Happy <a href="https://twitter.com/hashtag/IDPD17">#IDPD17</a>!</p>
-<p>Get it <a href="http://localhost:8080/siegfried">here</a>.</p>
+<p>Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>This minor release fixes bugs in the <code>roy inspect</code> command and in sf&rsquo;s handling of large container files.</p>
 <p>A new sets file is included in this release, &lsquo;pronom-extensions.json&rsquo;, which creates sets for all extensions defined in PRONOM. You can use these new sets when building signatures e.g. <code>roy build -limit @.tiff</code> or when logging formats e.g. <code>sf -log @.doc DIR</code>.</p>
 <p>The other addition in this release is the inclusion of version metadata for MIME-info signature files (e.g. freedesktop.org or tika MIME-types). You can define version metadata for MIME-info signature files by editing the MIME-info.json file in your /data directory.</p>
@@ -293,26 +318,26 @@ According to the <a href="http://localhost:8080/siegfried/develop/1dreh09">devel
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf176/">siegfried 1.7.6 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf176/">siegfried 1.7.6 released</a></h1>
   <p class="article-date">Wednesday, 4 October, 2017</p>
-<p>Version 1.7.6 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.</p>
+<p>Version 1.7.6 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>This is a minor release that incorporates the latest PRONOM update (v92), introduces a &ldquo;continue on error&rdquo; flag (sf -coe) to force sf to keep going when it hits fatal file errors in directory walks, and restricts file scanning to regular files (in previous versions symlinks, devices, sockets etc. were scanned which caused fatal errors for some users).</p>
 <p>Thanks to <a href="https://github.com/richardlehane/siegfried/issues/107">Henk Vanstappen</a> for the bug report that prompted this release.</p>
 
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/charts/">Charts</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/charts/">Charts</a></h1>
   <p class="article-date">Thursday, 14 September, 2017</p>
-<p>In my recent updates to this site I&rsquo;ve added a new &ldquo;Chart your results&rdquo; tool on the <a href="http://localhost:8080/siegfried">siegfried</a> page (in the right hand panel under &ldquo;Try Siegfried&rdquo;). This tool produces single page reports like this: <a href="https://www.itforarchivists.com/siegfried/results/ea1zaj">/siegfried/results/ea1zaj</a>.</p>
+<p>In my recent updates to this site I&rsquo;ve added a new &ldquo;Chart your results&rdquo; tool on the <a href="https://www.itforarchivists.com/siegfried">siegfried</a> page (in the right hand panel under &ldquo;Try Siegfried&rdquo;). This tool produces single page reports like this: <a href="https://www.itforarchivists.com/siegfried/results/ea1zaj">/siegfried/results/ea1zaj</a>.</p>
 <p>Before covering this tool in detail let&rsquo;s recap some of the existing ways you can already analyse your results.</p>
 <h2 id="other-ways-of-charting-and-analysing-your-results">Other ways of charting and analysing your results</h2>
 <h3 id="command-line-charting">Command-line charting</h3>
 <p>I appreciate that not everyone is a command-line junkie, but the way I inspect results is just to use sf&rsquo;s -log flag. If you do <code>sf -log chart</code> (or <code>-log c</code>) you can make simple format charts:</p>
-<p><img src="http://localhost:8080/img/sf-chart.png" alt="sf chart"></p>
+<p><img src="https://www.itforarchivists.com/img/sf-chart.png" alt="sf chart"></p>
 <p><em>(In these examples I add &ldquo;o&rdquo; to my log options to direct logging output to STDOUT&hellip; otherwise you&rsquo;ll see it in STDERR).</em></p>
 <p>A chart can be a starting point for deeper analysis e.g. inspecting lists of files of a particular format:</p>
-<p><img src="http://localhost:8080/img/sf-fmt61.png" alt="sf log fmt/61"></p>
+<p><img src="https://www.itforarchivists.com/img/sf-fmt61.png" alt="sf log fmt/61"></p>
 <p>You can also inspect lists of unknowns with <code>-log u</code> and warnings with <code>-log w</code>.</p>
 <p>Rather than re-run the format identification job with every step, you can pair these commands with the <code>-replay</code> flag to run them against a pre-generated results file instead. I cover this workflow in detail in the <a href="https://github.com/richardlehane/siegfried/wiki/Identifying-file-formats#replaying-a-scan-from-results-files">siegfried wiki</a>.</p>
 <h3 id="standalone-tools">Standalone tools</h3>
@@ -320,7 +345,7 @@ According to the <a href="http://localhost:8080/siegfried/develop/1dreh09">devel
 <p>These tools both do a lot more than simple chart generation. E.g. DROID-SF can create a &ldquo;Rogues Gallery&rdquo; of all your problematic files. Brunnhilde has a GUI, does virus scanning, and can also run bulk_extractor against your files. I&rsquo;d definitely encourage you to check both of these tools out!</p>
 <h2 id="chart-your-results">Chart your results</h2>
 <p>If your needs are a little bit simpler, and you just want a chart, then my new &ldquo;Chart your results&rdquo; tool might be a good fit.</p>
-<p>To try this tool, go to the <a href="http://localhost:8080/siegfried">siegfried</a> page and upload a results file in the &ldquo;Chart my results&rdquo; form in the right-hand panel.</p>
+<p>To try this tool, go to the <a href="https://www.itforarchivists.com/siegfried">siegfried</a> page and upload a results file in the &ldquo;Chart my results&rdquo; form in the right-hand panel.</p>
 <p>Let&rsquo;s run through some of its features:</p>
 <ul>
 <li>it can handle siegfried, DROID and fido results files</li>
@@ -330,15 +355,15 @@ According to the <a href="http://localhost:8080/siegfried/develop/1dreh09">devel
 <li>you can drill-down on all of those features and formats to generate lists that you can export as CSV or to your clipboard</li>
 <li>supports multiple identifiers (a siegfried feature): each identifier is a separate single page report.</li>
 </ul>
-<p>Probably the distinguishing feature of this tool is that you can easily share your analysis with colleagues, or with the digital preservation community broadly, by &ldquo;publishing&rdquo; your results. This gives you a permanent URL (like <a href="https://www.itforarchivists.com/siegfried/results/ea1zaj">https://www.itforarchivists.com/siegfried/results/ea1zaj</a>) and stores your results on the site. Prior to publication you can opt to &ldquo;redact&rdquo; your filenames if they contain sensitive information. I&rsquo;ve added a <a href="http://localhost:8080/about/privacy">privacy</a> section to this site to address some of the privacy questions raised by this feature in a little more detail.</p>
+<p>Probably the distinguishing feature of this tool is that you can easily share your analysis with colleagues, or with the digital preservation community broadly, by &ldquo;publishing&rdquo; your results. This gives you a permanent URL (like <a href="https://www.itforarchivists.com/siegfried/results/ea1zaj">https://www.itforarchivists.com/siegfried/results/ea1zaj</a>) and stores your results on the site. Prior to publication you can opt to &ldquo;redact&rdquo; your filenames if they contain sensitive information. I&rsquo;ve added a <a href="https://www.itforarchivists.com/about/privacy">privacy</a> section to this site to address some of the privacy questions raised by this feature in a little more detail.</p>
 <p>That&rsquo;s it, please use it, and if you like it tweet your results!</p>
 
 </article>
       
     	  <article>
-  <h1><a href="http://localhost:8080/post/sf175/">siegfried 1.7.5 released</a></h1>
+  <h1><a href="https://www.itforarchivists.com/post/sf175/">siegfried 1.7.5 released</a></h1>
   <p class="article-date">Sunday, 13 August, 2017</p>
-<p>Version 1.7.5 of siegfried is now available. Get it <a href="http://localhost:8080/siegfried">here</a>.</p>
+<p>Version 1.7.5 of siegfried is now available. Get it <a href="https://www.itforarchivists.com/siegfried">here</a>.</p>
 <p>The headline feature of this release is new functionality for the <code>sf -update</code> command requested by <a href="https://github.com/richardlehane/siegfried/issues/103">Ross Spencer</a>. You can now use the <code>-update</code> flag to download or update non-<a href="https://www.nationalarchives.gov.uk/PRONOM/Default.aspx">PRONOM</a> signatures with a choice of <a href="https://www.loc.gov/preservation/digital/formats/fdd/descriptions.shtml">LOC FDD</a>, two flavours of <a href="https://freedesktop.org/wiki/Specifications/shared-mime-info-spec/">MIMEInfo</a> (<a href="https://tika.apache.org/1.5/detection.html">Apache Tika&rsquo;s MIMEInfo</a> and <a href="https://freedesktop.org/wiki/Software/shared-mime-info/">freedesktop.org</a>), and <a href="https://www.artefactual.com/services/archivematica/">archivematica</a> (latest PRONOM + archivematica extensions) signatures. There are two combo options as well: PRONOM/Tika/LOC and the Ross Spencer &ldquo;deluxe&rdquo; (PRONOM/Tika/freedesktop.org/LOC).</p>
 <p>PRONOM remains the default, so if you just do <code>sf -update</code> it will work as before.</p>
 <p>To go non-PRONOM, include one of &ldquo;loc&rdquo;, &ldquo;tika&rdquo;, &ldquo;freedesktop&rdquo;, &ldquo;pronom-tika-loc&rdquo;, &ldquo;deluxe&rdquo; or &ldquo;archivematica&rdquo; as an argument after the flags e.g. <code>sf -update freedesktop</code>. This command will overwrite &lsquo;default.sig&rsquo; (the default signature file that sf loads).</p>

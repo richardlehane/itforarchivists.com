@@ -1,0 +1,6 @@
+<div id="banner" class="pure-u-1">
+  <p class="article-title"><a href="{{.URL}}">{{.Title}}</a></p>
+  <span class="article-date">{{dateFormat "Monday, 2 January, 2006" .Date}}</span>
+</div>    
+<div class="pure-u-1">{{ .Content }}</div>
+{{ partial "signature" .}}

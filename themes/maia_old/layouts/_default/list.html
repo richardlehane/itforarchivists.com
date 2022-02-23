@@ -1,0 +1,12 @@
+{{ partial "header" . }}
+{{ partial "category_menu" . }}
+<div class="content pure-g">
+  {{ if len ( where .Data.Pages "Section" "post" )  | ne 0 }}
+    {{ range first 10 ( where .Data.Pages "Section" "post" ) }}
+    	{{ partial "article" . }}
+    {{ end }}
+  {{ else }}
+     {{ partial "article" . }}
+  {{ end }}
+</div>
+{{ partial "footer" . }}
