@@ -121,6 +121,26 @@ var machineDetails = map[string]struct {
 	Link        string
 	Description string
 }{
+	"c3.small.x86": {
+		Link:        "https://metal.equinix.com/product/servers/c3-small/",
+		Description: "8 cores @ 3.40 GHz, 32GB RAM, 960 GB SSD",
+	},
+	"c3.medium.x86": {
+		Link:        "https://metal.equinix.com/product/servers/c3-medium/",
+		Description: "24 cores @ 2.8 GHz, 64GB DDR4 RAM, 960 GB SSD",
+	},
+	"m3.small.x86": {
+		Link:        "https://metal.equinix.com/product/servers/m3-small/",
+		Description: "8 cores @ 2.8 GHz, 64GB RAM, 960 GB SSD",
+	},
+	"m3.large.x86": {
+		Link:        "https://metal.equinix.com/product/servers/m3-large/",
+		Description: "32 cores @ 2.5 GHz, 256GB DDR4 RAM, 2 x 3.8 TB NVMe",
+	},
+	"s3.xlarge.x86": {
+		Link:        "https://metal.equinix.com/product/servers/s3-xlarge/",
+		Description: "24 cores @ 2.2 GHz, 192GB DDR4 RAM, 1.9 TB SSD",
+	}, // legacy definitions follow
 	"c2.medium.x86": {
 		Link:        "https://www.packet.net/bare-metal/servers/c2-medium-epyc/",
 		Description: "24 Physical Cores @ 2.2 GHz; 64 GB ECC RAM; 960 GB SSD",
