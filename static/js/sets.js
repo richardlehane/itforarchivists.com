@@ -1,3 +1,4 @@
+/*
 var sets;
 
 var textFn = function(){
@@ -106,3 +107,4 @@ function cp() {
   	$("#results").select();
 	document.execCommand("copy");
 }
+*/
