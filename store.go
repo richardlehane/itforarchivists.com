@@ -22,7 +22,7 @@ type store interface {
 }
 
 func newStore(r *http.Request) (store, error) {
-	if os.Getenv("USER") == "richard" { // detect if running locally
+	if os.Getenv("GAE_APPLICATION") == "" { // detect if running locally
 		return newSimpleStore(r)
 	}
 	return newCloudStore(r)

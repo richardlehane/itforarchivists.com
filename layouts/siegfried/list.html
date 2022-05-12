@@ -5,7 +5,7 @@
 </div>
 <div class="r-col">
 <h2>Try siegfried</h2>
-<div id="upload" ondrop="drop_handler(event)" ondragover="event.preventDefault();">
+<div id="upload" ondrop="drop_handler(event)" ondragenter="event.preventDefault();" ondragover="event.preventDefault();">
   <p><img src="img/siegfried.png" alt="Richard's portrait"></p>
   <p>Drag a file on to Siegfried's anvil!</p>
 </div>
@@ -29,18 +29,17 @@
 <p>1. <strong>Select one or more PUIDs or sets</strong> (e.g. fmt/123 or @pdf). Sets are prefixed with the '@' symbol.</p>
 <!-- hidden element for cloning -->
 <div id="addlist" style="display: none;">
+  <datalist id="sets">{{ range $.Site.Data.siegfried.Keys }}<option value="@{{.}}">@{{ . }}</option>{{ end }}</datalist>
   <fieldset>
-    <input id="addset" type="text" name="set" list="sets" placeholder="Enter puid or @set" size="15">
-    <datalist id="sets">{{ range $.Site.Data.siegfried.Keys }}<option value="@{{.}}">@{{ . }}</option>{{ end }}</datalist>&nbsp;
+    <input type="text" name="set" list="sets" placeholder="Enter puid or @set" size="15">&nbsp;
     <button type="button" onclick="add()">add</button>&nbsp;
     <button type="button" onclick="del(this)">del</button>
   </fieldset>
-  </div>
+</div>
 <form id="sets-form">
   <div>
   <fieldset>
-    <input id="addset" type="text" name="set" list="sets" placeholder="PUID or @set" size="15">
-    <datalist id="sets">{{ range $.Site.Data.siegfried.Keys }}<option value="@{{.}}">@{{ . }}</option>{{ end }}</datalist>&nbsp;
+    <input type="text" name="set" list="sets" placeholder="PUID or @set" size="15">&nbsp;
     <button type="button" onclick="add()">add</button>
   </fieldset>
   </div>

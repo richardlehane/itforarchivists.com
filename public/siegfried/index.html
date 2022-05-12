@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" prefix="og:http://ogp.me/ns#">
 <head>
-<base href="http://localhost:8080">
+<base href="http://localhost:8081">
 <title>IT for archivists</title>
 <meta charset="utf-8">
 <meta name="description" content="richard&#39;s site">
@@ -15,7 +15,7 @@
 <meta property="og:image:type" content="image/jpeg"/>
 <meta property="og:image:width" content=""/>
 <meta property="og:image:height" content=""/>
-<meta property="og:url" content="http://localhost:8080">
+<meta property="og:url" content="http://localhost:8081">
 <meta property="og:locale" content="en_AU">
 <meta property="article:published_time" content="0001-01-01"/>
 <meta property="article:modified_time" content="0001-01-01"/>
@@ -25,35 +25,33 @@
 <meta name="twitter:creator" content="Richard Lehane">
 <meta name="twitter:description" content="">
 <meta name="twitter:image:src" content="">
-<meta name="twitter:domain" content="http://localhost:8080"><link rel="canonical" href="http://localhost:8080/siegfried/">
-<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:8080/siegfried/index.xml">
-<link rel="icon" type="image/png" href="http://localhost:8080/img/richard.png">
-<link rel="stylesheet" href="http://localhost:8080/css/maia.css">
+<meta name="twitter:domain" content="http://localhost:8081"><link rel="canonical" href="http://localhost:8081/siegfried/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:8081/siegfried/index.xml">
+<link rel="icon" type="image/png" href="http://localhost:8081/img/richard.png">
+<link rel="stylesheet" href="http://localhost:8081/css/maia.css">
 </head>
 <body>
 <header>
-  <div class="nav-l">
-    <a href="http://localhost:8080/" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
-    <a class="logo" href="http://localhost:8080/"><p class="logo-text">IT for archivists</p></a>
+  <div class="logo">
+    <a href="http://localhost:8081/"><img src="img/richard.png" alt="Logo"></a>
+    <a href="http://localhost:8081/"><p>IT for archivists</p></a>
   </div>
-  <div class="nav-r">
+  <div class="nav">
     <ul><li>
-      <a href="http://localhost:8080/about">About</a>
-      <ul><li><a href="http://localhost:8080/about/privacy/">Privacy</a></li></ul>
+      <a href="http://localhost:8081/about">About</a>
+      <ul><li><a href="http://localhost:8081/about/privacy/">Privacy</a></li></ul>
       </li><li>
       <a href="#">Contact</a>
       <ul><li><a href="https://twitter.com/richardlehane">twitter</a></li><li><a href="https://github.com/richardlehane">github</a></li><li><a href="mailto:richard@itforarchivists.com">email</a></li></ul>
       </li>
-      <li><a href="http://localhost:8080/siegfried"><img alt="siegfried" src="http://localhost:8080/img/sf-button.png"></a></li>
+      <li><a href="http://localhost:8081/siegfried"><img alt="siegfried" src="http://localhost:8081/img/sf-button.png"></a></li>
       </ul>
   </div>
   <div class="menu">
     </div>
 </header>
-
-
-<main>
-<div class="pure-u-1 pure-u-md-2-3 pure u-lg-2-3 l-box">
+<main class="cols">
+<div class="l-col">
 <h1 id="siegfried">Siegfried</h1>
 <p>Siegfried is a signature-based file format identification tool.</p>
 <p>It implements:</p>
@@ -128,49 +126,48 @@ sf -setconf -csv -conf csv.conf // Save (or load) named configurations with -con
 <p>Join the <a href="href=%22https://groups.google.com/d/forum/sf-roy%22">Google Group</a> for updates, signature releases, and help.</p>
 
 </div>
-<div class="pure-u-1 pure-u-md-1-3 pure-u-lg-1-3 r-box">
+<div class="r-col">
 <h2>Try siegfried</h2>
-<div id="upload">
-  <p><img class="upload" src="img/siegfried.png" alt="Richard's portrait"></p>
+<div id="upload" ondrop="drop_handler(event)" ondragenter="event.preventDefault();" ondragover="event.preventDefault();">
+  <p><img src="img/siegfried.png" alt="Richard's portrait"></p>
   <p>Drag a file on to Siegfried's anvil!</p>
 </div>
 <hr>
 <h2>Chart your results</h2>
 <p>Upload a siegfried, droid or fido results file for analysis and sharing.</p>
-<p>You'll get a page like this: <a href="http://localhost:8080/siegfried/results/ea1zaj">https://www.itforarchivists.com/siegfried/results/ea1zaj</a></p>
+<p>You'll get a page like this: <a href="http://localhost:8081/siegfried/results/ea1zaj">https://www.itforarchivists.com/siegfried/results/ea1zaj</a></p>
 <div id="chart">
- <form action="http://localhost:8080/siegfried/results" method="post" enctype="multipart/form-data" class="pure-form">
+ <form action="http://localhost:8081/siegfried/results" method="post" enctype="multipart/form-data">
   <input type="file" name="file">
-  <input type="submit" value="submit" class="pure-button pure-button-primary">
+  <input type="submit" value="submit">
 </form> 
 </div>
 <hr>
 <h2>Benchmarks</h2>
-<p>See how siegfried compares with other format identification tools by viewing these <a href="http://localhost:8080/siegfried/benchmarks">automated benchmarks</a>.</p>
-<p>Benchmarks are run each time new code is committed to siegfried's <a href="https://github.com/richardlehane/siegfried/tree/develop">develop branch</a>. To see how the next release is progressing, check out the <a href="http://localhost:8080/siegfried/develop">develop benchmarks</a>.</p>
+<p>See how siegfried compares with other format identification tools by viewing these <a href="http://localhost:8081/siegfried/benchmarks">automated benchmarks</a>.</p>
+<p>Benchmarks are run each time new code is committed to siegfried's <a href="https://github.com/richardlehane/siegfried/tree/develop">develop branch</a>. To see how the next release is progressing, check out the <a href="http://localhost:8081/siegfried/develop">develop benchmarks</a>.</p>
 <hr>
 <h2>Sets tool</h2>
 <p><a href="https://github.com/richardlehane/siegfried/wiki/Building-a-signature-file-with-ROY#format-sets-optional-step">Format sets</a> enable grouping of formats by the sf and roy tools: e.g. <code>roy build -limit @pdf</code>. They can be useful elswhere, e.g. to isolate the formats <a href="https://tika.apache.org/">Apache Tika</a> can extract text from. This widget converts format sets to plain text or code snippets.</p>
 <p>1. <strong>Select one or more PUIDs or sets</strong> (e.g. fmt/123 or @pdf). Sets are prefixed with the '@' symbol.</p>
 
 <div id="addlist" style="display: none;">
+  <datalist id="sets"><option value="@aggregate">@aggregate</option><option value="@all">@all</option><option value="@arch_comp">@arch_comp</option><option value="@archive">@archive</option><option value="@archivematica">@archivematica</option><option value="@archivematica-ids">@archivematica-ids</option><option value="@audio">@audio</option><option value="@camera">@camera</option><option value="@compression">@compression</option><option value="@database">@database</option><option value="@dataset">@dataset</option><option value="@dng">@dng</option><option value="@dwg">@dwg</option><option value="@dxf">@dxf</option><option value="@ebml">@ebml</option><option value="@email">@email</option><option value="@exif">@exif</option><option value="@font">@font</option><option value="@gis">@gis</option><option value="@imageRaster">@imageRaster</option><option value="@imageVector">@imageVector</option><option value="@jpeg2000">@jpeg2000</option><option value="@model">@model</option><option value="@msoffice">@msoffice</option><option value="@msword">@msword</option><option value="@msworddoc">@msworddoc</option><option value="@msworddocx">@msworddocx</option><option value="@msworddos">@msworddos</option><option value="@mswordextra">@mswordextra</option><option value="@pageDescription">@pageDescription</option><option value="@pdf">@pdf</option><option value="@pdfa">@pdfa</option><option value="@pdfcore">@pdfcore</option><option value="@pdfe">@pdfe</option><option value="@pdfextra">@pdfextra</option><option value="@pdfx">@pdfx</option><option value="@presentation">@presentation</option><option value="@richTextFormat">@richTextFormat</option><option value="@slow">@slow</option><option value="@spreadsheet">@spreadsheet</option><option value="@svg">@svg</option><option value="@textMarkup">@textMarkup</option><option value="@textStructured">@textStructured</option><option value="@textUnstructured">@textUnstructured</option><option value="@tiff">@tiff</option><option value="@tiffcore">@tiffcore</option><option value="@tiffextra">@tiffextra</option><option value="@video">@video</option><option value="@wave">@wave</option><option value="@wordProcessor">@wordProcessor</option></datalist>
   <fieldset>
-    <input id="addset" type="text" name="set" list="sets" placeholder="Enter puid or @set" size="15">
-    <datalist id="sets"><option value="@aggregate">@aggregate</option><option value="@all">@all</option><option value="@arch_comp">@arch_comp</option><option value="@archive">@archive</option><option value="@archivematica">@archivematica</option><option value="@archivematica-ids">@archivematica-ids</option><option value="@audio">@audio</option><option value="@camera">@camera</option><option value="@compression">@compression</option><option value="@database">@database</option><option value="@dataset">@dataset</option><option value="@dng">@dng</option><option value="@dwg">@dwg</option><option value="@dxf">@dxf</option><option value="@ebml">@ebml</option><option value="@email">@email</option><option value="@exif">@exif</option><option value="@font">@font</option><option value="@gis">@gis</option><option value="@imageRaster">@imageRaster</option><option value="@imageVector">@imageVector</option><option value="@jpeg2000">@jpeg2000</option><option value="@model">@model</option><option value="@msoffice">@msoffice</option><option value="@msword">@msword</option><option value="@msworddoc">@msworddoc</option><option value="@msworddocx">@msworddocx</option><option value="@msworddos">@msworddos</option><option value="@mswordextra">@mswordextra</option><option value="@pageDescription">@pageDescription</option><option value="@pdf">@pdf</option><option value="@pdfa">@pdfa</option><option value="@pdfcore">@pdfcore</option><option value="@pdfe">@pdfe</option><option value="@pdfextra">@pdfextra</option><option value="@pdfx">@pdfx</option><option value="@presentation">@presentation</option><option value="@richTextFormat">@richTextFormat</option><option value="@slow">@slow</option><option value="@spreadsheet">@spreadsheet</option><option value="@svg">@svg</option><option value="@textMarkup">@textMarkup</option><option value="@textStructured">@textStructured</option><option value="@textUnstructured">@textUnstructured</option><option value="@tiff">@tiff</option><option value="@tiffcore">@tiffcore</option><option value="@tiffextra">@tiffextra</option><option value="@video">@video</option><option value="@wave">@wave</option><option value="@wordProcessor">@wordProcessor</option></datalist>&nbsp;
-    <button type="button" onclick="add()" class="pure-button">add</button>&nbsp;
-    <button type="button" onclick="del(this)" class="pure-button">del</button>
+    <input type="text" name="set" list="sets" placeholder="Enter puid or @set" size="15">&nbsp;
+    <button type="button" onclick="add()">add</button>&nbsp;
+    <button type="button" onclick="del(this)">del</button>
   </fieldset>
-  </div>
-<form id="sets-form" class="pure-form">
+</div>
+<form id="sets-form">
   <div>
   <fieldset>
-    <input id="addset" type="text" name="set" list="sets" placeholder="PUID or @set" size="15">
-    <datalist id="sets"><option value="@aggregate">@aggregate</option><option value="@all">@all</option><option value="@arch_comp">@arch_comp</option><option value="@archive">@archive</option><option value="@archivematica">@archivematica</option><option value="@archivematica-ids">@archivematica-ids</option><option value="@audio">@audio</option><option value="@camera">@camera</option><option value="@compression">@compression</option><option value="@database">@database</option><option value="@dataset">@dataset</option><option value="@dng">@dng</option><option value="@dwg">@dwg</option><option value="@dxf">@dxf</option><option value="@ebml">@ebml</option><option value="@email">@email</option><option value="@exif">@exif</option><option value="@font">@font</option><option value="@gis">@gis</option><option value="@imageRaster">@imageRaster</option><option value="@imageVector">@imageVector</option><option value="@jpeg2000">@jpeg2000</option><option value="@model">@model</option><option value="@msoffice">@msoffice</option><option value="@msword">@msword</option><option value="@msworddoc">@msworddoc</option><option value="@msworddocx">@msworddocx</option><option value="@msworddos">@msworddos</option><option value="@mswordextra">@mswordextra</option><option value="@pageDescription">@pageDescription</option><option value="@pdf">@pdf</option><option value="@pdfa">@pdfa</option><option value="@pdfcore">@pdfcore</option><option value="@pdfe">@pdfe</option><option value="@pdfextra">@pdfextra</option><option value="@pdfx">@pdfx</option><option value="@presentation">@presentation</option><option value="@richTextFormat">@richTextFormat</option><option value="@slow">@slow</option><option value="@spreadsheet">@spreadsheet</option><option value="@svg">@svg</option><option value="@textMarkup">@textMarkup</option><option value="@textStructured">@textStructured</option><option value="@textUnstructured">@textUnstructured</option><option value="@tiff">@tiff</option><option value="@tiffcore">@tiffcore</option><option value="@tiffextra">@tiffextra</option><option value="@video">@video</option><option value="@wave">@wave</option><option value="@wordProcessor">@wordProcessor</option></datalist>&nbsp;
-    <button type="button" onclick="add()" class="pure-button">add</button>
+    <input type="text" name="set" list="sets" placeholder="PUID or @set" size="15">&nbsp;
+    <button type="button" onclick="add()">add</button>
   </fieldset>
   </div>
   <fieldset>
-    <input type="submit" value="submit" class="pure-button pure-button-primary">
+    <input type="submit" value="submit">
   </fieldset >
 </form>
 <p>2. <strong>Choose your output format</strong> (plain text or a code snippet with a function that matches an input PUID against a set.)</p>
@@ -184,12 +181,10 @@ sf -setconf -csv -conf csv.conf // Save (or load) named configurations with -con
   </select>
 </p>
 <textarea id="results" rows="10" cols="35"></textarea>
-<button onclick="cp()" class="pure-button">Copy to clipboard</button>
+<button onclick="cp()">Copy to clipboard</button>
 </div>
 </div>
 </div>
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="js/dropzone.js"></script>
 <script src="js/sets.js"></script>
 <script src="js/siegfried.js"></script>
 </main>

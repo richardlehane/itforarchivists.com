@@ -9,15 +9,13 @@ import (
 )
 
 type cachedPage struct {
-	t       time.Time
-	status  int
-	header  http.Header
-	hchange bool
-	buf     *bytes.Buffer
+	t      time.Time
+	status int
+	header http.Header
+	buf    *bytes.Buffer
 }
 
 func (cp *cachedPage) Header() http.Header {
-	cp.hchange = true
 	return cp.header
 }
 
@@ -44,20 +42,18 @@ func hdlCache(f func(http.ResponseWriter, *http.Request), c *cache) func(http.Re
 		c.mu.Lock()
 		defer c.mu.Unlock()
 		cp, ok := c.cmap[r.URL.Path]
-		if !ok || time.Now().Sub(cp.t) > c.du {
-			cp = &cachedPage{time.Now(), 0, w.Header(), false, &bytes.Buffer{}}
+		if !ok || time.Since(cp.t) > c.du {
+			cp = &cachedPage{time.Now(), 0, http.Header{}, &bytes.Buffer{}}
 			f(cp, r)
 			c.cmap[r.URL.Path] = cp
 		}
-		io.Copy(w, bytes.NewReader(cp.buf.Bytes()))
-		if cp.hchange {
-			for k, v := range cp.header {
-				w.Header()[k] = v
-			}
+		for k, v := range cp.header {
+			w.Header()[k] = v
 		}
 		if cp.status > 0 {
 			w.WriteHeader(cp.status)
 		}
+		io.Copy(w, bytes.NewReader(cp.buf.Bytes()))
 		return
 	}
 }

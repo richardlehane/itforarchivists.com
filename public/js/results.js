@@ -1,3 +1,4 @@
+/*
 var PIES = {
   options: {
     pieHole: 0.2,
@@ -202,3 +203,4 @@ google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(function() {
   $(initialize())
 });
+*/

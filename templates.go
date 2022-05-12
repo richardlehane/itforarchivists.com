@@ -23,8 +23,6 @@ var templ = `
 {{ block "title" . }}<title>Siegfried</title>{{ end }}
 <link rel="icon" type="image/png" href="/img/richard.png">
 {{ block "incCSS" . }}{{ end }}
-<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
 <link rel="stylesheet" href="/css/maia.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {{ block "incJS" . }}{{ end }}
@@ -33,7 +31,7 @@ var templ = `
 <div class="topcorner">
 	<a href="/siegfried">Back to siegfried</a> 
 </div>
-<div class="pure-g">
+<div>
 {{ block "content" . }}{{ end }}
 </div>
 </body>
@@ -45,8 +43,6 @@ var rTitleTempl = `{{ define "title" }}<title>{{ if len .Title | eq 0  }}Siegfri
 // to refresh these: go to https://datatables.net/download/index, choose Datatables styling, jquery3, Datatables, Buttons-> HTML5 export, CDN -> Minify + Concatentate
 var rChartCSSTempl = `{{ define "incCSS" -}} 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/b-1.5.2/b-html5-1.5.2/datatables.min.css"/>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/brands.css" integrity="sha384-SYNjKRRe+vDW0KSn/LrkhG++hqCLJg9ev1jIh8CHKuEA132pgAz+WofmKAhPpTR7" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/fontawesome.css" integrity="sha384-0b7ERybvrT5RZyD80ojw6KNKz6nIAlgOKXIcJ0CV7A6Iia8yt2y1bBfLBOwoc9fQ" crossorigin="anonymous">
 <style>
 .chart {
 	height: 320px;
@@ -62,14 +58,14 @@ var rChartJSTempl = `{{ define "incJS" -}}
 {{- end }} `
 
 var rShareTempl = `{{ define "share" -}} 
-<div class="pure-g pure-u-md-1-4 l-box">
+<div class="l-box">
 	<h1>{{ if len .Title | lt 0 }}{{ .Title }}{{ else }}Untitled{{ end }}</h1>
 	<p><i>{{ if len .Name | lt 0 }}{{ .Name }}{{ end }}</i></p>
 	<p>{{ if len .Desc | lt 0 }}{{ .Desc }}{{ end }}</p>
 	<p>
 		<a class= "signature" href="https://twitter.com/intent/tweet?text=
 			{{- urlquery "I'm charting my formats! " .Title " (https://www.itforarchivists.com/siegfried/results/" .UUID ")" -}}">
-		<i class="fab fa-twitter-square fa-2x"></i>
+		Post to twitter
 		</a>
 	</p>
 </div>
@@ -77,32 +73,29 @@ var rShareTempl = `{{ define "share" -}}
 
 var rContent = `{{ define "content" -}} 
 {{ block "share" . -}}
-	<div class="pure-u-1 pure-u-md-1-4 l-box">
+	<div class="l-box">
 	<h1>Share results</h1>
-		<form id="share-form" class="pure-form pure-form-stacked">
+		<form id="share-form">
 		  <fieldset>
 			<input id="sharename" type="text" name="name" maxlength="128" size="20" placeholder="Name (or organisation)">
 			<input id="sharetitle" type="text" name="title" maxlength="128" size="20" placeholder="Title">
 			<textarea id="sharedesc" name="description" maxlength="256" rows="3" cols="20" placeholder="Description"></textarea>
-			<label for="redact" class="pure-checkbox">
+			<label for="redact">
 				<input id="redact" type="checkbox" name="redact" value="true" checked> Redact filenames <a href="#" id="redactNow">(redact now)</a>
 			</label>
-			<input type="submit" value="Publish" class="publish-button pure-button pure-button-primary">
-			<button style="display: none" class="publish-button pure-button pure-button-primary pure-button-disabled">
-				<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>
-				Publish
-			</button>
+			<input type="submit" value="Publish" class="publish-button">
+			<button style="display: none" class="publish-button">Publish</button>
 		  </fieldset>
 		</form>
 	</div>
 {{- end }}
-<div class="pure-u-1 pure-u-md-1-4 l-box">
+<div class="l-box">
 <h1>Identifiers</h1>
 {{- range $idx, $el := .Identifiers -}}
 		<p><a href="#" onclick="load({{ $idx }}); return false;"><strong>{{ $el.Name }}</strong></a><br />{{ $el.Details }}</p>
 {{- end -}}
 </div>
-<div class="pure-u-1 pure-u-md-1-4 l-box">
+<div class="l-box">
 <h1>Details</h1>
 <p>
 {{- range $idx, $el := .Metadata }}
@@ -123,15 +116,15 @@ var rContent = `{{ define "content" -}}
     <a href="#" id="reset">Reset (show all)</a>
   </p>
 </div>
-<div class="pure-u-1 pure-u-lg-1-4 l-box" id="charts">
+<div class="l-box" id="charts">
   <div id="fmtchart" class="chart"></div>
   <div id="mimechart" class="chart"></div>
-  <div class="pure-button-group centre" role="group">
-    <button onclick="reveal('fmtchart'); return false;" class="pure-button pure-button-active">Format IDs</button>
-    <button onclick="reveal('mimechart'); return false;" class="pure-button">MIME-types</button>
+  <div class="centre" role="group">
+    <button onclick="reveal('fmtchart'); return false;">Format IDs</button>
+    <button onclick="reveal('mimechart'); return false;">MIME-types</button>
 </div>
 </div>
-<div class="pure-u-1"><table id="table" class="display pure-table pure-table-bordered" width="100%"></table></div>
+<div><table id="table" class="display" width="100%"></table></div>
 {{- end }} `
 
 // Log templates
@@ -148,7 +141,7 @@ var lJSTempl = `{{ define "incJS" -}}
 `
 
 var lContent = `{{ define "content" -}} 
-<div class="content pure-u-1">
+<div class="content">
 <h1>{{ .Title }}</h1>
 <h2>{{ .Time }}</h2>
 <h3>Environment</h3>
@@ -156,8 +149,8 @@ var lContent = `{{ define "content" -}}
 <p>Specs for the <a href="{{.Machine.Link}}">{{ .Machine.Label}}</a>: {{.Machine.Description}}.</p>
 <p>You can inspect the commands that were run to generate these benchmarks <a href="/siegfried/jobs/{{ .Prefix }}">here</a>.</p>
 {{ if len .Versions | lt 0 -}}
-<h3>Tools</h3>
-<table class="pure-table">
+<table>
+	<caption>List of tools benchmarked</caption>
 	<thead>
 		<tr>
 			<th>Tool</th>
@@ -178,8 +171,8 @@ var lContent = `{{ define "content" -}}
 <div>
 <h2>{{ .Title }}</h2>
 <p>{{ .Description }}</p>
-<h3>Results</h3>
-<table class="pure-table">
+<table>
+	<caption>Results</caption>
 	<thead>
 		<tr>
 			<th>Tool</th>
@@ -199,7 +192,8 @@ var lContent = `{{ define "content" -}}
 </table>
 <p>{{ .CompareDesc }}</p>
 {{ if len .Compare | lt 0 -}}
-<table id="cmp{{ $idx }}" class="pure-table pure-table-striped" style="width:100%">
+<table id="cmp{{ $idx }}" style="width:100%">
+	<caption>Differences between tools</caption>
 	<thead>
 		<tr>
 		<td>file</td>

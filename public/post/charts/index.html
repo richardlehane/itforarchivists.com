@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" prefix="og:http://ogp.me/ns#">
 <head>
-<base href="http://localhost:8080">
+<base href="http://localhost:8081">
 <title>IT for archivists</title>
 <meta charset="utf-8">
 <meta name="description" content="richard&#39;s site">
@@ -15,7 +15,7 @@
 <meta property="og:image:type" content="image/jpeg"/>
 <meta property="og:image:width" content=""/>
 <meta property="og:image:height" content=""/>
-<meta property="og:url" content="http://localhost:8080">
+<meta property="og:url" content="http://localhost:8081">
 <meta property="og:locale" content="en_AU">
 <meta property="article:published_time" content="0001-01-01"/>
 <meta property="article:modified_time" content="0001-01-01"/>
@@ -25,25 +25,25 @@
 <meta name="twitter:creator" content="Richard Lehane">
 <meta name="twitter:description" content="">
 <meta name="twitter:image:src" content="">
-<meta name="twitter:domain" content="http://localhost:8080"><link rel="canonical" href="http://localhost:8080/post/charts/">
-<link rel="icon" type="image/png" href="http://localhost:8080/img/richard.png">
-<link rel="stylesheet" href="http://localhost:8080/css/maia.css">
+<meta name="twitter:domain" content="http://localhost:8081"><link rel="canonical" href="http://localhost:8081/post/charts/">
+<link rel="icon" type="image/png" href="http://localhost:8081/img/richard.png">
+<link rel="stylesheet" href="http://localhost:8081/css/maia.css">
 </head>
 <body>
 <header>
-  <div class="nav-l">
-    <a href="http://localhost:8080/" class="logo-img"><img src="img/richard.png" alt="Logo"></a>
-    <a class="logo" href="http://localhost:8080/"><p class="logo-text">IT for archivists</p></a>
+  <div class="logo">
+    <a href="http://localhost:8081/"><img src="img/richard.png" alt="Logo"></a>
+    <a href="http://localhost:8081/"><p>IT for archivists</p></a>
   </div>
-  <div class="nav-r">
+  <div class="nav">
     <ul><li>
-      <a href="http://localhost:8080/about">About</a>
-      <ul><li><a href="http://localhost:8080/about/privacy/">Privacy</a></li></ul>
+      <a href="http://localhost:8081/about">About</a>
+      <ul><li><a href="http://localhost:8081/about/privacy/">Privacy</a></li></ul>
       </li><li>
       <a href="#">Contact</a>
       <ul><li><a href="https://twitter.com/richardlehane">twitter</a></li><li><a href="https://github.com/richardlehane">github</a></li><li><a href="mailto:richard@itforarchivists.com">email</a></li></ul>
       </li>
-      <li><a href="http://localhost:8080/siegfried"><img alt="siegfried" src="http://localhost:8080/img/sf-button.png"></a></li>
+      <li><a href="http://localhost:8081/siegfried"><img alt="siegfried" src="http://localhost:8081/img/sf-button.png"></a></li>
       </ul>
   </div>
   <div class="menu">
@@ -52,21 +52,19 @@
         <a href="categories/siegfried">siegfried</a>
       </li></ul></div>
 </header>
-
-
 <main>
 <article>
-  <h1><a href="http://localhost:8080/post/charts/">Charts</a></h1>
+  <h1><a href="http://localhost:8081/post/charts/">Charts</a></h1>
   <p class="article-date">Thursday, 14 September, 2017</p>
-<p>In my recent updates to this site I&rsquo;ve added a new &ldquo;Chart your results&rdquo; tool on the <a href="http://localhost:8080/siegfried">siegfried</a> page (in the right hand panel under &ldquo;Try Siegfried&rdquo;). This tool produces single page reports like this: <a href="https://www.itforarchivists.com/siegfried/results/ea1zaj">/siegfried/results/ea1zaj</a>.</p>
+<p>In my recent updates to this site I&rsquo;ve added a new &ldquo;Chart your results&rdquo; tool on the <a href="http://localhost:8081/siegfried">siegfried</a> page (in the right hand panel under &ldquo;Try Siegfried&rdquo;). This tool produces single page reports like this: <a href="https://www.itforarchivists.com/siegfried/results/ea1zaj">/siegfried/results/ea1zaj</a>.</p>
 <p>Before covering this tool in detail let&rsquo;s recap some of the existing ways you can already analyse your results.</p>
 <h2 id="other-ways-of-charting-and-analysing-your-results">Other ways of charting and analysing your results</h2>
 <h3 id="command-line-charting">Command-line charting</h3>
 <p>I appreciate that not everyone is a command-line junkie, but the way I inspect results is just to use sf&rsquo;s -log flag. If you do <code>sf -log chart</code> (or <code>-log c</code>) you can make simple format charts:</p>
-<p><img src="http://localhost:8080/img/sf-chart.png" alt="sf chart"></p>
+<p><img src="http://localhost:8081/img/sf-chart.png" alt="sf chart"></p>
 <p><em>(In these examples I add &ldquo;o&rdquo; to my log options to direct logging output to STDOUT&hellip; otherwise you&rsquo;ll see it in STDERR).</em></p>
 <p>A chart can be a starting point for deeper analysis e.g. inspecting lists of files of a particular format:</p>
-<p><img src="http://localhost:8080/img/sf-fmt61.png" alt="sf log fmt/61"></p>
+<p><img src="http://localhost:8081/img/sf-fmt61.png" alt="sf log fmt/61"></p>
 <p>You can also inspect lists of unknowns with <code>-log u</code> and warnings with <code>-log w</code>.</p>
 <p>Rather than re-run the format identification job with every step, you can pair these commands with the <code>-replay</code> flag to run them against a pre-generated results file instead. I cover this workflow in detail in the <a href="https://github.com/richardlehane/siegfried/wiki/Identifying-file-formats#replaying-a-scan-from-results-files">siegfried wiki</a>.</p>
 <h3 id="standalone-tools">Standalone tools</h3>
@@ -74,7 +72,7 @@
 <p>These tools both do a lot more than simple chart generation. E.g. DROID-SF can create a &ldquo;Rogues Gallery&rdquo; of all your problematic files. Brunnhilde has a GUI, does virus scanning, and can also run bulk_extractor against your files. I&rsquo;d definitely encourage you to check both of these tools out!</p>
 <h2 id="chart-your-results">Chart your results</h2>
 <p>If your needs are a little bit simpler, and you just want a chart, then my new &ldquo;Chart your results&rdquo; tool might be a good fit.</p>
-<p>To try this tool, go to the <a href="http://localhost:8080/siegfried">siegfried</a> page and upload a results file in the &ldquo;Chart my results&rdquo; form in the right-hand panel.</p>
+<p>To try this tool, go to the <a href="http://localhost:8081/siegfried">siegfried</a> page and upload a results file in the &ldquo;Chart my results&rdquo; form in the right-hand panel.</p>
 <p>Let&rsquo;s run through some of its features:</p>
 <ul>
 <li>it can handle siegfried, DROID and fido results files</li>
@@ -84,7 +82,7 @@
 <li>you can drill-down on all of those features and formats to generate lists that you can export as CSV or to your clipboard</li>
 <li>supports multiple identifiers (a siegfried feature): each identifier is a separate single page report.</li>
 </ul>
-<p>Probably the distinguishing feature of this tool is that you can easily share your analysis with colleagues, or with the digital preservation community broadly, by &ldquo;publishing&rdquo; your results. This gives you a permanent URL (like <a href="https://www.itforarchivists.com/siegfried/results/ea1zaj">https://www.itforarchivists.com/siegfried/results/ea1zaj</a>) and stores your results on the site. Prior to publication you can opt to &ldquo;redact&rdquo; your filenames if they contain sensitive information. I&rsquo;ve added a <a href="http://localhost:8080/about/privacy">privacy</a> section to this site to address some of the privacy questions raised by this feature in a little more detail.</p>
+<p>Probably the distinguishing feature of this tool is that you can easily share your analysis with colleagues, or with the digital preservation community broadly, by &ldquo;publishing&rdquo; your results. This gives you a permanent URL (like <a href="https://www.itforarchivists.com/siegfried/results/ea1zaj">https://www.itforarchivists.com/siegfried/results/ea1zaj</a>) and stores your results on the site. Prior to publication you can opt to &ldquo;redact&rdquo; your filenames if they contain sensitive information. I&rsquo;ve added a <a href="http://localhost:8081/about/privacy">privacy</a> section to this site to address some of the privacy questions raised by this feature in a little more detail.</p>
 <p>That&rsquo;s it, please use it, and if you like it tweet your results!</p>
 
 </article>

@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>siegfried on IT for archivists</title>
-    <link>http://localhost:8080/categories/siegfried/</link>
+    <link>http://localhost:8081/categories/siegfried/</link>
     <description>Recent content in siegfried on IT for archivists</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Feb 2022 12:00:00 +0100</lastBuildDate><atom:link href="http://localhost:8080/categories/siegfried/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Feb 2022 12:00:00 +0100</lastBuildDate><atom:link href="http://localhost:8081/categories/siegfried/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>siegfried 1.9.2 released</title>
-      <link>http://localhost:8080/post/sf192/</link>
+      <link>http://localhost:8081/post/sf192/</link>
       <pubDate>Mon, 07 Feb 2022 12:00:00 +0100</pubDate>
       
-      <guid>http://localhost:8080/post/sf192/</guid>
+      <guid>http://localhost:8081/post/sf192/</guid>
       <description>Version 1.9.0 of siegfried is now available. Get it here.
 CHANGELOG v1.9.2 (2022-02-07)  Wikidata definition file specification has been updated and now includes endpoint (users will need to harvest Wikidata again) Custom Wikibase endpoint can now be specified for harvesting when paired with a custom SPARQL query and property mappings Wikidata identifier includes permalinks in results Wikidata revision history visible using roy inspect roy inspect returns format ID with name update PRONOM to v100 update LOC signatures to 2022-02-01 update tika-mimetypes signatures to v2.</description>
     </item>
     
     <item>
       <title>siegfried 1.9.0 released</title>
-      <link>http://localhost:8080/post/sf190/</link>
+      <link>http://localhost:8081/post/sf190/</link>
       <pubDate>Tue, 22 Sep 2020 12:00:00 +0100</pubDate>
       
-      <guid>http://localhost:8080/post/sf190/</guid>
+      <guid>http://localhost:8081/post/sf190/</guid>
       <description>Version 1.9.0 of siegfried is now available. Get it here.
 This release includes a new Wikidata identifier, implemented by Ross Spencer.
 CHANGELOG v1.9.0 (2020-09-22)  a new Wikidata identifier, harvesting information from the Wikidata Query Service. Implemented by Ross Spencer. select which archive types (zip, tar, gzip, warc, or arc) are unpacked using the -zs flag (sf -zs tar,zip). Implemented by Ross Spencer. update LOC signatures to 2020-09-21 update tika-mimetypes signatures to v1.</description>
@@ -30,10 +30,10 @@ CHANGELOG v1.9.0 (2020-09-22)  a new Wikidata identifier, harvesting information
     
     <item>
       <title>siegfried 1.8.0 released</title>
-      <link>http://localhost:8080/post/sf180/</link>
+      <link>http://localhost:8081/post/sf180/</link>
       <pubDate>Wed, 22 Jan 2020 12:00:00 +0100</pubDate>
       
-      <guid>http://localhost:8080/post/sf180/</guid>
+      <guid>http://localhost:8081/post/sf180/</guid>
       <description>Version 1.8.0 of siegfried is now available. Get it here.
 This release includes changes in the byte matcher to improve performance, especially when scanning MP3s (fmt/134).
 CHANGELOG v1.8.0 (2020-01-22)  utc flag returns file modified dates in UTC e.g. sf -utc FILE | DIR. Requested by Dragan Espenschied new cost and repetition flags to control segmentation when building signatures update PRONOM to v96 update LOC signatures to 2019-12-18 update tika-mimetypes signatures to v1.</description>
@@ -41,10 +41,10 @@ CHANGELOG v1.8.0 (2020-01-22)  utc flag returns file modified dates in UTC e.g. 
     
     <item>
       <title>siegfried 1.7.13 released</title>
-      <link>http://localhost:8080/post/sf1713/</link>
+      <link>http://localhost:8081/post/sf1713/</link>
       <pubDate>Sun, 18 Aug 2019 12:00:00 +0100</pubDate>
       
-      <guid>http://localhost:8080/post/sf1713/</guid>
+      <guid>http://localhost:8081/post/sf1713/</guid>
       <description>Version 1.7.13 of siegfried is now available. Get it here.
 This minor release fixes a in the namematcher that caused filenames containing &amp;ldquo;?&amp;rdquo; to be treated as URLs. It also adds the ability to scan directories using the sf -f command.
 Updates to the LOC FDD and tika-mimetypes signature files.
@@ -54,10 +54,10 @@ Change Log v1.7.13 (2019-08-18) Added:
     
     <item>
       <title>siegfried 1.7.12 released</title>
-      <link>http://localhost:8080/post/sf1712/</link>
+      <link>http://localhost:8081/post/sf1712/</link>
       <pubDate>Sat, 15 Jun 2019 12:00:00 +0100</pubDate>
       
-      <guid>http://localhost:8080/post/sf1712/</guid>
+      <guid>http://localhost:8081/post/sf1712/</guid>
       <description>Version 1.7.12 of siegfried is now available. Get it here.
 This minor release fixes a bug that caused .docx files with .doc extensions to panic and a bug with mime-info signatures.
 Updates to the PRONOM (v95), LOC FDD and tika-mimetypes signature files.
@@ -68,10 +68,10 @@ Change Log v1.7.12 (2019-06-15) Changed:
     
     <item>
       <title>siegfried 1.7.11 released</title>
-      <link>http://localhost:8080/post/sf1711/</link>
+      <link>http://localhost:8081/post/sf1711/</link>
       <pubDate>Sat, 16 Feb 2019 12:00:00 +0100</pubDate>
       
-      <guid>http://localhost:8080/post/sf1711/</guid>
+      <guid>http://localhost:8081/post/sf1711/</guid>
       <description>Version 1.7.11 of siegfried is now available. Get it here.
 This minor release fixes the debian package and allows the container matcher to identify directory names (for SIARD matching). Updates to the LOC FDD and tika-mimetypes signature files.
 Change Log v1.7.11 (2019-02-16) Changed:
@@ -81,10 +81,10 @@ Change Log v1.7.11 (2019-02-16) Changed:
     
     <item>
       <title>siegfried 1.7.10 released</title>
-      <link>http://localhost:8080/post/sf1710/</link>
+      <link>http://localhost:8081/post/sf1710/</link>
       <pubDate>Wed, 19 Sep 2018 10:00:00 +1000</pubDate>
       
-      <guid>http://localhost:8080/post/sf1710/</guid>
+      <guid>http://localhost:8081/post/sf1710/</guid>
       <description>Version 1.7.10 of siegfried is now available. Get it here.
 This minor release fixes a regression in the LOC identifier introduced in 1.7.9 and updates to PRONOM v94.
 Changelog v1.7.10 (2018-09-19) Added:
@@ -95,10 +95,10 @@ Changelog v1.7.10 (2018-09-19) Added:
     
     <item>
       <title>siegfried 1.7.9 released</title>
-      <link>http://localhost:8080/post/sf179/</link>
+      <link>http://localhost:8081/post/sf179/</link>
       <pubDate>Thu, 30 Aug 2018 12:00:00 +1000</pubDate>
       
-      <guid>http://localhost:8080/post/sf179/</guid>
+      <guid>http://localhost:8081/post/sf179/</guid>
       <description>Version 1.7.9 of siegfried is now available. Get it here. According to the develop benchmarks, this release is slightly more accurate than v1.7.8, with only a marginal impact on performance.
 The highlights of this release are a new system for saving configurations for the sf tool, changes to the matching algorithm to improve accuracy, and simplifications to the basis field.
 Save and load frequently used configurations The new -setconf flag allows you to save frequently used configurations for the sf tool.</description>
@@ -106,19 +106,19 @@ Save and load frequently used configurations The new -setconf flag allows you to
     
     <item>
       <title>Continuous benchmarking</title>
-      <link>http://localhost:8080/post/benchmarks/</link>
+      <link>http://localhost:8081/post/benchmarks/</link>
       <pubDate>Mon, 30 Jul 2018 20:00:00 +1000</pubDate>
       
-      <guid>http://localhost:8080/post/benchmarks/</guid>
+      <guid>http://localhost:8081/post/benchmarks/</guid>
       <description>The next siegfried release will be out shortly. I have been busy making changes to address two thorny issues: verbose basis and missing results. I have some fixes in place but, when doing large scale testing against big sets of files, I noticed some performance and quality regressions. You can see these regressions on the new develop benchmarks page. There&amp;rsquo;s also a new benchmarks page to measure siegfried against comparable file format identification tools (at this stage just DROID).</description>
     </item>
     
     <item>
       <title>siegfried 1.7.8 released</title>
-      <link>http://localhost:8080/post/sf178/</link>
+      <link>http://localhost:8081/post/sf178/</link>
       <pubDate>Sat, 02 Dec 2017 16:00:00 +1000</pubDate>
       
-      <guid>http://localhost:8080/post/sf178/</guid>
+      <guid>http://localhost:8081/post/sf178/</guid>
       <description>Version 1.7.8 of siegfried is now available. Get it here.
 This minor release updates the PRONOM signatures to v93 and the LOC signatures to 2017-09-28.
 As the only changes in this release are to signature files, you can just use sf -update if you&amp;rsquo;ve installed siegfried manually. This minor release is just for the convenience of users who have installed sf with package managers (i.e. debian or homebrew).</description>
@@ -126,10 +126,10 @@ As the only changes in this release are to signature files, you can just use sf 
     
     <item>
       <title>siegfried 1.7.7 released</title>
-      <link>http://localhost:8080/post/sf177/</link>
+      <link>http://localhost:8081/post/sf177/</link>
       <pubDate>Thu, 30 Nov 2017 16:15:00 +1000</pubDate>
       
-      <guid>http://localhost:8080/post/sf177/</guid>
+      <guid>http://localhost:8081/post/sf177/</guid>
       <description>Version 1.7.7 of siegfried is now available. Happy #IDPD17!
 Get it here.
 This minor release fixes bugs in the roy inspect command and in sf&amp;rsquo;s handling of large container files.
@@ -138,10 +138,10 @@ A new sets file is included in this release, &amp;lsquo;pronom-extensions.json&a
     
     <item>
       <title>siegfried 1.7.6 released</title>
-      <link>http://localhost:8080/post/sf176/</link>
+      <link>http://localhost:8081/post/sf176/</link>
       <pubDate>Wed, 04 Oct 2017 20:12:15 +1000</pubDate>
       
-      <guid>http://localhost:8080/post/sf176/</guid>
+      <guid>http://localhost:8081/post/sf176/</guid>
       <description>Version 1.7.6 of siegfried is now available. Get it here.
 This is a minor release that incorporates the latest PRONOM update (v92), introduces a &amp;ldquo;continue on error&amp;rdquo; flag (sf -coe) to force sf to keep going when it hits fatal file errors in directory walks, and restricts file scanning to regular files (in previous versions symlinks, devices, sockets etc. were scanned which caused fatal errors for some users).
 Thanks to Henk Vanstappen for the bug report that prompted this release.</description>
@@ -149,10 +149,10 @@ Thanks to Henk Vanstappen for the bug report that prompted this release.</descri
     
     <item>
       <title>Charts</title>
-      <link>http://localhost:8080/post/charts/</link>
+      <link>http://localhost:8081/post/charts/</link>
       <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:8080/post/charts/</guid>
+      <guid>http://localhost:8081/post/charts/</guid>
       <description>In my recent updates to this site I&amp;rsquo;ve added a new &amp;ldquo;Chart your results&amp;rdquo; tool on the siegfried page (in the right hand panel under &amp;ldquo;Try Siegfried&amp;rdquo;). This tool produces single page reports like this: /siegfried/results/ea1zaj.
 Before covering this tool in detail let&amp;rsquo;s recap some of the existing ways you can already analyse your results.
 Other ways of charting and analysing your results Command-line charting I appreciate that not everyone is a command-line junkie, but the way I inspect results is just to use sf&amp;rsquo;s -log flag.</description>
@@ -160,10 +160,10 @@ Other ways of charting and analysing your results Command-line charting I apprec
     
     <item>
       <title>siegfried 1.7.5 released</title>
-      <link>http://localhost:8080/post/sf175/</link>
+      <link>http://localhost:8081/post/sf175/</link>
       <pubDate>Sun, 13 Aug 2017 20:12:15 +1000</pubDate>
       
-      <guid>http://localhost:8080/post/sf175/</guid>
+      <guid>http://localhost:8081/post/sf175/</guid>
       <description>Version 1.7.5 of siegfried is now available. Get it here.
 The headline feature of this release is new functionality for the sf -update command requested by Ross Spencer. You can now use the -update flag to download or update non-PRONOM signatures with a choice of LOC FDD, two flavours of MIMEInfo (Apache Tika&amp;rsquo;s MIMEInfo and freedesktop.org), and archivematica (latest PRONOM + archivematica extensions) signatures. There are two combo options as well: PRONOM/Tika/LOC and the Ross Spencer &amp;ldquo;deluxe&amp;rdquo; (PRONOM/Tika/freedesktop.</description>
     </item>

@@ -73,7 +73,7 @@ func main() {
 	// Set port and, if running locally, load static routes (defined in app.yml)
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "8081"
 		log.Printf("Defaulting to port %s", port)
 		if os.Getenv("GAE_APPLICATION") == "" {
 			cmd := exec.Command("hugo", "-b", "http://localhost:"+port, "-D")
@@ -142,7 +142,8 @@ func handleUpdate(w http.ResponseWriter, r *http.Request) {
 
 func handleSets(w http.ResponseWriter, r *http.Request) error {
 	if r.Method == "POST" {
-		if err := r.ParseForm(); err != nil {
+		err := r.ParseMultipartForm(4096)
+		if err != nil {
 			return errors.New("invalid sets form")
 		}
 		vals, ok := r.Form["set"]

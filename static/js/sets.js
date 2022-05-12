@@ -1,4 +1,3 @@
-/*
 var sets;
 
 var textFn = function(){
@@ -12,7 +11,7 @@ var textFn = function(){
     		}
     		text += sets[i];
 		}
-    	$( "#results" ).html(text);
+    	document.getElementById("results").value = text;
 };
 
 var textnlFn = function(){
@@ -26,7 +25,7 @@ var textnlFn = function(){
             }
             text += sets[i];
         }
-        $( "#results" ).html(text);
+        document.getElementById("results").value = text;
 };
 
 var goFn = function(){
@@ -41,7 +40,7 @@ var goFn = function(){
     		text += '"' + sets[i] + '"';
 		}
 		text += ":\n        return true\n    }\n    return false\n}";
-    	$( "#results" ).html(text);
+    	document.getElementById("results").value = text;
 };
 
 var pyFn = function(){
@@ -61,26 +60,26 @@ var pyFn = function(){
     		line += "'" + sets[i] + "'";
 		}
 		text += line +  "]\n";
-    	$( "#results" ).html(text);
+    	document.getElementById("results").value = text;
 };
 
 var fn = textFn;
 
-$("#sets-form").submit(function(event) {
-    	event.preventDefault();
-    	sets = $(this).serializeArray();
-    	$.ajax({
-		url: "siegfried/sets", 
-		method: "POST",
-		dataType: "json",
-		traditional: true,
-		data: sets,
-  		success: function( data ) {
-  			sets = data;
-    		fn();
- 		}
-		});
-});
+document.getElementById("sets-form").addEventListener("submit", (e) => {
+	e.preventDefault();
+	const form = new FormData(document.getElementById("sets-form"));
+	fetch("siegfried/sets", {
+		method: 'POST',
+		body: form
+	})
+	.then(response => {
+		return response.json()
+	})
+	.then(val => {
+		sets = val;
+		fn();
+	})
+})
 
 function changeMode(m) {
    	if(m.value == "text") {
@@ -96,15 +95,17 @@ function changeMode(m) {
 };
 
 function add() {
-    $("#addlist").filter(":last").clone().show().removeAttr( "id" ).prependTo($("#sets-form"));
+    let newinput = document.getElementById("addlist").cloneNode(true);
+    newinput.removeAttribute("id");
+	newinput.removeAttribute("style");
+	document.getElementById("sets-form").prepend(newinput);
 }
 
 function del(el) {
-    $(el).parent().remove();
+    el.parentElement.remove();
 }
 
 function cp() {
-  	$("#results").select();
-	document.execCommand("copy");
+	let text = document.getElementById("results").value;
+	navigator.clipboard.writeText(text);
 }
-*/

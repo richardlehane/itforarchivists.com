@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>siegfried on IT for archivists</title>
-    <link>http://localhost:8080/siegfried/</link>
+    <link>http://localhost:8081/siegfried/</link>
     <description>Recent content in siegfried on IT for archivists</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Jul 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:8080/siegfried/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Jul 2017 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:8081/siegfried/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

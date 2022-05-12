@@ -7,57 +7,100 @@
   box-sizing: border-box;
 }
 
+/* general */
+
+html {
+  font-size: 16px;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  background-color: white;
+}
+
+/* header */
+
 header {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
 
-.nav-l {
+/* header - nav */
+
+@media screen and (max-width: 575px) {
+  .logo {
+    grid-column: span 12;
+  }
+  .nav {
+    grid-column: span 12;
+  }
+}
+
+.logo {
   grid-column: span 6;
 }
 
-.nav-r {
+header a {
+  text-decoration: none;
+}
+
+header a:link, a:visited {
+  color: #777;
+}
+
+.logo img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 60px;
+  vertical-align: middle;
+}
+
+.logo p {
+  font-size: 2em;
+  margin: 0;
+  margin-left: 60px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.nav {
   grid-column: span 6;
   text-align: right;
 }
 
-div.nav-r>ul {
+div.nav>ul {
   float: right;
   margin-right: 10px;
 }
 
-.nav-r li {
+.nav li {
   float: left;
   list-style-type: none;
   position: relative;
   background-color: white;
 }
 
-.nav-r li a {
+.nav li a {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 90px;
   height: 45px;
-  text-decoration: none;
 }
 
-.nav-r li a:link, a:visited {
- color: #777;
-}
-
-.nav-r li a:hover {
+.nav li a:hover {
   background-color: rgb(230, 230, 230);
 }
 
-.nav-r li ul {
+.nav li ul {
   display: none;
   position: absolute;
 }
 
-.nav-r li:hover ul {
+.nav li:hover ul {
   display: block;
 }
+
+/* header - menu */
 
 .menu {
   grid-column: span 12;
@@ -98,23 +141,72 @@ div.nav-r>ul {
 	font-family: 'Gochi Hand', serif;
 }
 
-@media screen and (max-width: 575px) {
-  .nav-l {
-    grid-column: span 12;
-  }
-  .nav-r {
-    grid-column: span 12;
-  }
+/* main */
+
+main {
+  line-height: 1.6em;
+  margin: 0 auto;
+  padding: 1em;
 }
 
-html {
-    font-size: 16px;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
-    background-color: white;
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: black;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+h1 a {
+  text-decoration: none;
+}
+
+h1 a:link, a:visited {
+  color: black;
+}
+
+h2 {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 15px;
+}
+
+h2 a {
+  text-decoration: none;
+}
+
+h2 a:link, a:visited {
+  color: black;
 }
 
 h3 {
-    text-transform: uppercase;
+  font-family: Cantarell, Helvetica, sans-serif;
+  text-transform: uppercase;
+  margin-top: 8px;
+  margin-bottom: 15px;
+}
+
+h3 a {
+  text-decoration: none;
+}
+
+h3 a:link, a:visited {
+  color: black;
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
+main ul {
+  padding-left: 2.5em;
+}
+
+article {
+  padding: 1em;
 }
 
 code {
@@ -138,11 +230,27 @@ footer {
     text-align: center;
 }
 
-.l-box {
+.cols {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+@media screen and (max-width: 575px) {
+  .l-col {
+    grid-column: span 12;
+  }
+  .r-col {
+    grid-column: span 12;
+  }
+}
+
+.l-col {
+    grid-column: span 8;
     padding: 0 1em 0 0;
 }
 
-.r-box {
+.r-col {
+    grid-column: span 4;
     padding: 0 0 0 1em;
 }
 
@@ -157,7 +265,6 @@ footer {
 }
 
 .topcorner {
-    position: absolute;
     top: 2;
     left: 2;
     font-size: 0.75em;
@@ -165,31 +272,6 @@ footer {
 
 .centre {
     text-align: center;
-}
-
-.logo-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 60px;
-    width: 60px;
-    vertical-align: middle;
-}
-
-.logo {
-    text-decoration: none;
-}
-
-.logo-text {
-    font-size: 2em;
-    margin: 0;
-    margin-left: 60px;
-    padding-top: 10px;
-    padding-bottom: 5px;
-}
-
-.nav {
-    text-align: right;
 }
 
 .article-title {
@@ -222,4 +304,39 @@ footer {
 
 .signature a {
     text-decoration: none;
+}
+
+/* Table style */
+
+table {
+  border-collapse: collapse;
+}
+
+caption {
+	font-weight: bold;
+	font-size: 1.25em;
+	text-align: left;
+	color: #333;
+	margin-bottom: 16px;
+}
+
+thead {
+  background-color: #333;
+  color: white;
+  font-size: 0.875rem;
+	text-transform: uppercase;
+	letter-spacing: 2%;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #eee;
 }
