@@ -42,7 +42,7 @@ var rTitleTempl = `{{ define "title" }}<title>{{ if len .Title | eq 0  }}Siegfri
 
 // to refresh these: go to https://datatables.net/download/index, choose Datatables styling, jquery3, Datatables, Buttons-> HTML5 export, CDN -> Minify + Concatentate
 var rChartCSSTempl = `{{ define "incCSS" -}} 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/b-1.5.2/b-html5-1.5.2/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.css"/>
 <style>
 .chart {
 	height: 320px;
@@ -52,7 +52,7 @@ var rChartCSSTempl = `{{ define "incCSS" -}}
 
 var rChartJSTempl = `{{ define "incJS" -}} 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/b-1.5.2/b-html5-1.5.2/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.js"></script>
 <script type="text/javascript">var RESULTS = {{ .JSON }};</script>
 <script src="/js/results.js"></script>
 {{- end }} `
@@ -71,9 +71,10 @@ var rShareTempl = `{{ define "share" -}}
 </div>
 {{- end }} `
 
-var rContent = `{{ define "content" -}} 
+var rContent = `{{ define "content" -}}
+<div class="chart-container"> 
 {{ block "share" . -}}
-	<div class="l-box">
+	<div class="chart-box">
 	<h1>Share results</h1>
 		<form id="share-form">
 		  <fieldset>
@@ -89,13 +90,13 @@ var rContent = `{{ define "content" -}}
 		</form>
 	</div>
 {{- end }}
-<div class="l-box">
+<div class="chart-box">
 <h1>Identifiers</h1>
 {{- range $idx, $el := .Identifiers -}}
 		<p><a href="#" onclick="load({{ $idx }}); return false;"><strong>{{ $el.Name }}</strong></a><br />{{ $el.Details }}</p>
 {{- end -}}
 </div>
-<div class="l-box">
+<div class="chart-box">
 <h1>Details</h1>
 <p>
 {{- range $idx, $el := .Metadata }}
@@ -116,12 +117,13 @@ var rContent = `{{ define "content" -}}
     <a href="#" id="reset">Reset (show all)</a>
   </p>
 </div>
-<div class="l-box" id="charts">
+<div class="chart-box" id="charts">
   <div id="fmtchart" class="chart"></div>
   <div id="mimechart" class="chart"></div>
   <div class="centre" role="group">
     <button onclick="reveal('fmtchart'); return false;">Format IDs</button>
     <button onclick="reveal('mimechart'); return false;">MIME-types</button>
+  </div>
 </div>
 </div>
 <div><table id="table" class="display" width="100%"></table></div>
@@ -132,11 +134,11 @@ var rContent = `{{ define "content" -}}
 var lTitleTempl = `{{ define "title" }}<title>{{ if len .Title | eq 0  }}Siegfried logs{{ else }}{{ .Title }}{{ end }}</title>{{ end }}`
 
 var lCSSTempl = `{{ define "incCSS" -}} 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.css"/>
 {{- end -}}
 `
 var lJSTempl = `{{ define "incJS" -}} 
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.js"></script>
 {{- end -}}
 `
 

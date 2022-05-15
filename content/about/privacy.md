@@ -1,14 +1,13 @@
 +++
 title = "Privacy"
 description = "how the itforarchivists.com site handles your data"
-date = "2017-09-13"
+date = "2022-05-15"
 +++
 
 The aim of this page is to describe how your private information is used by this site. If I've missed anything glaring, or you have any questions, or you've inadvertently shared information on this site that you'd like taken down, please [contact me](mailto:richard@itforarchivists.com).
 
 ## General
 
-  - I use Google Analytics to monitor site usage
   - the site is completely HTTPS - thanks [Let's Encrypt](https://www.letsencrypt.org)!
   - the site is hosted by [Google appengine](https://cloud.google.com/appengine) &, when I refer to server-side processing below, that's what I mean
   - the site's code is all open and published on [Github](https://www.github.com/richardlehane/itforarchivists.com).

@@ -35,7 +35,24 @@ var (
 )
 
 func main() {
-	// setup
+	// Set port and, if running locally, load static routes (defined in app.yml)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8081"
+		log.Printf("Defaulting to port %s", port)
+		if os.Getenv("GAE_APPLICATION") == "" {
+			cmd := exec.Command("hugo", "-b", "http://localhost:"+port, "-D")
+			log.Println("Re-building static content")
+			err := cmd.Run()
+			if err != nil {
+				log.Printf("Hugo reported an error: %v", err)
+			}
+			log.Println("Loading static routes")
+			http.Handle("/", http.FileServer(http.Dir("public")))
+		}
+	}
+
+	// load latest update info
 	updateJson = make(map[string]string)
 	config.SetHome("public") // necessary to find sets directory
 	// setup global sf
@@ -69,23 +86,6 @@ func main() {
 
 	// cache
 	globalCache = newCache(time.Hour * 6)
-
-	// Set port and, if running locally, load static routes (defined in app.yml)
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8081"
-		log.Printf("Defaulting to port %s", port)
-		if os.Getenv("GAE_APPLICATION") == "" {
-			cmd := exec.Command("hugo", "-b", "http://localhost:"+port, "-D")
-			log.Println("Re-building static content")
-			err := cmd.Run()
-			if err != nil {
-				log.Printf("Hugo reported an error: %v", err)
-			}
-			log.Println("Loading static routes")
-			http.Handle("/", http.FileServer(http.Dir("public")))
-		}
-	}
 
 	// handle application routes
 	http.HandleFunc("/siegfried/identify", hdlErr(handleIdentify))

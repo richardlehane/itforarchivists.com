@@ -1,4 +1,3 @@
-/*
 var PIES = {
   options: {
     pieHole: 0.2,
@@ -19,10 +18,10 @@ function reveal(target) {
   if (PIES.show === target) {
     return;
   }
+  document.getElementById(PIES.show).style.display = "none"
+  document.getElementById(target).style.display = "block"
   PIES.hide = PIES.show;
   PIES.show = target;
-  $(".chart").toggle();
-  $("#charts button").toggleClass("pure-button-active");
 }
 
 function chart(dv, location, searchNm) {
@@ -201,6 +200,5 @@ function initialize() {
 google.charts.load('current', {'packages':['corechart']});
 
 google.charts.setOnLoadCallback(function() {
-  $(initialize())
+  initialize()
 });
-*/
