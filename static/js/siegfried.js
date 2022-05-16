@@ -27,7 +27,6 @@ function drop_handler(ev) {
 }
 
 function upload(file) {
-  alert(file.name);
   let url = '/siegfried/identify';
   let line = "--------------------";
   let formData = new FormData();
