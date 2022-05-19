@@ -24,9 +24,9 @@ handlers:
   upload: public/latest/default.sig
   secure: always
 
-- url: /siegfried/latest/(loc|tika|freedesktop|pronom-tika-loc|deluxe)$
+- url: /siegfried/latest/(loc|tika|freedesktop|pronom-tika-loc|deluxe|wikidata)$
   static_files: public/latest/\1.sig
-  upload: public/latest/(loc|tika|freedesktop|pronom-tika-loc|deluxe).sig$
+  upload: public/latest/(loc|tika|freedesktop|pronom-tika-loc|deluxe|wikidata).sig$
   secure: always
 
 - url: /(.*\.(html|xml|png|jpg|gif|css|js))$
