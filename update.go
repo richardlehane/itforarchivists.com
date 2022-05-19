@@ -50,4 +50,8 @@ var current = map[string]*Update{
 		Version: config.Version(),
 		Path:    domain + "siegfried/latest/archivematica",
 	},
+	"wikidata": {
+		Version: config.Version(),
+		Path:    domain + "siegfried/latest/wikidata",
+	},
 }
