@@ -38,10 +38,6 @@ var current = map[string]*Update{
 		Version: config.Version(),
 		Path:    domain + "siegfried/latest/freedesktop",
 	},
-	"pronom-tika-loc": {
-		Version: config.Version(),
-		Path:    domain + "siegfried/latest/pronom-tika-loc",
-	},
 	"deluxe": {
 		Version: config.Version(),
 		Path:    domain + "siegfried/latest/deluxe",
