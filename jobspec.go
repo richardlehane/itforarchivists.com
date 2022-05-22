@@ -78,6 +78,16 @@ var developJobs = runner.Jobs{
 		Save:     "",
 	},
 	{
+		Detail:   "build deluxe dev signature pt5",
+		Cmd:      []string{"roydev", "add", "-wikidata", "-nopronom", "deluxedev.sig"},
+		RunTwice: false,
+		SendOut:  false,
+		Base64:   false,
+		LogKey:   "setup",
+		URL:      "",
+		Save:     "",
+	},
+	{
 		Detail:   "version - master",
 		Cmd:      []string{"sf", "-version"},
 		RunTwice: false,
