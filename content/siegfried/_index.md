@@ -94,5 +94,5 @@ To view the source code and see the license details, go to the project page on [
 
 ## Announcements
 
-Join the [Google Group](href="https://groups.google.com/d/forum/sf-roy") for updates, signature releases, and help.
+Join the [Google Group](https://groups.google.com/d/forum/sf-roy) for updates, signature releases, and help.
 
