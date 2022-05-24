@@ -20,11 +20,15 @@ handlers:
   secure: always
 
 - url: /siegfried/latest
+  http_headers: 
+    Access-Control-Allow-Origin: '*'
   static_files: public/latest/default.sig
   upload: public/latest/default.sig
   secure: always
 
 - url: /siegfried/latest/(loc|tika|freedesktop|deluxe|wikidata)$
+  http_headers: 
+    Access-Control-Allow-Origin: '*'
   static_files: public/latest/\1.sig
   upload: public/latest/(loc|tika|freedesktop|deluxe|wikidata).sig$
   secure: always

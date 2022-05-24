@@ -137,6 +137,7 @@ func handleUpdate(w http.ResponseWriter, r *http.Request) {
 		ret = updateJson["pronom"]
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	io.WriteString(w, ret)
 }
 
