@@ -56,7 +56,7 @@ func main() {
 	updateJson = make(map[string]string)
 	config.SetHome("public") // necessary to find sets directory
 	// setup global sf
-	sf, _ = siegfried.Load("public/latest/pronom-tika-loc.sig")
+	sf, _ = siegfried.Load("public/latest/deluxe.sig")
 	// setup global updateJson
 	for k := range current {
 		fname := k + ".sig"
