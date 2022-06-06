@@ -1,0 +1,16 @@
+# This workflow tests the debian repository for siegfried.
+#
+# Trigger it by a push.
+name: Debian
+on:
+  push:
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test debian repository
+        run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 20F802FE798E6857
+          sudo add-apt-repository "deb https://www.itforarchivists.com/ buster main"
+          sudo apt-get update && sudo apt-get install siegfried
+          sf -v
