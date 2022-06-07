@@ -10,6 +10,7 @@ jobs:
     steps:
       - name: Test debian repository with a new key method
         run: |
+          sudo apt-get install dirmngr
           sudo gpg --no-default-keyring --keyring /usr/share/keyrings/siegfried-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 20F802FE798E6857
           echo "deb [signed-by=/usr/share/keyrings/siegfried-archive-keyring.gpg] https://www.itforarchivists.com/ buster main" | sudo tee -a /etc/apt/sources.list.d/siegfried.list
           sudo apt-get update && sudo apt-get install siegfried
