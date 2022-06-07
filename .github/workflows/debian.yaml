@@ -1,16 +1,16 @@
 # This workflow tests the debian repository for siegfried.
 #
 # Trigger it by a push.
-name: Debian
+name: ReplaceAptKey
 on:
   push:
 jobs:
   bench:
     runs-on: ubuntu-latest
     steps:
-      - name: Test debian repository
+      - name: Test debian repository with a new key method
         run: |
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 20F802FE798E6857
-          sudo add-apt-repository "deb https://www.itforarchivists.com/ buster main"
+          curl -sL "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0x20F802FE798E6857" | gpg --dearmor | sudo tee /usr/share/keyrings/siegfried-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/siegfried-archive-keyring.gpg] https://www.itforarchivists.com/ buster main" | sudo tee -a /etc/apt/sources.list.d/siegfried.list
           sudo apt-get update && sudo apt-get install siegfried
           sf -v
