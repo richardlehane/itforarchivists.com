@@ -10,7 +10,7 @@ require (
 	github.com/googleapis/gax-go/v2 v2.4.0 // indirect
 	github.com/richardlehane/crock32 v1.0.1
 	github.com/richardlehane/runner v0.0.1
-	github.com/richardlehane/siegfried v1.9.3
+	github.com/richardlehane/siegfried v1.9.4
 	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2 // indirect
 	golang.org/x/xerrors v0.0.0-20220517211312-f3a8303e98df // indirect
 	google.golang.org/api v0.80.0 // indirect
