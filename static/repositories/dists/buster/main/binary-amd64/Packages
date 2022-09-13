@@ -1,15 +1,15 @@
 Package: siegfried
-Version: 1.9.4-1
+Version: 1.9.5-1
 Architecture: amd64
 Maintainer: Richard Lehane <richard.lehane@itforarchivists.com>
-Installed-Size: 68044
+Installed-Size: 68976
 Depends: libc6 (>= 2.2.5)
 Priority: optional
 Section: misc
-Filename: pool/main/s/siegfried/siegfried_1.9.4-1_amd64.deb
-Size: 19838096
-SHA256: 4068ec2ce60ac5461a37bfa2a7ac23724893b336ede049d19939cc5cb1774924
-SHA1: 525bb7899351d2b0217981b4ce6637b4cfc63dc3
-MD5sum: 2db96bef5d45b0aa25c5980ffe61a28e
+Filename: pool/main/s/siegfried/siegfried_1.9.5-1_amd64.deb
+Size: 20217452
+SHA256: 41b2dbdf974523a2f01dda12fe32f3cf634a2b3b9888fbd666d5d592e14a7efa
+SHA1: 589cea127fd5f5a305262634a4891c7a0bdd6d09
+MD5sum: 7d559fa66adc47faf0dc1cb3491091d5
 Description: signature-based file identification tool
 

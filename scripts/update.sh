@@ -1,6 +1,6 @@
 #!/bin/bash
-TARGET=$HOME/Dropbox/programming/sites/itforarchivists.com/static/
-ROY=$HOME/Dropbox/programming/go/github.com/richardlehane/siegfried/cmd/roy/data
+TARGET=$HOME/Remote/programming/sites/itforarchivists.com/static/
+ROY=$HOME/Remote/programming/go/github.com/richardlehane/siegfried/cmd/roy/data
 cd "$( dirname "${BASH_SOURCE[0]}")"
 # Refresh sets dir 
 rm -rf $TARGET/sets
