@@ -1,7 +1,7 @@
 #!/bin/bash
-TARGET=$HOME/Remote/programming/sites/itforarchivists.com/static/
-ROY=$HOME/Remote/programming/go/github.com/richardlehane/siegfried/cmd/roy/data
-cd "$( dirname "${BASH_SOURCE[0]}")"
+BASE=/mnt/c/Users/richa/Code
+TARGET=$BASE/sites/itforarchivists.com/static/
+ROY=$BASE/go/github.com/richardlehane/siegfried/cmd/roy/data
 # Refresh sets dir 
 rm -rf $TARGET/sets
 cp -rf $ROY/sets $TARGET
