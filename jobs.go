@@ -92,11 +92,15 @@ var benchDetails = map[string]struct {
 }{
 	"govdocs": {
 		"Govdocs (Selected)",
-		`A selection from the Govdocs1 corpus comprising 26,124 files (31.4GB). Represents typical office formats, including approx. 15,000 PDFs. Originally sourced from <a href="http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/">http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/</a>`,
+		`A selection from the Govdocs1 corpus comprising 26,124 files (31.4GB). Represents typical office formats, including approx. 15,000 PDFs. Originally sourced from <a href="http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/">http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/</a>.`,
+	},
+	"ipres2022": {
+		"iPRES 2022 Pantry",
+		`A data set created for the 2022 iPRES conference Digital Preservation Bake Off Challenge. Includes  includes a number of different content types, ranging from generic and not-so generic PDFs, still images and office documents, to complex objects such as AV, 3D and disk images, to web-based objects such as websites and social media. The ‘exotic ingredients’ section contains data with additional challenges, such as unidentifiable objects, corrupt objects or legacy file formats. Sourced from <a href="https://ipres2022.scot/call-for-contributions-2/data-set/">https://ipres2022.scot/call-for-contributions-2/data-set/</a>.`,
 	},
 	"ipres": {
 		"iPRES Systems Showcase",
-		`A corpus created for the 2014 iPRES conference comprising 2,206 files (5GB). Represents a range of formats, including AV and some uncommon types. Sourced from <a href="http://www.webarchive.org.uk/datasets/ipres.ds.1/">http://www.webarchive.org.uk/datasets/ipres.ds.1/</a>`,
+		`A corpus created for the 2014 iPRES conference comprising 2,206 files (5GB). Represents a range of formats, including AV and some uncommon types. Sourced from <a href="http://www.webarchive.org.uk/datasets/ipres.ds.1/">http://www.webarchive.org.uk/datasets/ipres.ds.1/</a>.`,
 	},
 	"pronom": {
 		"PRONOM files",
