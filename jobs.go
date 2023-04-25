@@ -96,7 +96,7 @@ var benchDetails = map[string]struct {
 	},
 	"ipres2022": {
 		"iPRES 2022 Pantry",
-		`A data set created for the 2022 iPRES conference Digital Preservation Bake Off Challenge. Includes  includes a number of different content types, ranging from generic and not-so generic PDFs, still images and office documents, to complex objects such as AV, 3D and disk images, to web-based objects such as websites and social media. The ‘exotic ingredients’ section contains data with additional challenges, such as unidentifiable objects, corrupt objects or legacy file formats. Sourced from <a href="https://ipres2022.scot/call-for-contributions-2/data-set/">https://ipres2022.scot/call-for-contributions-2/data-set/</a>.`,
+		`A data set created for the 2022 iPRES conference Digital Preservation Bake Off Challenge comprising 2,944 files (20.8GB). Includes  includes a number of different content types, ranging from generic and not-so generic PDFs, still images and office documents, to complex objects such as AV, 3D and disk images, to web-based objects such as websites and social media. The ‘exotic ingredients’ section contains data with additional challenges, such as unidentifiable objects, corrupt objects or legacy file formats. Sourced from <a href="https://ipres2022.scot/call-for-contributions-2/data-set/">https://ipres2022.scot/call-for-contributions-2/data-set/</a>.`,
 	},
 	"ipres": {
 		"iPRES Systems Showcase",
