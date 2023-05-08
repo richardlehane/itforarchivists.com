@@ -125,6 +125,24 @@ var machineDetails = map[string]struct {
 	Link        string
 	Description string
 }{
+	// cherry servers
+	"e3_1240v3": {
+		Link:        "https://www.cherryservers.com/pricing/dedicated-servers/e3_1240v3?b=37&r=1",
+		Description: "4 cores @ 3.4GHz, 16GB ECC DDR3 RAM, 2x SSD 250GB",
+	},
+	"e3_1240v5": {
+		Link:        "https://www.cherryservers.com/pricing/dedicated-servers/e5_1620v4?b=37&r=1",
+		Description: "4 cores @ 3.5GHz, 32GB ECC DDR4 RAM, 2x SSD 250GB",
+	},
+	"e3_1240lv5": {
+		Link:        "https://www.cherryservers.com/pricing/dedicated-servers/e3_1240v5?b=37&r=1",
+		Description: "4 cores @ 3.5GHz, 32GB ECC DDR4 RAM, 2x SSD 250GB",
+	},
+	"e5_1620v4": {
+		Link:        "https://www.cherryservers.com/pricing/dedicated-servers/e3_1240lv5?b=37&r=1",
+		Description: "4 cores @ 2.1GHz, 32GB ECC DDR4 RAM, 2x SSD 250G",
+	},
+	// equinix metal servers
 	"c3.small.x86": {
 		Link:        "https://metal.equinix.com/product/servers/c3-small/",
 		Description: "8 cores @ 3.40 GHz, 32GB RAM, 960 GB SSD",
@@ -144,7 +162,8 @@ var machineDetails = map[string]struct {
 	"s3.xlarge.x86": {
 		Link:        "https://metal.equinix.com/product/servers/s3-xlarge/",
 		Description: "24 cores @ 2.2 GHz, 192GB DDR4 RAM, 1.9 TB SSD",
-	}, // legacy definitions follow
+	},
+	// legacy servers
 	"c2.medium.x86": {
 		Link:        "https://www.packet.net/bare-metal/servers/c2-medium-epyc/",
 		Description: "24 Physical Cores @ 2.2 GHz; 64 GB ECC RAM; 960 GB SSD",
