@@ -147,7 +147,7 @@ var lContent = `{{ define "content" -}}
 <h1>{{ .Title }}</h1>
 <h2>{{ .Time }}</h2>
 <h3>Environment</h3>
-<p>These benchmarks were automatically <a href="https://github.com/richardlehane/runner">run</a> on a <a href="{{.Machine.Link}}">{{ .Machine.Label}}</a> machine that was <a href="https://github.com/richardlehane/provisioner">automatically provisioned</a>.</p>
+<p>These benchmarks were <a href="https://github.com/richardlehane/runner">run</a> on a <a href="{{.Machine.Link}}">{{ .Machine.Label}}</a> machine that was <a href="https://github.com/richardlehane/provisioner">automatically provisioned</a>.</p>
 <p>Specs for the <a href="{{.Machine.Link}}">{{ .Machine.Label}}</a>: {{.Machine.Description}}.</p>
 <p>You can inspect the commands that were run to generate these benchmarks <a href="/siegfried/jobs/{{ .Prefix }}">here</a>.</p>
 {{ if len .Versions | lt 0 -}}

@@ -51,20 +51,21 @@ It implements:
 ### Identify files and directories
 
 	sf file.ext // Identify a file
+	sf *.ext // Identify groups of files using a glob pattern
 	sf DIR // Identify all files in a directory and its subdirectories
-	sf -nr DIR // Identify all files in a directory but not subdirectories
+	sf -nr DIR // Identify all files in a directory but don't recurse into subdirectories
 
 ### Save output
 
-	sf file.ext or DIR > my_results.yaml // Use a redirect (">") to save your results
-	sf -csv file.ext or DIR > my_results.csv // Get identification results in CSV format (default is YAML)
-	sf -json file.ext or DIR > my_results.json // Get identification results in JSON format
+	sf PATH > my_results.yaml // Use a redirect (">") to save your results. PATH means file.ext, *.ext or DIR
+	sf -csv PATH > my_results.csv // Get identification results in CSV format (default is YAML)
+	sf -json PATH > my_results.json // Get identification results in JSON format
 
 ### Additional commands
 
-	sf -z file.ext or DIR // Scan within zip, tar, gzip, warc or arc files
-	sf -hash sha1 file.ext or DIR // Calculate md5, sha1, sha256, sha512, or crc hash
-	sf -multi 32 file.ext // Scan many files at once
+	sf -z PATH // Scan within zip, tar, gzip, warc or arc files
+	sf -hash sha1 PATH // Calculate md5, sha1, sha256, sha512, or crc hash
+	sf -multi 32 PATH // Scan many files at once
 	sf -setconf -multi 32 -hash md5 -csv // Save your preferred configuration
 	sf -setconf -csv -conf csv.conf // Save (or load) named configurations with -conf
 
