@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package main
@@ -5,8 +6,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
+	"os"
 	"sort"
 
 	"github.com/richardlehane/siegfried/pkg/config"
@@ -46,7 +47,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if err = ioutil.WriteFile("data/siegfried.json", byt, 0666); err != nil {
+	if err = os.WriteFile("data/siegfried.json", byt, 0666); err != nil {
 		log.Fatal(err)
 	}
 	log.Println("Generated new siegfried.json file in the data directory")

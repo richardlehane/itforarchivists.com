@@ -25,22 +25,43 @@ handlers:
   upload: public/sets/(.*\.json)$
   secure: always
 
-- url: /siegfried/(identify|results|sets|update|share|redact|jobs|logs|benchmarks|develop).*
+- url: /siegfried/(identify|results|sets|share|redact|jobs|logs|benchmarks|develop).*
   script: auto
   secure: always
 
-- url: /siegfried/latest
+- url: /siegfried/update$
   http_headers: 
     Access-Control-Allow-Origin: '*'
-  static_files: public/latest/default.sig
-  upload: public/latest/default.sig
+  static_files: public/update/update.json
+  upload: public/update/update.json$
   secure: always
 
-- url: /siegfried/latest/(loc|tika|freedesktop|deluxe|wikidata)$
+- url: /siegfried/update/(loc|tika|freedesktop|deluxe|wikidata|archivematica)$
   http_headers: 
     Access-Control-Allow-Origin: '*'
-  static_files: public/latest/\1.sig
-  upload: public/latest/(loc|tika|freedesktop|deluxe|wikidata).sig$
+  static_files: public/update/\1.json
+  upload: public/update/(loc|tika|freedesktop|deluxe|wikidata|archivematica).json$
+  secure: always
+
+- url: /siegfried/update/v2$
+  http_headers: 
+    Access-Control-Allow-Origin: '*'
+  static_files: public/update/v2/update.json
+  upload: public/update/v2/update.json$
+  secure: always
+
+- url: /siegfried/update/v2/(loc|tika|freedesktop|deluxe|wikidata|archivematica)$
+  http_headers: 
+    Access-Control-Allow-Origin: '*'
+  static_files: public/update/v2/\1.json
+  upload: public/update/v2/(loc|tika|freedesktop|deluxe|wikidata|archivematica).json$
+  secure: always
+
+- url: /siegfried/latest/(1_10|1_11)/(default|loc|tika|freedesktop|deluxe|wikidata|archivematica)$
+  http_headers: 
+    Access-Control-Allow-Origin: '*'
+  static_files: public/latest/\1/\2.sig
+  upload: public/latest/(1_10|1_11)/(default|loc|tika|freedesktop|deluxe|wikidata|archivematica).sig$
   secure: always
 
 - url: /(.*\.(html|xml|png|jpg|gif|css|js))$

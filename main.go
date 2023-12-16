@@ -7,7 +7,6 @@ import (
 	"encoding/json"
 	"errors"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -63,7 +62,7 @@ func main() {
 		if fname == "pronom.sig" {
 			fname = "default.sig"
 		}
-		f, err := ioutil.ReadFile("public/latest/" + fname)
+		f, err := os.ReadFile("public/latest/" + fname)
 		if err != nil {
 			panic(err)
 		}
