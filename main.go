@@ -22,7 +22,6 @@ import (
 )
 
 var (
-	updateJson      map[string]string
 	sf              *siegfried.Siegfried
 	resultsTemplate *template.Template
 	sharedTemplate  *template.Template
@@ -51,7 +50,7 @@ func main() {
 
 	config.SetHome("public") // necessary to find sets directory
 	// setup global sf
-	sf, _ = siegfried.Load("public/latest/deluxe.sig")
+	sf, _ = siegfried.Load("public/latest/1_10/deluxe.sig")
 
 	// templates
 	resultsTemplate = parseStrings("resultsT", nil, templ, rTitleTempl, rChartCSSTempl, rChartJSTempl, rContent)
@@ -63,8 +62,6 @@ func main() {
 
 	// handle application routes
 	http.HandleFunc("/siegfried/identify", hdlErr(handleIdentify))
-	http.HandleFunc("/siegfried/update", handleUpdate)
-	http.HandleFunc("/siegfried/update/", handleUpdate)
 	http.HandleFunc("/siegfried/sets", hdlErr(handleSets))
 	http.HandleFunc("/siegfried/results", hdlErr(handleResults))
 	http.HandleFunc("/siegfried/results/", hdlErr(handleResults))
@@ -99,20 +96,6 @@ func handleIdentify(w http.ResponseWriter, r *http.Request) error {
 		return nil
 	}
 	return errBadRequest
-}
-
-func handleUpdate(w http.ResponseWriter, r *http.Request) {
-	var ret string
-	if strings.HasPrefix(r.URL.Path, "/siegfried/update/") {
-		sig := strings.TrimSuffix(strings.TrimPrefix(r.URL.Path, "/siegfried/update/"), "/") // remove any trailing slash
-		ret = updateJson[sig]
-	}
-	if ret == "" {
-		ret = updateJson["pronom"]
-	}
-	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	io.WriteString(w, ret)
 }
 
 func handleSets(w http.ResponseWriter, r *http.Request) error {

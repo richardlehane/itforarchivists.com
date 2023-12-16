@@ -31,13 +31,15 @@ handlers:
 
 - url: /siegfried/update$
   http_headers: 
+    Content-Type: "application/json; charset=utf-8"
     Access-Control-Allow-Origin: '*'
   static_files: public/update/update.json
   upload: public/update/update.json$
   secure: always
 
 - url: /siegfried/update/(loc|tika|freedesktop|deluxe|wikidata|archivematica)$
-  http_headers: 
+  http_headers:
+    Content-Type: "application/json; charset=utf-8" 
     Access-Control-Allow-Origin: '*'
   static_files: public/update/\1.json
   upload: public/update/(loc|tika|freedesktop|deluxe|wikidata|archivematica).json$
@@ -45,6 +47,7 @@ handlers:
 
 - url: /siegfried/update/v2$
   http_headers: 
+    Content-Type: "application/json; charset=utf-8"
     Access-Control-Allow-Origin: '*'
   static_files: public/update/v2/update.json
   upload: public/update/v2/update.json$
@@ -52,6 +55,7 @@ handlers:
 
 - url: /siegfried/update/v2/(loc|tika|freedesktop|deluxe|wikidata|archivematica)$
   http_headers: 
+    Content-Type: "application/json; charset=utf-8"
     Access-Control-Allow-Origin: '*'
   static_files: public/update/v2/\1.json
   upload: public/update/v2/(loc|tika|freedesktop|deluxe|wikidata|archivematica).json$
