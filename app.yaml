@@ -1,9 +1,19 @@
 runtime: go120
 
+app_engine_apis: true
+
 includes: 
 - env.yaml
 
 handlers:
+- url: /robots.txt$
+  static_files: public/robots.txt
+  upload: public/robots.txt$
+
+- url: /sitemap.xml$
+  static_files: public/sitemap.xml
+  upload: public/sitemap.xml$
+
 - url: /dists
   static_dir: public/repositories/dists
 
