@@ -54,6 +54,5 @@ func hdlCache(f func(http.ResponseWriter, *http.Request), c *cache) func(http.Re
 			w.WriteHeader(cp.status)
 		}
 		io.Copy(w, bytes.NewReader(cp.buf.Bytes()))
-		return
 	}
 }

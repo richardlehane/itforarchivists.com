@@ -414,7 +414,7 @@ var oldResults = map[string]bool{
 
 func retrieveResults(w http.ResponseWriter, uuid string, s store) error {
 	if _, err := crock32.Decode(uuid); err != nil {
-		return badRequest
+		return errBadRequest
 	}
 	key := uuid
 	if !oldResults[key] {

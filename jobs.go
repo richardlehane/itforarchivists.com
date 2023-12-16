@@ -19,7 +19,7 @@ import (
 func retrieveLog(w http.ResponseWriter, path string, s store) error {
 	_, _, _, raw, err := s.retrieve(path)
 	if err != nil {
-		return badRequest
+		return errBadRequest
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	buf := bytes.NewBuffer(raw)
@@ -64,11 +64,11 @@ func getLog(rdr io.Reader) (string, string, *runner.Log, error) {
 
 func retrieveLogs(w http.ResponseWriter, prefix, dir string, dirs []string, s store) error {
 	if _, err := crock32.Decode(dir); err != nil {
-		return badRequest
+		return errBadRequest
 	}
 	keys := s.list(prefix, dir)
 	if len(keys) == 0 {
-		return badRequest
+		return errBadRequest
 	}
 	logs := make([]*runner.Log, len(keys))
 	for i, key := range keys {

@@ -2,8 +2,6 @@
 package main
 
 import (
-	"crypto/sha256"
-	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"io"
@@ -30,7 +28,7 @@ var (
 	sharedTemplate  *template.Template
 	logsTemplate    *template.Template
 	globalCache     *cache
-	badRequest      = errors.New("bad request")
+	errBadRequest   = errors.New("bad request")
 )
 
 func main() {
@@ -51,32 +49,9 @@ func main() {
 		}
 	}
 
-	// load latest update info
-	updateJson = make(map[string]string)
 	config.SetHome("public") // necessary to find sets directory
 	// setup global sf
 	sf, _ = siegfried.Load("public/latest/deluxe.sig")
-	// setup global updateJson
-	for k := range current {
-		fname := k + ".sig"
-		if fname == "pronom.sig" {
-			fname = "default.sig"
-		}
-		f, err := os.ReadFile("public/latest/" + fname)
-		if err != nil {
-			panic(err)
-		}
-		current[k].Size = len(f)
-		h := sha256.New()
-		h.Write(f)
-		current[k].Hash = hex.EncodeToString(h.Sum(nil))
-		s, err := siegfried.Load("public/latest/" + fname)
-		if err != nil {
-			panic(err)
-		}
-		current[k].Created = s.C.Format(time.RFC3339)
-		updateJson[k] = current[k].Json()
-	}
 
 	// templates
 	resultsTemplate = parseStrings("resultsT", nil, templ, rTitleTempl, rChartCSSTempl, rChartJSTempl, rContent)
@@ -123,7 +98,7 @@ func handleIdentify(w http.ResponseWriter, r *http.Request) error {
 		io.WriteString(w, id.JSON())
 		return nil
 	}
-	return badRequest
+	return errBadRequest
 }
 
 func handleUpdate(w http.ResponseWriter, r *http.Request) {
@@ -154,7 +129,7 @@ func handleSets(w http.ResponseWriter, r *http.Request) error {
 		io.WriteString(w, "[\""+strings.Join(sets.Sets(vals...), "\", \"")+"\"]")
 		return nil
 	}
-	return badRequest
+	return errBadRequest
 }
 
 func handleResults(w http.ResponseWriter, r *http.Request) error {
@@ -170,7 +145,7 @@ func handleResults(w http.ResponseWriter, r *http.Request) error {
 		uuid = strings.TrimSuffix(uuid, "/") // remove any trailing slash
 		return retrieveResults(w, uuid, thisStore)
 	}
-	return badRequest
+	return errBadRequest
 }
 
 func handleShare(w http.ResponseWriter, r *http.Request) error {
@@ -181,7 +156,7 @@ func handleShare(w http.ResponseWriter, r *http.Request) error {
 		}
 		return share(w, r, thisStore)
 	}
-	return badRequest
+	return errBadRequest
 }
 
 func handleRedact(w http.ResponseWriter, r *http.Request) error {
@@ -195,7 +170,7 @@ func handleRedact(w http.ResponseWriter, r *http.Request) error {
 		enc := json.NewEncoder(w)
 		return enc.Encode(res)
 	}
-	return badRequest
+	return errBadRequest
 }
 
 func handleLogs(w http.ResponseWriter, r *http.Request) error {
@@ -206,7 +181,7 @@ func handleLogs(w http.ResponseWriter, r *http.Request) error {
 	case strings.HasPrefix(r.URL.Path, "/siegfried/logs/develop"):
 		tag = "develop"
 	default:
-		return badRequest
+		return errBadRequest
 	}
 	thisStore, err := newStore(r)
 	if err != nil {
@@ -229,7 +204,7 @@ func handleJobs(w http.ResponseWriter, r *http.Request) error {
 	case "bench":
 		jobs = benchJobs
 	default:
-		return badRequest
+		return errBadRequest
 	}
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	byt, err := json.MarshalIndent(jobs, "", "  ")
@@ -250,7 +225,7 @@ func handleLogView(w http.ResponseWriter, r *http.Request) error {
 		tag = "develop"
 		uuid = strings.TrimPrefix(r.URL.Path, "/siegfried/develop")
 	default:
-		return badRequest
+		return errBadRequest
 	}
 	uuid = strings.TrimPrefix(uuid, "/")
 	thisStore, err := newStore(r)
@@ -259,7 +234,7 @@ func handleLogView(w http.ResponseWriter, r *http.Request) error {
 	}
 	dirs := thisStore.dirs(tag)
 	if len(dirs) == 0 {
-		return badRequest
+		return errBadRequest
 	}
 	sort.Sort(sort.Reverse(crock32.Sortable(dirs)))
 	if uuid == "" {
