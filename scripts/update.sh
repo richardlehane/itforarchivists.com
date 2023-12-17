@@ -6,5 +6,5 @@ ROY=$BASE/go/github.com/richardlehane/siegfried/cmd/roy/data
 rm $TARGET/sets/*
 cp $ROY/sets/* $TARGET/sets/
 # Refresh latest sigs
-rm $TARGET/latest/1_10/*
-cp $ROY/*.sig $TARGET/latest/1_10/
+rm $TARGET/latest/1_11/*
+cp $ROY/*.sig $TARGET/latest/1_11/
