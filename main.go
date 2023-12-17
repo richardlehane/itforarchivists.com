@@ -50,7 +50,7 @@ func main() {
 
 	config.SetHome("public") // necessary to find sets directory
 	// setup global sf
-	sf, _ = siegfried.Load("public/latest/1_10/deluxe.sig")
+	sf, _ = siegfried.Load("public/latest/1_11/deluxe.sig")
 
 	// templates
 	resultsTemplate = parseStrings("resultsT", nil, templ, rTitleTempl, rChartCSSTempl, rChartJSTempl, rContent)
