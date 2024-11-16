@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"strings"
@@ -155,7 +155,7 @@ func (cs *cloudStore) retrieve(key string) (string, string, string, []byte, erro
 		return "", "", "", nil, err
 	}
 	defer rc.Close()
-	body, err := ioutil.ReadAll(rc)
+	body, err := io.ReadAll(rc)
 	if err != nil {
 		return "", "", "", nil, err
 	}

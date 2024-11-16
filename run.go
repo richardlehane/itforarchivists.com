@@ -24,6 +24,7 @@ import (
 )
 
 func main() {
+	_ = config.Home() // stopgap due to bug in 1.11.1
 	d := &Data{
 		Version: version(),
 		Keys:    keys(),

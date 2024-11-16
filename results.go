@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -103,7 +104,7 @@ func getResults(r *http.Request) (*Results, error) {
 		return nil, fmt.Errorf("bad results: %s", err.Error())
 	}
 	if !res.validate() {
-		return nil, fmt.Errorf("bad results: validation fail")
+		return nil, errors.New("bad results: validation fail")
 	}
 	return res, nil
 }
@@ -151,12 +152,13 @@ var fileTitles = []string{"filename", "filesize", "modified", "errors"}
 var hiddenTitles = []string{"hasMultiID", "isDuplicate"}
 
 func (r *Results) validate() bool {
-	if len(r.Tool) < 4 {
-		return false
-	}
-	switch r.Tool[:4] {
-	case "fido", "droi", "sieg":
-	default:
+	if len(r.Tool) >= 4 {
+		switch r.Tool[:4] {
+		case "fido", "droi", "sieg":
+		default:
+			return false
+		}
+	} else if r.Tool != "" {
 		return false
 	}
 	if len(r.Datas) == 0 || len(r.Datas) != len(r.Identifiers) {
