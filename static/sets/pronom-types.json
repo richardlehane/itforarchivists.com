@@ -115,7 +115,8 @@
     "fmt/1913 (Graphisoft Archicad Project 17+)",
     "fmt/1914 (Graphisoft BIMx Hyper-Model)",
     "fmt/1955 (Graphisoft Archicad Project 6-9)",
-    "fmt/1967 (Solidworks Design Document Files 2015+)"
+    "fmt/1967 (Solidworks Design Document Files 2015+)",
+    "fmt/2015 (KryoFlux Stream 3)"
   ],
   "audio": [
     "x-fmt/135 (Audio Interchange File Format 1.3)",
@@ -249,7 +250,14 @@
     "fmt/1953 (Zoom Project Settings H5)",
     "fmt/1954 (Zoom Project Settings H6)",
     "fmt/1960 (Disklavier E-Seq Music)",
-    "fmt/1968 (Atrac Codec File v.1)"
+    "fmt/1968 (Atrac Codec File v.1)",
+    "fmt/2018 (Sony OpenMG Audio)",
+    "fmt/2032 (Open Packaging Format 3)",
+    "fmt/2033 (Daisy Talking Book Navigation Control File 3)",
+    "fmt/2034 (Daisy Talking Book Resource File 3)",
+    "fmt/2035 (Plextalk Project File (imph))",
+    "fmt/2036 (Plextalk Project File (imdn))",
+    "fmt/2037 (Plextalk Project File (imtt))"
   ],
   "database": [
     "x-fmt/6 (FoxPro Database 2.0)",
@@ -382,7 +390,12 @@
     "fmt/1807 (Microsoft Access Encrypted Database File 1.0)",
     "fmt/1808 (Microsoft Access Encrypted Database File 1.1)",
     "fmt/1809 (Microsoft Access Encrypted Database File 2.0)",
-    "fmt/1860 (dBASE Report Form Definition File IV)"
+    "fmt/1860 (dBASE Report Form Definition File IV)",
+    "fmt/2019 (askSam Document for DOS)",
+    "fmt/2020 (askSam Document for Windows 1)",
+    "fmt/2021 (askSam Document for Windows 2-3)",
+    "fmt/2022 (askSam Document for Windows 4-7)",
+    "fmt/2024 (CD Architect Project File 4)"
   ],
   "dataset": [
     "x-fmt/13 (Tab-separated Values)",
@@ -563,7 +576,10 @@
     "fmt/1993 (Sibelius Score 2024)",
     "fmt/1994 (Sibelius Scorch)",
     "fmt/2000 (Husqvarna Embroidery Stitch File)",
-    "fmt/2004 (Husqvarna-Viking Designer 1 Stitch File)"
+    "fmt/2004 (Husqvarna-Viking Designer 1 Stitch File)",
+    "fmt/2013 (RawACF)",
+    "fmt/2014 (Axon Binary Format)",
+    "fmt/2025 (CD Architect Project File 5)"
   ],
   "email": [
     "x-fmt/430 (Microsoft Outlook Email Message 97-2003)",
@@ -1286,7 +1302,11 @@
     "fmt/1885 (CloudCompare Entity File)",
     "fmt/1897 (Ptex File Format)",
     "fmt/1908 (Jupiter Tesselation (JT) File)",
-    "fmt/1916 (Autodesk Alias Wire Format 7)"
+    "fmt/1916 (Autodesk Alias Wire Format 7)",
+    "fmt/2010 (Visualization Toolkit 1.0)",
+    "fmt/2011 (Visualization Toolkit 2.0)",
+    "fmt/2012 (Visualization Toolkit 4.2)",
+    "fmt/2016 (Binvox 1)"
   ],
   "pageDescription": [
     "fmt/122 (Encapsulated PostScript File Format 1.2)",
@@ -1512,7 +1532,13 @@
     "fmt/1866 (Microsoft Powerpoint for Macintosh 2)",
     "fmt/1867 (Microsoft Powerpoint for Macintosh 3)",
     "fmt/1941 (Adobe InDesign Document CC 2023)",
-    "fmt/1942 (Adobe InDesign Document CC 2024)"
+    "fmt/1942 (Adobe InDesign Document CC 2024)",
+    "fmt/2006 (QuarkXPress Project 18)",
+    "fmt/2007 (QuarkXPress Project 19)",
+    "fmt/2008 (QuarkXPress Project 20)",
+    "fmt/2031 (HxC Floppy Emulator Disk Image)",
+    "fmt/2038 (HxC Floppy Emulator Disk Image 3)",
+    "fmt/2039 (HxC Floppy Emulator Stream Image)"
   ],
   "spreadsheet": [
     "x-fmt/17 (Microsoft Excel Template 97-2003)",
@@ -1696,7 +1722,8 @@
     "fmt/1900 (Mass Spectrometry Markup Language)",
     "fmt/1997 (IMF Package Asset Map)",
     "fmt/1998 (IMF Package Packing List)",
-    "fmt/1999 (IMF Package Composition Playlist)"
+    "fmt/1999 (IMF Package Composition Playlist)",
+    "fmt/2017 (GraphPad Prism 5-9)"
   ],
   "textStructured": [
     "x-fmt/41 (Data Interchange Format)",
@@ -1740,7 +1767,7 @@
     "fmt/391 (Log ASCII Standard Format 3.0)",
     "fmt/398 (Enigma Transportable File (Finale))",
     "fmt/482 (Apple iBook format)",
-    "fmt/483 (ePub format)",
+    "fmt/483 (ePub Format)",
     "fmt/485 (Rocket Book eBook format)",
     "fmt/518 (Broad Band eBook LRF)",
     "fmt/526 (Adobe Font List)",
@@ -1818,7 +1845,7 @@
     "fmt/1627 (Z Print Build File)",
     "fmt/1646 (Roxio Label Creator Project File 8-11)",
     "fmt/1647 (Inspiration Software File)",
-    "fmt/1649 (AGS 4 Data Format 4.0. 4.1)",
+    "fmt/1649 (AGS 4 Data Format 4.0, 4.1)",
     "fmt/1656 (Microsoft Help Contents File)",
     "fmt/1663 (YAODL (Yet Another Object Description Language) File)",
     "fmt/1665 (Easy CD Creator Layout | Roxio Easy CD Creator Layout 5-6)",
@@ -1860,7 +1887,13 @@
     "fmt/1905 (Universal Scene Description ASCII File)",
     "fmt/1940 (EBU Subtitling Data Exchange Format)",
     "fmt/1947 (OpenWayback CDXJ File Format)",
-    "fmt/1951 (Pro Tools Session File 5-9)"
+    "fmt/1951 (Pro Tools Session File 5-9)",
+    "fmt/2009 (Protein Data Bank File 3.3)",
+    "fmt/2023 (Parquet File)",
+    "fmt/2026 (Codebook Exchange Format)",
+    "fmt/2027 (Microsoft Project 1)",
+    "fmt/2029 (Apache Avro)",
+    "fmt/2030 (Apache ORC V0 and V1)"
   ],
   "textUnstructured": [
     "x-fmt/14 (Macintosh Text File)",
@@ -1995,7 +2028,7 @@
     "x-fmt/287 (DEC WPS Plus Document)",
     "x-fmt/288 (IBM DisplayWrite Document 2)",
     "x-fmt/289 (IBM DisplayWrite Document 3)",
-    "x-fmt/302 (Adobe FrameMaker Document 8.0)",
+    "x-fmt/302 (Visualization Toolkit 8.0)",
     "x-fmt/309 (ChiWriter Document 3)",
     "x-fmt/329 (Interleaf Document)",
     "x-fmt/330 (JustWrite Text Document)",
