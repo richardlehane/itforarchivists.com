@@ -194,7 +194,7 @@ func handleJobs(w http.ResponseWriter, r *http.Request) error {
 	if err != nil {
 		return err
 	}
-	_, err = io.WriteString(w, string(byt))
+	_, err = io.Writer.Write(w, byt)
 	return err
 }
 

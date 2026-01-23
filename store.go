@@ -30,7 +30,7 @@ func newStore(r *http.Request) (store, error) {
 
 var sStore simpleStore
 
-func newSimpleStore(r *http.Request) (simpleStore, error) {
+func newSimpleStore(_ *http.Request) (simpleStore, error) {
 	if sStore == nil {
 		sStore = make(simpleStore)
 	}

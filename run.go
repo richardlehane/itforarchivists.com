@@ -103,8 +103,6 @@ func main() {
 
 // generate data/siegfried.json
 
-const templ = "https://github.com/richardlehane/siegfried/releases/download/v"
-
 type Data struct {
 	Version string
 	Keys    []string
