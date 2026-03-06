@@ -17,15 +17,22 @@ description = "richard's site"
 author = "Richard Lehane"
 footer = "© Richard Lehane"
 contacts = [
-	["twitter", "https://twitter.com/richardlehane"],
-	["github", "https://github.com/richardlehane"],
-	["email", "mailto:richard@itforarchivists.com"]
+	[
+		"richard",
+		"https://richardlehane.me",
+	],
+	[
+		"github",
+		"https://github.com/richardlehane",
+	],
+	[
+		"email",
+		"mailto:richard@itforarchivists.com",
+	],
 ]
-pages = [
-	["siegfried", "/siegfried", "/img/sf-button.png"]
-]
+pages = [["siegfried", "/siegfried", "/img/sf-button.png"]]
 
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
