@@ -1,7 +1,9 @@
 export async function onRequestGet(ctx) {
-    if (ctx.params.sig.endsWith(".json")) {
+    let path = ctx.request.url.toString();
+    if (path.endsWith(".sig")) {
         return await ctx.env.ASSETS.fetch(ctx.request);
     }
-    const url = new URL("/siegfried/update/" + ctx.params.sig + ".json", ctx.request.url);
+    path = path + ".sig";
+    const url = new URL(path);
     return await ctx.env.ASSETS.fetch(url);
 }
