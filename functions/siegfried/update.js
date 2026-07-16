@@ -1,3 +1,4 @@
 export async function onRequestGet(ctx) {
-    return await ctx.env.ASSETS.fetch("/siegfried/update/update.json");
+    const url = new URL("/siegfried/update/update.json");
+    return await ctx.env.ASSETS.fetch(url);
 }
