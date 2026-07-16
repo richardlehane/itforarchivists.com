@@ -1,0 +1,250 @@
+@font-face {
+  font-family: "IBM VGA";
+  src: url(fonts/Web437_IBM_VGA_9x16.woff) format('woff');
+}
+
+@font-face {
+  font-family: "IBM DOS";
+  src: url(fonts/Web437_IBM_DOS_ISO9.woff) format('woff');
+}
+
+body {
+  margin: 20px;
+  padding: 10px;
+  color: #bbbbbb;
+  background-color: #000084;
+  font-family: "IBM VGA", Consolas, monospace;
+  max-width: 1280px;
+  line-height: 19px;
+}
+
+p {
+  margin-top: 0;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 9.5px;
+}
+
+li {
+  list-style-type: square;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 18px;
+  font-family: inherit;
+  font-weight: normal;
+}
+
+h1 {
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+}
+
+h3 {
+  margin-top: 19px 0;
+  color: #ffffff;
+}
+
+h3>a {
+  color: #ffffff;
+}
+
+a {
+  color: #ff5555;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover,
+a:focus {
+  color: #ff2222;
+  background: #000000;
+}
+
+strong {
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+blockquote {
+  font-size: 1.5em;
+  margin: 0;
+  font-weight: lighter;
+}
+
+img {
+  height: auto;
+  /* see https://zine-ssg.io/docs/assets/ */
+  border-radius: 2%;
+}
+
+pre {
+  font-family: inherit;
+  display: block;
+  padding: 9px;
+  margin: 0 0 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: #555555;
+  background-color: #f5f5f5;
+  border: 2px solid #cccccc;
+  overflow: auto;
+}
+
+code {
+  font-family: inherit;
+}
+
+.jumbotron {
+  color: #ffffff;
+  padding: 8.5px 13px 8.5px 14px;
+  margin: 8.5px 4px 8.5px 3px;
+  background-color: transparent;
+  border: 2px solid #bbbbbb;
+}
+
+.jumbotron p {
+  margin-bottom: 0;
+}
+
+.page-header {
+  padding-bottom: 8.5px;
+  margin: 38px 0 19px;
+  border-bottom: 2px solid #bbbbbb;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 1fr;
+  column-gap: 50px;
+}
+
+@media screen and (max-width: 1280px) {
+  .grid {
+    grid-template-columns: 100%;
+  }
+}
+
+
+.btn {
+  font-family: "IBM VGA", monospace;
+  font-size: 16px;
+  line-height: 18px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  background-image: none;
+  padding: 0 9.5px;
+  box-shadow: 9.5px 9.5px 0 rgb(0, 0, 0);
+  cursor: default;
+  border: 0px;
+  user-select: none;
+  background-color: #000084;
+  color: #bbbbbb;
+}
+
+.btn:hover,
+.btn:focus {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+.btn::first-letter {
+  color: #aa0000;
+}
+
+.btn:hover::first-letter,
+.btn:focus::first-letter {
+  color: #bbbbbb;
+}
+
+.btn-primary {
+  background-repeat: repeat-x;
+  border-color: #00aaaa;
+  color: #000000;
+  background-color: #00aaaa;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  color: #ffffff;
+  background-color: #00aaaa;
+}
+
+.btn-img {
+  fill: currentColor;
+  width: 40px;
+  height: 40px;
+}
+
+.btn-logo {
+  padding-top: 5px;
+}
+
+.btn-copy {
+  float: right;
+}
+
+.btn.btn-lg {
+  padding: 19px 9.5px;
+}
+
+.install-list {
+  display: flex;
+}
+
+.install-list>* {
+  padding-left: 19px;
+  padding-right: 19px;
+  padding-bottom: 19px;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #000000;
+}
+
+.nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  position: relative;
+  list-style-type: none;
+  display: block;
+}
+
+.nav-tab::first-letter {
+  color: #ff5555;
+}
+
+.nav-tab {
+  float: left;
+  margin: 0;
+  padding: 0 10px;
+  color: #bbbbbb;
+}
+
+.nav-tab:hover,
+.nav-tab:focus {
+  color: #000000;
+  background: #bbbbbb;
+}

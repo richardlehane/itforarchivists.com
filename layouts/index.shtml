@@ -1,0 +1,13 @@
+<extend template="base.shtml">
+<head id="head"></head>
+<body id="body">
+	<div class="jumbotron">
+		<h1>IT for Archivists</h1>
+		<div :html="$page.content()"></div>
+	</div>
+	<div class="install-list">
+		<div><h3>Siegfried</h3><a class="btn btn-primary btn-logo" href="/siegfried"><img src="$site.asset('img/sf-button.png').link()"></a></div>
+		<div><h3>Siplicity</h3><a class="btn btn-primary btn-logo" href="https://sipli.city"><img src="$site.asset('img/siplicity.png').link()"></a></div>
+		<div><h3>Authority Editor</h3><a class="btn btn-primary btn-logo" href="https://authorityeditor.com"><img src="$site.asset('img/ae.png').link()"></a></div>
+	</div>
+</body>

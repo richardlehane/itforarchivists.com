@@ -1,0 +1,14 @@
+---
+.title = "Homepage",
+.date = .date("1990-01-01T00:00:00"),
+.layout = "index.shtml",
+---
+
+This is [Richard Lehane](https://richardlehane.me)’s personal website. 
+
+I’m an archivist and consultant in digital recordkeeping and digital preservation. I do a little programming, including:
+
+- [siegfried](/siegfried), a file format identification tool,
+- [Siplicity](https://sipli.city), a digital preservation triage tool,
+- and [Authority Editor](https://authorityeditor.com), an editor for drafting retention schedules in XML.
+

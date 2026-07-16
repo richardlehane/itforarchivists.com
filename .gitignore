@@ -1,4 +1,2 @@
-env.yaml
-vendor/
-public/
-.hugo_build.lock
+sf.wasm
+repositories/

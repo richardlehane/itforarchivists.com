@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="IT for archivists, siegfried format identification tool">
+		<title :text="$site.title"></title>
+		<link type="text/css" rel="stylesheet" href="$site.asset('style.css').link()">
+		<link rel="icon" type="image/png" href="$site.asset('img/richard.png').link()">
+		<super>
+	</head>
+	<header>
+		<div class="nav">
+			<ul>
+				<li><a class="nav-tab" href="$site.link()">Home</a></li>
+				<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
+			</ul>
+		</div>
+	</header>
+	<body id="body">
+		<super>
+	</body>
+</html>

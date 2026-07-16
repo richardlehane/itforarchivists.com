@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /siegfried/*
-
-Sitemap: https://www.itforarchivists.com/sitemap.xml

@@ -1,0 +1,35 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Codename: buster
+Date: Thu, 16 Jul 2026 11:19:00 UTC
+Architectures: amd64
+Components: main
+MD5Sum:
+ cd2f950ce4688378bf3a6148d9bff2e6 494 main/binary-amd64/Packages
+ add4bda5bd6d3f1b3c699422c82c2d8d 373 main/binary-amd64/Packages.gz
+ 063287201b2354699acfe229a752201d 36 main/binary-amd64/Release
+SHA1:
+ f91d1ead40583d9acb91684fc0e1376ded699237 494 main/binary-amd64/Packages
+ aa6c2ba9a901f7e39260ad9819d1e0de766ddd47 373 main/binary-amd64/Packages.gz
+ f9082edea14092794f38390390e06abf8a922f7d 36 main/binary-amd64/Release
+SHA256:
+ 31d048a16d83a7f0921449405747bed011050a8de30bd7f54d722faa60256720 494 main/binary-amd64/Packages
+ 762f092e7904d040cf53ba5a3eaf0d8528581c7d44cf8da2671f2d089f68f127 373 main/binary-amd64/Packages.gz
+ f4aafa353a338baedf9e98523c13d7ffeda979ec3cf745f9fad977dd770595c8 36 main/binary-amd64/Release
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEMVjgiAL2AwYPePoMIPgC/nmOaFcFAmpYvicACgkQIPgC/nmO
+aFdtqxAAxREf6hCJtfEFFMIgy5Ws4MieGabi8TrsfxWrmJYy+C1KK8jalDRvav1J
+o+q1T/0xW9t0xq7yAxsI9wATP90Do3QQAXELq+yqzGA9FruOj5sgtxQmZiwBR/nr
+VLzM9f2S7eY0ycABtX75w8yqOsSjrcsk8gEfmtanoV6GYIlTpZNj1CKOt0MHQ4kq
+HWV6SC3WV2e4183oiCK5TtM3Fq/qjbQb1z/fHUwfvHE/tyXyp68hKxwB0x0EMF65
+CGw6z0yhNqxqvieigoeqDI6YKSR0uRzGI3mK1wU7JpYQ/eNm7/KjSVCs9OdmCMIz
+NmxzRkvfck+gGKl/WLMKPQwEK7JEfEalMEkzPPesCdgCNO2zOovjulqPP6X0g1lM
+SJ+vgOTeSDTudjwycMKeXKnuvNQduEyPva1GZ2LUAL+oIFmeIpwHTiEDGSdmrizF
+7VYbd8vvUpdqrzr2/m4ax3RZ2BKajniWy/lxIi87fUCvBLoCszLaGYFu5fNBjB1w
+d/wVZZ+D+3xU25jFS1l8vAZF0AT5isCv9/kSsPCF6K0mFePY54NSRwrhN+d9bpB6
+kZZ41hH6p78ubtDSGtpsHO1jE4JdCEdPLjpz3eKVrZXK9n20WVPhZHvAt3cZwGNA
+PokyfrX9sCfDu5/qM2QUdFWUBKlJlmz/eu71FdLN7Atnf1n1fd4=
+=yexK
+-----END PGP SIGNATURE-----
