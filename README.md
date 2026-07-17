@@ -1,16 +1,18 @@
 # IT for archivists website (https://itforarchivists.com)
 
-Some features lost in this migration including:
+New codebase for itforarchivists, replacing the old go appengine/hugo combo with Zine SSG.
+
+Regretfully, some features lost in the migration, including:
 
 - automatic benchmarks
 - share your results
 - sets tool.
 
-I will migrate legacy content for the benchmarks and results over the coming weeks (see below).
+*I will migrate legacy content for the benchmarks and results over the coming weeks (see below).*
 
-These features never saw much uptake & removing them allows me to greatly simplify maintenance burden by replacing the old appengine application with a fully static (using Zine ssg) site.
+Rationale: these features never saw much uptake and removing them allows me to greatly simplify site maintenance.
 
-As part of the migration, I've moved "Try Siegfried" to the WASM build which makes it much faster, more private/secure, and more fully featured (checksums, directory scanning, -z flag).
+On the plus side: as part of the migration, I've moved "Try Siegfried" to the WASM build which makes it much faster, more private/secure, and more fully featured (checksums, directory scanning, -z flag).
 
 ## Remaining migration tasks
 
