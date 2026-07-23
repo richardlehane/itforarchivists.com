@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="IT for archivists, siegfried format identification tool">
+		<title>IT for archivists</title>
+		<link type="text/css" rel="stylesheet" href="/style.css">
+		<link rel="icon" type="image/png" href="/img/richard.png">
+		
+	</head>
+	<header>
+		<div class="nav">
+			<ul>
+				<li><a class="nav-tab" href="/">Home</a></li>
+				<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
+				<li><a class="nav-tab" href="/attic">Attic</a></li>
+			</ul>
+		</div>
+	</header>
+	<body id="body">
+		
+	<p>
+		
+			<a href="/attic/blog/sf193/">Next</a>
+		
+		
+			<a href="/attic/blog/sf190/">Previous</a>
+		
+		<a href="/attic/blog">Index</a>
+	</p>
+	<h1>siegfried 1.9.2 released</h1>
+	<div><p>Version 1.9.2 of siegfried is now available. Get it <a href="/siegfried/">here</a>.</p><h1>CHANGELOG v1.9.2 (2022-02-07)</h1><ul><li>Wikidata definition file specification has been updated and now includes endpoint (users will need to harvest Wikidata again)</li><li>Custom Wikibase endpoint can now be specified for harvesting when paired with a custom SPARQL query and property mappings</li><li>Wikidata identifier includes permalinks in results</li><li>Wikidata revision history visible using <code>roy inspect</code></li><li>roy inspect returns format ID with name</li><li>update PRONOM to v100</li><li>update LOC signatures to 2022-02-01</li><li>update tika-mimetypes signatures to v2.1</li><li>update freedesktop.org signatures to v2.2.1</li><li>parse issues for container files where zero indexing used for Position. Spotted by <a href="https://github.com/richardlehane/siegfried/issues/175">Ross Spencer</a></li><li>sf -droid output can’t be read by sf (e.g. for comparing results). Reported by <a href="https://github.com/richardlehane/siegfried/issues/174">ostnatalie</a></li><li>panic when running in server mode due to race condition. Reported by <a href="https://github.com/richardlehane/siegfried/issues/172">Miguel Guimarães</a></li><li>panic when reading malformed MSCFB files. Reported by <a href="https://github.com/richardlehane/siegfried/issues/171">Greg Lepore</a></li><li>unescaped control characters in JSON output. Reported by <a href="https://github.com/richardlehane/siegfried/issues/165">Sebastian Lange</a></li><li>zip file names with null terminated strings prevent ID of Serif formats. Reported by <a href="https://github.com/richardlehane/siegfried/issues/150">Tyler Thorsted</a></li></ul></div>
+
+	</body>
+</html>
