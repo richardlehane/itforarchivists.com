@@ -21,15 +21,15 @@
 			<div class="jumbotron" :html="$page.contentSection('overview')"></div>
 			<ctx :loop="$page.contentSections().slice(1,2)">
 				<div class="page-header" id="$loop.it.id"><h2 :html="$loop.it.heading()"></h2></div>
-				<p>The latest version of siegfried is <strong>v<ctx :text="$page.custom.getOr('sf', '1.1.1')"></ctx></strong>
-					(released <ctx :text="$page.custom.getOr('date', 'YYYY-MM-DD')"></ctx>).</p>
+				<p>The latest version of siegfried is <strong>v<ctx :text="$site.custom.getOr('sf', '1.1.1')"></ctx></strong>
+					(released <ctx :text="$site.custom.getOr('date', 'YYYY-MM-DD')"></ctx>).</p>
 				<div :html="$loop.it.htmlNoHeading()"></div>
 			</ctx>
 			<ctx :loop="$page.contentSections().slice(2,4)">
 				<div class="page-header" id="$loop.it.id"><h2 :html="$loop.it.heading()"></h2></div>
 				<div :html="$loop.it.htmlNoHeading()"></div>
 			</ctx>
-			<ctx ghlnk="$page.custom.getOr('yolo', 'https://github.com/richardlehane/siegfried/releases/download/v')" version="$page.custom.getOr('sf', '1.1.1')" major="$ctx.version.splitN('.', 0)" minor="$ctx.version.splitN('.', 1)" patch="$ctx.version.splitN('.', 2)">
+			<ctx ghlnk="$site.custom.getOr('yolo', 'https://github.com/richardlehane/siegfried/releases/download/v')" version="$site.custom.getOr('sf', '1.1.1')" major="$ctx.version.splitN('.', 0)" minor="$ctx.version.splitN('.', 1)" patch="$ctx.version.splitN('.', 2)">
 				<ctx dlnk="$ctx.ghlnk.suffix($ctx.version, '/siegfried_', $ctx.major, '-', $ctx.minor, '-', $ctx.patch)" win="$ctx.dlnk.suffix('_win64.zip')" winstatic="$ctx.dlnk.suffix('_win64_static.zip')" linux="$ctx.dlnk.suffix('_linux64.zip')" linuxstatic="$ctx.dlnk.suffix('_linux64_static.zip')" mac="$ctx.dlnk.suffix('_mac64.zip')" macstatic="$ctx.dlnk.suffix('_mac64_static.zip')">
 					<ctx :loop="$page.contentSections().slice(4,5)">
 						<h3 :html="$loop.it.heading()"></h3>

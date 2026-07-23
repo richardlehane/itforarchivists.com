@@ -2,10 +2,6 @@
 .title = "Siegfried",
 .date = .date("1990-01-01T00:00:00"),
 .layout = "siegfried.shtml",
-.custom = {
-    "sf": "1.11.6",
-    "date": "2026-07-12",
-},
 ---
 
 []($section.id('overview'))
