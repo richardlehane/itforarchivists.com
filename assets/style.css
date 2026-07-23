@@ -248,3 +248,15 @@ code {
   color: #000000;
   background: #bbbbbb;
 }
+
+.attic-input {
+  background-color: #000084;
+  color: #bbbbbb;
+  font-family: "IBM VGA", Consolas, monospace;
+  font-size: 1.2rem;
+  padding: 10px;
+  border: none;
+  outline: none;
+  caret-color: #bbbbbb;
+  caret-shape: block;
+}

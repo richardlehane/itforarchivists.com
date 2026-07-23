@@ -1,0 +1,14 @@
+<extend template="base.shtml">
+<head id="head"></head>
+<body id="body">
+	<h1 :text="$page.title"></h1>
+	<div :html="$page.content()"></div>
+	<div :loop="$page.subpages()">
+		<p>
+			<a href="$loop.it.link()">
+				<ctx :text="$loop.it.title"></ctx>
+			</a>
+			(<ctx :text="$loop.it.date.format('2 Jan 2006')"></ctx>)
+		</p>
+	</div>
+</body>

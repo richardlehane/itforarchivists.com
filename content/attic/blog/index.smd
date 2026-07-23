@@ -1,0 +1,7 @@
+---
+.title = "Old blog posts",
+.date = .date("2026-07-23T10:00:00"),
+.layout = "blog-archive.shtml",
+---
+
+These posts were migrated over from the old website (pre-July 2026):

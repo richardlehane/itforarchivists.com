@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="IT for archivists, siegfried format identification tool">
+		<title>IT for archivists</title>
+		<link type="text/css" rel="stylesheet" href="/style.css">
+		<link rel="icon" type="image/png" href="/img/richard.png">
+		
+	</head>
+	<header>
+		<div class="nav">
+			<ul>
+				<li><a class="nav-tab" href="/">Home</a></li>
+				<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
+				<li><a class="nav-tab" href="/attic">Attic</a></li>
+			</ul>
+		</div>
+	</header>
+	<body id="body">
+		
+	<p>
+		
+			<a href="/attic/blog/sf1101/">Next</a>
+		
+		
+			<a href="/attic/blog/sf196/">Previous</a>
+		
+		<a href="/attic/blog">Index</a>
+	</p>
+	<h1>siegfried 1.10.0 released</h1>
+	<div><p>Version 1.10.0 of siegfried is now available. Get it <a href="/siegfried/">here</a>.</p><p>The major changes in this release are the inclusion of a format classification field in results, a “droid” multi setting for roy, and improvements to the multi-sequence matching algorithm.</p><h1>New format classification field in results</h1><p>A new “class” field now appears in results (for the YAML, JSON and CSV outputs). It contains values from the format classification field in the PRONOM database which groups formats into categories such as “audio” and “database”. You can also omit the field when building a signature file with <code>roy build -noclass</code>. For the background to this change, see the <a href="https://github.com/richardlehane/siegfried/discussions/207">discussion page</a>.</p><h1>DROID multi setting for roy build command</h1><p>Roy’s multi flag has a new “droid” mode: <code>roy build -multi droid</code>.</p><p>This mode aims to more closely match DROID results by applying priority relationships after, rather than during, matching. This setting is more likely to show hybrid files than the default. For example, assume there is a file that is both a valid PDF and valid HTML document: in its default mode, siegfried, once it had positively matched either of those formats, would ignore the other because there is no priority relationship between them (e.g. having matched a PDF it will only consider more specific types of PDF). With the “droid” multi setting, both results would be returned as equally valid. For more information on this change see <a href="https://github.com/richardlehane/siegfried/issues/146">this issue</a>.</p><h1>Improvements to the multi-sequence matching algorithm</h1><p>Siegfried uses a modified form of the Aho Corasick multiple-string matching algorithm for byte matching. This release includes a new dynamic version of the algorithm that pauses matching after all strings with maxium offsets have been tested and resumes matching with only the subset of strings that might still result in positive matches. By narrowing the search space, this improves performace for wildcard searches. This change has modestly increased performance for most of the <a href="https://www.itforarchivists.com/siegfried/develop/1j0sc68">benchmarks</a> and creates scope for further optimizations in future releases.</p><h2>CHANGELOG v1.10.0 (2023-03-25)</h2><ul><li>format classification included as “class” field in PRONOM results. Requested by <a href="https://github.com/richardlehane/siegfried/discussions/207">Robin François</a>. Implemented by <a href="https://github.com/richardlehane/siegfried/commit/7f695720a752ac5fca3e1de8ba034b92ab6da1d9">Ross Spencer</a></li><li><code>-noclass</code> flag added to roy build command. Use this flag to build signatures that omit the new “class” field from results.</li><li>glob paths can be used in place of file or directory paths for identification (e.g. <code>sf *.jpg</code>). Implemented by <a href="https://github.com/richardlehane/siegfried/commit/54bf6596c5fe7d1c9858348f0170d0dd7365fc8f">Ross Spencer</a></li><li><code>-multi droid</code> setting for roy build command. Applies priorities after rather than during identificaiton for more DROID-like results. Reported by <a href="https://github.com/richardlehane/siegfried/issues/146">David Clipsham</a></li><li><code>/update</code> command for server mode. Requested by <a href="https://github.com/richardlehane/siegfried/issues/208">Luis Faria</a></li><li>new algorithm for dynamic multi-sequence matching for improved wildcard performance</li><li>update PRONOM to v111</li><li>update LOC to 2023-01-27</li><li>update tika-mimetypes to v2.7.0</li><li>archivematica extensions built into wikidata signatures. Reported by <a href="https://github.com/richardlehane/siegfried/issues/210">Ross Spencer</a></li><li>trailing slash for folder paths in URI field in droid output. Reported by Philipp Wittwer</li><li>crash when using <code>sf -replay</code> with droid output</li></ul></div>
+
+	</body>
+</html>

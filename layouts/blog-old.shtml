@@ -1,0 +1,15 @@
+<extend template="base.shtml">
+<head id="head"></head>
+<body id="body">
+	<p>
+		<ctx :if="$page.nextPage?()">
+			<a href="$if.link()">Next</a>
+		</ctx>
+		<ctx :if="$page.prevPage?()">
+			<a href="$if.link()">Previous</a>
+		</ctx>
+		<a href="/attic/blog">Index</a>
+	</p>
+	<h1 :text="$page.title"></h1>
+	<div :html="$page.content()"></div>
+</body>
