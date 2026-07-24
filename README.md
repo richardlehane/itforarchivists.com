@@ -16,7 +16,7 @@ On the plus side: as part of the migration, I've moved "Try Siegfried" to the WA
 
 ## Remaining migration tasks
 
-  - [ ] old blog: move to /attic/blog
+  - [X] old blog: move to /attic/blog
   - [ ] benchmarks: move to /attic
   - [ ] results: move to /attic & include redirects or cf functions to preserve links
   - [ ] extract results generation code and include it in sf

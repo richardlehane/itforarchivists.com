@@ -1,1 +1,3 @@
-/post/:slug /attic/blog/:slug 301
+/post/* /attic/blog/:splat 301
+/siegfried/results/* /attic/results/:splat 301
+/siegfried/benchmarks/* /attic/results/:splat 301

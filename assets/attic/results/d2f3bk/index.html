@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+	<head id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="IT for archivists, siegfried format identification tool">
+		<title>IT for archivists</title>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.css">
+<style>
+.chart {
+	height: 320px;
+}
+</style>
+		<link type="text/css" rel="stylesheet" href="/style.css">
+		<link rel="icon" type="image/png" href="/img/richard.png">
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.js"></script>
+<script type="text/javascript">var RESULTS = {"resultsPath":"new.yaml","tool":"siegfried 1.9.1","signaturePath":"default.sig","signatureCreated":"2021-02-21T21:53:56+01:00","scanDate":"2021-07-14T19:29:48+02:00","identifiers":[{"name":"pronom","details":"DROID_SignatureFile_V97.xml; container-signature-20201001.xml"}],"results":[{"unknowns":0,"warnings":0,"errors":0,"multipleIDs":0,"duplicates":0,"fmtCounts":[["x-fmt/391",1]],"mimeCounts":[["image/jpeg",1]],"titles":["filename","filesize","modified","errors","id","format","version","mime","basis","warning","hasMultiID","isDuplicate"],"rows":[[".jpg","1641153","2021-07-11T22:28:04+02:00","","x-fmt/391","Exchangeable Image File Format (Compressed)","2.2","image/jpeg","extension match jpg; byte match at [[0 16] [321 12] [1641151 2]] (signature 1/2)","","false","false"]]}]};</script>
+<script src="/attic/results/results.js"></script>
+	</head>
+	<body class="full-width">
+	<header>
+		<div class="nav">
+			<ul>
+				<li><a class="nav-tab" href="/">Home</a></li>
+				<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
+				<li><a class="nav-tab" href="/attic">Attic</a></li>
+			</ul>
+		</div>
+	</header>
+	<div>
+		<div class="chart-container"> 
+<div class="chart-box">
+	<h1>Untitled</h1>
+	<p><i></i></p>
+	<p></p>
+</div>
+<div class="chart-box">
+<h1>Identifiers</h1><p><a href="#" onclick="load(0); return false;"><strong>pronom</strong></a><br>DROID_SignatureFile_V97.xml; container-signature-20201001.xml</p></div>
+<div class="chart-box">
+<h1>Details</h1>
+<p><strong>Results path</strong>: new.yaml<br><strong>Tool</strong>: siegfried 1.9.1<br><strong>Signature</strong>: default.sig<br><strong>Signature created</strong>: 2021-02-21T21:53:56+01:00<br><strong>Scan date</strong>: 2021-07-14T19:29:48+02:00</p>
+  <p>
+    <a href="#" id="errNo"><span></span> errors</a><br>
+	<a href="#" id="warnNo"><span></span> warnings</a><br>
+	<a href="#" id="unkNo"><span></span> unknowns</a><br>
+	<a href="#" id="multiNo"><span></span> multiple IDs</a><br>
+	<a href="#" id="dupesNo"><span></span> duplicates</a>
+  </p>
+  <p>
+    <a href="#" id="reset">Reset (show all)</a>
+  </p>
+</div>
+<div class="chart-box" id="charts">
+  <div id="fmtchart" class="chart"></div>
+  <div id="mimechart" class="chart"></div>
+  <div class="centre" role="group">
+    <button onclick="reveal('fmtchart'); return false;">Format IDs</button>
+    <button onclick="reveal('mimechart'); return false;">MIME-types</button>
+  </div>
+</div>
+<br>
+</div>
+<div><table id="table" class="display"></table></div>
+	</div>
+	</body>
+</html>

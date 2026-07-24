@@ -1,2 +1,6 @@
 sf.wasm
 repositories/
+data/
+main.go
+go.mod
+go.sum

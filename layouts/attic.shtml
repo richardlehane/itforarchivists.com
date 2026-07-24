@@ -4,6 +4,7 @@
 	<h1 :text="$page.title"></h1>
 	<div :html="$page.content()"></div>
 	<div>><input id="cmd" type="text" class="attic-input" placeholder="_"></div>
+	<!-- HEY! No peeking, CHEATER!!! ;) -->
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
 			const cmdInput = document.getElementById('cmd');
@@ -12,8 +13,15 @@
 					switch (event.target.value.toLowerCase()) {
 						case 'go north':
 							window.location.href = "blog";
+							break;
+						case 'go south':
+							window.location.href = "benchmarks";
+							break;
+						case 'go east':
+							window.location.href = "results";
+							break;
 						default:
-
+							window.location.href = "grue";
 					}
 				}
 			});

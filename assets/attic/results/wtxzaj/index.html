@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+	<head id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="IT for archivists, siegfried format identification tool">
+		<title>IT for archivists</title>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.css">
+<style>
+.chart {
+	height: 320px;
+}
+</style>
+		<link type="text/css" rel="stylesheet" href="/style.css">
+		<link rel="icon" type="image/png" href="/img/richard.png">
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.js"></script>
+<script type="text/javascript">var RESULTS = {"resultsPath":"my_results.yaml","tool":"siegfried 1.7.5","signaturePath":"default.sig","signatureCreated":"2017-08-11T20:39:21+10:00","scanDate":"2017-09-01T00:01:36Z","identifiers":[{"name":"pronom","details":"DROID_SignatureFile_V91.xml; container-signature-20170330.xml"}],"results":[{"unknowns":1,"warnings":5,"errors":1,"multipleIDs":0,"duplicates":0,"fmtCounts":[["x-fmt/64",4],["UNKNOWN",1]],"mimeCounts":[["no MIME",1],["application/msword",4]],"titles":["filename","filesize","modified","errors","id","format","version","mime","basis","warning","hasMultiID","isDuplicate"],"rows":[["","20992","2017-08-31T23:53:42Z","","x-fmt/64","Microsoft Word for Macintosh Document","4.0","application/msword","byte match at 0, 4","extension mismatch","false","false"],["","0","2017-08-31T23:53:42Z","empty source","UNKNOWN","","","","","no match","false","false"],["","2048","2017-08-31T23:53:42Z","","x-fmt/64","Microsoft Word for Macintosh Document","4.0","application/msword","byte match at 0, 4","extension mismatch","false","false"],["","333824","2017-08-31T23:53:42Z","","x-fmt/64","Microsoft Word for Macintosh Document","4.0","application/msword","byte match at 0, 4","extension mismatch","false","false"],["","2048","2017-08-31T23:53:42Z","","x-fmt/64","Microsoft Word for Macintosh Document","4.0","application/msword","byte match at 0, 4","extension mismatch","false","false"]]}]};</script>
+<script src="/attic/results/results.js"></script>
+	</head>
+	<body class="full-width">
+	<header>
+		<div class="nav">
+			<ul>
+				<li><a class="nav-tab" href="/">Home</a></li>
+				<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
+				<li><a class="nav-tab" href="/attic">Attic</a></li>
+			</ul>
+		</div>
+	</header>
+	<div>
+		<div class="chart-container"> 
+<div class="chart-box">
+	<h1>Untitled</h1>
+	<p><i></i></p>
+	<p></p>
+</div>
+<div class="chart-box">
+<h1>Identifiers</h1><p><a href="#" onclick="load(0); return false;"><strong>pronom</strong></a><br>DROID_SignatureFile_V91.xml; container-signature-20170330.xml</p></div>
+<div class="chart-box">
+<h1>Details</h1>
+<p><strong>Results path</strong>: my_results.yaml<br><strong>Tool</strong>: siegfried 1.7.5<br><strong>Signature</strong>: default.sig<br><strong>Signature created</strong>: 2017-08-11T20:39:21+10:00<br><strong>Scan date</strong>: 2017-09-01T00:01:36Z</p>
+  <p>
+    <a href="#" id="errNo"><span></span> errors</a><br>
+	<a href="#" id="warnNo"><span></span> warnings</a><br>
+	<a href="#" id="unkNo"><span></span> unknowns</a><br>
+	<a href="#" id="multiNo"><span></span> multiple IDs</a><br>
+	<a href="#" id="dupesNo"><span></span> duplicates</a>
+  </p>
+  <p>
+    <a href="#" id="reset">Reset (show all)</a>
+  </p>
+</div>
+<div class="chart-box" id="charts">
+  <div id="fmtchart" class="chart"></div>
+  <div id="mimechart" class="chart"></div>
+  <div class="centre" role="group">
+    <button onclick="reveal('fmtchart'); return false;">Format IDs</button>
+    <button onclick="reveal('mimechart'); return false;">MIME-types</button>
+  </div>
+</div>
+<br>
+</div>
+<div><table id="table" class="display"></table></div>
+	</div>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+	<head id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="IT for archivists, siegfried format identification tool">
+		<title>IT for archivists</title>
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.css">
+<style>
+.chart {
+	height: 320px;
+}
+</style>
+		<link type="text/css" rel="stylesheet" href="/style.css">
+		<link rel="icon" type="image/png" href="/img/richard.png">
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.js"></script>
+<script type="text/javascript">var RESULTS = {"resultsPath":"sip.csv","tool":"","signaturePath":"","signatureCreated":"0001-01-01T00:00:00Z","scanDate":"0001-01-01T00:00:00Z","identifiers":[{"name":"pronom","details":""}],"results":[{"unknowns":0,"warnings":12,"errors":0,"multipleIDs":0,"duplicates":0,"fmtCounts":[["fmt/817",5],["x-fmt/111",7]],"mimeCounts":[["no MIME",7],["application/json",5]],"titles":["filename","filesize","modified","errors","id","format","version","mime","class","basis","warning","hasMultiID","isDuplicate"],"rows":[[".krpref","261","2024-09-18T12:32:40+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],[".json","17","2024-09-18T23:58:46+10:00","","fmt/817","JSON Data Interchange Format","","application/json","","extension match json","match on extension only","false","false"],[".krop","282","2024-09-18T23:58:46+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],[".json","19","2024-09-19T00:00:16+10:00","","fmt/817","JSON Data Interchange Format","","application/json","","extension match json","match on extension only","false","false"],[".krop","282","2024-09-19T00:00:16+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],[".json","35","2024-09-23T10:47:42+10:00","","fmt/817","JSON Data Interchange Format","","application/json","","extension match json","match on extension only","false","false"],[".krop","286","2024-09-23T10:47:42+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],[".json","54","2024-09-22T17:54:12+10:00","","fmt/817","JSON Data Interchange Format","","application/json","","extension match json","match on extension only","false","false"],[".krop","286","2024-09-22T17:54:12+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],[".json","53","2024-09-19T00:01:10+10:00","","fmt/817","JSON Data Interchange Format","","application/json","","extension match json","match on extension only","false","false"],[".krop","276","2024-09-19T00:01:10+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],[".krproj","484","2024-09-18T12:30:46+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"]]}]};</script>
+<script src="/attic/results/results.js"></script>
+	</head>
+	<body class="full-width">
+	<header>
+		<div class="nav">
+			<ul>
+				<li><a class="nav-tab" href="/">Home</a></li>
+				<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
+				<li><a class="nav-tab" href="/attic">Attic</a></li>
+			</ul>
+		</div>
+	</header>
+	<div>
+		<div class="chart-container"> 
+<div class="chart-box">
+	<h1>No provenance test</h1>
+	<p><i>Richard</i></p>
+	<p></p>
+</div>
+<div class="chart-box">
+<h1>Identifiers</h1><p><a href="#" onclick="load(0); return false;"><strong>pronom</strong></a><br></p></div>
+<div class="chart-box">
+<h1>Details</h1>
+<p><strong>Results path</strong>: sip.csv<br><strong>Signature created</strong>: 0001-01-01T00:00:00Z<br><strong>Scan date</strong>: 0001-01-01T00:00:00Z</p>
+  <p>
+    <a href="#" id="errNo"><span></span> errors</a><br>
+	<a href="#" id="warnNo"><span></span> warnings</a><br>
+	<a href="#" id="unkNo"><span></span> unknowns</a><br>
+	<a href="#" id="multiNo"><span></span> multiple IDs</a><br>
+	<a href="#" id="dupesNo"><span></span> duplicates</a>
+  </p>
+  <p>
+    <a href="#" id="reset">Reset (show all)</a>
+  </p>
+</div>
+<div class="chart-box" id="charts">
+  <div id="fmtchart" class="chart"></div>
+  <div id="mimechart" class="chart"></div>
+  <div class="centre" role="group">
+    <button onclick="reveal('fmtchart'); return false;">Format IDs</button>
+    <button onclick="reveal('mimechart'); return false;">MIME-types</button>
+  </div>
+</div>
+<br>
+</div>
+<div><table id="table" class="display"></table></div>
+	</div>
+	</body>
+</html>

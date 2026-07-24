@@ -24,16 +24,16 @@
 	</script>
 
 	</head>
-	<header>
-		<div class="nav">
-			<ul>
-				<li><a class="nav-tab" href="/">Home</a></li>
-				<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
-				<li><a class="nav-tab" href="/attic">Attic</a></li>
-			</ul>
-		</div>
-	</header>
 	<body id="body">
+		<header>
+			<div class="nav">
+				<ul>
+					<li><a class="nav-tab" href="/">Home</a></li>
+					<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
+					<li><a class="nav-tab" href="/attic">Attic</a></li>
+				</ul>
+			</div>
+		</header>
 		
 	<div class="grid">
 		<div>
@@ -127,12 +127,12 @@ sf -setconf -csv -conf csv.conf // Save (or load) named configurations with -con
 			<p>Drag a file on to Siegfried's anvil! Or...</p>
 			<div class="install-list">
 				<div>
-					<button class="btn btn-primary" id="butOpen" type="button">
+					<button class="btn-primary" id="butOpen" type="button">
 						Identify file
 					</button>
 				</div>
 				<div>
-					<button class="btn btn-primary" id="butDirectory" type="button">
+					<button class="btn-primary" id="butDirectory" type="button">
 						Identify directory
 					</button>
 				</div>
@@ -167,7 +167,7 @@ sf -setconf -csv -conf csv.conf // Save (or load) named configurations with -con
 			const codeBlocks = document.querySelectorAll("pre, textarea");
 			codeBlocks.forEach((block) => {
 				const button = document.createElement("button");
-				button.className = "btn btn-copy";
+				button.className = "btn-copy";
 				button.type = "button";
 				button.innerText = "Copy";
 				block.after(button);

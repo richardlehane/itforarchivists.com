@@ -1,0 +1,15 @@
+---
+.title = "Grue",
+.date = .date("2026-07-23T10:00:00"),
+.layout = "simple.shtml",
+---
+
+# Eaten by a Grue
+
+Alas, dear adventurer, that was a poor choice.
+
+You have met a grisly end.
+
+![](/img/rip.jpg)
+
+[Try again](/attic)

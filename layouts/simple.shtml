@@ -1,0 +1,5 @@
+<extend template="base.shtml">
+<head id="head"></head>
+<body id="body">
+	<div :html="$page.content()"></div>
+</body>

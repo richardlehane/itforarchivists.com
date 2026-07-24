@@ -9,20 +9,21 @@
 		<link rel="icon" type="image/png" href="/img/richard.png">
 		
 	</head>
-	<header>
-		<div class="nav">
-			<ul>
-				<li><a class="nav-tab" href="/">Home</a></li>
-				<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
-				<li><a class="nav-tab" href="/attic">Attic</a></li>
-			</ul>
-		</div>
-	</header>
 	<body id="body">
+		<header>
+			<div class="nav">
+				<ul>
+					<li><a class="nav-tab" href="/">Home</a></li>
+					<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
+					<li><a class="nav-tab" href="/attic">Attic</a></li>
+				</ul>
+			</div>
+		</header>
 		
 	<h1>Attic</h1>
-	<div><p>You are in a dusty old attic.</p><p>To the north, an old bookshelf towers, draped in cobwebs. A faded label reads, “Blog posts, pre-July 2026”.</p><p>It feels like the ghost of an archivist haunts the room.</p><p>A rat scurries past.</p></div>
+	<div><p>You are in a dusty old attic. It feels like the ghost of an archivist haunts the room.</p><p>To the north, an old bookshelf towers, draped in cobwebs. A faded label reads, “Blog posts, pre-July 2026”.</p><p>You dread to look, but behind you, to the south, you sense a deadly robot, and a rabid dog, both racing to overtake and devour you.</p><p>Shining to your left, in the east, is a gleaming pile of treasure. The rich results of battles past.</p><p>A rat scurries past, as you hesitate, wondering which way to go.</p></div>
 	<div>><input id="cmd" type="text" class="attic-input" placeholder="_"></div>
+	<!-- HEY! No peeking, CHEATER!!! ;) -->
 	<script>
 		document.addEventListener("DOMContentLoaded", () => {
 			const cmdInput = document.getElementById('cmd');
@@ -31,8 +32,15 @@
 					switch (event.target.value.toLowerCase()) {
 						case 'go north':
 							window.location.href = "blog";
+							break;
+						case 'go south':
+							window.location.href = "benchmarks";
+							break;
+						case 'go east':
+							window.location.href = "results";
+							break;
 						default:
-
+							window.location.href = "grue";
 					}
 				}
 			});
