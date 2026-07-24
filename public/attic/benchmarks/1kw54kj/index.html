@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html>
+	<head id="head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta name="description" content="IT for archivists, siegfried format identification tool">
+		<title>IT for archivists</title>
+		<link rel="stylesheet" href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.8/b-3.2.6/b-html5-3.2.6/datatables.min.css" integrity="sha384-1OScWqbx4XgbHvbfZzPSoQ5TfKTHjWXe0jqxPmrngilLvmJ4Z4F8gkX/b9H/q1z4" crossorigin="anonymous">
+		<link type="text/css" rel="stylesheet" href="/style.css">
+		<link rel="icon" type="image/png" href="/img/richard.png">
+		<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.8/b-3.2.6/b-html5-3.2.6/datatables.min.js" integrity="sha384-c8v8R8HgB2YgkBbz+W+EB5M/1RKD5wqDVq1GWXpVLlYmI2EJ+qhj03f0LWH4nd3E" crossorigin="anonymous"></script>
+	</head>
+	<body class="full-width">
+	<header>
+		<div class="nav">
+			<ul>
+				<li><a class="nav-tab" href="/">Home</a></li>
+				<li><a class="nav-tab" href="/siegfried">Siegfried</a></li>
+				<li><a class="nav-tab" href="/attic">Attic</a></li>
+			</ul>
+		</div>
+	</header>
+	<div>
+		<h1>Siegfried benchmarks</h1>
+<h2>Sat, 01 Mar 2025 15:52:02 AEDT</h2>
+<h3>Environment</h3>
+<p>These benchmarks were <a href="https://github.com/richardlehane/runner">run</a> on a <a href="https://www.packet.net/bare-metal/servers/c2-medium-epyc/">c2.medium.x86</a> machine that was <a href="https://github.com/richardlehane/provisioner">automatically provisioned</a>.</p>
+<p>Specs for the <a href="https://www.packet.net/bare-metal/servers/c2-medium-epyc/">c2.medium.x86</a>: 24 Physical Cores @ 2.2 GHz; 64 GB ECC RAM; 960 GB SSD.</p>
+<table>
+	<caption>List of tools benchmarked</caption>
+	<thead>
+		<tr>
+			<th>Tool</th>
+			<th>Version</th>
+		</tr>
+	</thead>
+	<tbody><tr>
+			<td>sf</td>
+			<td>siegfried 1.11.2
+/root/siegfried/default.sig (2025-03-01T15:28:08+11:00)
+identifiers: 
+  - pronom: DROID_SignatureFile_V120.xml; container-signature-20240715.xml</td>
+		</tr><tr>
+			<td>droid</td>
+			<td>6.8.0 Type: Container Version:  20240715  File name: container-signature-20240715.xml
+Type: Binary Version:  120  File name: DROID_SignatureFile_V120.xml</td>
+		</tr><tr>
+			<td>fido</td>
+			<td>FIDO v1.6.1 (formats-v109.xml, container-signature-20200121.xml, format_extensions.xml)</td>
+		</tr></tbody>
+</table><div>
+<div class="page-header">
+<h2>iPRES Systems Showcase</h2>
+</div>
+<p>A corpus created for the 2014 iPRES conference comprising 2,206 files (5GB). Represents a range of formats, including AV and some uncommon types. Sourced from <a href="http://www.webarchive.org.uk/datasets/ipres.ds.1/">http://www.webarchive.org.uk/datasets/ipres.ds.1/</a>.</p>
+<table>
+	<caption>Results</caption>
+	<thead>
+		<tr>
+			<th>Tool</th>
+			<th>Description</th>
+			<th>Duration</th>
+		</tr>
+	</thead>
+	<tbody><tr>
+			<td>sf</td>
+			<td>Siegfried in its default mode (-multi 1).</td>
+			<td>22.82322628s</td>
+		</tr><tr>
+			<td>sf multi32</td>
+			<td>Siegfried with `sf -multi 32` (sf scans multiple files simultaneously).</td>
+			<td>8.737608487s</td>
+		</tr><tr>
+			<td>sf 64k</td>
+			<td>Siegfried with `sf -multi 32 -sig pronom64.sig` (a buffer of 64k).</td>
+			<td>421.87983ms</td>
+		</tr><tr>
+			<td>sf 128k</td>
+			<td>Siegfried with `sf -multi 32 -sig pronom128.sig` (a buffer of 128k).</td>
+			<td>470.863875ms</td>
+		</tr><tr>
+			<td>droid 64k</td>
+			<td>DROID in its default mode (a buffer of 64K).</td>
+			<td>8.912385262s</td>
+		</tr><tr>
+			<td>droid 128k</td>
+			<td>DROID with FIDO's default buffer (a buffer of 128K).</td>
+			<td>8.277885772s</td>
+		</tr><tr>
+			<td>droid nolimit</td>
+			<td>DROID without a buffer limit (a buffer of -1).</td>
+			<td>14.951855456s</td>
+		</tr><tr>
+			<td>fido 64k</td>
+			<td>FIDO with DROID's default buffer (a -bufsize of 64K).</td>
+			<td>32.210386293s</td>
+		</tr><tr>
+			<td>fido 128k</td>
+			<td>FIDO in its default mode (a -bufsize of 128K).</td>
+			<td>35.620011006s</td>
+		</tr><tr>
+			<td>fido 1mb</td>
+			<td>FIDO with Archivematica's default buffer (a -bufsize of 1mb).</td>
+			<td>48.618848541s</td>
+		</tr></tbody>
+</table>
+<p>One or more of the tools failed, so a comparison is not possible.</p>
+
+<p><a href="/attic/benchmarks/1kw54kj/gc7ebc">Raw output</a></p>
+</div><div>
+<div class="page-header">
+<h2>iPRES 2022 Pantry</h2>
+</div>
+<p>A corpus created for the 2022 iPRES conference Digital Preservation Bake Off Challenge comprising 2,944 files (20.8GB). Includes a number of different content types, ranging from generic and not-so generic PDFs, still images and office documents, to complex objects such as AV, 3D and disk images, to web-based objects such as websites and social media. The ‘exotic ingredients’ section contains data with additional challenges, such as unidentifiable objects, corrupt objects or legacy file formats. Sourced from <a href="https://ipres2022.scot/call-for-contributions-2/data-set/">https://ipres2022.scot/call-for-contributions-2/data-set/</a>.</p>
+<table>
+	<caption>Results</caption>
+	<thead>
+		<tr>
+			<th>Tool</th>
+			<th>Description</th>
+			<th>Duration</th>
+		</tr>
+	</thead>
+	<tbody><tr>
+			<td>sf</td>
+			<td>Siegfried in its default mode (-multi 1).</td>
+			<td>1m40.545027504s</td>
+		</tr><tr>
+			<td>sf multi32</td>
+			<td>Siegfried with `sf -multi 32` (sf scans multiple files simultaneously).</td>
+			<td>13.983356669s</td>
+		</tr><tr>
+			<td>sf 64k</td>
+			<td>Siegfried with `sf -multi 32 -sig pronom64.sig` (a buffer of 64k).</td>
+			<td>427.213843ms</td>
+		</tr><tr>
+			<td>sf 128k</td>
+			<td>Siegfried with `sf -multi 32 -sig pronom128.sig` (a buffer of 128k).</td>
+			<td>456.718844ms</td>
+		</tr><tr>
+			<td>droid 64k</td>
+			<td>DROID in its default mode (a buffer of 64K).</td>
+			<td>8.865683308s</td>
+		</tr><tr>
+			<td>droid 128k</td>
+			<td>DROID with FIDO's default buffer (a buffer of 128K).</td>
+			<td>8.968172207s</td>
+		</tr><tr>
+			<td>droid nolimit</td>
+			<td>DROID without a buffer limit (a buffer of -1).</td>
+			<td>19.310852978s</td>
+		</tr><tr>
+			<td>fido 64k</td>
+			<td>FIDO with DROID's default buffer (a -bufsize of 64K).</td>
+			<td>40.51536757s</td>
+		</tr><tr>
+			<td>fido 128k</td>
+			<td>FIDO in its default mode (a -bufsize of 128K).</td>
+			<td>43.480230997s</td>
+		</tr><tr>
+			<td>fido 1mb</td>
+			<td>FIDO with Archivematica's default buffer (a -bufsize of 1mb).</td>
+			<td>59.064459327s</td>
+		</tr></tbody>
+</table>
+<p>One or more of the tools failed, so a comparison is not possible.</p>
+
+<p><a href="/attic/benchmarks/1kw54kj/2ttn5zm">Raw output</a></p>
+</div><div>
+<div class="page-header">
+<h2>PRONOM files</h2>
+</div>
+<p>A corpus created by Greg Lepore and comprising 1,205 files (2.1GB). Includes a single sample of as many of the PRONOM IDs (PUIDs) that Greg could find.</p>
+<table>
+	<caption>Results</caption>
+	<thead>
+		<tr>
+			<th>Tool</th>
+			<th>Description</th>
+			<th>Duration</th>
+		</tr>
+	</thead>
+	<tbody><tr>
+			<td>sf</td>
+			<td>Siegfried in its default mode (-multi 1).</td>
+			<td>2.794484723s</td>
+		</tr><tr>
+			<td>sf multi32</td>
+			<td>Siegfried with `sf -multi 32` (sf scans multiple files simultaneously).</td>
+			<td>1.572368095s</td>
+		</tr><tr>
+			<td>sf 64k</td>
+			<td>Siegfried with `sf -multi 32 -sig pronom64.sig` (a buffer of 64k).</td>
+			<td>291.696144ms</td>
+		</tr><tr>
+			<td>sf 128k</td>
+			<td>Siegfried with `sf -multi 32 -sig pronom128.sig` (a buffer of 128k).</td>
+			<td>322.361078ms</td>
+		</tr><tr>
+			<td>droid 64k</td>
+			<td>DROID in its default mode (a buffer of 64K).</td>
+			<td>7.762409394s</td>
+		</tr><tr>
+			<td>droid 128k</td>
+			<td>DROID with FIDO's default buffer (a buffer of 128K).</td>
+			<td>8.140955145s</td>
+		</tr><tr>
+			<td>droid nolimit</td>
+			<td>DROID without a buffer limit (a buffer of -1).</td>
+			<td>8.673824274s</td>
+		</tr><tr>
+			<td>fido 64k</td>
+			<td>FIDO with DROID's default buffer (a -bufsize of 64K).</td>
+			<td>18.040746653s</td>
+		</tr><tr>
+			<td>fido 128k</td>
+			<td>FIDO in its default mode (a -bufsize of 128K).</td>
+			<td>19.066414166s</td>
+		</tr><tr>
+			<td>fido 1mb</td>
+			<td>FIDO with Archivematica's default buffer (a -bufsize of 1mb).</td>
+			<td>25.576524152s</td>
+		</tr></tbody>
+</table>
+<p>One or more of the tools failed, so a comparison is not possible.</p>
+
+<p><a href="/attic/benchmarks/1kw54kj/1qjnvgb">Raw output</a></p>
+</div><div>
+<div class="page-header">
+<h2>Govdocs (Selected)</h2>
+</div>
+<p>A selection from the Govdocs1 corpus comprising 26,124 files (31.4GB). Represents typical office formats, including approx. 15,000 PDFs. Originally sourced from <a href="http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/">http://openpreservation.org/blog/2012/07/26/1-million-21000-reducing-govdocs-significantly/</a>.</p>
+<table>
+	<caption>Results</caption>
+	<thead>
+		<tr>
+			<th>Tool</th>
+			<th>Description</th>
+			<th>Duration</th>
+		</tr>
+	</thead>
+	<tbody><tr>
+			<td>sf</td>
+			<td>Siegfried in its default mode (-multi 1).</td>
+			<td>3m53.144417701s</td>
+		</tr><tr>
+			<td>sf multi32</td>
+			<td>Siegfried with `sf -multi 32` (sf scans multiple files simultaneously).</td>
+			<td>1m20.574543372s</td>
+		</tr><tr>
+			<td>sf 64k</td>
+			<td>Siegfried with `sf -multi 32 -sig pronom64.sig` (a buffer of 64k).</td>
+			<td>3.534622596s</td>
+		</tr><tr>
+			<td>sf 128k</td>
+			<td>Siegfried with `sf -multi 32 -sig pronom128.sig` (a buffer of 128k).</td>
+			<td>4.484300741s</td>
+		</tr><tr>
+			<td>droid 64k</td>
+			<td>DROID in its default mode (a buffer of 64K).</td>
+			<td>16.368384099s</td>
+		</tr><tr>
+			<td>droid 128k</td>
+			<td>DROID with FIDO's default buffer (a buffer of 128K).</td>
+			<td>17.220456246s</td>
+		</tr><tr>
+			<td>droid nolimit</td>
+			<td>DROID without a buffer limit (a buffer of -1).</td>
+			<td>40.043937765s</td>
+		</tr><tr>
+			<td>fido 64k</td>
+			<td>FIDO with DROID's default buffer (a -bufsize of 64K).</td>
+			<td>6m25.481442165s</td>
+		</tr><tr>
+			<td>fido 128k</td>
+			<td>FIDO in its default mode (a -bufsize of 128K).</td>
+			<td>7m6.189188978s</td>
+		</tr><tr>
+			<td>fido 1mb</td>
+			<td>FIDO with Archivematica's default buffer (a -bufsize of 1mb).</td>
+			<td>13m33.531960125s</td>
+		</tr></tbody>
+</table>
+<p>One or more of the tools failed, so a comparison is not possible.</p>
+
+<p><a href="/attic/benchmarks/1kw54kj/kwtdyg">Raw output</a></p>
+</div><div>
+<h2>History</h2><p><a href="/attic/benchmarks/1kw54kj">2025-03-01 15:52:02 +1100 AEDT</a></p><p><a href="/attic/benchmarks/1k7wess">2024-06-28 14:25:29 +1000 AEST</a></p><p><a href="/attic/benchmarks/1j4dmpp">2023-04-25 05:04:54 +1000 AEST</a></p><p><a href="/attic/benchmarks/1j1xmax">2023-03-25 21:47:57 +1100 AEDT</a></p><p><a href="/attic/benchmarks/1j1xf14">2023-03-25 20:17:24 +1100 AEDT</a></p><p><a href="/attic/benchmarks/1hpfspf">2022-11-07 03:54:39 +1100 AEDT</a></p><p><a href="/attic/benchmarks/1hhzby4">2022-09-13 08:16:36 +1000 AEST</a></p><p><a href="/attic/benchmarks/1hdaf68">2022-07-18 20:58:16 +1000 AEST</a></p><p><a href="/attic/benchmarks/1h8pvn9">2022-05-23 21:23:21 +1000 AEST</a></p><p><a href="/attic/benchmarks/1h00cen">2022-02-07 07:38:45 +1100 AEDT</a></p><p><a href="/attic/benchmarks/1fv2qph">2020-11-16 04:01:05 +1100 AEDT</a></p><p><a href="/attic/benchmarks/1fr5hh3">2020-10-11 19:45:23 +1100 AEDT</a></p><p><a href="/attic/benchmarks/1fpmt1m">2020-09-23 07:10:12 +1000 AEST</a></p><p><a href="/attic/benchmarks/1fpmqp9">2020-09-23 06:30:01 +1000 AEST</a></p><p><a href="/attic/benchmarks/1f9ta18">2020-04-20 14:42:16 +1000 AEST</a></p><p><a href="/attic/benchmarks/1f99828">2020-04-14 03:24:24 +1000 AEST</a></p><p><a href="/attic/benchmarks/1f2w057">2020-01-27 08:12:07 +1100 AEDT</a></p><p><a href="/attic/benchmarks/1enjp04">2019-08-18 23:52:04 +1000 AEST</a></p><p><a href="/attic/benchmarks/1eg9tfz">2019-06-15 22:52:15 +1000 AEST</a></p><p><a href="/attic/benchmarks/1e6fsym">2019-02-16 21:37:08 +1100 AEDT</a></p><p><a href="/attic/benchmarks/1dv5n7j">2018-10-02 12:16:18 +1000 AEST</a></p><p><a href="/attic/benchmarks/1drep09">2018-08-30 12:35:53 +1000 AEST</a></p><p><a href="/attic/benchmarks/1dp834x">2018-08-03 18:04:45 +1000 AEST</a></p><p><a href="/attic/benchmarks/1dntgtt">2018-07-29 14:32:26 +1000 AEST</a></p><p><a href="/attic/benchmarks/1dnnjqw">2018-07-27 17:34:20 +1000 AEST</a></p></div>
+	</div>
+	</body>
+</html>

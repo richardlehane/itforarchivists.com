@@ -277,18 +277,23 @@ button.btn-lg,
   padding: 0 1em 0 0;
 }
 
-.l-col {
-  grid-column: span 8;
-  padding: 0 1em 0 0;
-}
-
-.r-col {
-  grid-column: span 4;
-  padding: 0 0 0 1em;
-}
-
 body.full-width {
   max-width: 100vw;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+table.dataTable {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+.dt-buttons {
+  margin-bottom: 10px;
+}
+
+.dt-paging {
+  margin-top: 10px;
 }
 
 .dataTables_filter input,
@@ -297,8 +302,35 @@ body.full-width {
   color: #bbbbbb;
 }
 
-div .dataTables_info,
-div#table_paginate .paginate_button,
-div#table_paginate span {
-  color: #bbbbbb !important;
+/* Table style */
+
+table {
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+thead {
+  background-color: #333;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2%;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #eee;
 }

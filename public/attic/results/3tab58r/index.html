@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width">
 		<meta name="description" content="IT for archivists, siegfried format identification tool">
 		<title>IT for archivists</title>
-		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.8/b-3.2.6/b-html5-3.2.6/datatables.min.css" integrity="sha384-1OScWqbx4XgbHvbfZzPSoQ5TfKTHjWXe0jqxPmrngilLvmJ4Z4F8gkX/b9H/q1z4" crossorigin="anonymous">
 <style>
 .chart {
 	height: 320px;
@@ -15,7 +15,7 @@
 		<link type="text/css" rel="stylesheet" href="/style.css">
 		<link rel="icon" type="image/png" href="/img/richard.png">
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.12.0/b-2.2.3/b-html5-2.2.3/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.3.8/b-3.2.6/b-html5-3.2.6/datatables.min.js" integrity="sha384-c8v8R8HgB2YgkBbz+W+EB5M/1RKD5wqDVq1GWXpVLlYmI2EJ+qhj03f0LWH4nd3E" crossorigin="anonymous"></script>
 <script type="text/javascript">var RESULTS = {"resultsPath":"sf.yaml","tool":"siegfried 1.11.1","signaturePath":"default.sig","signatureCreated":"2024-08-09T08:16:52+10:00","scanDate":"2024-11-16T11:15:46+11:00","identifiers":[{"name":"pronom","details":"DROID_SignatureFile_V118.xml; container-signature-20240501.xml; extensions: x-fmt111.xml"}],"results":[{"unknowns":0,"warnings":12,"errors":0,"multipleIDs":0,"duplicates":0,"fmtCounts":[["x-fmt/111",7],["fmt/817",5]],"mimeCounts":[["no MIME",7],["application/json",5]],"titles":["filename","filesize","modified","errors","id","format","version","mime","class","basis","warning","hasMultiID","isDuplicate"],"rows":[["siplicity\\directory.krpref","261","2024-09-18T12:32:40+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],["siplicity\\siplicity\\v1\\SiplicityService\\GetRecord-request.json","17","2024-09-18T23:58:46+10:00","","fmt/817","JSON Data Interchange Format","","application/json","","extension match json","match on extension only","false","false"],["siplicity\\siplicity\\v1\\SiplicityService\\GetRecord.krop","282","2024-09-18T23:58:46+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],["siplicity\\siplicity\\v1\\SiplicityService\\GetStatus-request.json","19","2024-09-19T00:00:16+10:00","","fmt/817","JSON Data Interchange Format","","application/json","","extension match json","match on extension only","false","false"],["siplicity\\siplicity\\v1\\SiplicityService\\GetStatus.krop","282","2024-09-19T00:00:16+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],["siplicity\\siplicity\\v1\\SiplicityService\\ListRecords-request.json","35","2024-09-23T10:47:42+10:00","","fmt/817","JSON Data Interchange Format","","application/json","","extension match json","match on extension only","false","false"],["siplicity\\siplicity\\v1\\SiplicityService\\ListRecords.krop","286","2024-09-23T10:47:42+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],["siplicity\\siplicity\\v1\\SiplicityService\\PutFilePath-request.json","54","2024-09-22T17:54:12+10:00","","fmt/817","JSON Data Interchange Format","","application/json","","extension match json","match on extension only","false","false"],["siplicity\\siplicity\\v1\\SiplicityService\\PutFilePath.krop","286","2024-09-22T17:54:12+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],["siplicity\\siplicity\\v1\\SiplicityService\\PutJob-request.json","53","2024-09-19T00:01:10+10:00","","fmt/817","JSON Data Interchange Format","","application/json","","extension match json","match on extension only","false","false"],["siplicity\\siplicity\\v1\\SiplicityService\\PutJob.krop","276","2024-09-19T00:01:10+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"],["siplicity\\siplicity.krproj","484","2024-09-18T12:30:46+10:00","","x-fmt/111","Plain Text File","","","","text match ASCII","match on text only; extension mismatch","false","false"]]}]};</script>
 <script src="/attic/results/results.js"></script>
 	</head>
@@ -60,9 +60,9 @@
     <button onclick="reveal('mimechart'); return false;">MIME-types</button>
   </div>
 </div>
-<br>
 </div>
-<div><table id="table" class="display"></table></div>
+<br>
+<table id="table" class="display"></table>
 	</div>
 	</body>
 </html>
