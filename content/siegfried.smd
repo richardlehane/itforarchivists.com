@@ -123,3 +123,8 @@ Please post any bugs or feature requests to the [issues page](https://github.com
 
 No user data is received or stored by this site. "Try Siegfried" runs locally in your browser via siegfried's [WASM build](https://github.com/richardlehane/siegfried/releases/).
 
+## [Deprecations]($section.id('attic'))
+
+Some of the old features of this page (benchmarks, chart your results, and the sets tool) have been removed to make the site easier to maintain.
+
+Brave adventurers can find legacy outputs of these tools in the [Attic](/attic).
