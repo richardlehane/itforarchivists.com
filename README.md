@@ -22,20 +22,24 @@ On the plus side: as part of the migration, I've moved "Try Siegfried" to the WA
   - [ ] extract results generation code and include it in sf
   - [ ] extract update.json generation code and create a script for new site
   - [ ] migrate /scripts to ease updates
-  - [ ] decommission old server and bucket
+  - [X] decommission old server and bucket
 
 ## Release workflow
 
-1. Run a script to copy over latest signatures to assets/
+1. Copy over latest signatures to assets/ (from Code for latest and ~/siegfried if build with roy10 (roy10 build and roy10 build -extend @archivematica archivematica))
 
-2. Update the ziggy custom metadata (site or sf content level) with version and release date.
+2.  Go into scripts/update folder and run "go run run.go" 
 
-3. Copy deb into the site and:
+3. Update the ziggy custom metadata (site or sf content level) with version and release date.
 
-- run reprepro, 
-- then copy the pool and dists folder to assets.
+4. Copy deb into the site and:
 
-4. Update these files in Cloudflare R2:
+- run reprepro, "reprepro -b repositories includedeb buster siegfried_1.X.X-1_amd64.deb"
+- then copy the dists folder to assets.
+
+5. Delete the "public" folder and run "zine release"
+
+5. Update these files in Cloudflare R2:
 
 - wasmexec
 - 1_ll deb

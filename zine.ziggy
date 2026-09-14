@@ -1,4 +1,4 @@
-.zine_version = "0.13.0",
+.zine_version = "0.14.0",
 .site = .simple(.{
     .title = "IT for archivists",
     .host_url = "https://itforarchivists.com",
@@ -8,6 +8,6 @@
     .static_assets = ["fonts/", "dists/", "siegfried/", "attic/", "_redirects"],
 }),
 .custom = {
-    "sf": "1.11.6",
-    "date": "2026-07-12",
+    "sf": "1.11.7",
+    "date": "2026-09-14",
 },
