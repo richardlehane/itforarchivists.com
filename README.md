@@ -41,5 +41,5 @@ On the plus side: as part of the migration, I've moved "Try Siegfried" to the WA
 
 5. Update these files in Cloudflare R2:
 
-- wasmexec
-- 1_ll deb
+- sf.wasm
+- siegfried_1_ll.X.deb
