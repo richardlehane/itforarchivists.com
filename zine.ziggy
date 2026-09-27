@@ -8,6 +8,6 @@
     .static_assets = ["fonts/", "dists/", "siegfried/", "attic/", "_redirects"],
 }),
 .custom = {
-    "sf": "1.11.8",
-    "date": "2026-09-15",
+    "sf": "1.11.9",
+    "date": "2026-09-27",
 },
